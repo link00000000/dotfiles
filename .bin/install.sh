@@ -6,7 +6,7 @@ config() {
     /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
 }
 
-config checkout
+config checkout > /dev/null 2>&1
 if [ $? != 0 ]; then
     echo "Backing up pre-existing dot files..."
 
