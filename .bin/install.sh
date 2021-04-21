@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+echo '      _       _    __ _ _            '
+echo '     | |     | |  / _(_) |           '
+echo '   __| | ___ | |_| |_ _| | ___  ___  '
+echo '  / _` |/ _ \| __|  _| | |/ _ \/ __| '
+echo ' | (_| | (_) | |_| | | | |  __/\__ \ '
+echo '  \__,_|\___/ \__|_| |_|_|\___||___/ '
+echo '                                     '
+
 git clone --bare git@github.com:link00000000/dotfiles.git $HOME/.cfg
 
 config() {
@@ -15,7 +23,7 @@ if [ $? != 0 ]; then
         mv $file .config-backup/$file
     done
 
-    echo "Dotfiles backed up to $HOME/.config-backup/"
+    echo "Dotfiles backed up to $HOME/.config-backup"
 fi
 
 config checkout
