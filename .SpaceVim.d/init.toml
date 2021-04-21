@@ -28,6 +28,10 @@
 
     default_indent = 4
 
+    # Bootstrap custom configuration (~/.SpaceVim.d/autoload/customconfig.vim)
+    bootstrap_before = 'customconfig#before'
+    bootstram_after = 'customconfig#after'
+
 # Enable autocomplete layer
 [[layers]]
 name = 'autocomplete'
