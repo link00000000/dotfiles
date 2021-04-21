@@ -21,4 +21,12 @@ endfunction
 
 " Called after Vim enters autocmd
 function! customconfig#after() abort
+    " Remove ctrl+arrow bindings from shell layer
+    " https://spacevim.org/layers/shell/
+    " https://github.com/SpaceVim/SpaceVim/blob/172579a2601a734c9f5513df3ff80a9c05372b39/autoload/SpaceVim/layers/shell.vim#L60
+    tunmap <silent><C-Right>
+    tunmap <silent><C-Left>
+    tunmap <silent><C-Up>
+    tunmap <silent><C-Down>
+
 endfunction
