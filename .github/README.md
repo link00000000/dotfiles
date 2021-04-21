@@ -1,5 +1,5 @@
 # dotfiles
 
-``bash
+```bash
 curl -Ls https://git.io/JOoTj | bash
 ```
