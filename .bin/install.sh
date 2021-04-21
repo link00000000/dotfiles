@@ -42,14 +42,14 @@ echo
 config checkout > /dev/null 2>&1
 if [ $? != 0 ]; then
     echo $(red "Pre-existing dofiles found!")
-    echo "Backing up pre-existing dotfiles..."
+    echo $(cyan "Backing up pre-existing dotfiles...")
 
     for file in $(config checkout 2>&1 | egrep "\s+\." | awk {'print $1'}); do
         mkdir --parents .config-backup/$(dirname $file)
         mv $file .config-backup/$file
     done
 
-    echo $(cyan "Dotfiles backed up to $HOME/.config-backup")
+    echo "Dotfiles backed up to $HOME/.config-backup"
 fi
 echo
 
