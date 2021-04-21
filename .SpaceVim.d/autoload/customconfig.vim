@@ -12,6 +12,11 @@ function! customconfig#before() abort
     noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
     noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
+    " Enable word wrap in markdown
+    " https://github.com/SpaceVim/SpaceVim/issues/2066#issuecomment-605682906
+    au FileType markdown setlocal wrap
+    au FileType markdown setlocal spell
+
 endfunction
 
 " Called after Vim enters autocmd
