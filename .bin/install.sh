@@ -10,8 +10,10 @@ config checkout > /dev/null 2>&1
 if [ $? != 0 ]; then
     echo "Backing up pre-existing dot files..."
 
-    mkdir -p .config-backup
-    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+    for file in $(config checkout 2>&1 | egrep "\s+\." | awk {'print $1'}); do
+        mkdir --parents .config-backup/$(dirname $file)
+        mv $file .config-backup/$file
+    done
 
     echo "Dotfiles backed up to $HOME/.config-backup/"
 fi
