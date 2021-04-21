@@ -50,8 +50,8 @@ if [ $? != 0 ]; then
     done
 
     echo "Dotfiles backed up to $HOME/.config-backup"
+    echo
 fi
-echo
 
 config checkout
 config config status.showUntrackedFiles no
