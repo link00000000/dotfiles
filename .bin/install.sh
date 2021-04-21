@@ -124,8 +124,6 @@ if [ $? != 0 ]; then
     exit 1
 fi
 
-echo
-
 config checkout > /dev/null 2>&1
 if [ $? != 0 ]; then
     warn "Pre-existing dotfiles found!"
@@ -137,7 +135,6 @@ if [ $? != 0 ]; then
     done
 
     success "Dotfiles backed up to $HOME/.config-backup"
-    echo
 fi
 
 config checkout
