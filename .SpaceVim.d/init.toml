@@ -44,4 +44,8 @@ default_position = 'bottom'
 default_height = 24
 
 [[layers]]
+name = 'gtags'
+gtagslabel = 'exhuberant ctags'
+
+[[layers]]
 name = 'colorscheme'
