@@ -29,4 +29,10 @@ function! customconfig#after() abort
     tunmap <silent><C-Up>
     tunmap <silent><C-Down>
 
+    " Ignore case while searching unless there is an uppercase letter in the
+    " search
+    " https://stackoverflow.com/a/2288438
+    set ignorecase
+    set smartcase
+
 endfunction
