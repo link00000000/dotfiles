@@ -1,4 +1,12 @@
 # Defined in - @ line 1
-function config --wraps='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' --description 'alias config=/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-  /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $argv;
+function __config
+    /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $argv;
+end
+
+function config
+    if [ $argv[1] = "ls" ]
+	__config ls-files
+    end
+
+    __config $argv
 end
