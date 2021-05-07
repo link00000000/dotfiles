@@ -123,6 +123,20 @@ highlight FoldColumn       guifg=#51afef ctermfg=4    guibg=none    ctermbg=none
     set relativenumber
     set number
 
+" Terminal
+augroup neovim_terminal
+    autocmd!
+    
+    " Enter Terminal-mode (insert) automatically
+    autocmd TermOpen * startinsert
+
+    " Disables number lines on terminal buffers
+    autocmd TermOpen * :set nonumber norelativenumber
+
+    " allows you to use Ctrl-c on terminal window
+    autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
+augroup END
+
 " Shougo/dein.vim
     filetype plugin indent on
     syntax enable
@@ -147,5 +161,17 @@ command W w
 " Open nvim config with :Config
 command Config exe 'edit '.stdpath('config').'/init.vim'
 
+" }}}
+
 " mappings {{{
+
+" Open terminal in current window
+nnoremap <C-w><C-Enter> :terminal<CR>
+
+" Open terminal in new window
+nnoremap <C-w><Enter> :belowright 15split +terminal<CR>
+
+" Exit terminal insert mode with Esc
+tnoremap <Esc> <C-\><C-n>
+
 " }}}
