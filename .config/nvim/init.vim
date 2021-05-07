@@ -16,8 +16,7 @@ if &compatible
 endif
 
 " Install dein if is not already installed
-runtime $HOME/.cache/dein/repos/github.com/Shougo/dein.vim
-if !exists('*dein#begin')
+if empty(globpath("~/.cache/dein/repos/github.com/Shougo/dein.vim", "*"))
     echo "Installing dein.vim..."
 
     " OS stored in g:os
