@@ -144,7 +144,8 @@ highlight FoldColumn       guifg=#51afef ctermfg=4    guibg=none    ctermbg=none
 " Alias :W to :w
 command W w
 
-" }}}
+" Open nvim config with :Config
+command Config exe 'edit '.stdpath('config').'/init.vim'
 
 " mappings {{{
 " }}}
