@@ -15,6 +15,37 @@ if &compatible
   set nocompatible
 endif
 
+" Install dein if is not already installed
+runtime $HOME/.cache/dein/repos/github.com/Shougo/dein.vim
+if !exists('*dein#begin')
+    echo "Installing dein.vim..."
+
+    " OS stored in g:os
+    " Possible values:
+    "   'Windows'
+    "   'Darwin'
+    "   'Linux'
+    if !exists("g:os")
+        if has("win64") || has("win32") || has("win16")
+            let g:os = "Windows"
+        else
+            let g:os = substitute(system('uname'), '\n', '', '')
+        endif
+    endif
+
+    if g:os == "Windows"
+        execute "!Invoke-WebRequest https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.ps1 -OutFile installer.ps1"
+        execute "!Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
+        execute "!./installer.ps1 ~/.cache/dein"
+    elseif g:os == "Linux" || g:os == "Darwin"
+        execute "!curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh"
+        execute "!sh ./installer.sh ~/.cache/dein"
+    else
+        echo "Dein.vim must be installed manually. See https://github.com/Shougo/dein.vim"
+    endif
+
+endif
+
 " Required:
 set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
