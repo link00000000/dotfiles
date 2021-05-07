@@ -58,8 +58,13 @@ call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
     " Plugin Management
     call dein#add('wsdjeg/dein-ui.vim')
 
-    " Syntax Highlighting
-    call dein#add('dag/vim-fish')
+    " Language Specific
+
+        " Fish
+        call dein#add('dag/vim-fish')
+
+        " Python
+        call dein#add('davidhalter/jedi-vim')
 
     " Other
     call dein#add('itchyny/lightline.vim')
