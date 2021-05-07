@@ -144,9 +144,6 @@ highlight FoldColumn       guifg=#51afef ctermfg=4    guibg=none    ctermbg=none
 " Alias :W to :w
 command W w
 
-" Alias :PUpdate to :DeinUpdate
-command PUpdate DeinUpdate
-
 " }}}
 
 " mappings {{{
