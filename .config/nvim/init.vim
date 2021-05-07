@@ -90,6 +90,10 @@ set nocompatible
 " Word wrapping
 set nowrap        " Do not wrap lines
 
+" Split panes
+set splitbelow
+set splitright
+
 " Indentation
 set expandtab     " Use spaces instead of tabs
 set smarttab
@@ -170,6 +174,22 @@ nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
+
+nmap <C-Down>  <C-j>
+nmap <C-Up>    <C-k>
+nmap <C-Left>  <C-h>
+nmap <C-Right> <C-l>
+
+" Improved split pane resizing
+nnoremap <silent> <C-M-j>  :resize +1<CR>
+nnoremap <silent> <C-M-k>    :resize -1<CR>
+nnoremap <silent> <C-M-l> :vertical resize +1<CR>
+nnoremap <silent> <C-M-h>  :vertical resize -1<CR>
+
+nmap <C-M-Down>  <C-M-j>
+nmap <C-M-Up>    <C-M-k>
+nmap <C-M-Left>  <C-M-h>
+nmap <C-M-Right> <C-M-l>
 
 " Open terminal in current window
 nnoremap <C-w><C-Enter> :terminal<CR>
