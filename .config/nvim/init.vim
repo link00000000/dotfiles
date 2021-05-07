@@ -36,9 +36,11 @@ if empty(globpath("~/.cache/dein/repos/github.com/Shougo/dein.vim", "*"))
         execute "!Invoke-WebRequest https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.ps1 -OutFile installer.ps1"
         execute "!Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
         execute "!./installer.ps1 ~/.cache/dein"
+        execute "!rm ./installer.ps1"
     elseif g:os == "Linux" || g:os == "Darwin"
         execute "!curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh"
         execute "!sh ./installer.sh ~/.cache/dein"
+        execute "!rm ./installer.sh"
     else
         echo "Dein.vim must be installed manually. See https://github.com/Shougo/dein.vim"
     endif
