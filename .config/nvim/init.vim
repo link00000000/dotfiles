@@ -165,6 +165,12 @@ command Config exe 'edit '.stdpath('config').'/init.vim'
 
 " mappings {{{
 
+" Improved split pane navigation
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+
 " Open terminal in current window
 nnoremap <C-w><C-Enter> :terminal<CR>
 
