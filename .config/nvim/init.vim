@@ -120,6 +120,13 @@ highlight Function         guifg=#ff6c6b ctermfg=1    guibg=none    ctermbg=none
 highlight Visual           guifg=#dfdfdf ctermfg=none guibg=#1c1f24 ctermbg=8     cterm=none
 highlight Folded           guifg=#51afef ctermfg=4    guibg=none    ctermbg=none  cterm=italic
 highlight FoldColumn       guifg=#51afef ctermfg=4    guibg=none    ctermbg=none  cterm=italic
+highlight EndOfBuffer      guifg=#51afef ctermfg=4    guibg=none    ctermbg=none  cterm=none
+highlight Pmenu            guifg=#dfdfdf ctermfg=15   guibg=#353a44 ctermbg=8     cterm=none
+highlight SignColumn       guifg=#5b6268 ctermfg=8    guibg=#282c34 ctermbg=0     cterm=none
+highlight Title            guifg=#ff6c6b ctermfg=1    guibg=none    ctermbg=none  cterm=none
+highlight Search           guifg=none    ctermfg=none guibg=#ecbe7b ctermbg=12    cterm=none
+highlight Type             guifg=#98be65 ctermfg=2    guibg=none    ctermbg=none  cterm=none
+highlight SpecialKey       guifg=#51afef ctermfg=4    guibg=none    ctermbg=none  cterm=italic
 
 " Gutter
 
