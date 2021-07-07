@@ -36,7 +36,7 @@ light_green() {
 }
 
 echo $(cyan "Fetching dotfiles...")
-git clone --bare --mirror git@github.com:link00000000/dotfiles.git $HOME/.cfg
+git clone --bare --mirror https://github.com/link00000000/dotfiles.git $HOME/.cfg
 echo
 
 config checkout > /dev/null 2>&1
