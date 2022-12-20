@@ -41,7 +41,7 @@ vnoremap <Tab> >gv
 
 nnoremap <S-Tab> <gv
 vnoremap <S-Tab> <gv
-inoremap <S-Tab> <gv
+inoremap <S-Tab> <C-o><<
 
 " Use number keys to jump to tab
 nnoremap 1 1gt
@@ -74,4 +74,3 @@ tnoremap <Esc> <C-\><C-n>
 
 " Delete previous word
 imap <C-BS> <C-W>
-
