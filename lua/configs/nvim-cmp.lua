@@ -11,6 +11,7 @@ cmp.setup({
     window = {
         completion = {
             winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
             side_padding = 0,
         },
     },
@@ -53,8 +54,50 @@ cmp.setup({
             end
         end, { 'i', 's' }),
     }),
-    sources = {
+    sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
+    }, {
+        { name = 'buffer' },
+    }),
+})
+
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline({
+        ['<C-S-k>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-S-j>'] = cmp.mapping.scroll_docs(4),
+        ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+        ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+    }),
+    sources = cmp.config.sources({
+        { name = 'buffer' },
+    }),
+    window = {
+        completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+        },
+    },
+})
+
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline({
+        ['<C-S-k>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-S-j>'] = cmp.mapping.scroll_docs(4),
+        ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+        ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+    }),
+    sources = cmp.config.sources({},{
+        { name = 'path' },
+    }, {
+        { name = 'cmdline' },
+    }),
+    window = {
+        completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+        },
     },
 })

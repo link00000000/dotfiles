@@ -25,6 +25,7 @@ call plug#begin()
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-nvim-lua'
+    Plug 'hrsh7th/cmp-cmdline'
     Plug 'onsails/lspkind.nvim'
 
     " Snippets

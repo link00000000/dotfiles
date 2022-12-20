@@ -14,23 +14,23 @@
 ## LSP
 
 - Remove lsp-zero and unused dependencies
-    - Remove config file
-- Setup cmp for suggestions
+    - Remove config 
+- Setup cmp for suggestions ✅
 - Show diagnostics on hover ✅
 - Better diagnostics icons (see lsp-zero)
 
 ### Keybinds (See https://github.com/VonHeikemen/lsp-zero.nvim#default-keybindings for reference)
 
 - Rename ✅
-- <C-Space> to open suggestions
-- <Tab> to go to next suggestion
-- <C-n> to go to next suggestion
-- <S-Tab> to go to previous suggestion
-- <C-p> to go to previous suggestion
+- <C-Space> to open suggestions ✅
+- <Tab> to go to next suggestion ✅
+- <C-n> to go to next suggestion ✅
+- <S-Tab> to go to previous suggestion ✅
+- <C-p> to go to previous suggestion ✅
 - <Leader>a to open code actions ✅
 - <Leader>rt to refactor
 - <Leader>k to show documentation ✅
-    - Map documentation scrolling
+    - Map documentation scrolling ✅
 
 ## Snippets
 
