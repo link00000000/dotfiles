@@ -54,6 +54,7 @@ call plug#begin()
     " Misc.
     Plug 'goolord/alpha-nvim'
     Plug 'bfredl/nvim-luadev'
+    Plug 'numToStr/Comment.nvim'
 
     " Libraries / Dependencies
     Plug 'nvim-lua/plenary.nvim' " Required by telescope
@@ -70,3 +71,4 @@ lua require('configs.mason')
 lua require('configs.mason-lspconfig')
 lua require('configs.alpha')
 lua require('configs.nvim-cmp')
+lua require('configs.comment')

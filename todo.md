@@ -6,7 +6,7 @@
 
 ## Keybinds
 
-- Fix shift tab in insert mode
+- Fix shift tab in insert mode ✅
 - Add keybind to toggle panels
 - Comment current line or selection with <C-/> ✅
 - Contol backspace to delete entire word ✅
