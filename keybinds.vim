@@ -72,3 +72,6 @@ nnoremap <silent> <Leader>bd :bd<CR>
 " Exit terminal insert mode with <Esc>
 tnoremap <Esc> <C-\><C-n>
 
+" Delete previous word
+imap <C-BS> <C-W>
+
