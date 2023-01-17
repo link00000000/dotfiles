@@ -47,4 +47,6 @@ local opts = { silent = true }
 vim.api.nvim_set_keymap("n", "<Leader><Leader>", ":Workspace<CR>", opts)
 vim.api.nvim_set_keymap("n", "<Leader>ff", ":Workspace Explorer Focus<CR>", opts)
 vim.api.nvim_set_keymap("n", "<Leader>bb", ":Workspace BufferList Focus<CR>", opts)
-vim.api.nvim_set_keymap("n", "`", ":Workspace BottomPanelToggle<CR>", opts)
+-- vim.api.nvim_set_keymap("n", "`", ":Workspace BottomPanelToggle<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>wl", ":Workspace LeftPanelToggle<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>wr", ":Workspace RightPanelToggle<CR>", opts)

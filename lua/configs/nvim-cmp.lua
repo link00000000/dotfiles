@@ -20,8 +20,10 @@ cmp.setup({
         format = function (entry, vim_item)
             local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
             local strings = vim.split(kind.kind, "%s", { trimempty = true })
-            kind.kind = " " .. strings[1] .. " "
-            kind.menu = "    (" .. strings[2] .. ")"
+            if table.getn(strings) >= 2 then
+                kind.kind = " " .. strings[1] .. " "
+                kind.menu = "    (" .. strings[2] .. ")"
+            end
 
             return kind
         end,
@@ -38,8 +40,6 @@ cmp.setup({
         ['<C-j>'] = cmp.mapping(function (fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
             else
                 fallback()
             end
@@ -47,8 +47,6 @@ cmp.setup({
         ['<C-k>'] = cmp.mapping(function (fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
             else
                 fallback()
             end

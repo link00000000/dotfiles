@@ -1,0 +1,33 @@
+local GetNearestCsprojDirectory = function (fileDirectory)
+	local normalizedPath = string.gsub(fileDirectory, '\\', '/')
+
+	for fsNode in io.popen('dir ' .. normalizedPath .. ' /b'):lines() do
+		if string.gmatch(fsNode, '^.*\.csproj$') then
+			return normalizedPath
+		end
+	end
+	
+	local lastSlashIndex = string.find(normalizedPath, "/[^/]*$")
+	
+	if lastSlashIndex == nil then
+		return ""
+	end
+	
+	return GetNearestCsprojDirectory(string.sub(normalizedPath, 0, lastSlashIndex - 1))
+end
+
+local GetNamespaceFromFileDirectory = function (fileDirectory)
+    return GetNearestCsprojDirectory(fileDirectory)
+end
+
+return {
+    s("ns", {
+        t({'namespace '}),
+        f(function(_, parent)
+            return GetNamespaceFromFileDirectory(parent.snippet.env.TM_DIRECTORY)
+        end),
+		t({'', '{', '\t'}),
+        i(0),
+        t({"", "}"})
+    })
+}

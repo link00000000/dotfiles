@@ -4,6 +4,9 @@ local telescope_builtin = require('telescope.builtin')
 local telescope_themes = require('telescope.themes')
 local omnisharp_extended_lsp = require('omnisharp_extended')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local folding = require('folding')
+
+local wide_layout_config = { width =  0.9 }
 
 mason_lspconfig.setup()
 
@@ -21,7 +24,7 @@ local function lsp_keymaps(bufnr)
 
     buf_set_keymap('n', '<C-S-o>', '', { silent = true, noremap = true, callback =
         function()
-            telescope_builtin.lsp_document_symbols(telescope_themes.get_dropdown())
+            telescope_builtin.lsp_document_symbols(telescope_themes.get_dropdown({ trim_text = true, layout_config = wide_layout_config }))
         end,
     })
 
@@ -30,32 +33,33 @@ local function lsp_keymaps(bufnr)
             telescope_builtin.lsp_references(telescope_themes.get_dropdown({
                 include_declaration = false,
                 include_current_line = true,
-                trim_text = true
+                trim_text = true,
+                layout_config = wide_layout_config,
             }))
         end,
     })
 
     buf_set_keymap('n', '<Leader>gi', '', { silent = true, noremap = true, callback =
         function ()
-            telescope_builtin.lsp_implementations(telescope_themes.get_dropdown({ trim_text = true }))
+            telescope_builtin.lsp_implementations(telescope_themes.get_dropdown({ trim_text = true, layout_config = wide_layout_config }))
         end
     })
 
     buf_set_keymap('n', '<Leader>gd', '', { silent = true, noremap = true, callback =
         function ()
-            telescope_builtin.lsp_definitions(telescope_themes.get_dropdown({ trim_text = true }))
+            telescope_builtin.lsp_definitions(telescope_themes.get_dropdown({ trim_text = true, layout_config = wide_layout_config }))
         end,
     })
 
     buf_set_keymap('n', '<Leader>gt', '', { silent = true, noremap = true, callback =
         function ()
-            telescope_builtin.lsp_type_definitions(telescope_themes.get_dropdown())
+            telescope_builtin.lsp_type_definitions(telescope_themes.get_dropdown({ layout_config = wide_layout_config }))
         end,
     })
 
     buf_set_keymap('n', '<Leader>ee', '', { silent = true, noremap = true, callback =
         function ()
-            telescope_builtin.diagnostics(telescope_themes.get_dropdown({ bufnr = 0 }))
+            telescope_builtin.diagnostics(telescope_themes.get_dropdown({ bufnr = 0, layout_config = wide_layout_config }))
         end,
     })
 end
@@ -93,6 +97,7 @@ mason_lspconfig.setup_handlers({
             on_attach = function (client, bufnr)
                 lsp_keymaps(bufnr)
                 lsp_document_highlight(client)
+                folding.on_attach()
             end,
             capabilities = cmp_nvim_lsp.default_capabilities(), -- Add additional capabilities supported by nvim-cmp
             flags = {
@@ -105,6 +110,7 @@ mason_lspconfig.setup_handlers({
             on_attach = function (client, bufnr)
                 lsp_keymaps(bufnr)
                 lsp_document_highlight(client)
+                folding.on_attach()
 
                 vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>gd', '', { silent = true, noremap = true, callback =
                     function ()

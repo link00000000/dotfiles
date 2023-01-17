@@ -32,27 +32,27 @@ vmap j gj
 vmap k gk
 
 " Keep selection after indent
-vnoremap < <gv
-vnoremap > >gv
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
 
 " Indent and outdent with <Tab> and <S-Tab>
-nnoremap <Tab> >gv
-vnoremap <Tab> >gv
+nnoremap <silent> <Tab> >gv
+vnoremap <silent> <Tab> >gv
 
-nnoremap <S-Tab> <gv
-vnoremap <S-Tab> <gv
-inoremap <S-Tab> <C-o><<
+nnoremap <silent> <S-Tab> <gv
+vnoremap <silent> <S-Tab> <gv
+inoremap <silent> <S-Tab> <C-o><<
 
 " Use number keys to jump to tab
-nnoremap 1 1gt
-nnoremap 2 2gt
-nnoremap 3 3gt
-nnoremap 4 4gt
-nnoremap 5 5gt
-nnoremap 6 6gt
-nnoremap 7 7gt
-nnoremap 8 8gt
-nnoremap 9 9gt
+nnoremap <silent> 1 1gt
+nnoremap <silent> 2 2gt
+nnoremap <silent> 3 3gt
+nnoremap <silent> 4 4gt
+nnoremap <silent> 5 5gt
+nnoremap <silent> 6 6gt
+nnoremap <silent> 7 7gt
+nnoremap <silent> 8 8gt
+nnoremap <silent> 9 9gt
 nnoremap <silent> 0 :tablast<CR>
 
 " Move tabs
@@ -60,7 +60,7 @@ nnoremap <silent> + :tabmove +1<CR>
 nnoremap <silent> _ :tabmove -1<CR>
 
 " Open new tab
-nmap <Leader>tn :Texplore getcwd()<CR>
+nmap <silent> <Leader>tn :Texplore getcwd()<CR>
 
 " Clear search highlighting on <CR>
 " Search stays in register so <n> and <C-n> will re-highlight results
@@ -69,8 +69,28 @@ nnoremap <silent> <CR> :nohlsearch<CR>
 " Delete current buffer
 nnoremap <silent> <Leader>bd :bd<CR>
 
-" Exit terminal insert mode with <Esc>
-tnoremap <Esc> <C-\><C-n>
-
 " Delete previous word
 imap <C-BS> <C-W>
+
+" Open terminal in current window
+nnoremap <C-w><C-Enter> :terminal<CR>
+nnoremap <C-w><Enter> :terminal<CR>
+
+" Exit terminal insert mode with <Esc> or <C-n>
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-n> <C-\><C-n>
+
+" Resize buffers with arrow keys
+nnoremap <silent> <S-Up> <CMD>resize +5<CR>
+nnoremap <silent> <S-Down> <CMD>resize -5<CR>
+nnoremap <silent> <S-Left> <CMD>vert resize -5<CR>
+nnoremap <silent> <S-Right> <CMD>vert resize +5<CR>
+
+nnoremap <silent> <Up> <CMD>resize +1<CR>
+nnoremap <silent> <Down> <CMD>resize -1<CR>
+nnoremap <silent> <Left> <CMD>vert resize -1<CR>
+nnoremap <silent> <Right> <CMD>vert resize +1<CR>
+
+" Scroll without moving the cursor
+nnoremap <C-S-k> <C-y>
+nnoremap <C-S-j> <C-u>

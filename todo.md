@@ -3,6 +3,16 @@
 - Find this theme: https://www.reddit.com/r/neovim/comments/wf6sh1/issues_with_c_files_with_cmp_and_omnisharp/
 - Place diagnostic icons and line numbers in the same location (No separate location for diagnostic icons)
     - https://www.reddit.com/r/neovim/comments/vnph10/background_color_with_diagnostic_icons/
+- Customize repositories telescope to open project folder after selecting a file
+- Bind open and close panels to window move when there is no window to move to?
+- Automatically hide panel when panel is no longer focused
+- Find replacements for and remove nvim-ide?
+    - Maybe keep it for debugging?
+- Use wider telescope previewer when searching
+- Indent code block on paste to correct indentation
+- If line is blank, dont include whitespace that was added by auto-indent
+- Get better terminal colors based off of vim theme
+    - Specifically lazygit colors
 
 ## Keybinds
 
@@ -10,6 +20,8 @@
 - Add keybind to toggle panels
 - Comment current line or selection with <C-/> ✅
 - Contol backspace to delete entire word ✅
+- Better <Leader>k hints with syntax highlighting and doc comments
+- Make unused methods dim like VS
 
 ## LSP
 
@@ -44,7 +56,7 @@
 - Something for git gutter
 - Something for git blame
 - Hop or Leap or Pounce
-- LspKind?
+- LspKind? ✅
 - DAPs
 - nvim-notify
 - shade.nvim
@@ -58,3 +70,7 @@
 - GitLens
 - LazyGit integration
 - Multiple cursor support
+- Tab renaming
+- Add index numbers to tabs
+- Custom file browser
+- Something to highlight TODO, NOTE, DELETEME, etc

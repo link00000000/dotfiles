@@ -10,6 +10,9 @@ set nocompatible
 set termguicolors
 set updatetime=100
 
+" Highlight the current line with the cursor
+set cursorline
+
 " Map <Space> to leader
 nnoremap <Space> <NOP>
 let mapleader = " "
@@ -63,13 +66,31 @@ set number
 set visualbell
 set noerrorbells
 
+" Show all folds expanded when file is open
+set foldlevel=99
+
 " Hide ./ and ../ in netrw
 let g:netrw_list_hide = '^\.*/$'
 let g:netrw_hide = 1
 
+" Terminal
+augroup neovim_terminal
+    autocmd!
+
+    " Enter Terminal-mode (insert) automatically
+    autocmd TermOpen * startinsert
+
+    " Disables number lines on terminal buffers
+    autocmd TermOpen * :set nonumber norelativenumber
+augroup END
+
+" Have only one status bar
+" TODO: Maybe remove after installing statusbar plugin?
+set laststatus=3
+
 " Edit and source configuration with commands
 command Config execute('e ' . GetConfigDir())
-command ConfigCwd execute('cd ' . GetConfigDir() . ' | e init.vim')
+command ConfigCwd execute('tcd ' . GetConfigDir() . ' | e init.vim')
 command Source execute('source ' . GetConfigDir() . '/init.vim')
 
 if exists("g:neovide")

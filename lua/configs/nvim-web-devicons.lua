@@ -27,7 +27,7 @@ nvim_web_devicons.set_icon({
 nvim_web_devicons.set_icon({
     sln = {
         icon = "",
-        color = "#7160e8",
+        color = "#e37933",
         name = "Sln",
     }
 })

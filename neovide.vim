@@ -1,5 +1,6 @@
 let s:neovide_persist_fullscreen_file = GetDataDir() . '/neovide-fullscreen.txt'
 let s:neovide_extended_settings_file_path = GetDataDir() . '/neovide-settings-extended.json'
+let s:neovide_persist_restart_session_file = GetDataDir() . '/neovide-restart-session.vim'
 
 function s:ReadNeovideSettings()
     if !filereadable(s:neovide_extended_settings_file_path)
@@ -23,6 +24,12 @@ function s:ToggleFullscreen()
     call s:WriteNeovideSettings(l:neovide_settings)
 endfunction
 
+function s:Restart()
+    execute 'mksession! ' . s:neovide_persist_restart_session_file
+    call system('neovide -- -S ' . s:neovide_persist_restart_session_file)
+    execute 'qa!'
+endfunction
+
 " Read fullscreen state from extended settings
 let s:neovide_extended_settings = s:ReadNeovideSettings()
 if has_key(s:neovide_extended_settings, 'fullscreen')
@@ -35,7 +42,10 @@ endif
 
 " Toggle fullscreen command
 command -nargs=0 NeovideToggleFullscreen :call s:ToggleFullscreen()
-nmap <F11> :NeovideToggleFullscreen<CR>
+nmap <silent> <F11> :NeovideToggleFullscreen<CR>
+
+" Restart command
+command! -nargs=0 Restart :call s:Restart()
 
 " Set font
 " https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CascadiaCode.zip

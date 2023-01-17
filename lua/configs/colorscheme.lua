@@ -2,12 +2,14 @@ local vscode_theme = require('vscode')
 
 vim.o.background = 'dark'
 
-vscode_theme.setup({
-    transparent = false,
-    italic_comments = true,
-})
+-- vscode_theme.setup({
+--     transparent = false,
+--     italic_comments = true,
+-- })
 
-
+vim.cmd([[
+   colorscheme onedarker
+]])
 
 -- cmp
 vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#FF0000", fg = "NONE" })
@@ -42,6 +44,12 @@ vim.api.nvim_set_hl(0, "CmpItemKindInterface", { fg = "#D8EEEB", bg = "#58B5A8" 
 vim.api.nvim_set_hl(0, "CmpItemKindColor", { fg = "#D8EEEB", bg = "#58B5A8" })
 vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = "#D8EEEB", bg = "#58B5A8" })
 
---vim.cmd([[
---    colorscheme onedark
---]])
+vim.api.nvim_set_hl(0, "NonText", { link = "Comment" })
+
+vim.api.nvim_set_hl(0, "rainbowcol1", { link = "TSWarning" })
+vim.api.nvim_set_hl(0, "rainbowcol2", { link = "TSDefine" })
+vim.api.nvim_set_hl(0, "rainbowcol3", { link = "TSFunction" })
+vim.api.nvim_set_hl(0, "rainbowcol4", { link = "TSConstMacro" })
+vim.api.nvim_set_hl(0, "rainbowcol5", { link = "TSNamespace" })
+vim.api.nvim_set_hl(0, "rainbowcol6", { link = "TSString" })
+vim.api.nvim_set_hl(0, "rainbowcol7", { link = "TSDebug" })

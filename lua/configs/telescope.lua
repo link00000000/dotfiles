@@ -1,10 +1,11 @@
--- Requires ripgrep `scoop install ripgrep`
--- Require zig `scoop install zig`
+-- Requires ripgrep `scoop install ripgrep` Require zig `scoop install zig`
 -- Requires fd `scoop install fd`
 
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local themes = require('telescope.themes')
+
+local wide_layout_config = { width = 0.9 }
 
 telescope.setup({
     defaults = {
@@ -12,8 +13,8 @@ telescope.setup({
             i = {
                 ["<C-j>"] = require('telescope.actions').move_selection_next,
                 ["<C-k>"] = require('telescope.actions').move_selection_previous,
-                ["<C-p>"] = require('telescope.actions').cycle_history_prev,
-                ["<C-n>"] = require('telescope.actions').cycle_history_next,
+                ["<C-S-k>"] = require('telescope.actions').cycle_history_prev,
+                ["<C-S-j>"] = require('telescope.actions').cycle_history_next,
                 ["<ESC>"] = require('telescope.actions').close,
             }
         },
@@ -32,7 +33,11 @@ telescope.setup({
         winblend = 10,
         border = {},
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+        set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil
+        history = {
+            path = vim.fn.stdpath('data') .. '/telescope_smart_history.sqlite3',
+            limit = 100
+        }
     },
     extensions = {
         fzf = {
@@ -52,6 +57,7 @@ telescope.setup({
 telescope.load_extension("fzf")
 telescope.load_extension("ui-select")
 telescope.load_extension("repo")
+telescope.load_extension("smart_history")
 
 vim.api.nvim_create_user_command('Repos', 'lua require("telescope").extensions.repo.list(require("telescope.themes").get_dropdown({ search_dirs = { "~/Source/repos" }, tail_path = true, previewer = false }))', {})
 
@@ -62,32 +68,32 @@ vim.api.nvim_create_user_command('Repos', 'lua require("telescope").extensions.r
 local opts = { silent = true }
 
 vim.keymap.set('n', '<C-p>',
-    function()
+    function ()
         builtin.find_files(themes.get_dropdown({ previewer = false }))
     end,
 opts)
 
 vim.keymap.set('n', '<C-b>',
-    function()
+    function ()
         builtin.buffers(themes.get_dropdown({ previewer = false, sort_lastused = true }))
     end,
 opts)
 
 vim.keymap.set('n', '<C-f>',
-    function()
-        builtin.live_grep(themes.get_dropdown({ prompt_title = 'Find', search_dirs = { "%:p" } }))
+    function ()
+        builtin.live_grep(themes.get_dropdown({ prompt_title = 'Find', search_dirs = { "%:p" }, layout_config = wide_layout_config }))
     end,
 opts)
 
 vim.keymap.set('n', '<C-S-f>',
-    function()
-        builtin.live_grep(themes.get_dropdown({ prompt_title = 'Find All' }))
+    function ()
+        builtin.live_grep(themes.get_dropdown({ prompt_title = 'Find All', layout_config = wide_layout_config }))
     end,
 opts)
 
 vim.keymap.set('n', '<C-S-p>',
-    function()
-        builtin.commands();
+    function ()
+        builtin.commands(themes.get_dropdown());
     end,
 opts)
 
