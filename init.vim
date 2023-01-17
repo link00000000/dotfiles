@@ -101,5 +101,5 @@ if filereadable(GetConfigDir() . '/local-configs/' . hostname() . '.vim')
     execute 'source ' GetConfigDir() . '/local-configs/' . hostname() . '.vim'
 end
 
-execute 'source ' GetConfigDir() . '/plugs.vim'
+execute 'lua require("plugs")'
 execute 'source ' GetConfigDir() . '/keybinds.vim'
