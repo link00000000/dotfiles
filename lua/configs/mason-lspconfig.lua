@@ -5,6 +5,7 @@ local telescope_themes = require('telescope.themes')
 local omnisharp_extended_lsp = require('omnisharp_extended')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local folding = require('folding')
+local navic = require('nvim-navic')
 
 local wide_layout_config = { width =  0.9 }
 
@@ -24,13 +25,13 @@ local function lsp_keymaps(bufnr)
 
     buf_set_keymap('n', '<C-S-o>', '', { silent = true, noremap = true, callback =
         function()
-            telescope_builtin.lsp_document_symbols(telescope_themes.get_dropdown({ trim_text = true, layout_config = wide_layout_config }))
+            telescope_builtin.lsp_document_symbols(telescope_themes.get_custom_dropdown({ trim_text = true, layout_config = wide_layout_config }))
         end,
     })
 
     buf_set_keymap('n', '<Leader>gr', '', { silent = true, noremap = true, callback =
         function()
-            telescope_builtin.lsp_references(telescope_themes.get_dropdown({
+            telescope_builtin.lsp_references(telescope_themes.get_custom_dropdown({
                 include_declaration = false,
                 include_current_line = true,
                 trim_text = true,
@@ -41,25 +42,19 @@ local function lsp_keymaps(bufnr)
 
     buf_set_keymap('n', '<Leader>gi', '', { silent = true, noremap = true, callback =
         function ()
-            telescope_builtin.lsp_implementations(telescope_themes.get_dropdown({ trim_text = true, layout_config = wide_layout_config }))
+            telescope_builtin.lsp_implementations(telescope_themes.get_custom_dropdown({ trim_text = true, layout_config = wide_layout_config }))
         end
     })
 
     buf_set_keymap('n', '<Leader>gd', '', { silent = true, noremap = true, callback =
         function ()
-            telescope_builtin.lsp_definitions(telescope_themes.get_dropdown({ trim_text = true, layout_config = wide_layout_config }))
+            telescope_builtin.lsp_definitions(telescope_themes.get_custom_dropdown({ trim_text = true, layout_config = wide_layout_config }))
         end,
     })
 
     buf_set_keymap('n', '<Leader>gt', '', { silent = true, noremap = true, callback =
         function ()
-            telescope_builtin.lsp_type_definitions(telescope_themes.get_dropdown({ layout_config = wide_layout_config }))
-        end,
-    })
-
-    buf_set_keymap('n', '<Leader>ee', '', { silent = true, noremap = true, callback =
-        function ()
-            telescope_builtin.diagnostics(telescope_themes.get_dropdown({ bufnr = 0, layout_config = wide_layout_config }))
+            telescope_builtin.lsp_type_definitions(telescope_themes.get_custom_dropdown({ layout_config = wide_layout_config }))
         end,
     })
 end
@@ -89,6 +84,12 @@ local function diagnostic_open_float(client)
     ]], capture_output)
 end
 
+local on_attach_navic = function (client, bufnr)
+    if client.server_capabilities.documentSymbolprovider then
+        navic.attach(client, bufnr)
+    end
+end
+
 -- Automatically setup LSP servers installed with mason.nvim
 -- See :h mason-lspconfig-automatic-server-setup
 mason_lspconfig.setup_handlers({
@@ -98,6 +99,7 @@ mason_lspconfig.setup_handlers({
                 lsp_keymaps(bufnr)
                 lsp_document_highlight(client)
                 folding.on_attach()
+                on_attach_navic(client, bufnr)
             end,
             capabilities = cmp_nvim_lsp.default_capabilities(), -- Add additional capabilities supported by nvim-cmp
             flags = {
@@ -111,10 +113,11 @@ mason_lspconfig.setup_handlers({
                 lsp_keymaps(bufnr)
                 lsp_document_highlight(client)
                 folding.on_attach()
+                on_attach_navic(client, bufnr)
 
                 vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>gd', '', { silent = true, noremap = true, callback =
                     function ()
-                        omnisharp_extended_lsp.telescope_lsp_definitions(telescope_themes.get_dropdown({ bufnr = bufnr }))
+                        omnisharp_extended_lsp.telescope_lsp_definitions(telescope_themes.get_custom_dropdown({ bufnr = bufnr }))
                     end,
                 })
             end,
@@ -129,4 +132,5 @@ mason_lspconfig.setup_handlers({
         })
     end
 })
+
 

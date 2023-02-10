@@ -31,7 +31,7 @@ alpha.setup({
             val = {
                 dashboard_theme.button("n", "  New file", "<cmd>ene <CR>"),
                 dashboard_theme.button("r", "  Open repository", "<cmd>Repos <CR>"),
-                dashboard_theme.button("f", "  Find file", ":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown())<CR>"),
+                dashboard_theme.button("f", "  Find file", ":lua require('telescope.builtin').find_files(require('telescope.themes').get_custom_dropdown())<CR>"),
                 dashboard_theme.button("s", "  Settings", "<cmd>ConfigCwd<CR>"),
                 dashboard_theme.button("q", "  Close", ":q<CR>"),
             },

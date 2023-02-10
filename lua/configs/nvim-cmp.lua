@@ -32,8 +32,8 @@ cmp.setup({
         completeopt = 'menu,menuone,noinsert',
     },
     mapping = cmp.mapping.preset.insert({
-        ['<C-S-k>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-S-j>'] = cmp.mapping.scroll_docs(4),
+        ['<PageUp>'] = cmp.mapping.scroll_docs(-4),
+        ['<PageDown>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<Tab>'] = cmp.mapping.confirm({ select = true }),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
@@ -51,6 +51,13 @@ cmp.setup({
                 fallback()
             end
         end, { 'i', 's' }),
+        ['<Esc>'] = cmp.mapping(function (fallback)
+            if cmp.visible() then
+                cmp.close()
+            else
+                fallback()
+            end
+        end)
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },

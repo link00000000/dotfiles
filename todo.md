@@ -13,6 +13,11 @@
 - If line is blank, dont include whitespace that was added by auto-indent
 - Get better terminal colors based off of vim theme
     - Specifically lazygit colors
+- Prevent word in front from getting deleted when accepting suggestion from cmp
+- Replace lualine (and barbecue?) with galaxyline
+- Replace vimplug with pakcer or lazy.nvim. Use nvim_rocks for luarocks if using lazy.nvim
+- Use web-devicons in outline
+- Add neoclip for clipboard history (maybe have custom integration with windows clipboard with WinApi)
 
 ## Keybinds
 
@@ -48,6 +53,10 @@
 
 - Setup snippets
     - https://github.com/VonHeikemen/lsp-zero.nvim#snippets
+
+- CSharp namespace snippet
+- CSharp test class snippet
+- CSharp test method snippet (& async test class method snippet)
 
 ## New plugins
 
