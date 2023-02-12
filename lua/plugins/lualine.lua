@@ -9,7 +9,7 @@ local config = function ()
         sections = {
             lualine_a = { 'mode' },
             lualine_b = { 'branch', 'diff', 'diagnostics' },
-            lualine_c = { 'filename' },
+            lualine_c = { 'filename', 'lsp_progress' },
             lualine_x = { current_time, 'encoding', 'fileformat', 'filetype' },
             lualine_y = { 'progress' },
             lualine_z = { 'location' },
@@ -22,6 +22,7 @@ return {
     lazy = false,
     config = config,
     dependencies = {
-        require('plugins.nvim-web-devicons')
+        require('plugins.nvim-web-devicons'),
+        require('plugins.lualine-lsp-progress'),
     }
 }

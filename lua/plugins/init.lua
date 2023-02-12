@@ -56,13 +56,6 @@ M.setup = function ()
         },
         require('plugins.lualine'),
         {
-            'j-hui/fidget.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
             'nvim-tree/nvim-tree.lua',
             lazy = false,
             config = function ()
