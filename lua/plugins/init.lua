@@ -290,14 +290,7 @@ M.setup = function ()
 
             end
         },
-        {
-            'folke/todo-comments.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-
+        require('plugins.todo-comments'),
         -- Fuzzy Find / Search
         {
             'nvim-telescope/telescope.nvim',
