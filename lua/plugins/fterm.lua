@@ -66,18 +66,20 @@ local function config ()
     local shell_term = new_shell_term()
     command.create('FTermOpen', function () shell_term:open() end)
     command.create('FTermClose', function () shell_term:close() end)
-    command.create('FTermExit', function () shell_term:exit() end)
+    command.create('FTermExit', function () shell_term:close(true) end)
     command.create('FTermToggle', function () shell_term:toggle() end)
 
     local git_term = new_git_term()
     command.create('Git', function () git_term:toggle() end)
     command.create('GitClose', function () git_term:close() end)
-    command.create('GitExit', function () git_term:exit() end)
+    command.create('GitExit', function () git_term:close(true) end)
+    command.create('GitToggle', function () git_term:toggle() end)
 
     local mprocs_term = new_mprocs_term()
     command.create('MProcs', function () mprocs_term:toggle() end)
     command.create('MProcsClose', function () mprocs_term:close() end)
-    command.create('MProcsExit', function () mprocs_term:exit() end)
+    command.create('MProcsExit', function () mprocs_term:close(true) end)
+    command.create('MProcsToggle', function () mprocs_term:toggle() end)
 
     command.create('Glow', new_glow_scratch)
     command.create('Cht', new_chtsh_scratch, { nargs = '?' })
@@ -101,9 +103,9 @@ return {
         keymap.terminal('<F5>', '<cmd>MProcs<CR>', { 'Toggle MProcs' }).lazy,
     },
     cmd = {
-        'Git', 'GitClose', 'GitExit',
-        'MProcs', 'MProcsClose', 'MProcsExit',
         'FTermOpen', 'FTermClose', 'FTermExit', 'FTermToggle',
+        'Git', 'GitClose', 'GitExit', 'GitToggle',
+        'MProcs', 'MProcsClose', 'MProcsExit', 'MProcsToggle',
         'Glow', 'Cht',
         'FTermCloseFocused',
     }
