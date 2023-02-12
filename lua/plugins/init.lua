@@ -31,27 +31,22 @@ M.setup = function ()
         require('plugins.colorschemes'),
 
         -- Layout / Statusline / Tabline
-        {
-            'kyazdani42/nvim-web-devicons',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
-            'link00000000/luatab.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
-            'numtostr/FTerm.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
+        require('plugins.luatab'),
+        require('plugins.fterm'),
+        --{
+            --'kyazdani42/nvim-web-devicons',
+            --lazy = false,
+            --config = function ()
+                --
+            --end
+        --},
+        --{
+            --'link00000000/luatab.nvim',
+            --lazy = false,
+            --config = function ()
+                --
+            --end
+        --},
         {
             'jghauser/shade.nvim',
             lazy = false,
@@ -59,13 +54,7 @@ M.setup = function ()
 
             end
         },
-        {
-            'nvim-lualine/lualine.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
+        require('plugins.lualine'),
         {
             'j-hui/fidget.nvim',
             lazy = false,

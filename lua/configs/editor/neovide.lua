@@ -1,38 +1,14 @@
 local path = require('utils.path')
 local keymap = require('utils.keymap')
+local file = require('utils.file')
 
 local M = {}
 
 local extended_settings_file_path = path.get_nvim_data_dir('neovide-settings-extended.json')
 local persist_restart_session_file_path = path.get_nvim_data_dir('neovide-restart-session.vim')
 
-local function read_json_file (path)
-    local file = io.open(path, 'r')
-
-    if file == nil then
-        return {}
-    else
-        local raw_contents = file:read('*all')
-        local json = vim.json.decode(raw_contents)
-
-        file:close()
-
-        return json
-    end
-end
-
-local function write_json_file (path, object)
-    local file = io.open(path, 'w')
-
-    local raw_contents = vim.json.encode(object)
-    file:write(raw_contents)
-
-    file:close()
-end
-
-
 local function read_extended_neovide_settings ()
-    extended_settings = read_json_file(extended_settings_file_path)
+    extended_settings = file.read_json(extended_settings_file_path)
 
     if extended_settings['fullscreen'] == nil then
         extended_settings['fullscreen'] = false
@@ -46,7 +22,7 @@ local function read_extended_neovide_settings ()
 end
 
 local function write_extended_neovide_settings (object)
-    write_json_file(extended_settings_file_path, object)
+    file.write_json(extended_settings_file_path, object)
 end
 
 local function toggle_fullscreen ()
@@ -71,7 +47,7 @@ local function set_scale (factor)
 end
 
 M.keymaps = function ()
-    keymap.normal('<F11>', toggle_fullscreen)
+    keymap.normal('<F11>', toggle_fullscreen).apply()
 end
 
 M.commands = function ()
@@ -86,10 +62,6 @@ M.commands = function ()
         end
     end, { nargs = 1 })
 end
-
-M.read = read_extended_neovide_settings
-
-M.read_json = read_json_file
 
 M.setup = function ()
     local extended_settings = read_extended_neovide_settings()
