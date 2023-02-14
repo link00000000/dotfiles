@@ -33,36 +33,8 @@ M.setup = function ()
         -- Layout / Statusline / Tabline
         require('plugins.luatab'),
         require('plugins.fterm'),
-        require('plugins.rest'),
-        --{
-            --'kyazdani42/nvim-web-devicons',
-            --lazy = false,
-            --config = function ()
-                --
-            --end
-        --},
-        --{
-            --'link00000000/luatab.nvim',
-            --lazy = false,
-            --config = function ()
-                --
-            --end
-        --},
-        {
-            'jghauser/shade.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
         require('plugins.lualine'),
-        {
-            'nvim-tree/nvim-tree.lua',
-            lazy = false,
-            config = function ()
-
-            end
-        },
+        require('plugins.nvim-tree'),
         {
             'utilyre/barbecue.nvim',
             lazy = false,
@@ -378,13 +350,6 @@ M.setup = function ()
 
             end
         }, -- Required by nvim-telescope/telescope-smart-history.nvim
-        {
-            'mortepau/codicons.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
         {
             'MunifTanjim/nui.nvim',
             lazy = false,
