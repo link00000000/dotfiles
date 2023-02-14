@@ -1,5 +1,6 @@
 local path = require('utils.path')
 local keymap = require('utils.keymap')
+local command = require('utils.command')
 local file = require('utils.file')
 
 local M = {}
@@ -46,29 +47,24 @@ local function set_scale (factor)
     end
 end
 
-M.keymaps = function ()
-    keymap.normal('<F11>', toggle_fullscreen).apply()
-end
-
-M.commands = function ()
-    vim.api.nvim_create_user_command('ToggleFullscreen', toggle_fullscreen, {})
-    vim.api.nvim_create_user_command('Restart', restart, {})
-    vim.api.nvim_create_user_command('Scale', function (opts)
-        local arg = opts.args
-        if arg == "reset" or arg == "default" then
-            set_scale(1)
-        else
-            set_scale(tonumber(arg))
-        end
-    end, { nargs = 1 })
+local function scale_command_handler (opts)
+    local arg = opts.args
+    if arg == "reset" or arg == "default" then
+        set_scale(1)
+    else
+        set_scale(tonumber(arg))
+    end
 end
 
 M.setup = function ()
     local extended_settings = read_extended_neovide_settings()
     vim.g.neovide_fullscreen = extended_settings['fullscreen']
 
-    M.keymaps()
-    M.commands()
+    keymap.normal.apply('<F11>', toggle_fullscreen)
+
+    command.create('ToggleFullscreen', toggle_fullscreen)
+    command.create('Restart', restart)
+    command.create('Scale', scale_command_handler, { nargs = 1 })
 end
 
 return M

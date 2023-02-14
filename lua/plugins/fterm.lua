@@ -97,10 +97,10 @@ return {
     lazy = true,
     config = config,
     keys = {
-        keymap.normal('`', '<cmd>FTermToggle<CR>', { 'Toggle terminal' }).lazy,
-        keymap.normal('<Leader>gg', '<cmd>Git<CR>', { 'Toggle Git' }).lazy,
-        keymap.normal('<F5>', '<cmd>MProcs<CR>', { 'Toggle MProcs' }).lazy,
-        keymap.terminal('<F5>', '<cmd>MProcs<CR>', { 'Toggle MProcs' }).lazy,
+        keymap.normal.lazy('`', '<cmd>FTermToggle<CR>', { desc = 'Toggle terminal' }),
+        keymap.normal.lazy('<Leader>gg', '<cmd>Git<CR>', { desc = 'Toggle Git' }),
+        keymap.normal.lazy('<F5>', '<cmd>MProcs<CR>', { desc = 'Toggle MProcs' }),
+        keymap.terminal.lazy('<F5>', '<cmd>MProcs<CR>', { desc = 'Toggle MProcs' }),
     },
     cmd = {
         'FTermOpen', 'FTermClose', 'FTermExit', 'FTermToggle',

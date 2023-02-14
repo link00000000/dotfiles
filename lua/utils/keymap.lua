@@ -12,6 +12,10 @@ local apply_keymap = function (modes, chord, action, opts)
     vim.keymap.set(modes, chord, action, opts)
 end
 
+local delete_keymap = function (modes, chord, opts)
+    vim.keymap.del(modes, chord, opts)
+end
+
 local lazy_keymap = function (modes, chord, action, opts)
     opts = merge_default_opts(opts)
 
@@ -24,49 +28,38 @@ local lazy_keymap = function (modes, chord, action, opts)
     return vim.tbl_deep_extend("force", opts, map)
 end
 
-local create_keymap = function (modes, chord, action, opts)
+local new_keymapper = function (modes)
     return {
-        apply = function ()
+        apply = function (chord, action, opts)
             apply_keymap(modes, chord, action, opts)
         end,
-        lazy = lazy_keymap(modes, chord, action, opts),
+        delete = function (chord, opts)
+            delete_keymap(modes, chord, opts)
+        end,
+        lazy = function (chord, action, opts)
+            return lazy_keymap(modes, chord, action, opts)
+        end
     }
 end
 
-M.set = function (modes, chord, action, opts)
-    return create_keymap(modes, chord, action, opts)
+M.set = function (modes)
+    return new_keymapper(modes)
 end
 
-M.all = function (chord, action, opts)
-    return create_keymap({ 'n', 'i', 'v', 'c', 't' }, chord, action, opts)
-end
+M.all = new_keymapper({ 'n', 'i', 'v', 'c', 't' })
 
-M.normal = function (chord, action, opts)
-    return create_keymap('n', chord, action, opts)
-end
+M.normal = new_keymapper('n')
 
-M.insert = function (chord, action, opts)
-    return create_keymap('i', chord, action, opts)
-end
+M.insert = new_keymapper('i')
 
-M.visual = function (chord, action, opts)
-    return create_keymap('v', chord, action, opts)
-end
+M.visual = new_keymapper('v')
 
-M.command = function (chord, action, opts)
-    return create_keymap('c', chord, action, opts)
-end
+M.command = new_keymapper('c')
 
-M.terminal = function (chord, action, opts)
-    return create_keymap('t', chord, action, opts)
-end
+M.terminal = new_keymapper('t')
 
-M.select = function (chord, action, opts)
-    return create_keymap('s', chord, action, opts)
-end
+M.select = new_keymapper('s')
 
-M.visual_only = function (chord, action, opts)
-    return create_keymap('x', chord, action, opts)
-end
+M.visual_only = new_keymapper('x')
 
 return M

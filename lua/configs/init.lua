@@ -14,6 +14,8 @@ end
 local function load_editor_config ()
     if vim.g.neovide ~= nil then
         require('configs.editor.neovide').setup()
+    elseif vim.env.TERM == 'vtpcon' or vim.env.TERM == nil then
+        require('configs.editor.vtpcon').setup()
     end
 end
 

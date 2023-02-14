@@ -4,87 +4,87 @@ local M = {}
 
 M.keymaps = function ()
     -- Jump to start of line
-    keymap.set({ 'n', 'v' }, 'B', '^').apply()
+    keymap.set({ 'n', 'v' }).apply('B', '^')
 
     -- Jump to end of line
-    keymap.set({ 'n', 'v' }, 'E', '$').apply()
+    keymap.set({ 'n', 'v' }).apply('E', '$')
 
     -- Dont include new line when deleting until end of line
-    keymap.set({ 'n', 'v' }, 'D', 'v$hd').apply()
+    keymap.set({ 'n', 'v' }).apply('D', 'v$hd')
 
     -- Dont include new line when replacing until end of line
-    keymap.set({ 'n', 'v' }, 'C', 'v$hc').apply()
+    keymap.set({ 'n', 'v' }).apply('C', 'v$hc')
 
     -- Make Y behave like D and C, yanking till end of line (minus the line break)
-    keymap.set({ 'n', 'v' }, 'Y', 'y$').apply()
+    keymap.set({ 'n', 'v' }).apply('Y', 'y$')
 
     -- Dont copy characters removed with 'x' to clipboard
-    keymap.set({ 'n', 'v' }, 'x', '"_x').apply()
+    keymap.set({ 'n', 'v' }).apply('x', '"_x')
 
     -- Don't overwrite register when pasting over selection
-    keymap.visual('p', 'pgvy').apply()
+    keymap.visual.apply('p', 'pgvy')
 
     -- Move virtual lines
-    keymap.set({ 'n', 'v' }, 'j', 'gj').apply()
-    keymap.set({ 'n', 'v' }, 'k', 'gk').apply()
+    keymap.set({ 'n', 'v' }).apply('j', 'gj')
+    keymap.set({ 'n', 'v' }).apply('k', 'gk')
 
     -- Keep selection after indent
-    keymap.visual('<', '<gv').apply()
-    keymap.visual('>', '>gv').apply()
+    keymap.visual.apply('<', '<gv')
+    keymap.visual.apply('>', '>gv')
 
     -- Indent and outdent with <Tab> and <S-Tab>
-    keymap.set({ 'n', 'v' }, '<Tab>', '>gv').apply()
-    keymap.set({ 'n', 'v' }, '<S-Tab>', '<gv').apply()
-    keymap.insert('<S-Tab>', '<C-o><<').apply()
+    keymap.set({ 'n', 'v' }).apply('<Tab>', '>gv')
+    keymap.set({ 'n', 'v' }).apply('<S-Tab>', '<gv')
+    keymap.insert.apply('<S-Tab>', '<C-o><<')
 
     -- Use number keys to jump to tab
-    keymap.normal('1', '1gt').apply()
-    keymap.normal('2', '2gt').apply()
-    keymap.normal('3', '3gt').apply()
-    keymap.normal('4', '4gt').apply()
-    keymap.normal('5', '5gt').apply()
-    keymap.normal('6', '6gt').apply()
-    keymap.normal('7', '7gt').apply()
-    keymap.normal('8', '8gt').apply()
-    keymap.normal('9', '9gt').apply()
-    keymap.normal('0', ':tablast<CR>').apply()
+    keymap.normal.apply('1', '1gt')
+    keymap.normal.apply('2', '2gt')
+    keymap.normal.apply('3', '3gt')
+    keymap.normal.apply('4', '4gt')
+    keymap.normal.apply('5', '5gt')
+    keymap.normal.apply('6', '6gt')
+    keymap.normal.apply('7', '7gt')
+    keymap.normal.apply('8', '8gt')
+    keymap.normal.apply('9', '9gt')
+    keymap.normal.apply('0', ':tablast<CR>')
 
     -- Move tabs
-    keymap.normal('+', ':+tabmove<CR>').apply()
-    keymap.normal('_', ':-tabmove<CR>').apply()
+    keymap.normal.apply('+', ':+tabmove<CR>')
+    keymap.normal.apply('_', ':-tabmove<CR>')
 
     -- Clear search highlighting with <CR>
     -- Search stays in register so <n> and <C-n> will re-highlight results
-    keymap.normal('<CR>', ':nohlsearch<CR>').apply()
+    keymap.normal.apply('<CR>', ':nohlsearch<CR>')
 
     -- Delete current buffer
-    keymap.normal('<Leader>bd', ':bd').apply()
+    keymap.normal.apply('<Leader>bd', ':bd')
 
     -- Delete previous word
-    keymap.insert('<C-BS>', '<C-W>').apply()
+    keymap.insert.apply('<C-BS>', '<C-W>')
 
     -- Open terminal in current window
-    keymap.normal('<C-w><Enter>', ':terminal<CR>').apply()
-    keymap.normal('<C-w><C-Enter>', ':terminal<CR>').apply()
+    keymap.normal.apply('<C-w><Enter>', ':terminal<CR>')
+    keymap.normal.apply('<C-w><C-Enter>', ':terminal<CR>')
 
     -- Exit terminal insert mode with <Esc> or <C-n>
-    keymap.terminal('<Esc>', '<C-\\><C-n>').apply()
-    keymap.terminal('<C-n>', '<C-\\><C-n>').apply()
+    keymap.terminal.apply('<Esc>', '<C-\\><C-n>')
+    keymap.terminal.apply('<C-n>', '<C-\\><C-n>')
 
     -- Resize buffers with arrow keys
-    keymap.normal('<Up>', ':resize +1<CR>').apply()
-    keymap.normal('<Down>', ':resize -1<CR>').apply()
-    keymap.normal('<Left>', ':vert resize -1<CR>').apply()
-    keymap.normal('<Right>', ':vert resize +1<CR>').apply()
+    keymap.normal.apply('<Up>', ':resize +1<CR>')
+    keymap.normal.apply('<Down>', ':resize -1<CR>')
+    keymap.normal.apply('<Left>', ':vert resize -1<CR>')
+    keymap.normal.apply('<Right>', ':vert resize +1<CR>')
 
-    keymap.normal('<S-Up>', ':resize +5<CR>').apply()
-    keymap.normal('<S-Down>', ':resize -5<CR>').apply()
-    keymap.normal('<S-Left>', ':vert resize -5<CR>').apply()
-    keymap.normal('<S-Right>', ':vert resize +5<CR>').apply()
+    keymap.normal.apply('<S-Up>', ':resize +5<CR>')
+    keymap.normal.apply('<S-Down>', ':resize -5<CR>')
+    keymap.normal.apply('<S-Left>', ':vert resize -5<CR>')
+    keymap.normal.apply('<S-Right>', ':vert resize +5<CR>')
 
     -- Scroll without moving cursor
-    keymap.set({ 'n', 'v' }, '<C-S-k>', '<C-y>').apply()
-    keymap.set({ 'n', 'v' }, '<C-S-j>', '<C-u>').apply()
+    keymap.set({ 'n', 'v' }).apply('<C-S-k>', '<C-y>')
+    keymap.set({ 'n', 'v' }).apply('<C-S-j>', '<C-u>')
 end
 
 M.setup = function ()
@@ -96,7 +96,7 @@ M.setup = function ()
     vim.opt.cursorline = true
 
     -- Map <Space> to leader
-    keymap.normal('<Space>', '<NOP>').apply()
+    keymap.normal.apply('<Space>', '<NOP>')
     vim.g.mapleader = ' '
 
     -- Enabled mouse supoort

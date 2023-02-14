@@ -33,7 +33,7 @@ local function config ()
 end
 
 return {
-    'kyakyazdani42/nvim-web-devicons',
+    'kyazdani42/nvim-web-devicons',
     lazy = false,
     config = config,
 }

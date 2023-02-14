@@ -98,9 +98,7 @@ return {
         require('plugins.nvim-web-devicons'),
     },
     keys = {
-        keymap.normal("<Leader>tr", function ()
-            require ('luatab').rename_tab()
-        end, { desc = "Rename tab" }).lazy,
+        keymap.normal.lazy("<Leader>tr", function () require('luatab').rename_tab() end, { desc = "Rename tab" })
     },
     event = { "TabEnter" }
 }

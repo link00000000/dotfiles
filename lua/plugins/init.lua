@@ -33,6 +33,7 @@ M.setup = function ()
         -- Layout / Statusline / Tabline
         require('plugins.luatab'),
         require('plugins.fterm'),
+        require('plugins.rest'),
         --{
             --'kyazdani42/nvim-web-devicons',
             --lazy = false,
