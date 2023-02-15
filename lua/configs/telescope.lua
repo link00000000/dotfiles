@@ -71,8 +71,8 @@ telescope.setup({
             i = {
                 ["<C-j>"] = require('telescope.actions').move_selection_next,
                 ["<C-k>"] = require('telescope.actions').move_selection_previous,
-                ["<C-S-k>"] = require('telescope.actions').cycle_history_prev,
-                ["<C-S-j>"] = require('telescope.actions').cycle_history_next,
+                ["<C-p>"] = require('telescope.actions').cycle_history_prev,
+                ["<C-n>"] = require('telescope.actions').cycle_history_next,
                 ["<ESC>"] = require('telescope.actions').close,
             }
         },
@@ -137,19 +137,7 @@ opts)
 
 vim.keymap.set('n', '<C-f>',
     function ()
-        builtin.live_grep(themes.get_custom_ivy({ prompt_title = 'Find', search_dirs = { "%:p" }, layout_config = wide_layout_config }))
-    end,
-opts)
-
-vim.keymap.set('n', '<C-S-f>',
-    function ()
         builtin.live_grep(themes.get_custom_ivy({ prompt_title = 'Find All', layout_config = wide_layout_config }))
-    end,
-opts)
-
-vim.keymap.set('n', '<C-S-p>',
-    function ()
-        builtin.commands(themes.get_custom_dropdown());
     end,
 opts)
 

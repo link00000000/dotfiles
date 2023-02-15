@@ -23,7 +23,7 @@ local function lsp_keymaps(bufnr)
     buf_set_keymap('n', '<Leader>en', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<Leader>ep', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 
-    buf_set_keymap('n', '<C-S-o>', '', { silent = true, noremap = true, callback =
+    buf_set_keymap('n', '<M-o>', '', { silent = true, noremap = true, callback =
         function()
             telescope_builtin.lsp_document_symbols(telescope_themes.get_custom_dropdown({ trim_text = true, layout_config = wide_layout_config }))
         end,

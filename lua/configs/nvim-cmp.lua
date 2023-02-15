@@ -69,8 +69,8 @@ cmp.setup({
 
 cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline({
-        ['<C-S-k>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-S-j>'] = cmp.mapping.scroll_docs(4),
+        ['<PageUp'] = cmp.mapping.scroll_docs(-4),
+        ['<PageDown>'] = cmp.mapping.scroll_docs(4),
         ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
         ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
     }),
@@ -88,8 +88,8 @@ cmp.setup.cmdline({ '/', '?' }, {
 
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline({
-        ['<C-S-k>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-S-j>'] = cmp.mapping.scroll_docs(4),
+        ['<PageUp>'] = cmp.mapping.scroll_docs(-4),
+        ['<PageDown>'] = cmp.mapping.scroll_docs(4),
         ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
         ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
     }),
