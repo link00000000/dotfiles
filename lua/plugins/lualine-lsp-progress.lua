@@ -1,8 +1,12 @@
+local M = {}
+
 local function config ()
 end
 
-return {
+M.spec = {
     'arkav/lualine-lsp-progress',
     lazy = false,
     config = config,
 }
+
+return M

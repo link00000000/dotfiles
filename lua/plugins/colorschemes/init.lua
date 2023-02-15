@@ -1,4 +1,6 @@
-return {
+local M = {}
+
+M.spec = {
 	{
 		'mhartington/oceanic-next',
 		lazy = false,
@@ -102,3 +104,5 @@ return {
 		enabled = false,
 	}
 }
+
+return M

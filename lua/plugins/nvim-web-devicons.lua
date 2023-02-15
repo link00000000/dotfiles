@@ -1,3 +1,5 @@
+local M = {}
+
 local function config ()
     local nvim_web_devicons = require('nvim-web-devicons')
 
@@ -32,8 +34,10 @@ local function config ()
     })
 end
 
-return {
+M.spec = {
     'kyazdani42/nvim-web-devicons',
     lazy = false,
     config = config,
 }
+
+return M

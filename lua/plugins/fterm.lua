@@ -1,6 +1,8 @@
 local keymap = require('utils.keymap')
 local command = require('utils.command')
 
+local M = {}
+
 local function new_shell_term ()
     local fterm = require('FTerm')
 
@@ -92,7 +94,7 @@ local function config ()
     command.create('FTermCloseFocused', function () close_focused(terms) end)
 end
 
-return {
+M.spec = {
     'numtostr/FTerm.nvim',
     lazy = true,
     config = config,
@@ -110,3 +112,5 @@ return {
         'FTermCloseFocused',
     }
 }
+
+return M

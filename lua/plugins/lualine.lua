@@ -1,3 +1,5 @@
+local M = {}
+
 local current_time = function ()
     return vim.fn.strftime('%I:%M:%S %p')
 end
@@ -17,12 +19,14 @@ local config = function ()
     })
 end
 
-return {
+M.spec = {
     'nvim-lualine/lualine.nvim',
     lazy = false,
     config = config,
     dependencies = {
-        require('plugins.nvim-web-devicons'),
-        require('plugins.lualine-lsp-progress'),
+        require('plugins.nvim-web-devicons').spec,
+        require('plugins.lualine-lsp-progress').spec,
     }
 }
+
+return M

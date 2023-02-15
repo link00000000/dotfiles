@@ -1,5 +1,8 @@
+local M = {}
+
 local function config ()
     local todo_comments = require('todo-comments')
+
     todo_comments.setup({
         keywords = {
             FIX = {
@@ -12,8 +15,10 @@ local function config ()
     })
 end
 
-return {
+M.spec = {
     'folke/todo-comments.nvim',
     lazy = false,
     config = config,
 }
+
+return M

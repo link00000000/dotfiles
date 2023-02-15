@@ -1,5 +1,7 @@
 local keymap = require('utils.keymap')
 
+local M = {}
+
 local function config ()
     local nvim_tree = require('nvim-tree')
     local codicons = require('codicons')
@@ -115,14 +117,16 @@ local function delete_current_file ()
     nvim_tree_api.fs.remove()
 end
 
-return {
+M.spec = {
     'nvim-tree/nvim-tree.lua',
     lazy = true,
     config = config,
-    dependencies = { require('plugins.codicons') },
+    dependencies = { require('plugins.codicons').spec },
     keys = {
         keymap.normal.lazy('<Leader>ff', open_tree),
         keymap.normal.lazy('<Leader>fn', create_file),
         keymap.normal.lazy('<Leader>fd', delete_current_file),
     },
 }
+
+return M

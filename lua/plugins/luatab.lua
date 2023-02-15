@@ -1,5 +1,12 @@
 local keymap = require('utils.keymap')
 
+local M = {}
+
+local function rename_current_tab ()
+    local luatab = require('luatab')
+    luatab.rename_tab()
+end
+
 local function config ()
     local luatab = require('luatab')
     local luatab_highlight = require('luatab.highlight')
@@ -90,15 +97,17 @@ local function config ()
     })
 end
 
-return {
+M.spec = {
     'link00000000/luatab.nvim',
     lazy = true,
     config = config,
     dependencies = {
-        require('plugins.nvim-web-devicons'),
+        require('plugins.nvim-web-devicons').spec,
     },
     keys = {
-        keymap.normal.lazy("<Leader>tr", function () require('luatab').rename_tab() end, { desc = "Rename tab" })
+        keymap.normal.lazy("<Leader>tr", function () rename_current_tab() end, { desc = "Rename tab" })
     },
     event = { "TabEnter" }
 }
+
+return M

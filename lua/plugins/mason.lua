@@ -1,12 +1,13 @@
 local M = {}
 
 local function config ()
-    local codicons = require('codicons')
-    codicons.setup()
+    local mason = require('mason')
+
+    mason.setup()
 end
 
 M.spec = {
-    'mortepau/codicons.nvim',
+    'williamboman/mason.nvim',
     lazy = false,
     config = config,
 }

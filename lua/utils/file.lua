@@ -22,8 +22,10 @@ M.read = function (path)
     return contents
 end
 
-M.write = function (path, contents)
-    local file = io.open(path, 'w')
+M.write = function (path, contents, mode)
+    mode = mode or 'w'
+
+    local file = io.open(path, mode)
     file:write(contents)
 
     file:close()

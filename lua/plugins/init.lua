@@ -28,13 +28,18 @@ M.setup = function ()
 
     require('lazy').setup({
 
-        require('plugins.colorschemes'),
+        require('plugins.colorschemes').spec,
 
         -- Layout / Statusline / Tabline
-        require('plugins.luatab'),
-        require('plugins.fterm'),
-        require('plugins.lualine'),
-        require('plugins.nvim-tree'),
+        require('plugins.luatab').spec,
+        require('plugins.fterm').spec,
+        require('plugins.lualine').spec,
+        require('plugins.nvim-tree').spec,
+        require('plugins.nvim-treesitter').spec,
+        require('plugins.todo-comments').spec,
+        require('plugins.lspconfig').spec,
+        --require('plugins.mason-lspconfig').spec,
+
         {
             'utilyre/barbecue.nvim',
             lazy = false,
@@ -44,42 +49,6 @@ M.setup = function ()
         },
 
         -- LSP / Intellisense / Syntax / Highlightinqg
-        {
-            'nvim-treesitter/nvim-treesitter',
-            build = ':TSUpdate',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
-            'neovim/nvim-lspconfig',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
-            'williamboman/mason.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
-            'williamboman/mason-lspconfig.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        }, -- Requires nvim-lspconfig and mason.nvim
-        {
-            'Hoffs/omnisharp-extended-lsp.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
         {
             'hrsh7th/nvim-cmp',
             lazy = false,
@@ -101,13 +70,12 @@ M.setup = function ()
 
             end
         },
-        {
-            'hrsh7th/cmp-nvim-lsp',
-            lazy = false,
-            config = function ()
-
-            end
-        },
+        --{
+            --'hrsh7th/cmp-nvim-lsp',
+            --lazy = false,
+            --config = function ()
+            --end
+        --},
         {
             'hrsh7th/cmp-nvim-lua',
             lazy = false,
@@ -122,13 +90,13 @@ M.setup = function ()
 
             end
         },
-        {
-            'saadparwaiz1/cmp_luasnip',
-            lazy = false,
-            config = function ()
-
-            end
-        },
+        --{
+            --'saadparwaiz1/cmp_luasnip',
+            --lazy = false,
+            --config = function ()
+--
+            ----end
+        --},
         {
             'onsails/lspkind.nvim',
             lazy = false,
@@ -151,26 +119,12 @@ M.setup = function ()
             end
         }, -- Can be removed if razor is ever supported by omnisharp lsp
         {
-            'pierreglaser/folding-nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
             'windwp/nvim-autopairs',
             lazy = false,
             config = function ()
 
             end
         },
-        {
-            'mrjones2014/nvim-ts-rainbow',
-            lazy = false,
-            config = function ()
-
-            end
-        }, -- Requires nvim-treesitter
         {
             'folke/trouble.nvim',
             lazy = false,
@@ -185,14 +139,7 @@ M.setup = function ()
 
             end
         },
-        {
-            'SmiteshP/nvim-navic',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-
+        
         -- DAP / Debugging
         {
             'mfussenegger/nvim-dap',
@@ -233,13 +180,13 @@ M.setup = function ()
         }, -- Requires nvim-neotest/neotest
 
         -- Snippets
-        {
-            'L3MON4D3/LuaSnip',
-            lazy = false,
-            config = function ()
-
-            end
-        },
+        --{
+            --'L3MON4D3/LuaSnip',
+            --lazy = false,
+            --config = function ()
+--
+            --end
+        --},
         {
             'rafamadriz/friendly-snippets',
             lazy = false,
@@ -256,7 +203,6 @@ M.setup = function ()
 
             end
         },
-        require('plugins.todo-comments'),
         -- Fuzzy Find / Search
         {
             'nvim-telescope/telescope.nvim',
