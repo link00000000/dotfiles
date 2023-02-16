@@ -1,5 +1,4 @@
 local keymap = require('utils.keymap')
-local file = require('utils.file')
 
 local M = {}
 
@@ -28,8 +27,6 @@ end
 M.on_attach = function (client, bufnr)
     M.setup_keymaps(bufnr)
     setup_document_highlight(client)
-
-    file.write('C:/Users/lcrandall/Downloads/on_attach.log', 'generic')
 
     require('plugins.folding').on_attach()
     require('plugins.navic').on_attach(client, bufnr)

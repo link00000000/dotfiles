@@ -38,15 +38,7 @@ M.setup = function ()
         require('plugins.nvim-treesitter').spec,
         require('plugins.todo-comments').spec,
         require('plugins.lspconfig').spec,
-        --require('plugins.mason-lspconfig').spec,
-
-        {
-            'utilyre/barbecue.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
+        require('plugins.barbecue').spec,
 
         -- LSP / Intellisense / Syntax / Highlightinqg
         {
