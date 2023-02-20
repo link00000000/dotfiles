@@ -1,11 +1,8 @@
+local func = require('utils.func')
+
 local M = {}
 
-local function merge_default_opts (opts)
-    opts = opts or {}
-    local default_opts = { noremap = true, silent = true }
-
-    return vim.tbl_deep_extend("force", default_opts, opts)
-end
+local merge_default_opts = func.create_merge_default_opts({ noremap = true, silent = true })
 
 local apply_keymap = function (modes, chord, action, opts)
     opts = merge_default_opts(opts)

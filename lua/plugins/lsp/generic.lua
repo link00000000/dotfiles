@@ -19,7 +19,17 @@ end
 -- local function diagnostic_open_float(client) -- this one
 
 M.setup_keymaps = function (bufnr)
-    keymap.normal.apply('<Leader>a', vim.lsp.buf.code_action, { buffer = bufnr })
+    keymap.normal.apply('<Leader>a',    vim.lsp.buf.code_action,        { buffer = bufnr })
+    keymap.normal.apply('<F2>',         vim.lsp.buf.rename,             { buffer = bufnr })
+    keymap.normal.apply('<Leader>k',    vim.lsp.buf.hover,              { buffer = bufnr })
+
+    keymap.normal.apply('<Leader>ek',   vim.diagnostic.open_float,      { buffer = bufnr })
+    keymap.normal.apply('<Leader>en',   vim.diagnostic.goto_next,       { buffer = bufnr })
+    keymap.normal.apply('<Leader>ep',   vim.diagnostic.goto_prev,       { buffer = bufnr })
+
+    --keymap.normal.apply('<Leader>o',    vim.)
+
+
 
     -- TODO: Setup keymaps
 end

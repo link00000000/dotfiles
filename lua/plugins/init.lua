@@ -39,6 +39,7 @@ M.setup = function ()
         require('plugins.todo-comments').spec,
         require('plugins.lspconfig').spec,
         require('plugins.barbecue').spec,
+        require('plugins.telescope').spec,
 
         -- LSP / Intellisense / Syntax / Highlightinqg
         {
@@ -197,43 +198,6 @@ M.setup = function ()
         },
         -- Fuzzy Find / Search
         {
-            'nvim-telescope/telescope.nvim',
-            version = '0.1.0',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
-            'nvim-telescope/telescope-ui-select.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
-            'link00000000/telescope-fzf-native.nvim',
-            build = 'make',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
-            'link00000000/telescope-repo.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
-            'nvim-telescope/telescope-smart-history.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        },
-        {
             'ggandor/leap.nvim',
             lazy = false,
             config = function ()
@@ -268,33 +232,12 @@ M.setup = function ()
 
         -- Libraries / Dependencies
         {
-            'nvim-lua/plenary.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        }, -- Required by telescope
-        {
             'rafcamlet/nvim-luapad',
             lazy = false,
             config = function ()
 
             end
         },
-        {
-            'kkharji/sqlite.lua',
-            lazy = false,
-            config = function ()
-
-            end
-        }, -- Required by nvim-telescope/telescope-smart-history.nvim
-        {
-            'MunifTanjim/nui.nvim',
-            lazy = false,
-            config = function ()
-
-            end
-        }, -- Required by jackMort/ChatGPT.nvim
         {
             'tpope/vim-repeat',
             lazy = false,

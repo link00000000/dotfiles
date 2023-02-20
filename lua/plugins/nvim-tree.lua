@@ -14,7 +14,7 @@ local function config ()
             mappings = {
                 custom_only = true,
                 list = {
-                    { key = { "<CR>", "l", "<2-LeftMouse>" },      action = "edit" },
+                    { key = { "<CR>", "l", "<2-LeftMouse>" }, action = "edit" },
                     { key = { "<C-]>", "<2-RightMouse>" },    action = "cd" },
                     { key = "v",                              action = "vsplit" },
                     { key = "s",                              action = "split" },
