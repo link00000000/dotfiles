@@ -5,6 +5,9 @@ local M = {}
 
 local function config ()
     local treesitter = require('nvim-treesitter.configs')
+    local treesitter_install = require('nvim-treesitter.install')
+
+    treesitter_install.compilers = { 'zig', vim.fn.getenv('CC'), 'cc', 'gcc', 'clang', 'cl' }
 
     treesitter.setup({
         -- A list of parser names, or "all"
