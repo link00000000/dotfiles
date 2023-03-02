@@ -6,7 +6,7 @@ end
 
 M.spec = {
     'link00000000/telescope-fzf-native.nvim',
-    build = 'make',
+    build = 'cmake',
     lazy = false,
     config = config,
 }
