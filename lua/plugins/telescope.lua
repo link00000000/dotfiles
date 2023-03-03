@@ -2,36 +2,114 @@ local keymap = require('utils.keymap')
 
 local M = {}
 
-local function find_file ()
+M.themes = {
+    dropdown = function (opts)
+        local telescope_themes = require('telescope.themes')
+
+        local base_theme_opts = telescope_themes.get_dropdown()
+
+        local theme_opts = {
+            borderchars = {
+                prompt = { '─', '│', ' ', '│', '┌', '┐', '│', '│' },
+                results = { '─', '│', '─', '│', '├', '┤', '┘', '└' },
+                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+            }
+        }
+
+        if opts.layout_config and opts.layout_config.prompt_position == 'bottom' then
+            theme_opts.borderchars = {
+                prompt = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+                results = { '─', '│', '─', '│', '┌', '┐', '┤', '├' },
+                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+            }
+        end
+
+        return vim.tbl_deep_extend('force', vim.tbl_deep_extend('force', base_theme_opts, theme_opts), opts or {})
+    end,
+
+    cursor = function (opts)
+        local telescope_themes = require('telescope.themes')
+
+        local base_theme_opts = telescope_themes.get_cursor(opts)
+
+        local theme_opts = {
+            borderchars = {
+                prompt = { '─', '│', ' ', '│', '┌', '┐', '│', '│' },
+                results = { '─', '│', '─', '│', '├', '┤', '┘', '└' },
+                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+            }
+        }
+
+        return vim.tbl_deep_extend('force', vim.tbl_deep_extend('force', base_theme_opts, theme_opts), opts or {})
+    end,
+
+    ivy = function (opts)
+        local telescope_themes = require('telescope.themes')
+
+        local base_theme_opts = telescope_themes.get_ivy()
+
+        local theme_opts = {
+            borderchars = {
+                prompt = { '─', ' ', ' ', ' ', '─', '─', ' ', ' ' },
+                results = { ' ' },
+                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+            }
+        }
+
+        if opts.layout_config and opts.layout_config.prompt_position == 'bottom' then
+            theme_opts.borderchars = {
+                prompt = { ' ', ' ', '─', ' ', ' ', ' ', '─', '─' },
+                results = { '─', ' ', ' ', ' ', '─', '─', ' ', ' ' },
+                preview = { '─', ' ', '─', '│', '┬', '─', '─', '└' },
+            }
+        end
+
+        return vim.tbl_deep_extend('force', vim.tbl_deep_extend('force', base_theme_opts, theme_opts), opts or {})
+    end,
+}
+
+M.find_file = function ()
     local telescope_builtin = require('telescope.builtin')
-    telescope_builtin.find_files() -- TODO:
-    --builtin.find_files(themes.get_custom_dropdown({ previewer = false }))
+    telescope_builtin.find_files(M.themes.dropdown({ previewer = false }))
 end
 
-local function find_buffer ()
+M.find_buffer = function ()
     local telescope_builtin = require('telescope.builtin')
-    telescope_builtin.buffers() -- TODO:
-    -- builtin.buffers(themes.get_custom_dropdown({ previewer = false, sort_lastused = true }))
+    telescope_builtin.buffers(M.themes.dropdown({ previewer = false, sort_lastused = true }))
 end
 
-local function search_all_files ()
+M.search_all_files = function ()
     local telescope_builtin = require('telescope.builtin')
-    telescope_builtin.live_grep() -- TODO:
-    -- builtin.live_grep(themes.get_custom_ivy({ prompt_title = 'Find All', layout_config = wide_layout_config }))
+    local telescope_state = require('telescope.state')
+
+    local cached_pickers = telescope_state.get_global_key('cached_pickers') or {}
+    local cached_search_all_files_picker_index = nil
+
+    local local_raw_cache_index = nil
+    for i, cached_picker in ipairs(cached_pickers) do
+        if cached_picker.prompt_title == 'Find All' then
+            cached_search_all_files_picker_index = i
+        end
+    end
+
+    if cached_search_all_files_picker_index ~= nil then
+        telescope_builtin.resume({ cache_index = cached_search_all_files_picker_index })
+    else
+        telescope_builtin.live_grep(M.themes.ivy({ prompt_title = 'Find All', cache_picker = { num_pickers = 1, limit_entries = 1000 } }))
+    end
 end
 
-local function find_repos ()
+M.find_repos = function ()
     local telescope = require('telescope')
-    telescope.extensions.repo.list({ search_dirs = { "~/Source/repos" }, tail_path = true, previewer = false })
-    --vim.api.nvim_create_user_command('Repos', 'lua require("telescope").extensions.repo.list(require("telescope.themes").get_custom_dropdown({ search_dirs = { "~/Source/repos" }, tail_path = true, previewer = false }))', {})
+    telescope.extensions.repo.list(M.themes.dropdown({ search_dirs = { '~/Source/repos' }, tail_path = true, previewer = false }))
 end
 
 local function setup_commands ()
     local command = require('utils.command')
-    command.create('Files', find_file)
-    command.create('Buffers', find_buffer)
-    command.create('Find', search_all_files)
-    command.create('Repos', find_repos)
+    command.create('Files', M.find_file)
+    command.create('Buffers', M.find_buffer)
+    command.create('Find', M.search_all_files)
+    command.create('Repos', M.find_repos)
 end
 
 local function config ()
@@ -69,8 +147,8 @@ local function config ()
             set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil
             history = {
                 path = path.get_nvim_data_dir('telescope_smart_history.sqlite3'),
-                limit = 100
-            }
+                limit = 100,
+            },
         },
         extensions = {
             fzf = {
@@ -97,14 +175,14 @@ end
 M.spec = {
     'nvim-telescope/telescope.nvim',
     version = '0.1.0',
-    lazy = false, -- TODO: Lazy load
+    lazy = true,
     config = config,
     keys = {
-        keymap.normal.lazy('<C-p>', find_file, { desc = 'Find file' }),
-        keymap.normal.lazy('<C-b>', find_buffer, { desc = 'Find buffer' }),
-        keymap.normal.lazy('<C-f>', search_all_files, { desc = 'Search all files' }),
+        keymap.normal.lazy('<C-p>', M.find_file, { desc = 'Find file' }),
+        keymap.normal.lazy('<C-b>', M.find_buffer, { desc = 'Find buffer' }),
+        keymap.normal.lazy('<C-f>', M.search_all_files, { desc = 'Search all files' }),
     },
-    cmd = { 'Repos' }, -- TODO: Add more commands
+    cmd = { 'Telescope', 'Files', 'Buffers', 'Find', 'Repos' },
     dependencies = {
         require('plugins.plenary').spec,
         require('plugins.telescope-ui-select').spec,
