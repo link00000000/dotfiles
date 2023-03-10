@@ -121,7 +121,9 @@ M.spec = {
     'nvim-tree/nvim-tree.lua',
     lazy = true,
     config = config,
-    dependencies = { require('plugins.codicons').spec },
+    dependencies = {
+        require('plugins.codicons').spec
+    },
     keys = {
         keymap.normal.lazy('<Leader>ff', open_tree),
         keymap.normal.lazy('<Leader>fn', create_file),

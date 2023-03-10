@@ -11,7 +11,7 @@ end
 
 M.spec = {
     'pierreglaser/folding-nvim',
-    lazy = false,
+    lazy = true,
     config = config,
 }
 

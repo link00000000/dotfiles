@@ -7,7 +7,7 @@ end
 
 M.spec = {
     "utilyre/barbecue.nvim",
-    lazy = false,
+    lazy = true,
     config = config,
     dependencies = {
         require('plugins.navic').spec,

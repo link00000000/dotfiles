@@ -17,8 +17,9 @@ end
 
 M.spec = {
     'folke/todo-comments.nvim',
-    lazy = false,
+    lazy = true,
     config = config,
+    event = { 'BufEnter' }
 }
 
 return M

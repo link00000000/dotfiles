@@ -62,8 +62,28 @@ end
 M.spec = {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    lazy = false,
+    lazy = true,
     config = config,
+    event = { 'BufEnter' },
+    cmd = {
+        'TSBufToggle',
+        'TSEnable',
+        'TSBufEnable',
+        'TSEditQuery',
+        'TSDisable',
+        'TSUpdate',
+        'TSToggle',
+        'TSInstall',
+        'TSUninstall',
+        'TSBufDisable',
+        'TSConfiglnfo',
+        'TSModulelnfo',
+        'TSUpdateSync',
+        'TSInstalllnfo',
+        'TSInstallSync',
+        'TSEditQueryUserAfter',
+        'TSInstaIIFrornGramar',
+    }
 }
 
 return M

@@ -7,7 +7,7 @@ end
 
 M.spec = {
     'mortepau/codicons.nvim',
-    lazy = false,
+    lazy = true,
     config = config,
 }
 

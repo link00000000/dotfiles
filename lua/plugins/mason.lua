@@ -8,8 +8,9 @@ end
 
 M.spec = {
     'williamboman/mason.nvim',
-    lazy = false,
+    lazy = true,
     config = config,
+    cmd = { 'Mason', 'MasonLog', 'MasonInstall', 'MasonInstallAll' }
 }
 
 return M

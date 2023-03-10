@@ -5,7 +5,7 @@ end
 
 M.spec = {
     'link00000000/telescope-repo.nvim',
-    lazy = false,
+    lazy = true,
     config = config,
 }
 

@@ -8,7 +8,7 @@ end
 
 M.spec = {
     'williamboman/mason-lspconfig.nvim',
-    lazy = false,
+    lazy = true,
     config = config,
     dependencies = {
         require('plugins.mason').spec,

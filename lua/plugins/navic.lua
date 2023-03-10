@@ -13,7 +13,7 @@ end
 
 M.spec = {
     'SmiteshP/nvim-navic',
-    lazy = false,
+    lazy = true,
     config = config,
 }
 

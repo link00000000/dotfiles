@@ -5,7 +5,7 @@ end
 
 M.spec = {
     'nvim-telescope/telescope-smart-history.nvim',
-    lazy = false,
+    lazy = true,
     config = config,
     dependencies = {
         require('plugins.sqlite').spec,

@@ -5,7 +5,7 @@ end
 
 M.spec = {
     'nvim-telescope/telescope-ui-select.nvim',
-    lazy = false,
+    lazy = true,
     config = config,
 }
 

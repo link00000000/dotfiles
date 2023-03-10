@@ -8,7 +8,7 @@ end
 
 M.spec = {
     'hrsh7th/cmp-nvim-lsp',
-    lazy = false,
+    lazy = true,
     config = function ()
     end
 }

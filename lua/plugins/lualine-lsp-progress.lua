@@ -5,7 +5,7 @@ end
 
 M.spec = {
     'arkav/lualine-lsp-progress',
-    lazy = false,
+    lazy = true,
     config = config,
 }
 

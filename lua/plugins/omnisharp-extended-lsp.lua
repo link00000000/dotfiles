@@ -5,7 +5,7 @@ end
 
 M.spec = {
     'Hoffs/omnisharp-extended-lsp.nvim',
-    lazy = false,
+    lazy = true,
     config = config,
 }
 

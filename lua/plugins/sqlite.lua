@@ -9,7 +9,7 @@ end
 
 M.spec = {
     'kkharji/sqlite.lua',
-    lazy = false,
+    lazy = true,
     config = config,
     build = {
         shell.build_command('mkdir "' .. path.get_nvim_data_dir('sqlite3', { escape = true }) .. '"'),

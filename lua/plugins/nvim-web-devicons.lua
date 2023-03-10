@@ -36,7 +36,7 @@ end
 
 M.spec = {
     'kyazdani42/nvim-web-devicons',
-    lazy = false,
+    lazy = true,
     config = config,
 }
 

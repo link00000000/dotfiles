@@ -5,7 +5,7 @@ end
 
 M.spec = {
     'nvim-lua/plenary.nvim',
-    lazy = false,
+    lazy = true,
     config = config
 }
 
