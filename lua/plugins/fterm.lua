@@ -75,6 +75,8 @@ M.close_focused = function ()
 end
 
 M.setup_ftplugin = function ()
+    vim.bo.sidescrolloff = 0
+
     keymap.terminal.apply('<Esc>', M.close_focused, { buffer = 0 })
 end
 
