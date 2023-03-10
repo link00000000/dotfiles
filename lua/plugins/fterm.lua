@@ -3,6 +3,8 @@ local command = require('utils.command')
 
 local M = {}
 
+M.terms = {}
+
 local function new_shell_term ()
     local fterm = require('FTerm')
 
@@ -50,48 +52,58 @@ local function new_chtsh_scratch (context)
     local fterm = require('FTerm')
 
     local args = context.args
-
-    local file_name = vim.api.nvim_buf_get_name(0)
     fterm.scratch({ cmd = 'curl -Ls cht.sh/' .. args, auto_close = true, blend = 10 })
 end
 
-local function close_focused (terms)
+local function get_term_by_filetype (ft)
+    local terms = {
+        ['FTerm_shell'] = M.terms.shell,
+        ['FTerm_git'] = M.terms.git,
+        ['FTerm_mprocs'] = M.terms.mprocs,
+    }
+
+    return terms[ft]
+end
+
+M.close_focused = function ()
     local ft = vim.bo.filetype
-    local term = terms[ft]
-    
+    local term = get_term_by_filetype(ft)
+
     if term ~= nil then
         term:close()
     end
 end
 
+M.setup_ftplugin = function ()
+    keymap.terminal.apply('<Esc>', M.close_focused, { buffer = 0 })
+end
+
 local function config ()
-    local shell_term = new_shell_term()
-    command.create('FTermOpen', function () shell_term:open() end)
-    command.create('FTermClose', function () shell_term:close() end)
-    command.create('FTermExit', function () shell_term:close(true) end)
-    command.create('FTermToggle', function () shell_term:toggle() end)
+    M.terms = {
+        shell = new_shell_term(),
+        git = new_git_term(),
+        mprocs = new_mprocs_term(),
+    }
 
-    local git_term = new_git_term()
-    command.create('Git', function () git_term:toggle() end)
-    command.create('GitClose', function () git_term:close() end)
-    command.create('GitExit', function () git_term:close(true) end)
-    command.create('GitToggle', function () git_term:toggle() end)
+    command.create('FTermOpen', function () M.terms.shell:open() end)
+    command.create('FTermClose', function () M.terms.shell:close() end)
+    command.create('FTermExit', function () M.terms.shell:close(true) end)
+    command.create('FTermToggle', function () M.terms.shell:toggle() end)
 
-    local mprocs_term = new_mprocs_term()
-    command.create('MProcs', function () mprocs_term:toggle() end)
-    command.create('MProcsClose', function () mprocs_term:close() end)
-    command.create('MProcsExit', function () mprocs_term:close(true) end)
-    command.create('MProcsToggle', function () mprocs_term:toggle() end)
+    command.create('Git', function () M.terms.git:toggle() end)
+    command.create('GitClose', function () M.terms.git:close() end)
+    command.create('GitExit', function () M.terms.git:close(true) end)
+    command.create('GitToggle', function () M.terms.git:toggle() end)
+
+    command.create('MProcs', function () M.terms.mprocs:toggle() end)
+    command.create('MProcsClose', function () M.terms.mprocs:close() end)
+    command.create('MProcsExit', function () M.terms.mprocs:close(true) end)
+    command.create('MProcsToggle', function () M.terms.mprocs:toggle() end)
 
     command.create('Glow', new_glow_scratch)
     command.create('Cht', new_chtsh_scratch, { nargs = '?' })
 
-    local terms = {
-        ['FTerm_shell'] = shell_term,
-        ['FTerm_git'] = git_term,
-        ['FTerm_mprocs'] = mprocs_term,
-    }
-    command.create('FTermCloseFocused', function () close_focused(terms) end)
+    command.create('FTermCloseFocused', function () M.close_focused() end)
 end
 
 M.spec = {

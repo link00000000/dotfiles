@@ -1,1 +1,3 @@
-vim.api.nvim_buf_set_keymap(0, 't', '<Esc>', '<cmd>FTermCloseFocused<CR>', {})
+local fterm = require('plugins.fterm')
+
+fterm.setup_ftplugin()
