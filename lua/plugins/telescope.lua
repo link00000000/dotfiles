@@ -2,6 +2,20 @@ local keymap = require('utils.keymap')
 
 local M = {}
 
+local border_chars = {
+    EMPTY      = ' ',
+    HORIZONTAL = '─',
+    VERTICAL   = '│',
+    CORNER_NW  = '┌',
+    CORNER_NE  = '┐',
+    CORNER_SW  = '└',
+    CORNER_SE  = '┘',
+    T_TOP      = '┴',
+    T_RIGHT    = '├',
+    T_BOTTOM   = '┬',
+    T_LEFT     = '┤',
+}
+
 M.themes = {
     dropdown = function (opts)
         local telescope_themes = require('telescope.themes')
@@ -10,17 +24,17 @@ M.themes = {
 
         local theme_opts = {
             borderchars = {
-                prompt = { '─', '│', ' ', '│', '┌', '┐', '│', '│' },
-                results = { '─', '│', '─', '│', '├', '┤', '┘', '└' },
-                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+                prompt = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.EMPTY, border_chars.VERTICAL, border_chars.CORNER_NW, border_chars.CORNER_NE, border_chars.VERTICAL, border_chars.VERTICAL },
+                results = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.T_RIGHT, border_chars.T_LEFT, border_chars.CORNER_SE, border_chars.CORNER_SW },
+                preview = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.CORNER_NW, border_chars.CORNER_NE, border_chars.CORNER_SE, border_chars.CORNER_SW },
             }
         }
 
         if opts.layout_config and opts.layout_config.prompt_position == 'bottom' then
             theme_opts.borderchars = {
-                prompt = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
-                results = { '─', '│', '─', '│', '┌', '┐', '┤', '├' },
-                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+                prompt = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.CORNER_NW, border_chars.CORNER_NE, border_chars.CORNER_SE, border_chars.CORNER_SW },
+                results = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.CORNER_NW, border_chars.CORNER_NE, border_chars.T_LEFT, border_chars.T_RIGHT },
+                preview = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.CORNER_NW, border_chars.CORNER_NE, border_chars.CORNER_SE, border_chars.CORNER_SW },
             }
         end
 
@@ -34,9 +48,9 @@ M.themes = {
 
         local theme_opts = {
             borderchars = {
-                prompt = { '─', '│', ' ', '│', '┌', '┐', '│', '│' },
-                results = { '─', '│', '─', '│', '├', '┤', '┘', '└' },
-                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+                prompt = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.EMPTY, border_chars.VERTICAL, border_chars.CORNER_NW, border_chars.CORNER_NE, border_chars.VERTICAL, border_chars.VERTICAL },
+                results = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.T_RIGHT, border_chars.T_LEFT, border_chars.CORNER_SE, border_chars.CORNER_SW },
+                preview = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.CORNER_NW, border_chars.CORNER_NE, border_chars.CORNER_SE, border_chars.CORNER_SW },
             }
         }
 
@@ -50,17 +64,17 @@ M.themes = {
 
         local theme_opts = {
             borderchars = {
-                prompt = { '─', ' ', ' ', ' ', '─', '─', ' ', ' ' },
-                results = { ' ' },
-                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+                prompt = { border_chars.HORIZONTAL, border_chars.EMPTY, border_chars.EMPTY, border_chars.EMPTY, border_chars.HORIZONTAL, border_chars.HORIZONTAL, border_chars.EMPTY, border_chars.EMPTY },
+                results = { border_chars.EMPTY },
+                preview = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.CORNER_NW, border_chars.CORNER_NE, border_chars.CORNER_SE, border_chars.CORNER_SW },
             }
         }
 
         if opts.layout_config and opts.layout_config.prompt_position == 'bottom' then
             theme_opts.borderchars = {
-                prompt = { ' ', ' ', '─', ' ', ' ', ' ', '─', '─' },
-                results = { '─', ' ', ' ', ' ', '─', '─', ' ', ' ' },
-                preview = { '─', ' ', '─', '│', '┬', '─', '─', '└' },
+                prompt = { border_chars.EMPTY, border_chars.EMPTY, border_chars.HORIZONTAL, border_chars.EMPTY, border_chars.EMPTY, border_chars.EMPTY, border_chars.HORIZONTAL, border_chars.HORIZONTAL },
+                results = { border_chars.HORIZONTAL, border_chars.EMPTY, border_chars.EMPTY, border_chars.EMPTY, border_chars.HORIZONTAL, border_chars.HORIZONTAL, border_chars.EMPTY, border_chars.EMPTY },
+                preview = { border_chars.HORIZONTAL, border_chars.EMPTY, border_chars.HORIZONTAL, border_chars.VERTICAL, '┬', border_chars.HORIZONTAL, border_chars.HORIZONTAL, border_chars.CORNER_SW },
             }
         end
 
@@ -85,7 +99,6 @@ M.search_all_files = function ()
     local cached_pickers = telescope_state.get_global_key('cached_pickers') or {}
     local cached_search_all_files_picker_index = nil
 
-    local local_raw_cache_index = nil
     for i, cached_picker in ipairs(cached_pickers) do
         if cached_picker.prompt_title == 'Find All' then
             cached_search_all_files_picker_index = i
@@ -144,7 +157,7 @@ local function config ()
 
             winblend = 10,
             border = {},
-            borderchars = { '─', '│', '─', '│', '┌', '┐', '└', '┘' },
+            borderchars = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.CORNER_NW, border_chars.CORNER_NE, border_chars.CORNER_SW, border_chars.CORNER_SE },
             set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil
             history = {
                 path = path.get_nvim_data_dir('telescope_smart_history.sqlite3'),
