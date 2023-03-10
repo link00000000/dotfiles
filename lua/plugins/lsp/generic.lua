@@ -1,22 +1,17 @@
 local keymap = require('utils.keymap')
+local autocmd = require('utils.autocmd')
 
 local M = {}
 
 local function setup_document_highlight (client)
-    -- TODO: Use Lua instead of vimscript
     if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_exec([[
-            augroup lsp_document_highlight
-                autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            augroup END
-        ]], false)
+        autocmd.create_group('lsp_document_highlight', {
+            { event = 'CursorHold',  action = vim.lsp.buf.document_highlight },
+            { event = 'CursorHoldI', action = vim.lsp.buf.document_highlight },
+            { event = 'CursorMoved', action = vim.lsp.buf.clear_references   },
+        }, { clear = true })
     end
 end
-
--- TODO: Setup missing function in old mason-lspconfig
--- local function diagnostic_open_float(client) -- this one
 
 local function goto_definition ()
     local telescope_builtin = require('telescope.builtin')
