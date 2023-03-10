@@ -6,17 +6,19 @@ local M = {}
 local function config ()
 end
 
-local function show_definitions ()
+local function goto_definition ()
     local omnisharp_extended_lsp = require('omnisharp_extended')
+    local telescope = require('plugins.telescope')
 
-    -- TODO: Apply telescope theme
-    omnisharp_extended_lsp.telescope_lsp_definitions()
+    omnisharp_extended_lsp.telescope_lsp_definitions(telescope.themes.dropdown({ bufnr = bufnr }))
 end
 
 M.setup_keymaps = function (bufnr)
     generic_lsp_config.setup_keymaps(bufnr)
 
-    keymap.normal.apply('<Leader>gd', show_definitions)
+    keymap.delete('<Leader>gd', { buffer = bufnr })
+
+    keymap.normal.apply('<Leader>gd', goto_definition)
 end
 
 M.on_attach = function (client, bufnr)

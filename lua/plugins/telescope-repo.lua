@@ -1,7 +1,6 @@
 local M = {}
 
 local function config ()
-    -- TODO:
 end
 
 M.spec = {

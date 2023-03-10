@@ -101,7 +101,8 @@ end
 
 M.find_repos = function ()
     local telescope = require('telescope')
-    telescope.extensions.repo.list(M.themes.dropdown({ search_dirs = { '~/Source/repos' }, tail_path = true, previewer = false }))
+    -- TODO: Figure out why repos list is empty
+    telescope.extensions.repo.list(M.themes.dropdown({ search_dirs = { '~/source/repos' }, tail_path = true, previewer = false }))
 end
 
 local function setup_commands ()

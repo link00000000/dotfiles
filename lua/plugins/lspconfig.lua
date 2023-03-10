@@ -17,6 +17,7 @@ M.spec = {
         require('plugins.mason-lspconfig').spec,
         require('plugins.folding').spec,
         require('plugins.navic').spec,
+        require('plugins.telescope').spec,
 
         require('plugins.cmp-nvim-lsp').spec,
         require('plugins.omnisharp-extended-lsp').spec,

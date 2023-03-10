@@ -18,6 +18,34 @@ end
 -- TODO: Setup missing function in old mason-lspconfig
 -- local function diagnostic_open_float(client) -- this one
 
+local function goto_definition ()
+    local telescope_builtin = require('telescope.builtin')
+    local telescope = require('plugins.telescope')
+
+    telescope_builtin.lsp_definitions(telescope.themes.dropdown({ trim_text = true }))
+end
+
+local function goto_references ()
+    local telescope_builtin = require('telescope.builtin')
+    local telescope = require('plugins.telescope')
+
+    telescope_builtin.lsp_references(telescope.themes.dropdown({ trim_text = true, include_declaration = false, include_current_line = true }))
+end
+
+local function goto_implementations ()
+    local telescope_builtin = require('telescope.builtin')
+    local telescope = require('plugins.telescope')
+
+    telescope_builtin.lsp_implementations(telescope.themes.dropdown({ trim_text = true }))
+end
+
+local function goto_type_definitions ()
+    local telescope_builtin = require('telescope.builtin')
+    local telescope = require('plugins.telescope')
+
+    telescope_builtin.lsp_implementations(telescope.themes.dropdown({ trim_text = true }))
+end
+
 M.setup_keymaps = function (bufnr)
     keymap.normal.apply('<Leader>a',    vim.lsp.buf.code_action,        { buffer = bufnr })
     keymap.normal.apply('<F2>',         vim.lsp.buf.rename,             { buffer = bufnr })
@@ -27,11 +55,10 @@ M.setup_keymaps = function (bufnr)
     keymap.normal.apply('<Leader>en',   vim.diagnostic.goto_next,       { buffer = bufnr })
     keymap.normal.apply('<Leader>ep',   vim.diagnostic.goto_prev,       { buffer = bufnr })
 
-    --keymap.normal.apply('<Leader>o',    vim.)
-
-
-
-    -- TODO: Setup keymaps
+    keymap.normal.apply('<Leader>gd',   goto_definition,                { buffer = bufnr })
+    keymap.normal.apply('<Leader>gr',   goto_references,                { buffer = bufnr })
+    keymap.normal.apply('<Leader>gi',   goto_implementations,           { buffer = bufnr })
+    keymap.normal.apply('<Leader>gt',   goto_type_definitions,          { buffer = bufnr })
 end
 
 M.on_attach = function (client, bufnr)
