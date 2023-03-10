@@ -16,7 +16,7 @@ end
 M.setup_keymaps = function (bufnr)
     generic_lsp_config.setup_keymaps(bufnr)
 
-    keymap.delete('<Leader>gd', { buffer = bufnr })
+    keymap.normal.delete('<Leader>gd', { buffer = bufnr })
 
     keymap.normal.apply('<Leader>gd', goto_definition)
 end
