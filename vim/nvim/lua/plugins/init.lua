@@ -30,7 +30,6 @@ M.setup = function ()
 
         -- Appearance
         require('plugins.colorschemes').spec,
-        -- require('plugins.shade').spec,
 
         -- Layout / Statusline / Tabline
         require('plugins.luatab').spec,
