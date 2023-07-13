@@ -1,0 +1,111 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set scrolloff=5 " Show a few lines of context around the cursor.
+" Side scroll is not supported by vsvim
+
+set incsearch " Do incremental searching.
+set hlsearch " Highlight search occurrences
+
+set gdefault " substitute all occurrences in line per default
+
+set history=10000 " keep x linues of command line history
+
+" Disable error bell sound
+set visualbell
+" set noerrorbells is not supported by vsvim
+
+" Map <Space> to leader
+nnoremap <Space> <NOP>
+let mapleader=" "
+
+" Ignore case when searching with all lowercase
+set ignorecase
+set smartcase
+
+""""\ VsVim specific settings \""""""""""""""""""""""""""""""""""""
+
+" Enable line numbers
+set number
+
+" Use Windows clipboard
+set clipboard=unnamed
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Keybindings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Jump to start of line
+nmap B ^
+
+" Jump to end of line
+nmap E $
+vmap E $
+
+" Dont include the new line when deleting until end of line
+nmap D v$hd
+vmap D v$hd
+
+" Dont include the new line when replacing until end of line
+nmap C v$hc
+vmap C v$hc
+
+" Make Y behave like D and C, yanking till end of line (minus the line break)
+nmap Y y$
+vmap Y y$
+
+" Don't overwrite register when pasting over selection
+vnoremap p pgvy
+
+" Move visual lines on word wrap
+nnoremap j gj
+nnoremap k gk
+
+" Don't lose selection when indenting
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+
+" Dont copy characters removed with 'x' to clipboard (speeds up holding 'x')
+noremap x "_x
+
+" Search using Perl-ish Regex
+"nnoremap / /\v
+"vnoremap / /\v
+
+" CoCish settings
+nnoremap <Leader>gd :vsc Edit.GoToDefinition<CR>
+nnoremap <Leader>gt :vsc Edit.GoToTypeDefinition<CR>
+nnoremap <Leader>gi :vsc Edit.GoToImplementation<CR>
+nnoremap <Leader>gr :vsc Edit.FindAllReferences<CR>
+" TODO: nmap <leader>gs <Action>(GotoSuperMethod)
+
+nnoremap <Leader>rt :vsc ReSharper.ReSharper_RefactorThis<CR>
+vnoremap <Leader>rt :vsc ReSharper.ReSharper_RefactorThis<CR>
+
+"nnoremap <Leader>a :vsc EditorContextMenus.CodeWindow.QuickActionsForPosition<CR>
+nnoremap <Leader>a :vsc View.QuickActions<CR>
+nnoremap <Leader>k :vsc Edit.QuickInfo<CR>
+
+" VS Code move line
+" TODO: nmap <M-k> <Action>(MoveLineUp)
+" TODO: vmap <M-k> <Action>(MoveLineUp)
+
+" TODO: nmap <M-j> <Action>(MoveLineDown)
+" TODO: vmap <M-j> <Action>(MoveLineDown)
+
+" VS Code Duplicate Line
+" TODO: nmap <S-M-j> <Action>(EditorDuplicate)
+" TODO: vmap <S-M-j> <Action>(EditorDuplicate)
+
+""""\ VsVim specific settings \""""""""""""""""""""""""""""""""""""
+
+" Save file with control + s
+map <C-s> :w<CR>
+
+" Fix jumping forward and backwards through history
+nmap <C-O> :vsc View.NavigateBackward<CR>
+nmap <C-I> :vsc View.NavigateForward<CR>
+vmap <C-O> :vsc View.NavigateBackward<CR>
+vmap <C-I> :vsc View.NavigateForward<CR>

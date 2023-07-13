@@ -1,0 +1,15 @@
+themes {
+    carbonfox {
+        fg 242 244 248
+        bg 22 22 22
+        black 72 72 72
+        red 241 109 166
+        green 70 200 128
+        yellow 45 199 196
+        blue 140 182 255
+        magenta 200 165 255
+        cyan 82 189 255
+        white 228 228 229
+        orange 8 189 186
+    }
+}

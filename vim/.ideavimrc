@@ -1,0 +1,233 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Handlers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+sethandler <C-2> a:vim
+sethandler <C-S-2> a:vim
+sethandler <C-6> a:vim
+sethandler <C-S-6> a:vim
+sethandler <C-A> a:vim
+sethandler <C-B> a:vim
+sethandler <C-C> a:vim
+sethandler <C-D> a:ide
+sethandler <C-E> a:vim
+sethandler <C-F> a:vim
+sethandler <C-G> a:vim
+sethandler <C-H> a:vim
+sethandler <C-I> a:vim
+sethandler <C-J> a:vim
+sethandler <C-K> a:vim
+sethandler <C-L> a:vim
+sethandler <C-M> a:vim
+sethandler <C-N> a:vim
+sethandler <C-O> a:vim
+sethandler <C-P> a:vim
+sethandler <C-R> a:vim
+sethandler <C-S> a:ide
+sethandler <C-T> a:vim
+sethandler <C-U> a:vim
+sethandler <C-V> a:vim
+sethandler <C-W> a:vim
+sethandler <C-X> a:vim
+sethandler <C-[> a:vim
+sethandler <C-\> a:vim
+sethandler <C-]> a:vim
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set scrolloff=5 sidescrolloff=10 " Show a few lines of context around the cursor.
+
+set incsearch " Do incremental searching.
+set hlsearch " Highlight search occurrences
+
+set gdefault " substitute all occurrences in line per default
+
+set history=10000 " keep x lines of command line history
+
+map Q gq " Don't use Ex mode, use Q for formatting.
+
+set clipboard=unnamedplus,unnamed,ideaput " Use system clipboard
+
+" Disable error bell sound
+set visualbell
+set noerrorbells
+
+" Map <Space> to leader
+nnoremap <Space> <NOP>
+let mapleader=" "
+
+" Ignore case when searching with all lowercase
+set ignorecase
+set smartcase
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Keybindings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Use Idea for history navigation
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+
+" Jump to start of line
+nmap B ^
+
+" Jump to end of line
+nmap E $
+vmap E $
+
+" Dont include the new line when deleting until end of line
+nmap D v$hd
+vmap D v$hd
+
+" Dont include the new line when replacing until end of line
+nmap C v$hc
+vmap C v$hc
+
+" Make Y behave like D and C, yanking till end of line (minus the line break)
+nmap Y y$
+vmap Y y$
+
+" Don't overwrite register when pasting over selection
+vnoremap p pgvy
+
+" Move visual lines on word wrap
+nnoremap j gj
+nnoremap k gk
+
+" Don't lose selection when indenting
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+
+" Dont copy characters removed with 'x' to clipboard
+noremap x "_x
+
+" New file
+nmap <C-S-n> <Action>(NewFile)
+
+" CoCish settings
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>gt <Action>(GotoTypeDeclaration)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gr <Action>(ShowUsages)
+nmap <leader>gs <Action>(SwitchHeaderSource)
+nmap <F10> <Action>(SwitchHeaderSource)
+
+nmap <leader>rt <Action>(Refactorings.QuickListPopupAction)
+vmap <leader>rt <Action>(Refactorings.QuickListPopupAction)
+
+nmap <leader>a <Action>(ShowIntentionActions)
+nmap <leader>k <Action>(QuickJavaDoc)
+
+" VS Code move line
+nmap <M-k> <Action>(MoveLineUp)
+vmap <M-k> <Action>(MoveLineUp)
+
+nmap <M-j> <Action>(MoveLineDown)
+vmap <M-j> <Action>(MoveLineDown)
+
+" VS Code Multiple Cursors
+nmap <C-M-k> <Action>(EditorCloneCaretAbove)
+vmap <C-M-k> <Action>(EditorCloneCaretAbove)
+
+nmap <C-M-k> <Action>(EditorCloneCaretBelow)
+vmap <C-M-k> <Action>(EditorCloneCaretBelow)
+
+" VS Code Duplicate Line
+nmap <S-M-j> <Action>(EditorDuplicate)
+vmap <S-M-j> <Action>(EditorDuplicate)
+
+" Clear search highlighting on <CR>
+" Search stays in register so <n> and <C-n> will re-highlight results
+nnoremap <silent> <CR> :nohlsearch<CR>
+
+" Change tabs with number keys
+nmap <silent> 1 :tabn 1<CR>
+nmap <silent> 2 :tabn 2<CR>
+nmap <silent> 3 :tabn 3<CR>
+nmap <silent> 4 :tabn 4<CR>
+nmap <silent> 5 :tabn 5<CR>
+nmap <silent> 6 :tabn 6<CR>
+nmap <silent> 7 :tabn 7<CR>
+nmap <silent> 8 :tabn 8<CR>
+nmap <silent> 9 :tabn 9<CR>
+nmap <silent> 0 :tabn 10<CR>
+
+" Go to next and previous tab
+nmap <C-S-j> <Action>(NextTab)
+nmap <C-S-k> <Action>(PreviousTab)
+nmap <leader>tn <Action>(NextTab)
+nmap <leader>tp <Action>(PreviousTab)
+
+" Close current tab instead of pane
+nmap <silent> <C-w>c <Action>(CloseContent)
+
+" Git and version control
+nmap <leader>gg <Action>(ActivateVersionControlToolWindow)
+nmap <leader>gu <Action>(Vcs.RollbackChangedLines)
+nmap <leader>ga <Action>(CheckinFiles)
+nmap <leader>gc <Action>(CheckinProject)
+nmap <leader>gp <Action>(Vcs.Push)
+nmap <leader>gh <Action>(Vcs.ShowHistoryForBlock)
+vmap <leader>gh <Action>(Vcs.ShowHistoryForBlock)
+nmap <leader>gb <Action>(Annotate)
+nmap <leader>go <Action>(SwitchHeaderSource)
+vmap <leader>go <Action>(SwitchHeaderSource)
+
+" Testing
+nmap <leader>tr <Action>(RiderUnitTestRunContextAction)
+nmap <leader>td <Action>(RiderUnitTestDebugContextAction)
+nmap <leader>ta <Action>(RiderUnitTestRunSolutionAction)
+
+" Debugging
+nmap <leader>dd <Action>(mainRunToolbarDebugProcess)
+nmap <leader>dr <Action>(Rerun)
+nmap <leader>db <Action>(ToggleLineBreakpoint)
+nmap <leader>dn <Action>(StepOver)
+nmap <leader>di <Action>(StepInto)
+nmap <leader>do <Action>(StepOut)
+nmap <leader>dh <Action>(RunToCursor)
+nmap <leader>dc <Action>(Resume)
+nmap <leader>ds <Action>(Stop)
+nmap <leader>dk <Action>(QuickEvaluateExpression)
+
+" Errors
+nmap <leader>ee <Action>(Rider.ProblemsView.ErrorsInSolution)
+nmap <leader>en <Action>(GotoNextError)
+nmap <leader>ep <Action>(GotoPreviousError)
+nmap <leader>ek <Action>(ShowErrorDescription)
+
+" Folding
+nmap <leader>zd <Action>(RiderCollapseToDefinitions)
+
+" Bookmarks
+nmap <leader>bt <Action>(ToggleBookmark)
+nmap <leader>bb <Action>(ShowBookmarks)
+nmap <leader>bn <Action>(GotoNextBookmark)
+nmap <leader>bp <Action>(GotoPreviousBookmark)
+nmap <leader>br <Action>(EditBookmark)
+
+" Tree window movement
+map <C-j> <Action>(Tree-selectNext)
+map <C-k> <Action>(Tree-selectPrevious)
+map <C-l> <Action>(Tree-selectChild) " HACK: Needs to be set in keybinds
+map <C-h> <Action>(Tree-selectParent) " HACK: Needs to be set in keybinds
+
+" Tool windows
+nmap <leader>ww <Action>(ToolWindowsGroup)
+nmap <leader>wp <Action>(JumpToLastWindow)
+
+" Search
+nmap <C-p> <Action>(SearchEverywhere)
+nmap <C-h> <Action>(SearchEverywhere.PrevTab)
+nmap <C-l> <Action>(SearchEverywhere.NextTab)
+
+" Comments
+nmap <leader>/ <Action>(CommentByLineComment)
+vmap <leader>/ <Action>(CommentByLineComment)
+
+" Zen mode
+nmap <leader>zz <Action>(ToggleZenMode)
+vmap <leader>zz <Action>(ToggleZenMode)

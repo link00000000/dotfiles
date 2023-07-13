@@ -1,0 +1,62 @@
+- name: OpenVPN Connect
+  identifier:
+    kind: exe
+    id: OpenVPNConnect.exe
+  options:
+    - tray_and_multi_window
+
+- name: RingCentral
+  identifier:
+    kind: exe
+    id: RingCentralMeetings.exe
+  float_identifiers:
+    - kind: class
+      id: ZPPTMainFrmWndClassEx
+    - kind: class
+      id: ZPFTEWndClass
+    - kind: title
+      id: Leave meeting
+
+- name: RingCentral (Softphone)
+  identifier:
+    kind: exe
+    id: Softphone.exe
+  options:
+    - tray_and_multi_window
+
+- name: Sql Server Management Studio
+  identifier:
+    kind: exe
+    id: Ssms.exe
+  float_identifiers:
+    - kind: title
+      id: Connect to Server
+
+- name: KeePass
+  identifier:
+    kind: exe
+    id: KeePass.exe
+  options:
+    - tray_and_multi_window
+  float_identifiers:
+    - kind: title
+      id: Log in to Pleasant Password Server
+
+- name: IIS Express
+  identifier:
+    kind: exe
+    id: iisexpress.exe
+  options:
+    - tray_and_multi_window
+
+- name: IIS Express SysTray
+  identifier:
+    kind: exe
+    id: iisexpresstray.exe
+  options:
+    - tray_and_multi_window
+
+- name: Visual Studio
+  identifier:
+    kind: exe
+    id: devenv.exe
