@@ -172,8 +172,8 @@ local function config ()
                 case_mode = 'smart_case'
             },
             ['ui-select'] = {
-                --themes.get_custom_cursor()
-                require('telescope.themes').get_dropdown()
+                M.themes.cursor()
+                -- require('telescope.themes').get_dropdown()
             },
         },
     })

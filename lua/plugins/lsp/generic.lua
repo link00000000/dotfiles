@@ -72,10 +72,25 @@ end
 
 M.setup_handler = function (server_name)
     local lspconfig = require('lspconfig')
+    local notify = require("notify")
 
     lspconfig[server_name].setup({
         on_attach = M.on_attach,
         capabilities = M.get_capabilities(),
+        handlers = {
+            ["window/showMessage"] = function (_, result, context)
+                local client = vim.lsp.get_client_by_id(context.client_id)
+                local level = ({ "ERROR", "WARN", "INFO", "DEBUG" })[result.type]
+
+                notify({ result.message }, level, {
+                    title = "LSP | " .. client.name,
+                    timeout = 10000,
+                    keep = function ()
+                        return level == "ERROR" or level == "WARN"
+                    end
+                })
+            end
+        }
     })
 end
 
