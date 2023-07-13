@@ -14,6 +14,7 @@
   "folding-nvim": { "branch": "master", "commit": "5d2b3d98c47c8c16aade06ebfd411bc74ad6d205" },
   "friendly-snippets": { "branch": "main", "commit": "6153166d5a3dcc7e2809ea4f17f9edb34d026026" },
   "gitsigns.nvim": { "branch": "main", "commit": "48c3ae8ec74cb83f9570ceb0c5ab8217db7a2220" },
+  "glance.nvim": { "branch": "master", "commit": "3e7158ffaaa0fa1f7268df30ae40f24c07b840d1" },
   "lazy.nvim": { "branch": "main", "commit": "14d76aac4bd3ff07c1fca074c210f28f766a931e" },
   "lspkind.nvim": { "branch": "master", "commit": "57610d5ab560c073c465d6faf0c19f200cb67e6e" },
   "lualine-lsp-progress": { "branch": "master", "commit": "56842d097245a08d77912edf5f2a69ba29f275d7" },

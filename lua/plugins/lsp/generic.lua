@@ -14,31 +14,19 @@ local function setup_document_highlight (client)
 end
 
 local function goto_definition ()
-    local telescope_builtin = require('telescope.builtin')
-    local telescope = require('plugins.telescope')
-
-    telescope_builtin.lsp_definitions(telescope.themes.dropdown({ trim_text = true }))
+    vim.cmd("Glance definitions")
 end
 
 local function goto_references ()
-    local telescope_builtin = require('telescope.builtin')
-    local telescope = require('plugins.telescope')
-
-    telescope_builtin.lsp_references(telescope.themes.dropdown({ trim_text = true, include_declaration = false, include_current_line = true }))
+    vim.cmd("Glance references")
 end
 
 local function goto_implementations ()
-    local telescope_builtin = require('telescope.builtin')
-    local telescope = require('plugins.telescope')
-
-    telescope_builtin.lsp_implementations(telescope.themes.dropdown({ trim_text = true }))
+    vim.cmd("Glance implementations")
 end
 
 local function goto_type_definitions ()
-    local telescope_builtin = require('telescope.builtin')
-    local telescope = require('plugins.telescope')
-
-    telescope_builtin.lsp_implementations(telescope.themes.dropdown({ trim_text = true }))
+    vim.cmd("Glance type_definitions")
 end
 
 M.setup_keymaps = function (bufnr)

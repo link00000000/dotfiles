@@ -30,7 +30,7 @@ M.setup = function ()
 
         -- Appearance
         require('plugins.colorschemes').spec,
-        require('plugins.shade').spec,
+        -- require('plugins.shade').spec,
 
         -- Layout / Statusline / Tabline
         require('plugins.luatab').spec,
@@ -48,6 +48,7 @@ M.setup = function ()
         require("plugins.nvim-autopairs").spec,
         require("plugins.trouble").spec,
         require("plugins.symbols-outline").spec,
+        require("plugins.glance").spec,
 
         -- Snippets
         require("plugins.luasnip").spec,
