@@ -74,7 +74,7 @@ M.themes = {
             theme_opts.borderchars = {
                 prompt = { border_chars.EMPTY, border_chars.EMPTY, border_chars.HORIZONTAL, border_chars.EMPTY, border_chars.EMPTY, border_chars.EMPTY, border_chars.HORIZONTAL, border_chars.HORIZONTAL },
                 results = { border_chars.HORIZONTAL, border_chars.EMPTY, border_chars.EMPTY, border_chars.EMPTY, border_chars.HORIZONTAL, border_chars.HORIZONTAL, border_chars.EMPTY, border_chars.EMPTY },
-                preview = { border_chars.HORIZONTAL, border_chars.EMPTY, border_chars.HORIZONTAL, border_chars.VERTICAL, '┬', border_chars.HORIZONTAL, border_chars.HORIZONTAL, border_chars.CORNER_SW },
+                preview = { border_chars.HORIZONTAL, border_chars.EMPTY, border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.T_BOTTOM, border_chars.HORIZONTAL, border_chars.HORIZONTAL, border_chars.CORNER_SW },
             }
         end
 
