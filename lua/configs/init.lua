@@ -7,7 +7,7 @@ end
 local function load_local_config ()
     local hostname = vim.fn.hostname()
     local status, err = pcall(function ()
-        require('configs.local' .. hostname).setup()
+        require('configs.local.' .. hostname).setup()
     end)
 end
 

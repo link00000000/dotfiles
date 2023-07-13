@@ -2,6 +2,7 @@ local M = {}
 
 local function config ()
     local mason_lspconfig = require('mason-lspconfig')
+    local codicons = require("codicons")
 
     mason_lspconfig.setup_handlers({
         require('plugins.lsp.generic').setup_handler,
@@ -14,6 +15,8 @@ M.spec = {
     lazy = false,
     config = config,
     dependencies = {
+        require("plugins.codicons").spec,
+
         require('plugins.mason-lspconfig').spec,
         require('plugins.folding').spec,
         require('plugins.navic').spec,

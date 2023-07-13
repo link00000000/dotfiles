@@ -1,6 +1,15 @@
 local keymap = require('utils.keymap')
+local command = require("utils.command")
+local path = require("utils.path")
 
 local M = {}
+
+M.commands = function ()
+    command.create("W", "w")
+
+    command.create("Config", "lcd " .. path.nvim_config_dir() .. "|NvimTreeFocus")
+    command.create("ConfigCwd", "cd " .. path.nvim_config_dir() .. "|NvimTreeFocus")
+end
 
 M.keymaps = function ()
     -- Jump to start of line
@@ -36,6 +45,9 @@ M.keymaps = function ()
     keymap.set({ 'n', 'v' }).apply('<Tab>', '>gv')
     keymap.set({ 'n', 'v' }).apply('<S-Tab>', '<gv')
     keymap.insert.apply('<S-Tab>', '<C-o><<')
+
+    -- Create new tab
+    keymap.normal.apply('<Leader>tn', ':tabnew<CR>')
 
     -- Use number keys to jump to tab
     keymap.normal.apply('1', '1gt')
@@ -172,6 +184,7 @@ M.setup = function ()
     -- Have only one status bar instead of one per window
     vim.opt.laststatus = 3
 
+    M.commands()
     M.keymaps()
 end
 

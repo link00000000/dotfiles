@@ -16,7 +16,7 @@ local function config ()
                 name = "sql",
             },
             cs = {
-                icon = "",
+                icon = "󰌛",
                 color = "#019833",
                 name = "Cs",
             },
