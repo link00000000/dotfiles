@@ -220,7 +220,8 @@ nmap <leader>ww <Action>(ToolWindowsGroup)
 nmap <leader>wp <Action>(JumpToLastWindow)
 
 " Search
-nmap <C-p> <Action>(SearchEverywhere)
+"nmap <C-p> <Action>(SearchEverywhere)
+nmap <C-p> <Action>(GotoFile)
 nmap <C-h> <Action>(SearchEverywhere.PrevTab)
 nmap <C-l> <Action>(SearchEverywhere.NextTab)
 
