@@ -3,9 +3,6 @@ local generic_lsp_config = require('plugins.lsp.generic')
 
 local M = {}
 
-local function config ()
-end
-
 local function goto_definition ()
     local omnisharp_extended_lsp = require('omnisharp_extended')
     local telescope = require('plugins.telescope')

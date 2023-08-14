@@ -6,6 +6,7 @@ local function config ()
     mason_lspconfig.setup_handlers({
         require('plugins.lsp.generic').setup_handler,
         ['omnisharp'] = require('plugins.lsp.omnisharp-extended').setup_handler,
+        ['lua_ls'] = require("plugins.lsp.neodev").setup_handler,
     })
 end
 
@@ -24,6 +25,7 @@ M.spec = {
 
         require('plugins.cmp-nvim-lsp').spec,
         require('plugins.omnisharp-extended-lsp').spec,
+        require('plugins.neodev').spec,
     },
 }
 

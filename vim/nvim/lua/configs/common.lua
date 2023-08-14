@@ -161,6 +161,8 @@ M.setup = function ()
 
     -- Show all folds expanded when a file is opened
     vim.opt.foldlevel = 99
+    vim.opt.foldlevelstart = 99
+    vim.opt.foldenable = true
 
     -- Hide ./ and ../ in netrw
     vim.g.netrw_list_hide = '^\\.*/$'
