@@ -9,6 +9,11 @@ M.commands = function ()
 
     command.create("Config", "lcd " .. path.nvim_config_dir() .. "|NvimTreeFocus")
     command.create("ConfigCwd", "cd " .. path.nvim_config_dir() .. "|NvimTreeFocus")
+
+    command.create("LuaBuffer", function ()
+        local buffer_contents = table.concat(vim.api.nvim_buf_get_lines(0, 0, vim.api.nvim_buf_line_count(0), false), "\n")
+        loadstring(buffer_contents)()
+    end)
 end
 
 M.keymaps = function ()
