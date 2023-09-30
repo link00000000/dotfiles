@@ -12,8 +12,9 @@ end
 
 M.spec = {
     'neovim/nvim-lspconfig',
-    lazy = false,
+    lazy = true,
     config = config,
+    event = { "BufEnter" },
     dependencies = {
         require("plugins.nvim-notify").spec,
 

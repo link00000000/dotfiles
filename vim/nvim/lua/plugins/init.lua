@@ -38,22 +38,29 @@ M.setup = function ()
         require('plugins.nvim-tree').spec,
         require('plugins.nvim-treesitter').spec,
         require('plugins.todo-comments').spec,
-        require('plugins.lspconfig').spec,
         require('plugins.barbecue').spec,
         require('plugins.telescope').spec,
 
         -- LSP / Intellisense / Syntax / Highlightinqg
+        require('plugins.lspconfig').spec,
         require("plugins.nvim-cmp").spec,
         require("plugins.nvim-autopairs").spec,
         require("plugins.trouble").spec,
         require("plugins.symbols-outline").spec,
         require("plugins.glance").spec,
+        require("plugins.vim-razor").spec,
+        require("plugins.nvim-nu").spec,
+
+        -- Debugging
+        require("plugins.nvim-dap").spec,
+        require("plugins.nvim-dap-python").spec,
 
         -- Snippets
         require("plugins.luasnip").spec,
 
-        -- Comments
+        -- Comments / Text editing
         require("plugins.comment").spec,
+        require("plugins.nvim-surround").spec,
 
         -- Git / Version Control
         require("plugins.gitsigns").spec,
