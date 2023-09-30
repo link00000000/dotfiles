@@ -11,6 +11,18 @@
 
 #InputLevel 1
 
+;$LWin Up::
+;$RWin Up::
+;    if (A_PriorKey = "LWin" || A_PriorKey = "RWin") {
+;        Send, !{Space}
+;    }
+;    else {
+;        SendLevel 1
+;        SendEvent {LWin down}{%A_PriorKey%}{LWin up}
+;        ; SendInput {LWin down}{%A_PriorKey%}{LWin up}
+;    }
+;    return
+
 #b::
 	Run, ms-settings:bluetooth
 	return

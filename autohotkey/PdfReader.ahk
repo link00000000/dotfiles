@@ -3,7 +3,7 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-I_Icon = PdfReader.ico
+I_Icon = Bin/PdfReader.ico
 IfExist, %I_Icon%
 Menu, Tray, Icon, %I_Icon%
 ;return
