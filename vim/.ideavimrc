@@ -218,10 +218,12 @@ map <C-h> <Action>(Tree-selectParent) " HACK: Needs to be set in keybinds
 " Tool windows
 nmap <leader>ww <Action>(ToolWindowsGroup)
 nmap <leader>wp <Action>(JumpToLastWindow)
+nmap <leader>ff <Action>(ActivateProjectToolWindow)
 
 " Search
 "nmap <C-p> <Action>(SearchEverywhere)
 nmap <C-p> <Action>(GotoFile)
+nmap <C-b> <Action>(RecentFiles)
 nmap <C-h> <Action>(SearchEverywhere.PrevTab)
 nmap <C-l> <Action>(SearchEverywhere.NextTab)
 
