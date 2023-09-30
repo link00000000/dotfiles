@@ -771,6 +771,20 @@ $env.config = {
             mode: [emacs vi_normal vi_insert]
             event: {send: executehostcommand, cmd: "explorer.exe ."}
         }
+        {
+            name: open_lazygit
+            modifier: alt
+            keycode: char_g
+            mode: [emacs vi_normal vi_insert]
+            event: {send: executehostcommand, cmd: "lazygit"}
+        }
+        {
+            name: git_push
+            modifier: alt
+            keycode: char_p
+            mode: [emacs vi_normal vi_insert]
+            event: {send: executehostcommand, cmd: "git pull"}
+        }
     ]
 }
 
