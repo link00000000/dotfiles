@@ -155,7 +155,7 @@ $env.config = {
     }
 
     table: {
-        mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
+        mode: light # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
         index_mode: always # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
         show_empty: true # show 'empty list' and 'empty record' placeholders for command output
         padding: { left: 1, right: 1 } # a left right padding of each column in a table
@@ -241,7 +241,7 @@ $env.config = {
     buffer_editor: "" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
     use_ansi_coloring: true
     bracketed_paste: true # enable bracketed paste, currently useless on windows
-    edit_mode: vi # emacs, vi
+    edit_mode: emacs # emacs, vi
     shell_integration: false # enables terminal shell integration. Off by default, as some terminals have issues with this.
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
 
@@ -269,8 +269,8 @@ $env.config = {
                 col_padding: 2
             }
             style: {
-                text: green
-                selected_text: green_reverse
+                text: white
+                selected_text: blue
                 description_text: yellow
             }
         }
@@ -283,8 +283,8 @@ $env.config = {
                 page_size: 10
             }
             style: {
-                text: green
-                selected_text: green_reverse
+                text: white
+                selected_text: blue
                 description_text: yellow
             }
         }
@@ -301,8 +301,8 @@ $env.config = {
                 description_rows: 10
             }
             style: {
-                text: green
-                selected_text: green_reverse
+                text: white
+                selected_text: blue
                 description_text: yellow
             }
         }
@@ -339,6 +339,20 @@ $env.config = {
             name: completion_previous_menu
             modifier: shift
             keycode: backtab
+            mode: [emacs, vi_normal, vi_insert]
+            event: { send: menuprevious }
+        }
+        {
+            name: completion_next_menu_vim_style
+            modifier: control
+            keycode: char_j
+            mode: [emacs vi_normal vi_insert]
+            event: { send: menunext }
+        }
+        {
+            name: completion_previous_menu_vim_style
+            modifier: control
+            keycode: char_k
             mode: [emacs, vi_normal, vi_insert]
             event: { send: menuprevious }
         }
@@ -399,7 +413,7 @@ $env.config = {
         {
             name: open_command_editor
             modifier: control
-            keycode: char_o
+            keycode: char_x
             mode: [emacs, vi_normal, vi_insert]
             event: { send: openeditor }
         }
@@ -657,13 +671,6 @@ $env.config = {
             event: {edit: cutwordleft}
         }
         {
-            name: cut_line_to_end
-            modifier: control
-            keycode: char_k
-            mode: emacs
-            event: {edit: cuttoend}
-        }
-        {
             name: cut_line_from_start
             modifier: control
             keycode: char_u
@@ -791,3 +798,6 @@ $env.config = {
 alias vim = nvim
 alias ii = explorer.exe
 alias cat = bat
+alias dc = docker-compose
+
+use ~/.cache/starship/init.nu
