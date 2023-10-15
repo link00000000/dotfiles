@@ -31,8 +31,35 @@ TrayActionScript_Create(ActionName, Icon, OnExecuteActionCallback, OnExitCallbac
         A_TrayMenu.Delete("E&xit")
     }
 
-    TraySetIcon(Icon)
+    TraySetIcon(Icon.GetIconPath())
 
     return A_TrayMenu
 }
 
+class TrayActionScript_Icon {
+    __New(iconPath) {
+        this.iconPath := iconPath
+    }
+
+    GetIconPath() {
+        return this.iconPath
+    }
+}
+
+class TrayActionScript_WindowsThemeAdaptableIcon {
+    __New(lightModeIconPath, darkModeIconPath) {
+        this.lightModeIconPath := lightModeIconPath
+        this.darkModeIconPath := darkModeIconPath
+    }
+
+    GetIconPath() {
+        SystemUsesLightTheme := RegRead("HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme")
+
+        if (SystemUsesLightTheme = true) {
+            return this.lightModeIconPath
+        }
+        else {
+            return this.darkModeIconPath
+        }
+    }
+}
