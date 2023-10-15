@@ -65,24 +65,24 @@ function Set-EnvironmentVariable
 $Configurations = @{
     alacritty = {
         $Source = Get-ConfigPath -RelativePath "alacritty"
-        $Dest = Join-Path $Env:AppData -ChildPath "alacritty"
+        $Dest = Join-Path $Env:APPDATA -ChildPath "alacritty"
         Create-SymbolicLink -Source $Source -Destination $Dest
     }
     autohotkey = {
         $source = Get-ConfigPath -RelativePath "autohotkey/GlobalBindings.ahk"
-        $Dest = Join-Path $Env:AppData -ChildPath "Microsoft/Windows/Start Menu/Programs/Startup/GlobalBindings.lnk"
+        $Dest = Join-Path $Env:APPDATA -ChildPath "Microsoft/Windows/Start Menu/Programs/Startup/GlobalBindings.lnk"
 
         Create-Shortcut -Source $Source -Destination $Dest
 
         $Source = Get-ConfigPath -RelativePath "autohotkey/RiderBindings.ahk"
-        $Dest = Join-Path $Env:AppData -ChildPath "Microsoft/Windows/Start Menu/Programs/Startup/RiderBindings.lnk"
+        $Dest = Join-Path $Env:APPDATA -ChildPath "Microsoft/Windows/Start Menu/Programs/Startup/RiderBindings.lnk"
 
         Create-Shortcut -Source $Source -Destination $Dest
     }
     flowlauncher = {
         # FlowLauncher does not support symlinks so the files must be copied
 
-        $FlowLauncherSettingsDirectory = Join-Path $Env:AppData -ChildPath "flowlauncher"
+        $FlowLauncherSettingsDirectory = Join-Path $Env:APPDATA -ChildPath "flowlauncher"
 
         $Source = Get-ConfigPath -RelativePath "FlowLauncher/Themes"
         $Dest = Join-Path -Path $FlowLauncherSettingsDirectory -ChildPath "Themes"
@@ -98,31 +98,32 @@ $Configurations = @{
         $Dest = Join-Path -Path $FlowLauncherSettingsDirectory -ChildPath "Settings/Plugins/Flow.Launcher.Plugin.WebSearch/Settings.json"
         Remove-Item -Path $Dest -Force
         Copy-Item -Path $Source -Destination $Dest
+		
+		$Source = Get-ConfigPath -RelativePath "FlowLauncher/Settings/Plugins/Flow.Launcher.Plugin.WebSearch/CustomIcons"
+        $Dest = Join-Path -Path $FlowLauncherSettingsDirectory -ChildPath "Settings/Plugins/Flow.Launcher.Plugin.WebSearch/CustomIcons"
+        Remove-Item -Path $Dest -Force
+        Copy-Item -Recurse -Path $Source -Destination $Dest
     }
     komorebi = {
-        $KomorebiConfigHome = Join-Path -Path $Env:LocalAppData -ChildPath "komorebi/config"
+        $KomorebiConfigHome = Join-Path -Path $Env:LOCALAPPDATA -ChildPath "komorebi/config"
         Set-EnvironmentVariable -Key "KOMOREBI_CONFIG_HOME" -Value $KomorebiConfigHome
 
         $Source = Get-ConfigPath -RelativePath "komorebi"
-        $Dest = Join-Path -Path $Env:LocalAppData -ChildPath "komorebi/config"
+        $Dest = Join-Path -Path $Env:LOCALAPPDATA -ChildPath "komorebi/config"
         Create-SymbolicLink -Source $Source -Destination $Dest
     }
     lazygit = {
         $Source = Get-ConfigPath -RelativePath "lazygit/config.yml"
-        $Dest = Join-Path -Path $Env:AppData -ChildPath "lazygit/config.yml"
+        $Dest = Join-Path -Path $Env:APPDATA -ChildPath "lazygit/config.yml"
         Create-SymbolicLink -Source $Source -Destination $Dest
     }
-    vim = {
-        $Source = Get-ConfigPath -RelativePath "vim/nvim"
-        $Dest = Join-Path -Path $Env:LocalAppData -ChildPath "nvim"
+    nushell = {
+        $Source = Get-ConfigPath -RelativePath "nushell/env.nu"
+        $Dest = Join-Path -Path $Env:APPDATA -ChildPath "nushell/env.nu"
         Create-SymbolicLink -Source $Source -Destination $Dest
 
-        $Source = Get-ConfigPath -RelativePath "vim/.ideavimrc"
-        $Dest = Join-Path -Path $Env:UserProfile -ChildPath ".ideavimrc"
-        Create-SymbolicLink -Source $Source -Destination $Dest
-
-        $Source = Get-ConfigPath -RelativePath "vim/.vsvimrc"
-        $Dest = Join-Path -Path $Env:UserProfile -ChildPath ".vsvimrc"
+        $Source = Get-ConfigPath -RelativePath "nushell/config.nu"
+        $Dest = Join-Path -Path $Env:APPDATA -ChildPath "nushell/config.nu"
         Create-SymbolicLink -Source $Source -Destination $Dest
     }
     powershell = {
@@ -134,13 +135,22 @@ $Configurations = @{
         $Dest = "$(Split-Path $PROFILE -Parent)/LocalConfigs"
         Create-SymbolicLink -Source $Source -Destination $Dest
     }
-    nushell = {
-        $Source = Get-ConfigPath -RelativePath "nushell/env.nu"
-        $Dest = Join-Path -Path $Env:AppData -ChildPath "nushell/env.nu"
+    starship = {
+        $Source = Get-ConfigPath -RelativePath "starship/starship.toml"
+        $Dest = Join-Path -Path $Env:USERPROFILE -ChildPath ".config/starship.toml"
+        Create-SymbolicLink -Source $Source -Destination $Dest
+    }
+    vim = {
+        $Source = Get-ConfigPath -RelativePath "vim/nvim"
+        $Dest = Join-Path -Path $Env:LOCALAPPDATA -ChildPath "nvim"
         Create-SymbolicLink -Source $Source -Destination $Dest
 
-        $Source = Get-ConfigPath -RelativePath "nushell/config.nu"
-        $Dest = Join-Path -Path $Env:AppData -ChildPath "nushell/config.nu"
+        $Source = Get-ConfigPath -RelativePath "vim/.ideavimrc"
+        $Dest = Join-Path -Path $Env:UserProfile -ChildPath ".ideavimrc"
+        Create-SymbolicLink -Source $Source -Destination $Dest
+
+        $Source = Get-ConfigPath -RelativePath "vim/.vsvimrc"
+        $Dest = Join-Path -Path $Env:UserProfile -ChildPath ".vsvimrc"
         Create-SymbolicLink -Source $Source -Destination $Dest
     }
 }
