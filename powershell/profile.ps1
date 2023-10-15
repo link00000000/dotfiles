@@ -186,4 +186,4 @@ function Open-Kate
     C:\"Program Files"\Kate\bin\kate.exe $args
 }
 
-Require-Module -Modules PSFzf, posh-git
+# Require-Module -Modules PSFzf, posh-git
