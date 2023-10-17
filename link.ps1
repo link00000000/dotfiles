@@ -105,11 +105,12 @@ $Configurations = @{
         Copy-Item -Recurse -Path $Source -Destination $Dest
     }
     komorebi = {
-        $KomorebiConfigHome = Join-Path -Path $Env:LOCALAPPDATA -ChildPath "komorebi/config"
-        Set-EnvironmentVariable -Key "KOMOREBI_CONFIG_HOME" -Value $KomorebiConfigHome
+        $Source = Get-ConfigPath -RelativePath "komorebi/komorebi.json"
+        $Dest = Join-Path -Path $Env:USERPROFILE -ChildPath "komorebi.json"
+        Create-SymbolicLink -Source $Source -Destination $Dest
 
-        $Source = Get-ConfigPath -RelativePath "komorebi"
-        $Dest = Join-Path -Path $Env:LOCALAPPDATA -ChildPath "komorebi/config"
+        $Source = Get-ConfigPath -RelativePath "komorebi/applications.yaml"
+        $Dest = Join-Path -Path $Env:USERPROFILE -ChildPath "applications.yaml"
         Create-SymbolicLink -Source $Source -Destination $Dest
     }
     lazygit = {
@@ -151,6 +152,11 @@ $Configurations = @{
 
         $Source = Get-ConfigPath -RelativePath "vim/.vsvimrc"
         $Dest = Join-Path -Path $Env:UserProfile -ChildPath ".vsvimrc"
+        Create-SymbolicLink -Source $Source -Destination $Dest
+    }
+    whkd = {
+        $Source = Get-ConfigPath -RelativePath "whkd/whkdrc"
+        $Dest = Join-Path -Path $Env:USERPROFILE -ChildPath ".config/whkdrc"
         Create-SymbolicLink -Source $Source -Destination $Dest
     }
 }

@@ -1,0 +1,60 @@
+{
+    "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.json",
+    "app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
+    "window_hiding_behaviour": "Cloak",
+    "cross_monitor_move_behaviour": "Insert",
+    "alt_focus_hack": true,
+    "default_workspace_padding": 4,
+    "default_container_padding": 4,
+    "active_window_border": true,
+    "border_width": 4,
+    "border_offset": {
+        "top": -4,
+        "right": -8,
+        "bottom": -8,
+        "left": -4
+    },
+    "active_window_border_colours": {
+        "single": {
+            "r": 206,
+            "g": 206,
+            "b": 206
+        },
+        "stack": {
+            "r": 38,
+            "g": 176,
+            "b": 101
+        },
+        "monocle": {
+            "r": 220,
+            "g": 80,
+            "b": 140
+        }
+    },
+    "monitors": [
+        {
+            "workspaces": [
+                {
+                    "name": "I",
+                    "layout": "BSP"
+                },
+                {
+                    "name": "II",
+                    "layout": "VerticalStack"
+                },
+                {
+                    "name": "III",
+                    "layout": "HorizontalStack"
+                },
+                {
+                    "name": "IV",
+                    "layout": "UltrawideVerticalStack"
+                },
+                {
+                    "name": "V",
+                    "layout": "Rows"
+                }
+            ]
+        }
+    ]
+}
