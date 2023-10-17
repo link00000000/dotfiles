@@ -795,9 +795,11 @@ $env.config = {
     ]
 }
 
-alias vim = nvim
 alias ii = explorer.exe
-alias cat = bat
+alias cat = bat.exe
+
+alias vim = neovide.exe
+
 alias dc = docker-compose
 
 use ~/.cache/starship/init.nu
