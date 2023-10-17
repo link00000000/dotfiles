@@ -60,7 +60,7 @@ M.setup = function ()
     local extended_settings = read_extended_neovide_settings()
     vim.g.neovide_fullscreen = extended_settings['fullscreen']
 
-    vim.o.guifont = 'CaskaydiaCove NF:h11'
+    vim.o.guifont = 'CaskaydiaCove NF:h10.5'
 
     keymap.normal.apply('<F11>', toggle_fullscreen)
 
