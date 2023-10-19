@@ -158,6 +158,10 @@ $Configurations = @{
         $Source = Get-ConfigPath -RelativePath "whkd/whkdrc"
         $Dest = Join-Path -Path $Env:USERPROFILE -ChildPath ".config/whkdrc"
         Create-SymbolicLink -Source $Source -Destination $Dest
+		
+		$Source = Get-ConfigPath -RelativePath "whkd/whkd.lnk"
+        $Dest = Join-Path -Path $Env:APPDATA -ChildPath "Microsoft/Windows/Start Menu/Programs/Startup/whkd.lnk"
+        Create-SymbolicLink -Source $Source -Destination $Dest
     }
 }
 
