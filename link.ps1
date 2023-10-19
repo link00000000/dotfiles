@@ -161,7 +161,7 @@ $Configurations = @{
 		
 		$Source = Get-ConfigPath -RelativePath "whkd/whkd.lnk"
         $Dest = Join-Path -Path $Env:APPDATA -ChildPath "Microsoft/Windows/Start Menu/Programs/Startup/whkd.lnk"
-        Create-SymbolicLink -Source $Source -Destination $Dest
+        Copy-Item -Path $Source -Destination $Dest -Recurse
     }
 }
 
