@@ -9,21 +9,12 @@
 ; <^>! -> AltGr key (not a standard key on keyboard)
 ; * -> Wild card for modifiers
 
+#Requires AutoHotkey v2.0
 #InputLevel 1
-#IfWinActive ahk_exe rider64.exe
 
-^j::
-    Send {DOWN}
-    return
+HotIfWinActive "ahk_exe rider64.exe"
 
-^k::
-    Send {UP}
-    return
-
-^h::
-    Send {LEFT}
-    return
-
-^l::
-    Send {RIGHT}
-    return
+^j:: Send "{DOWN}"
+^k:: Send "{UP}"
+^h:: Send "{LEFT}"
+^l:: Send "{RIGHT}"

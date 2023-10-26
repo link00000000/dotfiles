@@ -23,16 +23,6 @@
 ;    }
 ;    return
 
-#b::
-	Run, ms-settings:bluetooth
-	return
-	
-#j::
-	Run, shell:downloads
-	return
-
-#t::
-    Run, wt.exe, , , pid
-    ;WinWait ahk_pid %pid%
-    ;WinActivate ahk_pid %pid%
-    return
+#b:: Run "ms-settings:bluetooth"
+#j:: Run "shell:downloads"
+#t:: Run "wt.exe"
