@@ -156,10 +156,12 @@ nmap <silent> 9 :tabn 9<CR>
 nmap <silent> 0 :tabn 10<CR>
 
 " Go to next and previous tab
-nmap <C-S-j> <Action>(NextTab)
-nmap <C-S-k> <Action>(PreviousTab)
 nmap <leader>tn <Action>(NextTab)
 nmap <leader>tp <Action>(PreviousTab)
+nmap <C-S-j> <Action>(NextTab)
+nmap <C-S-k> <Action>(PreviousTab)
+nmap <C-S-l> <Action>(NextTab)
+nmap <C-S-h> <Action>(PreviousTab)
 
 " Close current tab instead of pane
 nmap <silent> <C-w>c <Action>(CloseContent)
