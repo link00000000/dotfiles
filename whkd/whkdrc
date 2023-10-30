@@ -1,5 +1,7 @@
 .shell powershell
 
+## Komorebi
+
 # Start / stop komorebi
 control + alt + shift + k   : if (Get-Process komorebi -ErrorAction SilentlyContinue) { taskkill /f /im komorebi.exe } else { komorebic start -c $Env:USERPROFILE\komorebi.json --whkd }
 
@@ -55,3 +57,7 @@ alt + 3                     : komorebic focus-workspace 2
 alt + shift + 1             : komorebic move-to-workspace 0
 alt + shift + 2             : komorebic move-to-workspace 1
 alt + shift + 3             : komorebic move-to-workspace 2
+
+
+## Other
+win + shift + d             : neovide -- -c "Devlog"
