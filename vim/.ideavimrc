@@ -224,8 +224,8 @@ nmap <leader>ff <Action>(ActivateProjectToolWindow)
 
 " Search
 "nmap <C-p> <Action>(SearchEverywhere)
-"nmap <C-p> <Action>(GotoFile)
-nmap <C-p> <Action>(GotoClass)
+nmap <C-p> <Action>(GotoFile)
+"nmap <C-p> <Action>(GotoClass)
 nmap <C-b> <Action>(RecentFiles)
 nmap <C-h> <Action>(SearchEverywhere.PrevTab)
 nmap <C-l> <Action>(SearchEverywhere.NextTab)
