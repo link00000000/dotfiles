@@ -1,3 +1,4 @@
+-- TODO: Use mapx.nvim for key mapping. Is supports keymaps per filetype
 local func = require('utils.func')
 
 local M = {}

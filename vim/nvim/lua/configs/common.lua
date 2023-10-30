@@ -14,6 +14,12 @@ M.commands = function ()
         local buffer_contents = table.concat(vim.api.nvim_buf_get_lines(0, 0, vim.api.nvim_buf_line_count(0), false), "\n")
         loadstring(buffer_contents)()
     end)
+
+    command.create("Devlog",
+        "e ~/Sync/Notes/devlog.txt |" ..
+        "noreabbrev today@ <C-R>=strftime(\"%Y-%m-%d\")<CR> |" ..
+        "nmap <silent> <ESC> :wq<CR>"
+    );
 end
 
 M.keymaps = function ()
