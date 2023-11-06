@@ -798,7 +798,8 @@ $env.config = {
 alias ii = explorer.exe
 alias cat = bat.exe
 
-alias vim = neovide.exe
+# alias vim = neovide.exe
+alias vim = nvim
 
 alias dc = docker-compose
 
