@@ -1,9 +1,9 @@
-.shell powershell
+.shell pwsh
 
 ## Komorebi
 
 # Start / stop komorebi
-control + alt + shift + k   : if (Get-Process komorebi -ErrorAction SilentlyContinue) { taskkill /f /im komorebi.exe } else { komorebic start -c $Env:USERPROFILE\komorebi.json --whkd }
+control + alt + shift + k   : ./scripts/komorebi-start-stop.ps1
 
 # Reload configurations
 control + alt + r           : taskkill /f /im whkd.exe && Start-Process whkd -WindowStyle hidden # if shell is pwsh / powershell
@@ -58,6 +58,13 @@ alt + shift + 1             : komorebic move-to-workspace 0
 alt + shift + 2             : komorebic move-to-workspace 1
 alt + shift + 3             : komorebic move-to-workspace 2
 
+## Rider
+control + j [
+    rider64                 : Import-Module ./scripts/lib/send-keys.psm1; Send-Keys -Keys "{DOWN}"
+]
+control + k [
+    rider64                 : Import-Module ./scripts/lib/send-keys.psm1; Send-Keys -Keys "{UP}"
+]
 
 ## Other
 win + shift + d             : neovide -- -c "Devlog"
