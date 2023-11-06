@@ -9,12 +9,12 @@ local extended_settings_file_path = path.get_nvim_data_dir('neovide-settings-ext
 local persist_restart_session_file_path = path.get_nvim_data_dir('neovide-restart-session.vim')
 
 local function read_extended_neovide_settings ()
-    extended_settings = file.read_json(extended_settings_file_path)
+    local extended_settings = file.read_json(extended_settings_file_path)
 
-    if extended_settings['fullscreen'] == nil then
+    if extended_settings ~= nil and extended_settings['fullscreen'] == nil then
         extended_settings['fullscreen'] = false
     else
-        if type(extended_settings['fullscreen']) ~= 'boolean' then
+        if extended_settings ~= nil and type(extended_settings['fullscreen']) ~= 'boolean' then
             extended_settings['fullscreen'] = false
         end
     end
@@ -58,9 +58,7 @@ end
 
 M.setup = function ()
     local extended_settings = read_extended_neovide_settings()
-    vim.g.neovide_fullscreen = extended_settings['fullscreen']
-
-    vim.o.guifont = 'CaskaydiaCove NF:h10.5'
+    vim.g.neovide_fullscreen = extended_settings ~= nil and extended_settings['fullscreen']
 
     keymap.normal.apply('<F11>', toggle_fullscreen)
 

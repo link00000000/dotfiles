@@ -2,6 +2,10 @@ local M = {}
 
 local function load_common_config ()
 	require('configs.common').setup()
+
+    if vim.fn.has("gui_running") == 1 then
+        require("configs.common-gui").setup()
+    end
 end
 
 local function load_local_config ()
