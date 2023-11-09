@@ -1,17 +1,42 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
-    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "$schema": "https://aka.ms/terminal-profiles-schema-preview",
     "actions": 
     [
         {
-            "command": "toggleFocusMode",
-            "keys": "shift+f11"
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+d"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c"
+        },
+        {
+            "command": "paste"
         }
     ],
+    "centerOnLaunch": true,
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-    "launchMode": "default",
+    "defaultProfile": "{aab79973-318f-43b6-a9bc-b4096493753f}",
+    "launchMode": "focus",
     "newTabMenu": 
     [
         {
@@ -25,127 +50,92 @@
             "colorScheme": "carbonfox",
             "font": 
             {
-                "face": "CaskaydiaCove NF Mono",
-                "size": 10.0
+                "face": "CaskaydiaCove Nerd Font Mono"
             },
-            "intenseTextStyle": "all",
             "opacity": 100,
-            "padding": "0",
-            "useAcrylic": false
+            "useAcrylic": true
         },
         "list": 
         [
             {
-                "commandline": "C:\\Program Files\\PowerShell\\7\\pwsh.exe /nologo",
-                "experimental.retroTerminalEffect": false,
-                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-                "hidden": false,
-                "name": "PowerShell Core",
-                "padding": "8",
-                "source": "Windows.Terminal.PowershellCore",
-                "startingDirectory": "%USERPROFILE%/source/repos"
-            },
-            {
-                "commandline": "powershell.exe /nologo",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": true,
+                "hidden": false,
                 "name": "Windows PowerShell"
             },
             {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": true,
+                "hidden": false,
                 "name": "Command Prompt"
             },
             {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": true,
+                "hidden": false,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+                "altGrAliasing": false,
+                "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo",
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
-                "name": "Ubuntu-20.04",
-                "source": "Windows.Terminal.Wsl"
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
             },
             {
-                "closeOnExit": "always",
-                "commandline": "C:\\tools\\cygwin\\Cygwin.bat",
-                "guid": "{c8b7471b-c1b7-4634-bb2a-8524d738ed6f}",
-                "hidden": true,
-                "icon": "C:\\tools\\Cygwin\\Cygwin.ico",
-                "name": "Cygwin",
-                "startingDirectory": "%USERPROFILE%"
-            },
-            {
-                "commandline": "C:\\Program Files\\nu\\bin\\nu.exe",
-                "guid": "{a515d90a-bea0-5390-a985-18d606228d3f}",
-                "hidden": true,
-                "icon": "C:\\Users\\lcrandall\\OneDrive - Union Home Mortgage\\Pictures\\Icons\\nushell.png",
-                "name": "NuShell",
-                "startingDirectory": "%USERPROFILE%"
-            },
-            {
-                "guid": "{7feb1cb0-ff7d-54b5-8bed-17a0d70d0cfa}",
-                "hidden": true,
-                "name": "Developer Command Prompt for VS 2022 [Preview]",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{e949c418-4d1b-50ef-8de6-9a43d90ceba3}",
-                "hidden": true,
-                "name": "Developer PowerShell for VS 2022 [Preview]",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{bd600788-a976-5484-8772-47715d12b077}",
-                "hidden": true,
-                "name": "Developer Command Prompt for VS 2019",
-                "source": "Windows.Terminal.VisualStudio",
-                "startingDirectory": "C:\\Users\\lcrandall\\Source\\repos"
-            },
-            {
-                "guid": "{058d449d-707a-5066-aa6f-f20bd9c8b210}",
+                "guid": "{9141b9fc-db76-50b8-ae64-490e0b029e02}",
                 "hidden": false,
-                "name": "Developer PowerShell for VS 2019",
-                "source": "Windows.Terminal.VisualStudio",
-                "startingDirectory": "C:\\Users\\lcrandall\\source\\repos"
-            },
-            {
-                "commandline": "C:\\Users\\lcrandall\\AppData\\Local\\Programs\\Python\\Python39\\Scripts\\xonsh.exe",
-                "experimental.retroTerminalEffect": false,
-                "guid": "{6cf696c6-e61b-4e00-829e-93a5f2eba5af}",
-                "hidden": false,
-                "icon": "C:\\Users\\lcrandall\\OneDrive - Union Home Mortgage\\Pictures\\Icons\\xonsh.png",
-                "intenseTextStyle": "all",
-                "name": "Xonsh",
-                "startingDirectory": "%USERPROFILE%"
-            },
-            {
-                "guid": "{31251a89-6d24-5b6c-842f-f04ce93bab5f}",
-                "hidden": true,
                 "name": "Developer Command Prompt for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
-                "guid": "{cbae1ac2-b4dc-57db-80b1-21900f593cbd}",
-                "hidden": true,
+                "guid": "{0a6f276c-b993-5e5c-92ce-7b0307c49416}",
+                "hidden": false,
                 "name": "Developer PowerShell for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
-                "commandline": "C:\\Program Files\\nodejs\\node.exe",
-                "guid": "{fca7368b-d62d-436b-b8d4-09ea881fdf42}",
+                "guid": "{1777cdf0-b2c4-5a63-a204-eb60f349ea7c}",
                 "hidden": false,
-                "icon": "C:\\Users\\lcrandall\\OneDrive - Union Home Mortgage\\Pictures\\Icons\\node.png",
-                "name": "Node",
-                "tabTitle": "Node"
+                "name": "Alpine",
+                "source": "Windows.Terminal.Wsl"
             },
             {
-                "guid": "{e1632c0c-1283-5c59-a683-d3764a304295}",
+                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
+            },
+            {
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": true,
-                "name": "Developer Command Prompt for VS 2017",
+                "name": "Ubuntu",
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "guid": "{aab79973-318f-43b6-a9bc-b4096493753f}",
+                "hidden": false,
+                "name": "Nushell",
+                "source": "nu"
+            },
+            {
+                "guid": "{7278465e-6c31-5a14-b6c5-2116aad2b25d}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2019",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{20bd4bae-59ea-5d23-ad51-b9bc6dba7c7d}",
+                "hidden": true,
+                "name": "Developer PowerShell for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
+                "hidden": true,
+                "name": "Visual Studio Debug Console",
+                "source": "VSDebugConsole"
             }
         ]
     },
@@ -153,7 +143,7 @@
     [
         {
             "background": "#0C0C0C",
-            "black": "#CFCFCF",
+            "black": "#0C0C0C",
             "blue": "#0037DA",
             "brightBlack": "#767676",
             "brightBlue": "#3B78FF",
@@ -336,27 +326,27 @@
             "yellow": "#C4A000"
         },
         {
-            "background": "#282C34",
-            "black": "#1C1F24",
-            "blue": "#51AFEF",
-            "brightBlack": "#5B6268",
-            "brightBlue": "#3071DB",
-            "brightCyan": "#46D9FF",
-            "brightGreen": "#4DB5BD",
-            "brightPurple": "#A9A1E1",
-            "brightRed": "#DA8548",
-            "brightWhite": "#DFDFDF",
-            "brightYellow": "#ECBE7B",
+            "background": "#300A24",
+            "black": "#171421",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#08458F",
+            "brightCyan": "#2C9FB3",
+            "brightGreen": "#26A269",
+            "brightPurple": "#A347BA",
+            "brightRed": "#C01C28",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#A2734C",
             "cursorColor": "#FFFFFF",
-            "cyan": "#5699AF",
-            "foreground": "#BBC2CF",
-            "green": "#98BE65",
-            "name": "Tomorrow Night Bright",
-            "purple": "#C678DD",
-            "red": "#FF6C6B",
-            "selectionBackground": "#BBC2CF",
-            "white": "#F3F6FF",
-            "yellow": "#DA8548"
+            "cyan": "#3A96DD",
+            "foreground": "#FFFFFF",
+            "green": "#26A269",
+            "name": "Ubuntu-ColorScheme",
+            "purple": "#881798",
+            "red": "#C21A23",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#A2734C"
         },
         {
             "background": "#000000",
@@ -405,6 +395,5 @@
             "yellow": "#08BDBA"
         }
     ],
-    "startOnUserLogin": false,
     "themes": []
 }

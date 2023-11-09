@@ -163,6 +163,11 @@ $Configurations = @{
         $Dest = Join-Path -Path $Env:APPDATA -ChildPath "Microsoft/Windows/Start Menu/Programs/Startup/whkd.lnk"
         Copy-Item -Path $Source -Destination $Dest -Recurse
     }
+    windowsterminal = {
+        $Source = Get-ConfigPath -RelativePath "windowsterminal/settings.json"
+        $Dest = Join-Path -Path $Env:LOCALAPPDATA -ChildPath "Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+        Create-SymbolicLink -Source $Source -Destination $Dest
+    }
 }
 
 if ($Configuration -eq "all")
