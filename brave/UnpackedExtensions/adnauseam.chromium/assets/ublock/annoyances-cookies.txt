@@ -1,0 +1,314 @@
+! Title: uBlock filters – Cookie Notices
+! Description: |
+!   Filters optimized for uBlock Origin, to be used with EasyList's
+!   and/or Adguard's "Cookie Notices" list(s)
+! Expires: 7 days
+! Last modified: Wed, 27 Sep 2023 12:05:10 +0000
+! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
+! Homepage: https://github.com/uBlockOrigin/uAssets
+! Forums: https://github.com/uBlockOrigin/uAssets/issues
+
+! https://github.com/orgs/uBlockOrigin/teams/ublock-filters-volunteers/discussions/445
+!#if env_mobile
+*###catapult-cookie-bar
+*###cmplz-cookiebanner-container
+*###cookie-law
+*###cookie-msg
+*###cookie-warning
+*###cookieBox
+*###cookie_alert
+*###cookie_notice
+*###cookiepolicy
+*###cookies-message
+*###gdpr-banner
+*###gdpr-cookie-message
+*###gdpr-cookie-notice
+*###moove_gdpr_cookie_info_bar
+*##.cookie-alert
+*##.cookie_content
+*##.cookie_notice
+*##.sqs-cookie-banner-v2
+~outdoor-broker.de,*###cookie-disclaimer
+~shimadzu.de,*###cookie_policy
+~fok.nl,*###cookieInfo
+~marokko.nl,*##.cookiealert
+~elrow.com,*##.cookies-popup
+~usmall.ru,*##.cookie-notify
+askubuntu.com,mathoverflow.net,serverfault.com,stackapps.com,stackexchange.com,stackoverflow.com,superuser.com##.js-consent-banner
+!#endif
+
+!!! Normal filters
+blaklader.*##div#onetrust-consent-sdk
+
+!!! Trusted scriptlets------------------------------------------------------------
+
+!! Accept mandatory cookies / reject all additional cookies
+www.google.*##+js(trusted-set-cookie, SOCS, CAESHAgBEhJnd3NfMjAyMzA2MTItMF9SQzIaAmZpIAEaBgiAzK6kBg, 1year)
+facebook.com##+js(trusted-set-cookie, datr, __GMZCgwVF5BbyvAtfJojQwg, 1year, , reload, 1)
+instagram.com##+js(trusted-set-cookie, ig_did, 0C826C21-17C3-444A-ABB7-EBABD37214D7, 1year, , reload, 1)
+! Sample page: https://www.bloomberg.com/live/europe
+bloomberg.com##+js(trusted-set-cookie, euconsent-v2, CPtgasAPtgasAAGABCENDECgAAAAAAAAAApAAAAAAAAA.YAAAAAAAAAAA, 1year)
+bloomberg.co.jp,bloomberg.com##+js(trusted-set-cookie, consentUUID, dde2fbcb-0722-417a-92be-67407ba369de_20, 1year)
+! Sample page: https://www.fandom.com/articles/hgt-wow-wrath-of-the-lich-king
+fandom.com##+js(trusted-set-cookie, euconsent-v2, CPt3fQAPt3fQACNAFAENDLCgAAAAAAAAACiQAAAOCgDAB-AIsAZ8A6QDBAHBAAAA.YAAAAAAAAAAA, 1year)
+fandom.com##+js(trusted-set-cookie, tracking-opt-in-status, rejected, 1year)
+fandom.com##+js(trusted-set-cookie, addtl_consent, 1~, 1year)
+! Sample page: https://www.dailymotion.com/video/x8lzxby
+dailymotion.com##+js(trusted-set-cookie, dm-euconsent-v2, CPt6yMAPt6yMABpAGAENDECgAAAAAH_AAAqIAAAS3AJMNW4gC7MocGbQMIoEQIwrCQigUAEFAMLRAQAODgp2VgE-sIkAKAUARgRAhwBRkQCAAASAJCIAJAiwQAAAiAQAAgAQCIQAMDAIKACwEAgABAdAxRCgAECQgSIiIhTAgKgSCAlsqEEoLpDTCAKssAKARGwUACIJARWAAICwcAwRICViwQJMQbRAAMAKAUSoVqKT00BCxmQAAAAA, 1year)
+! Sample page: https://www.express.co.uk/celebrity-news/1553859/meat-loaf-how-did-he-die-covid-death-cause-age-health-bat-out-of-hell-news-latest-update
+express.co.uk##+js(set, flagTcfLoaded, true)
+express.co.uk##+js(trusted-set-local-storage-item, CMPList, $currentDate$)
+! https://www.standard.co.uk/news/uk/brext-passport-rules-uk-woman-hauled-off-flight-tenerife-jet2-b974403.html video
+standard.co.uk##+js(trusted-set-cookie, consentUUID, 9f883906-c5ae-4d90-80a1-6623a4211ad4_21, 1year)
+! https://www.independent.co.uk/news/world/americas/inside-titan-sub-titanic-implosion-b2364884.html video
+! https://www.reddit.com/r/uBlockOrigin/comments/16893ks/
+independent.co.uk##+js(trusted-set-cookie, consentUUID, 629d4124-fa7b-43b4-8158-d596cef1004d_23)
+! https://www.theguardian.com/sport/video/2023/jun/25/carlos-alcaraz-beats-alex-de-minaur-to-win-first-grass-court-trophy-at-queens-video video
+theguardian.com##+js(trusted-set-cookie, consentUUID, f0aaedd0-2a07-443a-b90f-055c553b5160_21, 1year)
+! https://www.bbc.com/news/av/world-us-canada-58823812 video
+bbc.com##+js(trusted-set-cookie, consentUUID, 14ec7082-be8b-4b4c-a5b4-668972e0e04b_21, 1year)
+! https://video.lefigaro.fr/figaro/video/les-gestes-damour-prennent-plusieurs-formes-dans-une-video-humoristique-lukraine-demande-plus-de-caesar-a-la-france/
+lefigaro.fr##+js(trusted-set-cookie, fig_save_consent, iTTPgpSWqAGGcd3vV88zNDbHsABxE1hB, 1year)
+! https://www.filmweb.pl/video/Zwiastun/Indiana+Jones+i+artefakt+przeznaczenia+Zwiastun+nr+2+polskie+napisy-64884
+filmweb.pl##+js(trusted-set-cookie, euconsent-v2, CPubvkAPubvkAAHABBENDMCgAAAAAAAAAB5YAAAAAAAA.YAAAAAAAAAAA, 1year)
+! https://www.chrono24.com/magazine/
+chrono24.*##+js(trusted-set-cookie, c24-consent, AAAAH0Eq, 1year, , reload, 1)
+! https://github.com/uBlockOrigin/uAssets/issues/18865 - Terms of service
+wetransfer.com##+js(trusted-set-cookie, wt_tandc, 20190527%3A1)
+! https://www.thetrainline.com/
+thetrainline.com##+js(trusted-set-cookie, OptanonConsent, groups=C0001%3A1%2CC0002%3A0%2CC0008%3A0, 1year)
+! https://console.scaleway.com/login
+scaleway.com##+js(trusted-set-cookie, _scw_rgpd_hash, 1676567096, 1year)
+! https://all3dp.com/
+all3dp.com##+js(trusted-set-cookie, PUR_SUBSCRIPTION, PREMIUM)
+! If necessary aren't accepted, choosing a favorite store won't work
+lidl.*##+js(trusted-set-cookie, CookieConsent, {necessary:true%2Cpreferences:false%2Cstatistics:false%2Cmarketing:false}, 1year)
+! https://github.com/DandelionSprout/adfilt/discussions/779#discussioncomment-6679609
+threads.net##+js(trusted-set-cookie, cb, 1_1970_01_01_2-3, 1year, , reload, 1)
+! https://github.com/DandelionSprout/adfilt/discussions/779#discussioncomment-6679609
+messenger.com##+js(trusted-set-cookie, datr, mWTaZBxAoW8lFl0v3EpECGYi, 1year, , reload, 1)
+! https://www.trading212.com/
+trading212.com##+js(trusted-set-cookie, COOKIES_CONSENT, essential)
+! https://www.myscript.com/
+myscript.com##+js(trusted-set-cookie, myscript, {%22acceptance%22:true%2C%22analytics%22:false})
+! https://www.odido.nl/
+odido.nl##+js(trusted-set-cookie, tm_cookie_setting, Analytics, , , reload, 1)
+! https://www.bing.com/
+bing.com##+js(trusted-set-cookie, BCP, AD=0&AL=0&SM=0)
+! https://procvetok.ua/
+procvetok.ua##+js(trusted-set-cookie, cookies, {"system":1\,"target":0})
+! https://www.stwater.co.uk/in-my-area/check-my-area/
+stwater.co.uk##+js(trusted-set-cookie, CookieControl, '{"interactedWith":true\,"acceptedCategories":["essentials"]}')
+! https://www.boogschietshop.nl/
+boogschietshop.nl##+js(trusted-set-cookie, cookie_preference, functional)
+! https://www.carvertical.com/
+carvertical.com##+js(trusted-set-local-storage-item, cv:cookiesAllowed, '{"mandatoryCookies":true,"statsCookies":false,"marketingCookies":false}')
+! https://www.x-kom.pl/
+x-kom.pl##+js(trusted-set-cookie, trackingPermissionConsentsValue, %7B%22cookies_analytics%22%3Afalse%2C%22cookies_personalization%22%3Afalse%2C%22cookies_advertisement%22%3Afalse%7D)
+! https://www.easyfind.ch/
+easyfind.ch##+js(set-cookie, allow-marketing, false)
+easyfind.ch##+js(set-cookie, allow-analytics, false)
+easyfind.ch##+js(trusted-set-local-storage-item, elementor, {"__expiration":{}\,"pageViews":1\,"popup_1276_times":1})
+
+!! Needs additional cookies
+
+! Closing Optanon Alert Box
+gamespot.com,mtvuutiset.fi,pushsquare.com,thejournal.ie,thetrainline.com,vkmag.com,zdnet.com##+js(trusted-set-cookie, OptanonAlertBoxClosed, $currentDate$, 1year)
+
+! Mandatory + functional
+! https://www.evaair.com/en-de/index.html signup
+evaair.com##+js(trusted-set-cookie, _EVAcookieaccept, Y, 1year)
+evaair.com##+js(trusted-set-cookie, _EVAGDPRfunctional, Y, 1year)
+
+! Mandatory + functional
+! https://www.vkmag.com/magazine/hoe-het-is-om-opgesloten-te-zijn-in-de-titanic-duikboot-die-vermist-is video
+vkmag.com##+js(trusted-set-cookie, OptanonConsent, groups=C0004%3A0%2CC0003%3A1%2CC0002%3A0%2CC0001%3A1%2CSTACK42%3A0, 1year)
+vkmag.com##+js(trusted-set-cookie, eupubconsent-v2, CPt6LrpPt6LrpAcABBENDKCgAAAAAAAAAAYgGBtX_T5eb2vj-3ZcN_tkaYwP55y3o2wzhhaIke8NwIeH7BoGJ2MwvBV4JiACGBAkkiKBAQVlHGBcCQAAgIgRiSKMYk2MjzNKJLJAilMbO0NYCD9mnkHT2ZCY70-uO__zvneAAAAYJABAXmKgAgLzGQAQF5joAIC8yUAEBeZSACAvMAAA.YAAAAAAAAAAA, 1year, , reload, 1)
+
+! Mandatory, functional + social media (embedded content)
+! https://www.mtvuutiset.fi/artikkeli/hallitusohjelma-kirvoittaa-epauskoisia-parahduksia-ja-kiitosta-lue-marinin-ja-monen-muun-kommentit-linjauksiin/8722768
+mtvuutiset.fi##+js(trusted-set-cookie, OptanonConsent, groups=1%3A1%2C2%3A0%2C3%3A1%2C4%3A0%2C5%3A1%2CBG57%3A0%2CBG58%3A0%2CBG59%3A0, 1year)
+
+! https://github.com/finnish-easylist-addition/finnish-easylist-addition/discussions/416#discussioncomment-6209972
+arvopaperi.fi,iltalehti.fi,kauppalehti.fi,mediuutiset.fi,mikrobitti.fi,talouselama.fi,tekniikkatalous.fi,tivi.fi,uusisuomi.fi##+js(trusted-set-cookie, TcString, CPtgasAPtgasABUAMAFIDICgAP_AAAAAAApAAAAMEgLgALAAqABkADwAIAAZAA0AB8AEQAJgATwA5gB-AEIANEAbIBFgC0gGKAM-AmQBeYDBACQkBAABYAFQAMgAeABAADIAGgARAAmABPADmAH4AQgA2QDFALzDQAgBsgFpEQAQBsioAYATAC0gLzGQAgAmALzHQFAAFgAVAAyACAAGQANAAfABEACYAE8AOYAfgBogDZAIsAWkAxQB1AEyALzIQBgAFgAZACYAWkAxQB1CUAkABYAGQAiABMAGyAWkAxQB1AF5lICAACwAKgAZABAADIAGgARAAmABPADmAH4AaIA2QCLAGKAXmAAA.YAAAAAAAAIAA, 1year)
+arvopaperi.fi,iltalehti.fi,kauppalehti.fi,mediuutiset.fi,mikrobitti.fi,talouselama.fi,tekniikkatalous.fi,tivi.fi,uusisuomi.fi##+js(trusted-set-cookie, gravitoData, {"NonTCFVendors":[{"id":1\,"name":"Facebook"\,"consent":true}\,{"id":3\,"name":"Google"\,"consent":true}\,{"id":9\,"name":"Twitter"\,"consent":true}]}, 1year)
+
+! Mandatory, performance + functional
+! https://www.gamespot.com/videos/firearms-expert-reacts-to-crysis-franchise-guns/2300-6461700/
+gamespot.com##+js(trusted-set-cookie, OptanonConsent, groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A0%2CC0005%3A0, 1year)
+
+! google maps embed
+asialadies.de,avladies.de,badeladies.de,behaarteladies.de,bizarrladies.de,busenladies.de,deutscheladies.de,devoteladies.de,dominanteladies.de,erfahreneladies.de,escorts24.de,exklusivladies.de,fkk24.de,grosseladies.de,hobbyladies.de,jungeladies.de,kollegin.de,kussladies.de,ladies.de,latinaladies.de,massierendeladies.de,mollyladies.de,nsladies.de,nymphomaneladies.de,orientladies.de,osteuropaladies.de,piercingladies.de,rasierteladies.de,schokoladies.de,tattooladies.de,tsladies.de,zaertlicheladies.de,zierlicheladies.de##+js(trusted-set-cookie, ladies-cookies-overlay, %7B%22cookie-category-essential%22%3Atrue%2C%22cookie-category-stats%22%3Afalse%2C%22cookie-category-map_services%22%3Atrue%7D, , , reload, 1)
+
+! https://www.1a-finanzmarkt.de/ user preferences and external embed
+1a-finanzmarkt.de,1a-immobilienmarkt.de,1a-reisemarkt.de,1a-singleboerse.de,1a-stellenmarkt.de##+js(trusted-set-cookie, opt_out, analyse\,werbe)
+
+! https://www.gameinformer.com/b/news/archive/2015/08/27/star-wars-episode-vii-instagram-clip-shows-precious-seconds-of-new-footage.aspx
+! Twitter embed - Target cookie
+gameinformer.com#@##onetrust-consent-sdk
+gameinformer.com###onetrust-consent-sdk:style(visibility: collapse !important;)
+gameinformer.com###onetrust-banner-sdk
+gameinformer.com##+js(trusted-set-cookie, OptanonConsent, groups=C0001%3A1%2CC0003%3A1%2CSPD_BG%3A1%2CC0002%3A1%2CC0004%3A1%2CC0005%3A1, , , reload, 1)
+
+! Mandatory + embedded - https://christianconcern.com/news/abortion-figures-soar-to-new-all-time-highs/
+christianconcern.com##+js(trusted-set-cookie, STYXKEY_your_privacy_settings, %7B%22strict%22%3A%221%22%2C%22thirdparty%22%3A%221%22%2C%22advanced%22%3A%220%22%7D, 1year, , reload, 1)
+
+! https://github.com/finnish-easylist-addition/finnish-easylist-addition/discussions/416#discussioncomment-6246417
+aamulehti.fi,etlehti.fi,gloria.fi,hs.fi,hyvaterveys.fi,is.fi,jamsanseutu.fi,janakkalansanomat.fi,kankaanpaanseutu.fi,kmvlehti.fi,kodinkuvalehti.fi,merikarvialehti.fi,nokianuutiset.fi,rannikkoseutu.fi,satakunnankansa.fi,soppa365.fi,suurkeuruu.fi,sydansatakunta.fi,tyrvaansanomat.fi,valkeakoskensanomat.fi,vauva.fi##+js(trusted-set-cookie, consentUUID, 5937071e-5211-4df8-b4f9-89a0d5919eae_20, 1year)
+aamulehti.fi,etlehti.fi,gloria.fi,hs.fi,hyvaterveys.fi,is.fi,jamsanseutu.fi,janakkalansanomat.fi,kankaanpaanseutu.fi,kmvlehti.fi,kodinkuvalehti.fi,merikarvialehti.fi,nokianuutiset.fi,rannikkoseutu.fi,satakunnankansa.fi,soppa365.fi,suurkeuruu.fi,sydansatakunta.fi,tyrvaansanomat.fi,valkeakoskensanomat.fi,vauva.fi##+js(trusted-set-local-storage-item, cookieConsent, {"spem":1})
+
+! Accepting all the cookies is needed if using the page for free
+eurogamer.de##+js(trusted-set-cookie, consentUUID, 8fde91ba-0aba-476f-af30-e7427e3c246d_21)
+
+! https://www.wired.com/story/gadget-lab-podcast-573/
+! https://www.vogue.co.uk/arts-and-lifestyle/article/grammy-awards-2023-best-social-reactions
+! Embedded content - Functional + Targeting cookie
+vogue.co.uk,wired.com##+js(trusted-set-cookie, OptanonConsent, groups=C0001%3A1%2CC0009%3A0%2CC0002%3A0%2CC0003%3A1%2CC0004%3A1, 1year)
+
+! https://www.jekabpils.lv/en/gallery/myrhorod-ukraine#2144
+! Share button - Social media cookie
+jekabpils.lv##+js(trusted-set-cookie, allowCookies, '{"uvc":true,"__cfduid":true}')
+jekabpils.lv###cookieConsent
+
+! Bank sites - Personalization cookie
+aachener-bank.de,bernhauser-bank.de,bodenseebank.de,bremischevb.de,cvw-privatbank-ag.de,dervolksbanker.de,gladbacher-bank.de,meine-rvb.de,meinebank.de,muenchner-bank.de,nordthueringer-volksbank.de,owl-immobilien.de,raiba-gr.de,raiba-ndwa.de,raiba-westhausen.de,rb-berghuelen.de,rb-denzlingen-sexau.de,rb-eching.de,rb-hardt-bruhrain.de,rb-oberaudorf.de,rb-sondelfingen.de,rv-banken.de,saechsischer-gewinnsparverein.de,skbwitten.de,sparda-bank-hamburg.de,sparda-sw.de,vb-lauterecken.de,vb-mittelhessen.de,vb-rb.de,vbleos.de,vbsuedemsland.de,voba-deisslingen.de,voba-moeckmuehl.de,volksbank-aktiv.de,volksbank-backnang.de,volksbank-daaden.de,volksbank-dh.de,volksbank-freiburg.de,volksbank-international.de,volksbank-kirnau.de,volksbank-mittleres-erzgebirge.de,volksbank-remseck.de,volksbank-thueringen-mitte.de,volksbank-trossingen.de,volksbankeg.de,vr-nopf.cz,vrb-spangenberg.de,vrbankeg.de,vrbankimmobilien.de,vvr-bank.de,vvrbank-krp.de##+js(trusted-set-cookie, cookieConsent, %5B%7B%22name%22%3A%22essenziell%22%2C%22value%22%3A%22on%22%7D%2C%7B%22name%22%3A%22komfort%22%2C%22value%22%3A%22on%22%7D%2C%7B%22name%22%3A%22marketing%22%2C%22value%22%3A%22off%22%7D%2C%7B%22name%22%3A%22statistik%22%2C%22value%22%3A%22off%22%7D%2C%7B%22name%22%3A%22speichern%22%2C%22value%22%3A%22on%22%7D%5D, 1year)
+
+! Mandatory, functional + social
+! https://www.zdnet.com/article/new-wi-fi-attack-cracks-wpawpa2-passwords-with-ease/ video won't play
+! https://www.zdnet.com/article/samsung-blu-ray-players-are-rebooting-in-a-loop-and-nobody-knows-why/ - partial loading tweets
+zdnet.com##+js(trusted-set-cookie, OptanonConsent, groups=C0001%3A1%2CC0002%3A0%2CC0003%3A1%2CC0004%3A0%2CC0005%3A1, 1year)
+
+! https://news.sky.com/story/elon-musk-says-his-dog-is-now-twitters-ceo-as-companys-name-gets-quietly-changed-12855604
+! Embed contents - Custom purposes cookies
+||privacy-mgmt.com^$domain=news.sky.com
+news.sky.com##+js(trusted-set-cookie, consents, :4:6:7:8:9:10:11:12:13:19:)
+
+! Mandatory, statistical + functional
+! Content of the page won't load, and customer assistant tool won't work
+lippu.fi##+js(trusted-set-cookie, __cmpcpc, __1_2__)
+lippu.fi##+js(trusted-set-cookie, __cmpcvc, __c24599_s94_c24102_s40_s1052_s65_c24103_s23_c9953_c24290_c24098_s26_s2612_s135_s1104_s1409_s905_s24_c24202_c22143_c21373_s77_s30_U__)
+lippu.fi##+js(trusted-set-cookie, __cmpconsentx40263, BPuKNGaPuKNGaAfEHBFIABAAAAA_mABAfyA)
+
+! https://www.radiox.co.uk/festivals/parklife-2023-headliners-line-up-tickets-stage-times/ 
+! Audio player - Remixd cookie
+||privacy-mgmt.com^$domain=radiox.co.uk
+radiox.co.uk##+js(trusted-set, dataLayer, '{"value":[{"signals":["remixd"]},{"event":"remixd_gtm_fire"}]}')
+
+! Mandatory + Settings - Content can't be clicked, if forced selectable the language selector still glitches
+! https://starcart.com/fi-FI/building-renovation-fireplaces/Kevyttakka-Panadero-Harmonie-Musta-89-x-80-cm/5ab66aad-0697-4f83-ac9c-8f8d1f3f2ae9/
+starcart.com##+js(trusted-set-cookie, consent-levels, 1-1_2-1_3-0_4-0, 1year)
+
+! Mandatory, Functional + Targeting
+! https://sydan.fi/etelasuomi/sydandigi/osa-1/3-sydanterveyssivustot/ (video)
+sydan.fi##+js(trusted-set-cookie, OptanonConsent, groups=C0001%3A1%2CC0002%3A0%2CC0003%3A1%2CC0004%3A1, 1year)
+
+! https://www.thejournal.ie/science-conference-de-extinction-840062-Mar2013/
+! Video - Targeting cookie
+thejournal.ie##+js(trusted-set-cookie, OptanonConsent, groups=C0001%3A1%2CC0002%3A0%2CC0003%3A0%2CC0004%3A1)
+
+! https://github.com/uBlockOrigin/uAssets/issues/18842
+! Embed content - Technical + Audience analysis + Content personalization cookie
+rfi.fr##+js(trusted-set-cookie, euconsent-v2, CPubvkAPubvkAAHABBENDMCgAM_AAE7AAAqII7FF_X7eTSPheWp_Y_tUOY0ewVQ_4-AhBgCJA4gBCRpAsJQEkGAIIEDAIAAKAAYEIGJBAAElAAFABEAAYIEBACHMAAAAIRAAIDKAAAAAAgBACABYEwAAAAIAgEBUABUAiAIAABogwMBAEAAgBEAAAAogAIBBAAAAACAAwAAQAAAIAggAAAAAAAAEAAAEAAAAEAAABJKADAAEExQ0AGAAIJiioAMAAQTFKQAYAAgmKOgAwABBMUhABgACCYoSADAAEExREAGAAIJijIAMAAQTFAAA.efgACdgAAAAA, 1year, , reload, 1)
+rfi.fr##+js(trusted-set-local-storage-item, didomi_token, eyJ1c2VyX2lkIjoiIiwiY3JlYXRlZCI6IjIwMjMtMDctMDVUMTY6MTI6MzcuMjA5WiIsInVwZGF0ZWQiOiIyMDIzLTA3LTA1VDE2OjEyOjM3LjIwOVoiLCJ2ZW5kb3JzIjp7ImVuYWJsZWQiOlsidHdpdHRlciIsImdvb2dsZSIsImM6YmF0Y2giLCJjOm5vbmxpIiwiYzp0eXBlZm9ybSJdfSwidmVyc2lvbiI6MiwiYWMiOiIifQ==)
+
+! Mandatory + Functional - chat doesn't work
+cmore.fi##+js(trusted-set-cookie, OptanonConsent, groups=1%3A1%2C2%3A0%2C3%3A1%2C4%3A0%2C5%3A0%2CBG40%3A0%2CBG41%3A0%2CBG42%3A0, 1year)
+
+! https://www.europe1.fr/direct-video
+! Video - Content cookie
+europe1.fr##+js(trusted-set-cookie, euconsent-v2, CPuy0IAPuy0IAAHABBENDNCgAAAAAAAAAAAAJNFB_G5cSWNhOHJvY9tUaQ0HwFR4o6AgDgCZA4wBCRIAMIwF0GAAIEBAIAgAAAAEAAJAAAAEAAHAAAAAAIEBASCIAEAAIBAAICAAAAABQgAACABJGwAAEAAAAEQEABQAgAIAQBuAQEAAAAAAAAAAAAgBAABBAAAAAAAgAAAIAAAAAAgAEAAAAAAAAAAAABAAEAAAAAEAAABIaADAAEExRUAGAAIJihIAMAAQTFEQAYAAgmKMgAwABBMUdABgACCYpCADAAEExSUAGAAIJilIAMAAQTFA.YAAAAAAAAAAA)
+
+! https://github.com/easylist/easylist/issues/16760
+teket.jp##+js(trusted-set-cookie, _ul_cookie_consent, allow)
+
+! https://www.etsy.com/ - Site customisation cookie
+etsy.com##+js(trusted-set-cookie, p, eyJnZHByX3RwIjoyLCJnZHByX3AiOjF9, 1year, , reload, 1)
+
+! https://github.com/uBlockOrigin/uAssets/issues/19119
+technopat.net##+js(trusted-set-cookie, cmplz_consented_services, {"youtube":true})
+technopat.net##+js(trusted-set-cookie, xf_consent, %5B%22_third_party%22%5D, , , reload, 1)
+
+! https://github.com/easylist/easylist/pull/16852 - Functional cookie
+just-eat.*,justeat.it,lieferando.*,pyszne.pl,takeaway.com,thuisbezorgd.nl##+js(trusted-set-cookie, cookieConsent, functional, 1year, , reload, 1)
+just-eat.*,justeat.it,lieferando.*,pyszne.pl,takeaway.com,thuisbezorgd.nl##+js(trusted-set-cookie, je-cookieConsent, necessary, 1year)
+just-eat.*,justeat.it,lieferando.*,pyszne.pl,takeaway.com,thuisbezorgd.nl##+js(trusted-set-cookie, customerCookieConsent, %5B%7B%22consentTypeId%22%3A103%2C%22consentTypeName%22%3A%22necessary%22%2C%22isAccepted%22%3Atrue%7D%2C%7B%22consentTypeId%22%3A104%2C%22consentTypeName%22%3A%22functional%22%2C%22isAccepted%22%3Atrue%7D%2C%7B%22consentTypeId%22%3A105%2C%22consentTypeName%22%3A%22analytical%22%2C%22isAccepted%22%3Afalse%7D%2C%7B%22consentTypeId%22%3A106%2C%22consentTypeName%22%3A%22personalized%22%2C%22isAccepted%22%3Afalse%7D%5D, 1year)
+
+! https://www.telekom.com/ - third-party services cookie
+telekom.com##+js(trusted-set-cookie, cookie-optin, {%22version%22:1%2C%22settings%22:{%22required%22:true%2C%22analytical%22:false%2C%22marketing%22:false%2C%22thirdparty%22:true}}, 1year)
+
+! https://hemmersbach.com/career/13972 - Performance, functional cookies
+hemmersbach.com##+js(trusted-set-cookie, cookiefirst-consent, %7B%22cookiefirst%22%3Atrue%2C%22google_analytics%22%3Atrue%2C%22google_tag_manager%22%3Atrue%2C%22linkedin_ads%22%3Afalse%2C%22hubspot%22%3Atrue%2C%22twitter%22%3Afalse%2C%22active-campaign%22%3Atrue%2C%22email-marketing%22%3Atrue%2C%22bing_ads%22%3Afalse%2C%22type%22%3A%22granular%22%7D)
+
+! https://www.vg247.com/podcast-ep62-shameless-ripoff - Embed contents, custom purposes cookie
+eurogamer.nl,eurogamer.es,eurogamer.cz,eurogamer.net,eurogamer.pl,eurogamer.pt,rockpapershotgun.com,vg247.com##+js(trusted-set-cookie, consentUUID, 1e01fddf-ec1b-482a-aa3b-b82bde080398_22)
+eurogamer.nl,eurogamer.es,eurogamer.cz,eurogamer.net,eurogamer.pl,eurogamer.pt,rockpapershotgun.com,vg247.com##+js(trusted-set-cookie, euconsent-v2, CPvxb8APvxb8AAGABBENDPCgAIAAAH_AAAwIJLNV_G__bW9jcfr_aft0eY1P9_qz7uQjDBXNk-4F3L_WvLwX52E5NF16tqoKmRQEs1JBIUNlGMHUBUmwaoEFpyHsakycoTJKJ6BEkHMRE2dYGE5qmRpjeQKY5_p9d1bx2B-o_Nv819j2z81Xj3dZV-2k0PCdU5-9BfmtRRfK89IKdtbUv4p8_1drkm_WV_3f7tdz-DBJUAgwEQCAAgAAAAgAAAhAABAAJACAAAAAAAFAAAC4KAEIWARAggAAoRABCAACEEBABAAAAAAAkAAAEAJBAAAAABAACAAAAAAAQEAAIAJAQAAAAAkBFMIABQKAAIAACAMAEoAIIAQggACAskMAIAqigAAAECBQAIgABAYAAALAwDBAgJUBAAEEAIAAAQAoBRKBCIBHQDwkFEABAAC4AKAAqABkADkAHgAgABgADKAGgAagA8gCGAIgARwAmABPACqAGYAN4AcwA9ACEAENAIgAiQBHACWAE0AKUAYAAw4BlAGWANmAdwB3gD2AHwAPsAfsA_wEAAIGARQAjABGoCSgJMAUEAp4BUQCrgFzALsAYoA0QBrADaAG4AOIAh0BIgCdgFDgKPAUiApoBbAC5AGGwMjAyQBlwDOQGkQNXA1kBuoDkwHLgPHAe0A-kCDAEIYIWgheBDkCHoEPwJFBQAQAGwF0BAAQBNAFuBoBoAywCAAEYAKeAWgAuwBrADqgIdAXIAyMBnIEihEAwAZYBAACMAFPALsAawA6oCHQFyAMjAZyBIoVAJACGAMsAtABdgFyAMjAZyBC8CRQyAQAEMAZYBdgFyAMjAZyBC8CRRCBoAAsACgAGQAYgA1ACGAEwAKoAXAAxABvAD0AI4AUoAwABlQDuAO8Af4BFACSgFBAKeAVEAq4BaAC5gF2AMUAbQA5wB1AEqAKaAVYAsUBZQC0QFwALkAZGAzkBogDgAHjgPpAgwBCgCFoELwIdAQ9AkUOgwgALgAoACoAGQAOQAfACCAGAAZQA0ADUAHkAQwBEACOAEwAJ4AVYAuAC6AGIAMwAbwA5gB6AENAIgAiQBLACaAFGAKUAYAAwwBlADRAGyAO8AewA-wB-gD_AIGARQAjABHYCSgJMAS4AoIBTwCogFXALEAWgAuYBdoC8gL0AYoA2gBuADiAHOAOoAh0BF4CRAEqAJ2AUOAo8BTQCrAFigLKAWwAuABcgC7QGGgMegZGBkgDKgGWAMuAZmAzkBogDSAGsAN1AcWA5MBy4DxwHtAPpAfWBAECDAELQIXwQ5BDoCHoEihwAEBbhKBoAAgABYAFAAMgAcAA_ADAAMQAagA8ACIAEcAJgAVQAuABiAENAIgAiQBHACjAGAANkAd4BTwCogFXALQAXMAuwBigDqAIdARMAi8BIgCjwFigLKAWxAyMDJAGcgNIAawA4AB7QD6QIAgQYAhCBC8CHoEigJKkgAIC3CkEsABcAFAAVAAyAByAD4AQQAwADGAGgAagA8gCGAIgARwAmABPACkAFUAMQAZgA5gCGgEQARIAowBSgDAAGUANEAbIA7wB-gEYAI6ASUAoIBUQCrgFzALsAXkAxQBtADcAHUAPaAh0BEwCLwEiAJ2AUOAqwBX4CxQFsALgAXIAu0BhsDIwMkAZYAy4BnIDSIGsAayA3UByYDlwHigPHAe0A-kCDAEIQIWgQvghyCHQEPQJFFQAQBIgEylAAIC3AAAA.YAAAAAAAAAAA)
+
+! https://www.reddit.com/r/uBlockOrigin/comments/15pftux/request_for_a_fix_so_the_embedded_youtube_video/
+! Functional cookie
+pushsquare.com##+js(trusted-set-cookie, OptanonConsent, groups=C0001%3A1%2CC0002%3A0%2CC0003%3A1%2CC0004%3A0%2CSTACK42%3A0, 1year)
+pushsquare.com##+js(trusted-set-cookie, eupubconsent-v2, CPwbUmgPwbUmgAcABBENDSCgAAAAAH_AAChQJnNf_X__b2_r-_7_f_t0eY1P9_7__-0zjhfdl-8N3f_X_L8X52M5vF36tqoKuR4ku3bBIUdlHPHcTVmw6okVryPsbk2cr7NKJ7PEmlMbM2dYGH9_n9_z-ZKY7___f__z_v-v___9____7-3f3__5__--__e_V_-9zfn9_____9vP___9v-_9_3________3_r9_7_D_-f_87_XWxBQAJMNS4gC7IkZCbaMIoEQIwrCQqgUAFEAkLRAYQurgp2VwE-sBkAIEUATwQAhgBRkACAAASAJCIAJAjgQCAQCAQAAgAVCAQAMbAAPAC0EAgAFAdCxTigCUCwgyISIhTAhKkSCgnsqEEoP1BXCEMssCKDR_xUICNZAxWBEJCxehwBICXiSQPdUb4ACEAKAUUoViKT8wBDgmbLVXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA.YAAAD_gAAAAA, 1year)
+
+! https://www.reddit.com/r/uBlockOrigin/comments/15pt2zz/how_to_get_rid_of_this_cookiebot_crap_it_pops_up/
+! Embedded content - Statistics + Marketing cookies 
+bt.dk##+js(trusted-set-cookie, CookieConsent, {necessary:true%2Cpreferences:false%2Cstatistics:true%2Cmarketing:true}, 1year)
+
+! https://github.com/uBlockOrigin/uBlock-issues/issues/2777 - Functional cookie
+dlalakierni.pl##+js(trusted-set-cookie, AtomStore[COOKIES_ACCEPTED], 1, 1year, , reload, 1)
+dlalakierni.pl##+js(trusted-set-cookie, AtomStore[FUNCTIONAL_COOKIES_ACCEPTED], 1, 1year)
+dlalakierni.pl##+js(trusted-set-cookie, AtomStore[MARKETING_COOKIES_ACCEPTED], 0, 1year)
+dlalakierni.pl##.header-cookie-message
+
+! https://github.com/AdguardTeam/AdguardFilters/commit/352c1f1e861bb83ad45935d6b419ba0df0d1c20c
+fish.shimano.com##+js(set-cookie, cookiePrefAnalytics, 0)
+fish.shimano.com##+js(set-cookie, cookiePrefMarketing, 0)
+fish.shimano.com##+js(set-cookie, cookiePrefThirdPartyApplications, 0)
+
+! https://officiallondontheatre.com/ - Functional cookie
+officiallondontheatre.com##+js(trusted-set-cookie, solt_cookie_preferences, functional%2Cperformance, 1year)
+
+! https://app.solit-kapital.de/rates - Functional cookie
+app.solit-kapital.de##+js(trusted-set-local-storage-item, cookieSettings, {"technical":true\,"bugsnag":false\,"adjust":false})
+
+! https://constantin.film/ - Functional cookie
+constantin.film##+js(trusted-set-cookie, cookie-layer-settings, {"id":"b2575cbc6f69c6ff02140366ef7473e9"\,"options":[{"analytics-is-enabled":false}\,{"komfort-is-enabled":false}\,{"personalisierung-is-enabled":false}\,{"external-data-is-enabled":true}\,{"cf-ga-opt-in":false}\,{"cf-fb-opt-in":false}\,{"cf-go-opt-in":false}\,{"cf-sn-opt-in":false}\,{"cf-am-opt-in":false}\,{"cf-pi-opt-in":false}\,{"cf-tw-opt-in":false}\,{"cf-li-opt-in":false}\,{"cf-te-opt-in":false}\,{"cf-ti-opt-in":false}\,{"cf-ttd-opt-in":false}\,{"external-data-youtube-is-enabled":true}\,{"external-data-spotify-is-enabled":true}\,{"external-data-googlemaps-is-enabled":true}\,{"external-data-universal-is-enabled":true}]}, 1year)
+constantin.film##+js(set-cookie, external-data-googlemaps-is-enabled, true)
+constantin.film##+js(set-cookie, external-data-youtube-is-enabled, true)
+constantin.film##+js(set-cookie, external-data-spotify-is-enabled, true)
+
+! https://twitter.com/ - Functional cookie
+twitter.com##+js(trusted-set-cookie, d_prefs, MjoxLGNvbnNlbnRfdmVyc2lvbjoyLHRleHRfdmVyc2lvbjoxMDAw)
+
+! https://www.mundodeportivo.com/ - Embed social media content
+mundodeportivo.com#@#+js(trusted-set-cookie, didomi_token, eyJ1c2VyX2lkIjoiIiwiY3JlYXRlZCI6IjIwMjMtMDktMDJUMTI6NDM6NDAuMzY4WiIsInVwZGF0ZWQiOiIyMDIzLTA5LTAyVDEyOjQzOjQwLjM2OFoiLCJ2ZW5kb3JzIjp7ImVuYWJsZWQiOlsiZ29vZ2xlIiwiYzpwaWFuby1ic1hwclg4dyIsImM6bHVjaWRob2xkLXlmdGJXVGY3IiwiYzpzYWxlc2ZvcmNlLUI0WEI1UU5aIiwiYzpsaXZlZnlyZS00Y2JOV1lFeiIsImM6eW91dHViZS1EV3RqQ1VLYiIsImM6YWNjZW5nYWdlLUVXRUx4MzRnIiwiYzpjaGFydGJlYXQtaHhLaEZiQXciLCJjOmFtYXpvbmFkcy05YzVUTkdhaiIsImM6dHdpdHRlcndpLXdVbUJubkt5IiwiYzpmYWNlYm9va3ctMmthN1Z3UTgiLCJjOmdvb2dsZW9wdC1RaGlBZG1WYSIsImM6Z2djcm9sbHVwLW5OSGVpMmFXIiwiYzpmYWNlYm9va2EtZnJVOU01SlkiLCJjOmdvb2dsZWFuYS1HMmJzRUp5VCIsImM6Z29vZ2xlYXVkLUxEalZZa2VhIiwiYzppbnN0YWdyYW0tdFdtSmdKcHEiLCJjOm5ldHF1ZXN0LU4yblc0ZnBHIiwiYzpwcm9jdGVyYW4tSzROdzh4TUMiLCJjOmNvbXNjb3JlLWpVRmM5aWNZIiwiYzpzcG90aW0tM0ZLSDYyeUMiLCJjOnl1c3AtejhOaTQ0Wk0iLCJjOndlbWFzc21lZC1QR1o2M0Z4WSIsImM6ZXZvbG9rLWl6S3o3QVlWIiwiYzpnb29nbGVmaXItSDhrY2lGSkciLCJjOmxhbGlnYS1ZNllRMjJSUiIsImM6YWRzdml1LVZUMjZtM1FiIl19LCJwdXJwb3NlcyI6eyJkaXNhYmxlZCI6WyJnZW9sb2NhdGlvbl9kYXRhIiwiY29tcGFydGlyLWRwSGdKRUphIiwia0VlRHNMQ3AiLCJkZXZpY2VfY2hhcmFjdGVyaXN0aWNzIl19LCJ2ZW5kb3JzX2xpIjp7ImVuYWJsZWQiOlsiZ29vZ2xlIl19LCJ2ZXJzaW9uIjoyLCJhYyI6IiJ9)
+mundodeportivo.com#@#+js(trusted-set-cookie, euconsent-v2, CPxeM4APxeM4AAHABBENDUCgAP8AAE4AAAiQIkNf_X_fb2vj-_p99_t0eY1P9_6_t6wzjheNk-8NyZ_X_J4Xp2M6rB34pqIKuR4kunLBIQdlHGHcTUgg4IkFqSPsYk2MizNKJ7JEmlMbE2dYGG9vn8TT-ZKY70__f__zvn-r___97oAAhCAABAAAAAgAAIAAAgAIAAAAAAAAAAAAAAAAAAAAAAAADA4tAsy1bqaFsHT0Lpo4igRGjCuJWoBQGUQCwtkBhmTPCnZHAR-wnUAAxAADBByGAFEaAICCIIAkKgIkEOBAqJAIdAACgAUIBAFRIgEoiLAQCAA0B8PAKKAJSLGDKhIidcCMKxIPu-QAAEAQAAIAAQAAAABAJCgAYAAgmiGgAwABBNERABgACCaIqADAAEE0RkAGAAIJojwAMAAQTRIQAYAAgmiTAAwABBNEqABgACCaIAAA.f-AACcAAAAAA)
+mundodeportivo.com##+js(trusted-set-cookie, didomi_token, eyJ1c2VyX2lkIjoiMThhNmQyZGEtOGNmOC02YTE0LWI3OWQtNzViOGU4ZjA2YmYyIiwiY3JlYXRlZCI6IjIwMjMtMDktMDdUMDE6MDc6MTQuNTIwWiIsInVwZGF0ZWQiOiIyMDIzLTA5LTA3VDAxOjA3OjE0LjUyMFoiLCJ2ZW5kb3JzIjp7ImVuYWJsZWQiOlsiZ29vZ2xlIiwiYzpwaWFuby1ic1hwclg4dyIsImM6bHVjaWRob2xkLXlmdGJXVGY3IiwiYzpzYWxlc2ZvcmNlLUI0WEI1UU5aIiwiYzpsaXZlZnlyZS00Y2JOV1lFeiIsImM6eW91dHViZS1EV3RqQ1VLYiIsImM6YWNjZW5nYWdlLUVXRUx4MzRnIiwiYzpjaGFydGJlYXQtaHhLaEZiQXciLCJjOmFtYXpvbmFkcy05YzVUTkdhaiIsImM6dHdpdHRlcndpLXdVbUJubkt5IiwiYzpmYWNlYm9va3ctMmthN1Z3UTgiLCJjOmdvb2dsZW9wdC1RaGlBZG1WYSIsImM6Z2djcm9sbHVwLW5OSGVpMmFXIiwiYzpmYWNlYm9va2EtZnJVOU01SlkiLCJjOmdvb2dsZWFuYS1HMmJzRUp5VCIsImM6Z29vZ2xlYXVkLUxEalZZa2VhIiwiYzppbnN0YWdyYW0tdFdtSmdKcHEiLCJjOm5ldHF1ZXN0LU4yblc0ZnBHIiwiYzpwcm9jdGVyYW4tSzROdzh4TUMiLCJjOmNvbXNjb3JlLWpVRmM5aWNZIiwiYzpzcG90aW0tM0ZLSDYyeUMiLCJjOnl1c3AtejhOaTQ0Wk0iLCJjOndlbWFzc21lZC1QR1o2M0Z4WSIsImM6ZXZvbG9rLWl6S3o3QVlWIiwiYzpnb29nbGVmaXItSDhrY2lGSkciLCJjOmxhbGlnYS1ZNllRMjJSUiIsImM6YWRzdml1LVZUMjZtM1FiIl19LCJwdXJwb3NlcyI6eyJkaXNhYmxlZCI6WyJnZW9sb2NhdGlvbl9kYXRhIiwiY29tcGFydGlyLWRwSGdKRUphIiwia0VlRHNMQ3AiLCJkZXZpY2VfY2hhcmFjdGVyaXN0aWNzIl19LCJ2ZW5kb3JzX2xpIjp7ImVuYWJsZWQiOlsiZ29vZ2xlIl19LCJ2ZXJzaW9uIjoyLCJhYyI6IkRIYUNJQUVJQUl3QVdRQXVnQnNBRDBBSlVBWWdBOFFCLWdFM0FLTUFZb0F6NEI0Z0R6UUh1QWU4QkRnQ1N3R1lnTTFBZXFCQWtDRFlFUkFJamdSSkFpbUJHY0NVUUVzUUphZ1M3QW40QlJVQ3FvRmh3TFVnWWlBem1CcWNEaUFIS0FPbkFkV0E3Q0I3RURfd0lHQVJtZ2tNQkwyQ2M0RTd3S0NBVUhncFNCVHFDczhGb0FMUmdXeUF1ZEJlU0Mtb0dIUU1iZ1k3QUFBQS5ESGFDSUFFSUFJd0FXUUF1Z0JzQUQwQUpVQVlnQThRQi1nRTNBS01BWW9BejRCNGdEelFIdUFlOEJEZ0NTd0dZZ00xQWVxQkFrQ0RZRVJBSWpnUkpBaW1CR2NDVVFFc1FKYWdTN0FuNEJSVUNxb0Zod0xVZ1lpQXptQnFjRGlBSEtBT25BZFdBN0NCN0VEX3dJR0FSbWdrTUJMMkNjNEU3d0tDQVVIZ3BTQlRxQ3M4Rm9BTFJnV3lBdWRCZVNDLW9HSFFNYmdZN0FBQUEifQ==)
+mundodeportivo.com##+js(trusted-set-cookie, euconsent-v2, CPxurkAPxurkAAHABBENDVCgAP8AAE4AAAiQIkNf_X_fb2vj-_p99_t0eY1P9_6_t6wzjheNk-8NyZ_X_J4Xp2M6rB34pqIKuR4kunLBIQdlHGHcTUgg4IkFoSPsYk2MizJKJ7JEmlMbE2dYGG9vn8TT-ZKY70__f__zvn-r___97oAAhCAABAAAAAgAAIAAAgAIAAAAAAAAAAAAAAAAAAAAAAAADA4tAsy0bqaFsHT0Lpo4igRGjCuJWoBQGUQCwtkBhmTPCnZHAR-wnUAAxAADBByGAFEaAICCIIAkKgIkEOBAqJAIdAACgAUIBAFRIgEoiLAQCAA0B8PAKKAJSLGDKhIidcCMKxIPu-QAAEAQAAIAAQAAAABAJCgAYAAiCgGgAwABEFARABgACIKAqADAAEQUBkAGAAIgoDwAMAARBQIQAYAAiCgTAAwABEFAqABgACIKAAAA.f-AACcAAAAAA)
+
+! https://www.nordax.com/ - Functional cookie
+nordax.com##+js(trusted-set-cookie, cookie_consent, %7B%22allowEssentials%22%3Atrue%2C%22allowFunctional%22%3Atrue%2C%22allowAnalytics%22%3Afalse%2C%22allowMarketing%22%3Afalse%7D)
+
+! https://www.youtube.com/ - Video recommendations
+! https://www.reddit.com/r/uBlockOrigin/comments/1693mka/
+youtube.com##+js(trusted-set-cookie, SOCS, CAISNQgDEitib3FfaWRlbnRpdHlmcm9udGVuZHVpc2VydmVyXzIwMjMwODI5LjA3X3AxGgJlbiADGgYIgJnPpwY, , , reload, 1)
+
+! https://www.empik.com/ - Functional + Social
+empik.com##+js(trusted-set-cookie, cad, $now$)
+empik.com##+js(trusted-set-cookie, cc, 2.4)
+empik.com##+js(trusted-set-cookie, cp, .16.21.)
+empik.com##+js(trusted-set-cookie, cva, W2.0)
+
+! https://www.ubs.com/ - User preference
+ubs.com##+js(trusted-set-cookie, ubs_cookie_settings_2.0.4, 0-2-1)
+
+! https://github.com/uBlockOrigin/uAssets/issues/19717 - Functionality
+vicko.gr##+js(trusted-set-cookie, ConsentChecked, '{"userHasSetCookies":true,"functionalityCookies":true,"statisticCookies":false,"marketingCookies":false}', , , reload, 1)
+
+! https://github.com/uBlockOrigin/uAssets/issues/19728 - Experience
+3bmeteo.com##+js(trusted-set-cookie, _iub_cs-817732, %7B%22purposes%22%3A%7B%221%22%3Atrue%2C%223%22%3Atrue%2C%224%22%3Afalse%2C%225%22%3Afalse%7D%2C%22id%22%3A817732%2C%22cons%22%3A%7B%22rand%22%3A%223ec000%22%7D%7D)
+
+! https://www.call-a-pizza.de/ - Functional
+call-a-pizza.de##+js(trusted-set-cookie, allow_cookies, {"essential":"1"\,"functional":{"all":"1"}\,"marketing":{"all":"0"}})
+
+! https://www.jeuxvideo.com/
+jeuxvideo.com##+js(trusted-set-cookie, euconsent-v2, CPywmUAPywmUAAHABBENDYCsAP_AAH_AAAAAJrNf_X__b2_r-_7_f_t0eY1P9_7__-0zjhfdF-8N3f_X_L8X52M5vF36tqoKuR4ku3bBIUdlHPHcTVmw6okVryPsbk2cr7NKJ7PkmlMbM2dYGH9_n9_z-ZKY7___f__z_v-v___9____7-3f3__5__--__e_V_-9zfn9_____9vP___9v-_9_3________3_r9_7_D_-f_87_XW-8E1ACTDQuIAuwJGQm2jCKBACMKwkKoFABRAJC0QGELq4KdlcBPrARACBFAAcEAIYAUZAAgAAAgCQiACQI4EAgEAgEAAIAFQgEABGwACgAsBAIABQHQsU4oAlAsIMiMiIUwIQpEgoJ7KhBKD9QVwhDLLACg0f8VCAgUAMVgRCQsXocASAlwkkC3VG-AAhACgFFKFYgk9MAA4JGy1B4IAA.f_gAD_gAAAAA)
+jeuxvideo.com##+js(trusted-set-cookie, didomi_token, eyJ1c2VyX2lkIjoiMThhZDY1NzMtZGY4YS02YzJhLWJkZmUtOGI5ZjkwMDU5MmQwIiwiY3JlYXRlZCI6IjIwMjMtMDktMjdUMTE6MTI6MzcuNzk3WiIsInVwZGF0ZWQiOiIyMDIzLTA5LTI3VDExOjEyOjM3Ljc5N1oiLCJ2ZW5kb3JzIjp7ImVuYWJsZWQiOlsiZ29vZ2xlIiwiYzpkbXB3ZWJlZGktblRCSEFrNDQiLCJjOmFtYXpvbnRhbS1lWTRpTjROViIsImM6YmF0Y2gtYkp0R3R0eEwiLCJjOndhcm5lcmJyby1BUEpXeUFHUCIsImM6ZmFjZWJvb2std0RpR25KV1YiLCJjOnNuYXBjaGF0LWhXMnJNSmZZIiwiYzp0aWt0b2stV2J5cEEzWmQiLCJjOnR3aXR0ZXIteGJERXhKUGsiLCJjOmdvb2dsZWFuYS1YTXFhZ2F3YSJdfSwicHVycG9zZXMiOnsiZW5hYmxlZCI6WyJkZXZpY2VfY2hhcmFjdGVyaXN0aWNzIiwiZ2VvbG9jYXRpb25fZGF0YSJdfSwidmVuZG9yc19saSI6eyJlbmFibGVkIjpbImdvb2dsZSJdfSwidmVyc2lvbiI6Mn0=)
