@@ -59,12 +59,12 @@ alt + shift + 2             : komorebic move-to-workspace 1
 alt + shift + 3             : komorebic move-to-workspace 2
 
 ## Rider
-control + j [
-    rider64                 : Import-Module ./scripts/lib/send-keys.psm1; Send-Keys -Keys "{DOWN}"
-]
-control + k [
-    rider64                 : Import-Module ./scripts/lib/send-keys.psm1; Send-Keys -Keys "{UP}"
-]
+#control + j [
+#    rider64                 : Import-Module ./scripts/lib/send-keys.psm1; Send-Keys -Keys "{DOWN}"
+#]
+#control + k [
+#    rider64                 : Import-Module ./scripts/lib/send-keys.psm1; Send-Keys -Keys "{UP}"
+#]
 
 ## Other
-win + shift + d             : neovide -- -c "Devlog"
+win + shift + d             : wt nvim.exe -c Devlog
