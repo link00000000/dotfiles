@@ -3,12 +3,12 @@ local autocmd = require('utils.autocmd')
 
 local M = {}
 
-local function setup_document_highlight (client)
+local function setup_document_highlight (client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
         autocmd.create_group('lsp_document_highlight', {
-            { event = 'CursorHold',  action = vim.lsp.buf.document_highlight },
-            { event = 'CursorHoldI', action = vim.lsp.buf.document_highlight },
-            { event = 'CursorMoved', action = vim.lsp.buf.clear_references   },
+            { event = 'CursorHold',  action = vim.lsp.buf.document_highlight, opts = { buffer = bufnr } },
+            { event = 'CursorHoldI', action = vim.lsp.buf.document_highlight, opts = { buffer = bufnr } },
+            { event = 'CursorMoved', action = vim.lsp.buf.clear_references, opts = { buffer = bufnr } },
         }, { clear = true })
     end
 end
@@ -46,7 +46,7 @@ end
 
 M.on_attach = function (client, bufnr)
     M.setup_keymaps(bufnr)
-    setup_document_highlight(client)
+    setup_document_highlight(client, bufnr)
 
     require('plugins.folding').on_attach()
     require('plugins.navic').on_attach(client, bufnr)
