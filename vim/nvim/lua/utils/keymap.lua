@@ -1,19 +1,32 @@
--- TODO: Use mapx.nvim for key mapping. Is supports keymaps per filetype
+---@alias mode "n"|"i"|"v"|"c"|"t"|"s"|"x"
+
+-- TODO: Use mapx.nvim for key mapping. It supports keymaps per filetype
 local func = require('utils.func')
 
 local M = {}
 
 local merge_default_opts = func.create_merge_default_opts({ noremap = true, silent = true })
 
+---@param modes mode[]|mode
+---@param chord string
+---@param action string|function
+---@param opts table
 local apply_keymap = function (modes, chord, action, opts)
     opts = merge_default_opts(opts)
     vim.keymap.set(modes, chord, action, opts)
 end
 
+---@param modes mode[]|mode
+---@param chord string
+---@param opts table
 local delete_keymap = function (modes, chord, opts)
     vim.keymap.del(modes, chord, opts)
 end
 
+---@param modes mode[]|mode
+---@param chord string
+---@param action string|function
+---@param opts table
 local lazy_keymap = function (modes, chord, action, opts)
     opts = merge_default_opts(opts)
 
@@ -26,6 +39,7 @@ local lazy_keymap = function (modes, chord, action, opts)
     return vim.tbl_deep_extend("force", opts, map)
 end
 
+---@param modes mode[]|mode
 local new_keymapper = function (modes)
     return {
         apply = function (chord, action, opts)
