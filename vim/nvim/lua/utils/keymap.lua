@@ -42,15 +42,15 @@ end
 ---@param modes mode[]|mode
 local new_keymapper = function (modes)
     return {
-        ---@type fun(chord: string, action: string|function, opts: table)
+        ---@type fun(chord: string, action: string|function, opts: table?)
         apply = function (chord, action, opts)
             apply_keymap(modes, chord, action, opts)
         end,
-        ---@type fun(chord: string, opts: table)
+        ---@type fun(chord: string, opts: table?)
         delete = function (chord, opts)
             delete_keymap(modes, chord, opts)
         end,
-        ---@type fun(chord: string, action: string|function, opts: table): table
+        ---@type fun(chord: string, action: string|function, opts: table?): table
         lazy = function (chord, action, opts)
             return lazy_keymap(modes, chord, action, opts)
         end

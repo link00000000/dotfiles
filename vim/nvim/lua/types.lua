@@ -1,0 +1,2 @@
+---@class ConfigModule
+---@field setup fun()

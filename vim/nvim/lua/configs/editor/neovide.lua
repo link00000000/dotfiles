@@ -3,10 +3,8 @@ local keymap = require('utils.keymap')
 local command = require('utils.command')
 local file = require('utils.file')
 
-local M = {}
-
-local extended_settings_file_path = path.get_nvim_data_dir('neovide-settings-extended.json')
-local persist_restart_session_file_path = path.get_nvim_data_dir('neovide-restart-session.vim')
+local extended_settings_file_path = path.resolve_nvim_data_dir_path('neovide-settings-extended.json')
+local persist_restart_session_file_path = path.resolve_nvim_data_dir_path('neovide-restart-session.vim')
 
 local function read_extended_neovide_settings ()
     local extended_settings = file.read_json(extended_settings_file_path)
@@ -56,15 +54,16 @@ local function scale_command_handler (opts)
     end
 end
 
-M.setup = function ()
-    local extended_settings = read_extended_neovide_settings()
-    vim.g.neovide_fullscreen = extended_settings ~= nil and extended_settings['fullscreen']
+---@type ConfigModule
+return {
+    setup = function ()
+        local extended_settings = read_extended_neovide_settings()
+        vim.g.neovide_fullscreen = extended_settings ~= nil and extended_settings['fullscreen']
 
-    keymap.normal.apply('<F11>', toggle_fullscreen)
+        keymap.normal.apply('<F11>', toggle_fullscreen)
 
-    command.create('ToggleFullscreen', toggle_fullscreen)
-    command.create('Restart', restart)
-    command.create('Scale', scale_command_handler, { nargs = 1 })
-end
-
-return M
+        command.create('ToggleFullscreen', toggle_fullscreen)
+        command.create('Restart', restart)
+        command.create('Scale', scale_command_handler, { nargs = 1 })
+    end
+}

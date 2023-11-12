@@ -2,9 +2,95 @@ local keymap = require('utils.keymap')
 local command = require("utils.command")
 local path = require("utils.path")
 
-local M = {}
+local setup_settings = function ()
+    vim.opt.compatible = false
+    vim.opt.termguicolors = true
+    vim.opt.updatetime = 100
 
-M.commands = function ()
+    -- Highlight the current line
+    vim.opt.cursorline = true
+
+    -- Map <Space> to leader
+    keymap.normal.apply('<Space>', '<NOP>')
+    vim.g.mapleader = ' '
+
+    -- Enabled mouse supoort
+    vim.opt.mouse = 'a'
+
+    -- Use system clipboard
+    vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
+
+    -- Disabled word wrap
+    vim.opt.wrap = false
+
+    -- Force word wrapping for markdown
+    vim.cmd([[
+
+    augroup markdown_config
+        autocmd!
+
+        autocmd FileType markdown set wrap
+        autocmd FileType markdown set linebreak
+
+    ]])
+
+    -- Split panes
+    vim.o.splitbelow = true
+    vim.o.splitright = true
+
+    -- Indentation
+    vim.opt.expandtab = true
+    vim.opt.smarttab = true
+    vim.opt.shiftwidth = 4
+    vim.opt.tabstop = 4
+
+    -- Ignore case when searching if search contains only lower case
+    vim.opt.ignorecase = true
+    vim.opt.smartcase = true
+
+    -- Show a few lines of context acround the cursor
+    vim.opt.scrolloff = 5
+    vim.opt.sidescrolloff = 10
+
+    -- Always delete previous word when deleting entire words
+    vim.opt.backspace = { 'indent', 'eol', 'start' }
+
+    -- Enable line numbers
+    vim.opt.number = true
+
+    -- Disable error bell
+    vim.opt.visualbell = true
+    vim.opt.errorbells = false
+
+    -- Show all folds expanded when a file is opened
+    vim.opt.foldlevel = 99
+    vim.opt.foldlevelstart = 99
+    vim.opt.foldenable = true
+
+    -- Hide ./ and ../ in netrw
+    vim.g.netrw_list_hide = '^\\.*/$'
+    vim.g.netrw_hide = 1
+
+    -- Terminal settings
+    vim.cmd([[
+
+    augroup neovim_terminal
+        autocmd!
+
+        " Enter Terminal-mode (insert) automatically
+        autocmd TermOpen * startinsert
+
+        " Disables number lines on terminal buffers
+        autocmd TermOpen * :set nonumber norelativenumber
+    augroup END
+
+    ]])
+
+    -- Have only one status bar instead of one per window
+    vim.opt.laststatus = 3
+end
+
+local setup_commands = function ()
     command.create("W", "w")
 
     command.create("Config", "lcd " .. path.nvim_config_dir() .. "|NvimTreeFocus")
@@ -22,7 +108,7 @@ M.commands = function ()
     );
 end
 
-M.keymaps = function ()
+local setup_keymaps = function ()
     -- Jump to start of line
     keymap.set({ 'n', 'v' }).apply('B', '^')
 
@@ -110,95 +196,12 @@ M.keymaps = function ()
     keymap.set({ 'n', 'v' }).apply('<C-S-j>', '<C-u>')
 end
 
-M.setup = function ()
-    vim.opt.compatible = false
-    vim.opt.termguicolors = true
-    vim.opt.updatetime = 100
 
-    -- Highlight the current line
-    vim.opt.cursorline = true
-
-    -- Map <Space> to leader
-    keymap.normal.apply('<Space>', '<NOP>')
-    vim.g.mapleader = ' '
-
-    -- Enabled mouse supoort
-    vim.opt.mouse = 'a'
-
-    -- Use system clipboard
-    vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
-
-    -- Disabled word wrap
-    vim.opt.wrap = false
-
-    -- Force word wrapping for markdown
-    vim.cmd([[
-
-    augroup markdown_config
-        autocmd!
-
-        autocmd FileType markdown set wrap
-        autocmd FileType markdown set linebreak
-
-    ]])
-
-    -- Split panes
-    vim.o.splitbelow = true
-    vim.o.splitright = true
-
-    -- Indentation
-    vim.opt.expandtab = true
-    vim.opt.smarttab = true
-    vim.opt.shiftwidth = 4
-    vim.opt.tabstop = 4
-
-    -- Ignore case when searching if search contains only lower case
-    vim.opt.ignorecase = true
-    vim.opt.smartcase = true
-
-    -- Show a few lines of context acround the cursor
-    vim.opt.scrolloff = 5
-    vim.opt.sidescrolloff = 10
-
-    -- Always delete previous word when deleting entire words
-    vim.opt.backspace = { 'indent', 'eol', 'start' }
-
-    -- Enable line numbers
-    vim.opt.number = true
-
-    -- Disable error bell
-    vim.opt.visualbell = true
-    vim.opt.errorbells = false
-
-    -- Show all folds expanded when a file is opened
-    vim.opt.foldlevel = 99
-    vim.opt.foldlevelstart = 99
-    vim.opt.foldenable = true
-
-    -- Hide ./ and ../ in netrw
-    vim.g.netrw_list_hide = '^\\.*/$'
-    vim.g.netrw_hide = 1
-
-    -- Terminal settings
-    vim.cmd([[
-
-    augroup neovim_terminal
-        autocmd!
-
-        " Enter Terminal-mode (insert) automatically
-        autocmd TermOpen * startinsert
-
-        " Disables number lines on terminal buffers
-        autocmd TermOpen * :set nonumber norelativenumber
-    augroup END
-
-    ]])
-
-    -- Have only one status bar instead of one per window
-    vim.opt.laststatus = 3
-
-    M.commands()
-    M.keymaps()
-end
-
-return M
+---@type ConfigModule
+return {
+    setup = function ()
+        setup_settings()
+        setup_commands()
+        setup_keymaps()
+    end
+}

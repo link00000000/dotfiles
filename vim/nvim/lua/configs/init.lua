@@ -1,5 +1,3 @@
-local M = {}
-
 local function load_common_config ()
 	require('configs.common').setup()
 
@@ -10,9 +8,15 @@ end
 
 local function load_local_config ()
     local hostname = vim.fn.hostname()
-    local status, err = pcall(function ()
-        require('configs.local.' .. hostname).setup()
+    local _, err = pcall(function ()
+        ---@type ConfigModule
+        local module = require('configs.local.' .. hostname)
+        module.setup()
     end)
+
+    if err ~= nil then
+        error(err)
+    end
 end
 
 local function load_editor_config ()
@@ -23,10 +27,12 @@ local function load_editor_config ()
     end
 end
 
-M.setup = function ()
-    load_common_config()
-    load_local_config()
-    load_editor_config()
-end
 
-return M
+---@type ConfigModule
+return {
+    setup = function ()
+        load_common_config()
+        load_local_config()
+        load_editor_config()
+    end
+}

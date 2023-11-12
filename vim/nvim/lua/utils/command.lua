@@ -5,7 +5,7 @@ local M = {}
 local merge_default_opts = func.create_merge_default_opts({ bang = true })
 
 ---@param name string
----@param action function
+---@param action function|string
 ---@param opts table<string, any>?
 M.create = function (name, action, opts)
     opts = merge_default_opts(opts)
