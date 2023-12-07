@@ -305,6 +305,27 @@ $env.config = {
                 selected_text: blue
                 description_text: yellow
             }
+        },
+        {
+            name: fzf_menu
+            only_buffer_difference: true
+            marker: "# "
+            type: {
+                layout: columnar
+                columns: 1
+                col_width: 20
+                col_padding: 2
+            }
+            style: {
+                text: green
+                selected_text: green_reverse
+                description_text: yellow
+            }
+            source: { |buffer, position|
+                fzf --no-sort --tac  
+                | lines
+                | each { |v|  { value: ($v | str trim) } }
+            }
         }
     ]
 
@@ -334,6 +355,13 @@ $env.config = {
             keycode: f1
             mode: [emacs, vi_insert, vi_normal]
             event: { send: menu name: help_menu }
+        }
+        {
+            name: fzf_menu
+            modifier: control
+            keycode: char_f
+            mode: [emacs, vi_insert, vi_normal]
+            event: { send: menu name: fzf_menu }
         }
         {
             name: completion_previous_menu
@@ -630,19 +658,6 @@ $env.config = {
             }
         }
         {
-            name: move_right_or_take_history_hint
-            modifier: control
-            keycode: char_f
-            mode: emacs
-            event: {
-                until: [
-                    {send: historyhintcomplete}
-                    {send: menuright}
-                    {send: right}
-                ]
-            }
-        }
-        {
             name: redo_change
             modifier: control
             keycode: char_g
@@ -791,6 +806,13 @@ $env.config = {
             keycode: char_p
             mode: [emacs vi_normal vi_insert]
             event: {send: executehostcommand, cmd: "git pull"}
+        }
+        {
+            name: new_terminal
+            modifier: alt
+            keycode: char_t
+            mode: [emacs vi_normal]
+            event: {send: executehostcommand, cmd: "wt -d ."}
         }
     ]
 }
