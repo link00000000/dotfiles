@@ -42,18 +42,19 @@ local function config ()
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-j>'] = cmp.mapping(function (fallback)
                 if cmp.visible() then
-                    cmp.select_next_item()
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                 else
                     fallback()
                 end
             end, { 'i', 's' }),
             ['<C-k>'] = cmp.mapping(function (fallback)
                 if cmp.visible() then
-                    cmp.select_prev_item()
+                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
                 else
                     fallback()
                 end
-            end, { 'i', 's' })
+            end, { 'i', 's' }),
+            ['<CR>'] = cmp.mapping.confirm({ select = false }),
         }),
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
