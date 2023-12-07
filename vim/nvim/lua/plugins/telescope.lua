@@ -160,7 +160,7 @@ local function config ()
             borderchars = { border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.HORIZONTAL, border_chars.VERTICAL, border_chars.CORNER_NW, border_chars.CORNER_NE, border_chars.CORNER_SW, border_chars.CORNER_SE },
             set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil
             history = {
-                path = path.get_nvim_data_dir('telescope_smart_history.sqlite3'),
+                path = path.resolve_nvim_data_dir_path('telescope_smart_history.sqlite3'),
                 limit = 100,
             },
         },

@@ -1,5 +1,3 @@
-local M = {}
-
 local function config ()
     local alpha = require("alpha")
     local dashboard_theme = require("alpha.themes.dashboard")
@@ -33,12 +31,13 @@ local function config ()
             {
                 type = "group",
                 val = {
-                    dashboard_theme.button("n", codicons.get("new-file") .. "  New file", "<cmd>enew<CR>"),
-                    dashboard_theme.button("d", codicons.get("notebook") .. "  Devlog", "<cmd>Devlog<CR>"),
-                    dashboard_theme.button("r", codicons.get("repo-forked") .. "  Open repository", "<cmd>Repos<CR>"),
-                    dashboard_theme.button("f", codicons.get("search") .. "  Find file", "<cmd>Files<CR>"),
-                    dashboard_theme.button("s", codicons.get("settings-gear") .. "  Settings", "<cmd>ConfigCwd<CR>"),
-                    dashboard_theme.button("q", codicons.get("close-all") .. "  Close", ":q<CR>"),
+                    dashboard_theme.button("n", codicons.get("new-file") ..         "  New file", "<cmd>enew<CR>"),
+                    dashboard_theme.button("N", codicons.get("notebook") ..         "  Notes", "<cmd>Notes<CR>"),
+                    dashboard_theme.button("d", codicons.get("note") ..             "  Devlog", "<cmd>Devlog<CR>"),
+                    dashboard_theme.button("r", codicons.get("repo-forked") ..      "  Open repository", "<cmd>Repos<CR>"),
+                    dashboard_theme.button("f", codicons.get("search") ..           "  Find file", "<cmd>Files<CR>"),
+                    dashboard_theme.button("s", codicons.get("settings-gear") ..    "  Settings", "<cmd>ConfigCwd<CR>"),
+                    dashboard_theme.button("q", codicons.get("close-all") ..        "  Close", ":q<CR>"),
                 },
                 opts = {
                     spacing = 1,
@@ -59,16 +58,17 @@ local function config ()
     })
 end
 
-M.spec = {
-    "goolord/alpha-nvim",
-    lazy = true,
-    config = config,
-    dependencies = {
-        require("plugins.nvim-web-devicons").spec,
-        require("plugins.codicons").spec
-    },
-    event = "VimEnter",
-    cmd = { "Alpha" }
+---@type PluginModule
+return {
+    spec = {
+        "goolord/alpha-nvim",
+        lazy = true,
+        config = config,
+        dependencies = {
+            require("plugins.nvim-web-devicons").spec,
+            require("plugins.codicons").spec
+        },
+        event = "VimEnter",
+        cmd = { "Alpha" }
+    }
 }
-
-return M

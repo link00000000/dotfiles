@@ -6,7 +6,7 @@ local merge_create_group_default_opts = func.create_merge_default_opts({ clear =
 
 ---@param group_name string
 ---@param commands { event: string|string[], action: function|string, opts: table }[]
----@param opts table
+---@param opts table?
 M.create_group = function (group_name, commands, opts)
     commands = commands or {}
     opts = merge_create_group_default_opts(opts)

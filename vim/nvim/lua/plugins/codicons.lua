@@ -1,14 +1,13 @@
-local M = {}
-
 local function config ()
     local codicons = require('codicons')
-    codicons.setup()
+    codicons.setup({})
 end
 
-M.spec = {
-    'mortepau/codicons.nvim',
-    lazy = true,
-    config = config,
+---@type PluginModule
+return {
+    spec = {
+        'mortepau/codicons.nvim',
+        lazy = true,
+        config = config,
+    }
 }
-
-return M

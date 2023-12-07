@@ -11,7 +11,7 @@ M.spec = {
         local path = require("utils.path")
         local dap_python = require("dap-python")
 
-        dap_python.setup(path.get_nvim_data_dir("mason/packages/debugpy/venv/Scripts/python"))
+        dap_python.setup(path.resolve_nvim_data_dir_path("mason/packages/debugpy/venv/Scripts/python"))
     end
 }
 

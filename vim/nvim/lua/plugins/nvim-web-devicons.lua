@@ -30,6 +30,18 @@ local function config ()
                 color = "#7160e8",
                 name = "Csproj",
             },
+            njk = {
+                icon = "",
+                color = "#e44d26",
+                cterm_color = "196",
+                name = "Nunchucks",
+            },
+            liquid = {
+                icon = "",
+                color = "#e44d26",
+                cterm_color = "196",
+                name = "Liquid",
+            }
         },
     })
 end

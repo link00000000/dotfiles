@@ -1,8 +1,7 @@
-local M = {}
-
-M.spec = {
-    'hrsh7th/cmp-nvim-lua',
-    lazy = true
+---@type PluginModule
+return {
+    spec = {
+        'hrsh7th/cmp-nvim-lua',
+        lazy = true
+    }
 }
-
-return M

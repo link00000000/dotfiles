@@ -1,8 +1,7 @@
-local M = {}
-
-M.spec = {
-    "hrsh7th/cmp-path",
-    lazy = true
+---@type PluginModule
+return {
+    spec = {
+        "hrsh7th/cmp-path",
+        lazy = true
+    }
 }
-
-return M

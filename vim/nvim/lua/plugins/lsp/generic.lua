@@ -77,7 +77,18 @@ M.setup_handler = function (server_name)
                         return level == "ERROR" or level == "WARN"
                     end
                 })
-            end
+            end,
+            ['textDocument/publishDiagnostics'] = vim.lsp.with(
+                vim.lsp.diagnostic.on_publish_diagnostics,
+                {
+                    underline = true,
+                    virtual_text = {
+                        spacing = 5,
+                        severity_limit = 'Warning',
+                    },
+                    update_in_insert = true,
+                }
+            ),
         }
     })
 end

@@ -2,7 +2,7 @@ local path = require('utils.path')
 
 local M = {}
 
-local lazy_path = path.get_nvim_data_dir('lazy/lazy.nvim')
+local lazy_path = path.resolve_nvim_data_dir_path('lazy/lazy.nvim')
 
 local function is_lazy_installed()
     return vim.loop.fs_stat(lazy_path)
@@ -50,6 +50,7 @@ M.setup = function ()
         require("plugins.glance").spec,
         require("plugins.vim-razor").spec,
         require("plugins.nvim-nu").spec,
+        require("plugins.nvim-ts-autotag").spec,
 
         -- Debugging
         require("plugins.nvim-dap").spec,
