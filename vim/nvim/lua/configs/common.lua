@@ -1,6 +1,7 @@
 local keymap = require('utils.keymap')
 local command = require("utils.command")
 local path = require("utils.path")
+local autocmd = require("utils.autocmd");
 
 local setup_settings = function ()
     vim.opt.compatible = false
@@ -31,6 +32,7 @@ local setup_settings = function ()
 
         autocmd FileType markdown set wrap
         autocmd FileType markdown set linebreak
+    augroup END
 
     ]])
 
@@ -90,6 +92,21 @@ local setup_settings = function ()
     vim.opt.laststatus = 3
 end
 
+local setup_autocmd = function ()
+    -- autocmd.create_command({ "BufRead", "BufNewFile" }, "set filetype=html", { pattern = { "*.njk", "*.liquid" } })
+
+    vim.cmd([[
+
+    augroup html_templating_languages
+        autocmd!
+
+        autocmd BufRead,BufNewFile *.njk set filetype=html
+        autocmd BufRead,BufNewFile *.liquid set filetype=html
+    augroup END
+
+    ]])
+end
+
 local setup_commands = function ()
     command.create("W", "w")
 
@@ -103,8 +120,12 @@ local setup_commands = function ()
 
     command.create("Devlog",
         "e ~/Sync/Notes/devlog.txt |" ..
-        "noreabbrev today@ <C-R>=strftime(\"%Y-%m-%d\")<CR> |" ..
-        "nmap <silent> <ESC> :wq<CR>"
+        "noreabbrev <buffer> today@ <C-R>=strftime(\"%Y-%m-%d\")<CR> |"
+    );
+
+    command.create("Notes",
+        "cd ~/Sync/Notes/Vault | " ..
+        "NvimTreeFocus"
     );
 end
 
@@ -201,6 +222,7 @@ end
 return {
     setup = function ()
         setup_settings()
+        setup_autocmd()
         setup_commands()
         setup_keymaps()
     end
