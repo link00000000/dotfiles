@@ -26,3 +26,4 @@
 #b:: Run "ms-settings:bluetooth"
 #j:: Run "shell:downloads"
 #t:: Run "wt.exe"
+#p:: Run "C:\Users\crand\AppData\Local\BraveSoftware\Brave-Browser\Application\chrome_proxy.exe  --profile-directory=Default --app-id=opbageolaboaoegdhedganbipolnjcck"
