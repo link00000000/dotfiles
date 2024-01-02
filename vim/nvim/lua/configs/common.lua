@@ -119,7 +119,7 @@ local setup_commands = function ()
     end)
 
     command.create("Devlog",
-        "e ~/Sync/Notes/devlog.txt |" ..
+        "e ~/Sync/Documents/devlog.txt |" ..
         "noreabbrev <buffer> today@ <C-R>=strftime(\"%Y-%m-%d\")<CR> |"
     );
 
