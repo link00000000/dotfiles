@@ -1,4 +1,5 @@
 local func = require('utils.func')
+local os_utils = require('utils.os');
 
 local M = {}
 
@@ -71,5 +72,42 @@ function M.resolve_nvim_data_dir_path (relative_path, opts)
 
     return joined_path
 end
+
+function M.home ()
+    local os_name = os_utils.get_os()
+    local home_path = ""
+
+    if os_name == os_utils.OS.windows then
+        local win_home_path = os.getenv("USERPROFILE");
+        if win_home_path == nil then
+            error("Unable to get USERPROFILE environment variable")
+        end
+
+        home_path = win_home_path
+    end
+
+    return M.escape(home_path);
+end
+
+M.sync = {
+    get_path = function ()
+        return M.home() .. "/Sync"
+    end,
+    documents = {
+        get_path = function ()
+            return M.sync.get_path() .. "/Documents"
+        end,
+        vimwiki = {
+            get_path = function ()
+                return M.sync.documents.get_path() .. "/vimwiki"
+            end,
+        },
+    },
+    configs = {
+        get_path = function ()
+            return M.sync.get_path() .. "/Configs"
+        end,
+    },
+}
 
 return M
