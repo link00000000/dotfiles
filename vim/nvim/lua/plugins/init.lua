@@ -69,6 +69,7 @@ M.setup = function ()
         -- Misc.
         require("plugins.alpha").spec,
         require("plugins.file-line").spec,
+        require("plugins.vimwiki").spec,
     })
 end
 
