@@ -73,11 +73,6 @@ $Configurations = @{
         $Dest = Join-Path $Env:APPDATA -ChildPath "Microsoft/Windows/Start Menu/Programs/Startup/GlobalBindings.lnk"
 
         Create-Shortcut -Source $Source -Destination $Dest
-
-        $Source = Get-ConfigPath -RelativePath "autohotkey/RiderBindings.ahk"
-        $Dest = Join-Path $Env:APPDATA -ChildPath "Microsoft/Windows/Start Menu/Programs/Startup/RiderBindings.lnk"
-
-        Create-Shortcut -Source $Source -Destination $Dest
     }
     flowlauncher = {
         # FlowLauncher does not support symlinks so the files must be copied
