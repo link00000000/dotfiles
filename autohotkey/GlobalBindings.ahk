@@ -9,21 +9,20 @@
 ; <^>! -> AltGr key (not a standard key on keyboard)
 ; * -> Wild card for modifiers
 
+#Requires AutoHotkey v2.0
 #InputLevel 1
+#Include <Chrome>
 
-;$LWin Up::
-;$RWin Up::
-;    if (A_PriorKey = "LWin" || A_PriorKey = "RWin") {
-;        Send, !{Space}
-;    }
-;    else {
-;        SendLevel 1
-;        SendEvent {LWin down}{%A_PriorKey%}{LWin up}
-;        ; SendInput {LWin down}{%A_PriorKey%}{LWin up}
-;    }
-;    return
+#b::    Run("ms-settings:bluetooth")
+#j::    Run("shell:downloads")
+#t::    Run("wt.exe")
+#`::    Run("explorer.exe " . EnvGet("USERPROFILE"))
+#p::    Chrome.RunChromeApp("opbageolaboaoegdhedganbipolnjcck")
+#+d::   Run("nvim.exe -c VimwikiDevlog")
 
-#b:: Run "ms-settings:bluetooth"
-#j:: Run "shell:downloads"
-#t:: Run "wt.exe"
-#p:: Run "C:\Users\crand\AppData\Local\BraveSoftware\Brave-Browser\Application\chrome_proxy.exe  --profile-directory=Default --app-id=opbageolaboaoegdhedganbipolnjcck"
+#HotIf WinActive("ahk_exe rider64.exe") or WinActive("ahk_exe clion64.exe")
+^j::    Send "{DOWN}"
+^k::    Send "{UP}"
+^h::    Send "{LEFT}"
+^l::    Send "{RIGHT}"
+#HotIf
