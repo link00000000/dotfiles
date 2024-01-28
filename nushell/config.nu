@@ -150,10 +150,6 @@ $env.config = {
         always_trash: true # always act as if -t was given. Can be overridden with -p
     }
 
-    cd: {
-        abbreviations: true # allows `cd s/o/f` to expand to `cd some/other/folder`
-    }
-
     table: {
         mode: light # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
         index_mode: always # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
@@ -824,5 +820,7 @@ alias cat = bat.exe
 alias vim = nvim
 
 alias dc = docker-compose
+
+alias cling = docker run -it --rm sehrig/cling cling
 
 use ~/.cache/starship/init.nu
