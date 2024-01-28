@@ -67,4 +67,4 @@ alt + shift + 3             : komorebic move-to-workspace 2
 # ]
 
 ## Other
-win + shift + d             : wt nvim.exe -c Devlog
+win + shift + d             : wt nvim.exe -c VimwikiDevlog
