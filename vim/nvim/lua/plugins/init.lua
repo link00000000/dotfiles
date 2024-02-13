@@ -41,7 +41,7 @@ M.setup = function ()
         require('plugins.barbecue').spec,
         require('plugins.telescope').spec,
 
-        -- LSP / Intellisense / Syntax / Highlightinqg
+        -- LSP / Intellisense / Syntax / Highlighting
         require('plugins.lspconfig').spec,
         require("plugins.nvim-cmp").spec,
         require("plugins.nvim-autopairs").spec,
@@ -70,6 +70,8 @@ M.setup = function ()
         require("plugins.alpha").spec,
         require("plugins.file-line").spec,
         require("plugins.vimwiki").spec,
+        require("plugins.venn").spec,
+        require("plugins.which-key").spec,
     })
 end
 
