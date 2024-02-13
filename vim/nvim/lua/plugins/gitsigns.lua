@@ -4,9 +4,11 @@ local keymap = require("utils.keymap")
 local M = {}
 
 local function setup_current_line_blame ()
+    local gitsigns_actions = require("gitsigns.actions")
+
     autocmd.create_group("gitsigns", {
-        { event = "InsertEnter", action = ":Gitsigns toggle_current_line_blame", opts = { pattern = { "*" } } },
-        { event = "InsertLeave", action = ":Gitsigns toggle_current_line_blame", opts = { pattern = { "*" } } }
+        { event = "InsertEnter", action = function () gitsigns_actions.toggle_current_line_blame(true) end, opts = { pattern = { "*" } } },
+        { event = "InsertLeave", action = function () gitsigns_actions.toggle_current_line_blame(false) end, opts = { pattern = { "*" } } }
     })
 end
 
@@ -22,6 +24,8 @@ local function config ()
     })
 
     setup_current_line_blame()
+
+    require("plugins.which-key").add_group_label("<leader>g", "Git")
 end
 
 M.reset_hunk = function ()
@@ -32,10 +36,13 @@ end
 
 M.spec = {
     "lewis6991/gitsigns.nvim",
-    lazy = true,
+    lazy = false,
     config = config,
     keys = {
         keymap.normal.lazy("<leader>gu", M.reset_hunk, { desc = "Reset hunk" })
+    },
+    dependencies = {
+        require("plugins.which-key").spec,
     }
 }
 
