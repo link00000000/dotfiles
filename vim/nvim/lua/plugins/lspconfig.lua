@@ -7,6 +7,7 @@ local function config ()
         require('plugins.lsp.generic').setup_handler,
         ['omnisharp'] = require('plugins.lsp.omnisharp-extended').setup_handler,
         ['lua_ls'] = require("plugins.lsp.neodev").setup_handler,
+        ['grammarly'] = require("plugins.lsp.grammarly").setup_handler,
     })
 end
 
