@@ -25,7 +25,13 @@ end
 ---@param action function|string
 ---@param opts table
 M.create_command = function (event, action, opts)
-    local merge_default_opts = func.create_merge_default_opts({ callback = action })
+    local merge_default_opts
+    if type(action) == "string" then
+        merge_default_opts = func.create_merge_default_opts({ command = action })
+    else
+        merge_default_opts = func.create_merge_default_opts({ callback = action })
+    end
+
     opts = merge_default_opts(opts)
 
     vim.api.nvim_create_autocmd(event, opts)

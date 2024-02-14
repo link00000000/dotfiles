@@ -4,11 +4,9 @@ local keymap = require("utils.keymap")
 local M = {}
 
 local function setup_current_line_blame ()
-    local gitsigns_actions = require("gitsigns.actions")
-
     autocmd.create_group("gitsigns", {
-        { event = "InsertEnter", action = function () gitsigns_actions.toggle_current_line_blame(true) end, opts = { pattern = { "*" } } },
-        { event = "InsertLeave", action = function () gitsigns_actions.toggle_current_line_blame(false) end, opts = { pattern = { "*" } } }
+        { event = "InsertEnter", action = "Gitsigns toggle_current_line_blame" },
+        { event = "InsertLeave", action = "Gitsigns toggle_current_line_blame" },
     })
 end
 
@@ -29,9 +27,7 @@ local function config ()
 end
 
 M.reset_hunk = function ()
-    local gitsigns = require("gitsigns")
-
-    gitsigns.reset_hunk()
+    require("gitsigns").reset_hunk()
 end
 
 M.spec = {
