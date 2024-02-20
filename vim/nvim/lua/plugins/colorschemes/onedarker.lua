@@ -1,11 +1,7 @@
-local M = {}
-
-local scheme = {
-	default = 'onedarker',
+---@type PluginModule
+return {
+    spec = {
+        "LunarVim/onedarker.nvim",
+        lazy = true,
+    }
 }
-
-M.config = function ()
-	vim.cmd.colorscheme(scheme.default)
-end
-
-return M

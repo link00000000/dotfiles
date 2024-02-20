@@ -1,11 +1,7 @@
-local M = {}
-
-local scheme = {
-	default = 'nord',
+---@type PluginModule
+return {
+    spec = {
+        "arcticicestudio/nord-vim",
+        lazy = true,
+    }
 }
-
-M.config = function ()
-	vim.cmd.colorscheme(scheme.default)
-end
-
-return M

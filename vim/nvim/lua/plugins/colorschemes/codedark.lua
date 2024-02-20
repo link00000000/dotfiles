@@ -1,11 +1,7 @@
-local M = {}
-
-local scheme = {
-	default = 'codedark',
+---@type PluginModule
+return {
+    spec = {
+        "tomasiser/vim-code-dark",
+        lazy = true,
+    }
 }
-
-M.config = function ()
-	vim.cmd.colorscheme(scheme.default)
-end
-
-return M

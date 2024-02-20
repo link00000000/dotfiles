@@ -73,6 +73,8 @@ M.setup = function ()
         require("plugins.venn").spec,
         require("plugins.which-key").spec,
     })
+
+    require("plugins.colorschemes").set_colorscheme()
 end
 
 return M

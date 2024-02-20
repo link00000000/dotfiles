@@ -1,11 +1,6 @@
-local M = {}
-
-local scheme = {
-	default = 'dracula',
+return {
+    spec = {
+        "dracula/vim",
+        lazy = true,
+    }
 }
-
-M.config = function ()
-	vim.cmd.colorscheme(scheme.default)
-end
-
-return M

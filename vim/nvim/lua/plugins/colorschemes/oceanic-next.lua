@@ -1,11 +1,7 @@
-local M = {}
-
-local scheme = {
-	default = 'OceanicNext',
+---@type PluginModule
+return {
+    spec = {
+        "mhartington/oceanic-next",
+        lazy = true,
+    }
 }
-
-M.config = function ()
-	vim.cmd.colorscheme(scheme.default)
-end
-
-return M

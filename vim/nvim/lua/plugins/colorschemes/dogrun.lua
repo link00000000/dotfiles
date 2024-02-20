@@ -1,11 +1,7 @@
-local M = {}
-
-local scheme = {
-	default = 'dogrun',
+---@type PluginModule
+return {
+    spec = {
+        "wadackel/vim-dogrun",
+        lazy = true,
+    }
 }
-
-M.config = function ()
-	vim.cmd.colorscheme(scheme.default)
-end
-
-return M

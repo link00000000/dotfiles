@@ -1,11 +1,7 @@
-local M = {}
-
-local scheme = {
-	default = 'toast',
+---@type PluginModule
+return {
+    spec = {
+        "jsit/toast.vim",
+        lazy = true,
+    }
 }
-
-M.config = function ()
-	vim.cmd.colorscheme(scheme.default)
-end
-
-return M
