@@ -121,6 +121,10 @@ $Configurations = @{
         $Source = Get-ConfigPath -RelativePath "nushell/config.nu"
         $Dest = Join-Path -Path $Env:APPDATA -ChildPath "nushell/config.nu"
         Create-SymbolicLink -Source $Source -Destination $Dest
+
+        $Source = Get-ConfigPath -RelativePath "nushell/share"
+        $Dest = Join-Path -Path $Env:APPDATA -ChildPath "nushell/share"
+        Create-SymbolicLink -Source $Source -Destination $Dest
     }
     powershell = {
         $Source = Get-ConfigPath -RelativePath "powershell/profile.ps1"

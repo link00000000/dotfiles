@@ -820,7 +820,7 @@ alias cat = bat.exe
 alias vim = nvim
 
 alias dc = docker-compose
-
 alias cling = docker run -it --rm sehrig/cling cling
 
-use ~/.cache/starship/init.nu
+source "C:/Users/crand/AppData/Roaming/nushell/share/atuin/init.nu"
+use "C:/Users/crand/AppData/Roaming/nushell/share/starship/init.nu"
