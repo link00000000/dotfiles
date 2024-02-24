@@ -1,34 +1,18 @@
-local M = {}
+---@type PluginModule
+return {
+    spec = {
+        'neovim/nvim-lspconfig',
+        dependencies = {
+            require("plugins.nvim-notify").spec,
 
-local function config ()
-    local mason_lspconfig = require('mason-lspconfig')
+            require('plugins.folding').spec,
+            require('plugins.navic').spec,
+            require('plugins.barbecue').spec,
+            require('plugins.telescope').spec,
 
-    mason_lspconfig.setup_handlers({
-        require('plugins.lsp.generic').setup_handler,
-        ['omnisharp'] = require('plugins.lsp.omnisharp-extended').setup_handler,
-        ['lua_ls'] = require("plugins.lsp.neodev").setup_handler,
-        ['grammarly'] = require("plugins.lsp.grammarly").setup_handler,
-    })
-end
-
-M.spec = {
-    'neovim/nvim-lspconfig',
-    lazy = true,
-    config = config,
-    event = { "BufEnter" },
-    dependencies = {
-        require("plugins.nvim-notify").spec,
-
-        require('plugins.mason-lspconfig').spec,
-        require('plugins.folding').spec,
-        require('plugins.navic').spec,
-        require('plugins.barbecue').spec,
-        require('plugins.telescope').spec,
-
-        require('plugins.cmp-nvim-lsp').spec,
-        require('plugins.omnisharp-extended-lsp').spec,
-        require('plugins.neodev').spec,
-    },
+            require('plugins.cmp-nvim-lsp').spec,
+            require('plugins.omnisharp-extended-lsp').spec,
+            require('plugins.neodev').spec,
+        },
+    }
 }
-
-return M

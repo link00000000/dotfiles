@@ -48,7 +48,7 @@ return {
             require('plugins.telescope').spec,
 
             -- LSP / Intellisense / Syntax / Highlighting
-            require('plugins.lspconfig').spec,
+            require("plugins.mason-lspconfig").spec,
             require("plugins.nvim-cmp").spec,
             require("plugins.nvim-autopairs").spec,
             require("plugins.trouble").spec,
