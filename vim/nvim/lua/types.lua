@@ -2,4 +2,4 @@
 ---@field setup fun()
 
 ---@class PluginModule
----@field spec LazySpec
+---@field spec LazyPluginSpec
