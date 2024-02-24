@@ -44,8 +44,6 @@ local function on_attach(bufnr)
     keymap.normal.apply('.', api.node.run.cmd, opts('Run Command'))
     keymap.normal.apply('<C-k>', api.node.show_info_popup, opts('Info'))
     keymap.normal.apply('g?', api.tree.toggle_help, opts('Help'))
-    keymap.normal.apply('<Space>', api.marks.toggle, opts('Toggle Bookmark'))
-    keymap.normal.apply('bmv', api.marks.bulk.move, opts('Move Bookmarked'))
 
 end
 
