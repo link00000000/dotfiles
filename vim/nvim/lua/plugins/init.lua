@@ -57,6 +57,7 @@ return {
             require("plugins.vim-razor").spec,
             require("plugins.nvim-nu").spec,
             require("plugins.nvim-ts-autotag").spec,
+            require("plugins.indent-blankline").spec,
 
             -- Debugging
             require("plugins.nvim-dap").spec,
