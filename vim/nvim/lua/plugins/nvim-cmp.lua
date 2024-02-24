@@ -1,10 +1,9 @@
-local M = {}
-
 local function config ()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local lspkind = require("lspkind")
 
+    -- Code editing
     ---@diagnostic disable-next-line
     cmp.setup({
         snippet = {
@@ -13,12 +12,10 @@ local function config ()
             end,
         },
         window = {
-            completion = {
-                winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-                col_offset = -3,
-                side_padding = 0,
-            },
+            completion = cmp.config.window.bordered({ border = "single", scrollbar = false, col_offset = -5 }),
+            documentation = cmp.config.window.bordered({ border = "single", scrollbar = false }),
         },
+        ---@diagnostic disable-next-line
         formatting = {
             fields = { "kind", "abbr", "menu" },
             format = function (entry, vim_item)
@@ -31,9 +28,6 @@ local function config ()
 
                 return kind
             end,
-        },
-        completion = {
-            -- completeopt = 'menu,menuone,noinsert,noselect',
         },
         mapping = cmp.mapping.preset.insert({
             ['<C-S-k>'] = cmp.mapping.scroll_docs(-4),
@@ -67,6 +61,8 @@ local function config ()
         }),
     })
 
+    -- Text searching
+    ---@diagnostic disable-next-line
     cmp.setup.cmdline({ '/', '?' }, {
         mapping = cmp.mapping.preset.cmdline({
             ['<C-S-k>'] = cmp.mapping.scroll_docs(-4),
@@ -78,14 +74,13 @@ local function config ()
             { name = 'buffer' },
         }),
         window = {
-            completion = {
-                winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-                col_offset = -3,
-                side_padding = 0,
-            },
+            completion = cmp.config.window.bordered({ border = "single", scrollbar = false }),
+            documentation = cmp.config.window.bordered({ border = "single", scrollbar = false }),
         },
     })
 
+    -- Command execution
+    ---@diagnostic disable-next-line
     cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline({
             ['<C-S-k>'] = cmp.mapping.scroll_docs(-4),
@@ -107,30 +102,28 @@ local function config ()
             { name = 'cmdline' },
         }),
         window = {
-            completion = {
-                winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-                col_offset = -3,
-                side_padding = 0,
-            },
+            completion = cmp.config.window.bordered({ border = "single", scrollbar = false }),
+            documentation = cmp.config.window.bordered({ border = "single", scrollbar = false }),
         },
     })
 end
 
-M.spec = {
-    'hrsh7th/nvim-cmp',
-    lazy = true,
-    config = config,
-    dependencies = {
-        require("plugins.cmp-nvim-lsp").spec,
-        require("plugins.cmp-buffer").spec,
-        require("plugins.cmp-path").spec,
-        require("plugins.cmp-cmdline").spec,
-        require("plugins.cmp-nvim-lua").spec,
+---@type PluginModule
+return {
+    spec = {
+        'hrsh7th/nvim-cmp',
+        lazy = true,
+        config = config,
+        dependencies = {
+            require("plugins.cmp-nvim-lsp").spec,
+            require("plugins.cmp-buffer").spec,
+            require("plugins.cmp-path").spec,
+            require("plugins.cmp-cmdline").spec,
+            require("plugins.cmp-nvim-lua").spec,
 
-        require("plugins.luasnip").spec,
-        require("plugins.lspkind").spec,
-    },
-    event = { "BufEnter" }
+            require("plugins.luasnip").spec,
+            require("plugins.lspkind").spec,
+        },
+        event = { "BufEnter" }
+    }
 }
-
-return M
