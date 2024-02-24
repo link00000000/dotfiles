@@ -49,6 +49,7 @@ return {
 
             -- LSP / Intellisense / Syntax / Highlighting
             require("plugins.mason-lspconfig").spec,
+            require("plugins.mason-null-ls").spec,
             require("plugins.nvim-cmp").spec,
             require("plugins.nvim-autopairs").spec,
             require("plugins.trouble").spec,
