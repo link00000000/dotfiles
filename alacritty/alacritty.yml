@@ -23,16 +23,16 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: xterm-256color
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. Both lines and columns
   # must be non-zero for this to take effect. The number of columns must be at
   # least `2`, while using a value of `0` for columns and lines will fall back
   # to the window manager's recommended size
-  #dimensions:
-  #  columns: 0
-  #  lines: 0
+  dimensions:
+    columns: 140
+    lines: 40
 
   # Window position (changes require restart)
   #
@@ -46,9 +46,9 @@
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  #padding:
-  #  x: 0
-  #  y: 0
+  padding:
+    x: 8
+    y: 8
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -62,7 +62,7 @@
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  #decorations: full
+  decorations: none
 
   # Background opacity
   #
@@ -126,7 +126,9 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: CaskaydiaCove Nerd Font Mono
+    # family: CaskaydiaCove Nerd Font
+    family: IosevkaTermSlab Nerd Font
+    # family: ProFontWindows Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -475,7 +477,7 @@ working_directory: None
 #
 # Terminal hints can be used to find text or hyperlink in the visible part of
 # the terminal and pipe it to other applications.
-#hints:
+hints:
   # Keys used for the hint labels.
   #alphabet: "jfkdls;ahgurieowpq"
 
@@ -508,15 +510,15 @@ working_directory: None
   #       Select the hint's text.
   #   - MoveViModeCursor
   #       Move the vi mode cursor to the beginning of the hint.
-  #enabled:
-  # - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
-  #           [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
-  #   hyperlinks: true
-  #   command: xdg-open
-  #   post_processing: true
-  #   mouse:
-  #     enabled: true
-  #     mods: None
+  enabled:
+   - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+             [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+     hyperlinks: true
+     command: explorer.exe
+     post_processing: true
+     mouse:
+       enabled: true
+       mods: None
   #   binding:
   #     key: U
   #     mods: Control|Shift
