@@ -12,12 +12,16 @@ local function config ()
             {
                 type = "text",
                 val = {
-                    [[ ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗]],
-                    [[ ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║]],
-                    [[ ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║]],
-                    [[ ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║]],
-                    [[ ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║]],
-                    [[ ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝]],
+                    [[                                                                       ]],
+                    [[                                                                     ]],
+                    [[       ████ ██████           █████      ██                     ]],
+                    [[      ███████████             █████                             ]],
+                    [[      █████████ ███████████████████ ███   ███████████   ]],
+                    [[     █████████  ███    █████████████ █████ ██████████████   ]],
+                    [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+                    [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+                    [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+                    [[                                                                       ]],
                 },
                 opts = {
                     position = "center",
@@ -31,12 +35,12 @@ local function config ()
             {
                 type = "group",
                 val = {
-                    dashboard_theme.button("n", codicons.get("new-file") ..         "  New file", "<cmd>enew<CR>"),
-                    dashboard_theme.button("w", codicons.get("notebook") ..         "  Wiki", "<cmd>VimwikiIndex<CR>"),
-                    dashboard_theme.button("r", codicons.get("repo-forked") ..      "  Open repository", "<cmd>Repos<CR>"),
-                    dashboard_theme.button("f", codicons.get("search") ..           "  Find file", "<cmd>Files<CR>"),
-                    dashboard_theme.button("s", codicons.get("settings-gear") ..    "  Settings", "<cmd>ConfigCwd<CR>"),
-                    dashboard_theme.button("q", codicons.get("close-all") ..        "  Close", ":q<CR>"),
+                    dashboard_theme.button("n", codicons.get("new-file", "icon") ..         "  New file", "<cmd>enew<CR>"),
+                    dashboard_theme.button("w", codicons.get("notebook", "icon") ..         "  Wiki", "<cmd>VimwikiIndex<CR>"),
+                    dashboard_theme.button("r", codicons.get("repo-forked", "icon") ..      "  Open repository", "<cmd>Repos<CR>"),
+                    dashboard_theme.button("f", codicons.get("search", "icon") ..           "  Find file", "<cmd>Files<CR>"),
+                    dashboard_theme.button("s", codicons.get("settings-gear", "icon") ..    "  Settings", "<cmd>ConfigCwd<CR>"),
+                    dashboard_theme.button("q", codicons.get("close-all", "icon") ..        "  Close", ":q<CR>"),
                 },
                 opts = {
                     spacing = 1,
