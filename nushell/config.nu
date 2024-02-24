@@ -813,6 +813,18 @@ $env.config = {
     ]
 }
 
+def "config alacritty" [] {
+    ^$env.EDITOR $"($env.USERPROFILE)/Sync/Configs/alacritty/alacritty.yml"
+}
+
+def "config autohotkey" [] {
+    ^$env.EDITOR $"($env.USERPROFILE)/Sync/Configs/autohotkey"
+}
+
+def "config ahk" [] {
+    config autohotkey
+}
+
 alias ii = explorer.exe
 alias cat = bat.exe
 
