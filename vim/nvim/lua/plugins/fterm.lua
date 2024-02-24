@@ -23,7 +23,7 @@ local function new_git_term ()
     ---@diagnostic disable-next-line Settings are optional but not specified as such
     local git_term = fterm:new({
         ft = 'FTerm_git',
-        cmd = 'lazygit',
+        cmd = 'cd .; lazygit',
         blend = 10,
     })
 
