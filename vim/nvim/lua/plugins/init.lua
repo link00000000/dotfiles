@@ -63,9 +63,6 @@ return {
             require("plugins.nvim-dap").spec,
             require("plugins.nvim-dap-python").spec,
 
-            -- Linting
-            require("plugins.mason-nvim-lint").spec,
-
             -- Snippets
             require("plugins.luasnip").spec,
 
