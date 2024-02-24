@@ -1,7 +1,9 @@
-local M = {}
+local keymap = require("utils.keymap")
 
 local function config ()
     local notify = require("notify")
+
+    ---@diagnostic disable-next-line
     notify.setup({
         render = "compact",
         fps = 120,
@@ -19,11 +21,16 @@ local function config ()
     vim.notify = notify
 end
 
-M.spec = {
-    "rcarriga/nvim-notify",
-    lazy = true,
-    config = config,
-    cmd = { "Notifications" }
+---@type PluginModule
+return {
+    spec = {
+        "rcarriga/nvim-notify",
+        lazy = true,
+        config = config,
+        cmd = { "Notifications" },
+        keys = {
+            keymap.normal.lazy("<Leader>nh", "<cmd>Notifications<CR>", { desc = "Show notifications" }),
+            keymap.normal.lazy("<Leader>nd", function () require("notify").dismiss({ pending = true, silent = true }) end, { desc = "Dismiss all notifications" })
+        }
+    }
 }
-
-return M
