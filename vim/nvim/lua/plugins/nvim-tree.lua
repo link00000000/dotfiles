@@ -13,7 +13,7 @@ local function open_file_in_external_program ()
         vim.fn.system("explorer.exe " .. vim.fn.getcwd())
 
     else
-        vim.fn.system("explorer.exe" .. node.absolute_path)
+        vim.fn.system("explorer.exe " .. node.absolute_path)
 
     end
 end
