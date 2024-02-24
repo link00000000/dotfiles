@@ -17,7 +17,7 @@ local M = {
         require("plugins.colorschemes.vscode").spec,
     },
     set_colorscheme = function ()
-        vim.cmd.colorscheme("carbonfox")
+        vim.cmd.colorscheme("tokyonight-night")
     end
 }
 
