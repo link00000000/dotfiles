@@ -15,7 +15,7 @@
 
 #b::    Run("ms-settings:bluetooth")
 #j::    Run("shell:downloads")
-#t::    Run("wt.exe")
+#t::    Run("alacritty.exe --working-directory " . EnvGet("USERPROFILE"))
 #`::    Run("explorer.exe " . EnvGet("USERPROFILE"))
 #p::    Chrome.RunChromeApp("opbageolaboaoegdhedganbipolnjcck")
 #+d::   Run("nvim.exe -c VimwikiDevlog")
