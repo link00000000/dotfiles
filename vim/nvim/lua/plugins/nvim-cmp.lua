@@ -5,6 +5,7 @@ local function config ()
     local luasnip = require("luasnip")
     local lspkind = require("lspkind")
 
+    ---@diagnostic disable-next-line
     cmp.setup({
         snippet = {
             expand = function (args)
