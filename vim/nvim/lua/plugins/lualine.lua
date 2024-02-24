@@ -16,6 +16,11 @@ local config = function ()
             lualine_y = { 'progress' },
             lualine_z = { 'location' },
         },
+        options = {
+            theme = "auto",
+            section_separators = { left = "", right = "" },
+            component_separators = { left = "", right = "" },
+        }
     })
 end
 
