@@ -150,8 +150,8 @@ local setup_keymaps = function ()
     keymap.visual.apply('>', '>gv')
 
     -- Indent and outdent with <Tab> and <S-Tab>
-    keymap.set({ 'n', 'v' }).apply('<Tab>', '>gv')
-    keymap.set({ 'n', 'v' }).apply('<S-Tab>', '<gv')
+    keymap.set({ 'v' }).apply('<Tab>', '>gv')
+    keymap.set({ 'v' }).apply('<S-Tab>', '<gv')
     keymap.insert.apply('<S-Tab>', '<C-o><<')
 
     -- Create new tab
