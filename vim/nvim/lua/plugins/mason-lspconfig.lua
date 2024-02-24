@@ -1,18 +1,16 @@
-local M = {}
-
 local function config ()
     local mason_lspconfig = require('mason-lspconfig')
-
     mason_lspconfig.setup()
 end
 
-M.spec = {
-    'williamboman/mason-lspconfig.nvim',
-    lazy = true,
-    config = config,
-    dependencies = {
-        require('plugins.mason').spec,
+---@type PluginModule
+return {
+    spec = {
+        'williamboman/mason-lspconfig.nvim',
+        lazy = true,
+        config = config,
+        dependencies = {
+            require('plugins.mason').spec,
+        }
     }
 }
-
-return M

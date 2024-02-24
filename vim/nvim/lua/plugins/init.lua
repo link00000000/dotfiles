@@ -1,13 +1,17 @@
 local path = require('utils.path')
 
-local M = {}
-
 local lazy_path = path.resolve_nvim_data_dir_path('lazy/lazy.nvim')
 
+---@return boolean
 local function is_lazy_installed()
-    return vim.loop.fs_stat(lazy_path)
+    if vim.loop.fs_stat(lazy_path) then
+        return true
+    else
+        return false
+    end
 end
 
+---@return nil
 local function install_lazy()
     vim.fn.system({
         "git",
@@ -19,62 +23,67 @@ local function install_lazy()
     })
 end
 
-M.setup = function ()
-    if not is_lazy_installed() then
-        install_lazy()
+---@type ConfigModule
+return {
+    setup = function ()
+        if not is_lazy_installed() then
+            install_lazy()
+        end
+
+        vim.opt.rtp:prepend(lazy_path)
+
+        require('lazy').setup({
+
+            -- Appearance
+            require('plugins.colorschemes').spec,
+
+            -- Layout / Statusline / Tabline
+            require('plugins.luatab').spec,
+            require('plugins.fterm').spec,
+            require('plugins.lualine').spec,
+            require('plugins.nvim-tree').spec,
+            require('plugins.nvim-treesitter').spec,
+            require('plugins.todo-comments').spec,
+            require('plugins.barbecue').spec,
+            require('plugins.telescope').spec,
+
+            -- LSP / Intellisense / Syntax / Highlighting
+            require('plugins.lspconfig').spec,
+            require("plugins.nvim-cmp").spec,
+            require("plugins.nvim-autopairs").spec,
+            require("plugins.trouble").spec,
+            require("plugins.symbols-outline").spec,
+            require("plugins.glance").spec,
+            require("plugins.vim-razor").spec,
+            require("plugins.nvim-nu").spec,
+            require("plugins.nvim-ts-autotag").spec,
+
+            -- Debugging
+            require("plugins.nvim-dap").spec,
+            require("plugins.nvim-dap-python").spec,
+
+            -- Linting
+            require("plugins.mason-nvim-lint").spec,
+
+            -- Snippets
+            require("plugins.luasnip").spec,
+
+            -- Comments / Text editing
+            require("plugins.comment").spec,
+            require("plugins.nvim-surround").spec,
+
+            -- Git / Version Control
+            require("plugins.gitsigns").spec,
+
+            -- Misc.
+            require("plugins.alpha").spec,
+            require("plugins.file-line").spec,
+            require("plugins.vimwiki").spec,
+            require("plugins.venn").spec,
+            require("plugins.which-key").spec,
+            require("plugins.nvim-unception").spec,
+        })
+
+        require("plugins.colorschemes").set_colorscheme()
     end
-
-    vim.opt.rtp:prepend(lazy_path)
-
-    require('lazy').setup({
-
-        -- Appearance
-        require('plugins.colorschemes').spec,
-
-        -- Layout / Statusline / Tabline
-        require('plugins.luatab').spec,
-        require('plugins.fterm').spec,
-        require('plugins.lualine').spec,
-        require('plugins.nvim-tree').spec,
-        require('plugins.nvim-treesitter').spec,
-        require('plugins.todo-comments').spec,
-        require('plugins.barbecue').spec,
-        require('plugins.telescope').spec,
-
-        -- LSP / Intellisense / Syntax / Highlighting
-        require('plugins.lspconfig').spec,
-        require("plugins.nvim-cmp").spec,
-        require("plugins.nvim-autopairs").spec,
-        require("plugins.trouble").spec,
-        require("plugins.symbols-outline").spec,
-        require("plugins.glance").spec,
-        require("plugins.vim-razor").spec,
-        require("plugins.nvim-nu").spec,
-        require("plugins.nvim-ts-autotag").spec,
-
-        -- Debugging
-        require("plugins.nvim-dap").spec,
-        require("plugins.nvim-dap-python").spec,
-
-        -- Snippets
-        require("plugins.luasnip").spec,
-
-        -- Comments / Text editing
-        require("plugins.comment").spec,
-        require("plugins.nvim-surround").spec,
-
-        -- Git / Version Control
-        require("plugins.gitsigns").spec,
-
-        -- Misc.
-        require("plugins.alpha").spec,
-        require("plugins.file-line").spec,
-        require("plugins.vimwiki").spec,
-        require("plugins.venn").spec,
-        require("plugins.which-key").spec,
-    })
-
-    require("plugins.colorschemes").set_colorscheme()
-end
-
-return M
+}
