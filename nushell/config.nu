@@ -834,5 +834,7 @@ alias vim = nvim
 alias dc = docker-compose
 alias cling = docker run -it --rm sehrig/cling cling
 
+alias ? = ollama run codellama
+
 source "C:/Users/crand/AppData/Roaming/nushell/share/atuin/init.nu"
 use "C:/Users/crand/AppData/Roaming/nushell/share/starship/init.nu"
