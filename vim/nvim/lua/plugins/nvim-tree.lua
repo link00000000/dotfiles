@@ -2,6 +2,22 @@ local keymap = require('utils.keymap')
 
 local M = {}
 
+local function open_file_in_external_program ()
+    local node = require("nvim-tree.api").tree.get_node_under_cursor()
+
+    if node == nil then
+        error("Could not get node under cursor")
+
+    -- A node is nil if the cwd is selected
+    elseif node.parent == nil then
+        vim.fn.system("explorer.exe " .. vim.fn.getcwd())
+
+    else
+        vim.fn.system("explorer.exe" .. node.absolute_path)
+
+    end
+end
+
 local function on_attach(bufnr)
     local api = require('nvim-tree.api')
 
@@ -44,6 +60,7 @@ local function on_attach(bufnr)
     keymap.normal.apply('.', api.node.run.cmd, opts('Run Command'))
     keymap.normal.apply('<C-k>', api.node.show_info_popup, opts('Info'))
     keymap.normal.apply('g?', api.tree.toggle_help, opts('Help'))
+    keymap.normal.apply("E", open_file_in_external_program, opts("Open in external program"))
 
 end
 
@@ -71,7 +88,7 @@ local function config ()
                 git_placement = "after",
                 modified_placement = "before",
                 padding = " ",
-                symlink_arrow = " " .. codicons.get("arrow-small-right") .. " ",
+                symlink_arrow = " " .. codicons.get("arrow-small-right", "icon") .. " ",
                 show = {
                     file = true,
                     folder = true,
@@ -80,13 +97,13 @@ local function config ()
                     modified = true,
                 },
                 glyphs = {
-                    default = codicons.get("symbol-file"),
-                    symlink = codicons.get("file-symlink-file"),
-                    bookmark = codicons.get("check"),
-                    modified = codicons.get("circle-filled"),
+                    default = codicons.get("symbol-file", "icon"),
+                    symlink = codicons.get("file-symlink-file", "icon"),
+                    bookmark = codicons.get("check", "icon"),
+                    modified = codicons.get("circle-filled", "icon"),
                     folder = {
-                        arrow_closed = codicons.get("chevron-right"),
-                        arrow_open = codicons.get("chevron-down"),
+                        arrow_closed = codicons.get("chevron-right", "icon"),
+                        arrow_open = codicons.get("chevron-down", "icon"),
                         default = "",
                         open = "",
                         empty = "",
@@ -98,10 +115,10 @@ local function config ()
                         unstaged = "",
                         staged = "",
                         unmerged = "",
-                        renamed = codicons.get('diff-renamed'),
-                        untracked = codicons.get('diff-added'),
-                        deleted = codicons.get('diff-removed'),
-                        ignored = codicons.get('diff-ignored'),
+                        renamed = codicons.get('diff-renamed', "icon"),
+                        untracked = codicons.get('diff-added', "icon"),
+                        deleted = codicons.get('diff-removed', "icon"),
+                        ignored = codicons.get('diff-ignored', "icon"),
                     },
                 },
             },
@@ -136,9 +153,9 @@ M.spec = {
         require('plugins.codicons').spec
     },
     keys = {
-        keymap.normal.lazy('<Leader>ff', open_tree),
-        keymap.normal.lazy('<Leader>fn', create_file),
-        keymap.normal.lazy('<Leader>fd', delete_current_file),
+        keymap.normal.lazy('<Leader>ft', open_tree, { desc = "File Browser" }),
+        keymap.normal.lazy('<Leader>fn', create_file, { desc = "New File" }),
+        keymap.normal.lazy('<Leader>fd', delete_current_file, { desc = "Delete file" }),
     },
     cmd = {
         "NvimTreeOpen", "NvimTreeClose", "NvimTreeToggle",
