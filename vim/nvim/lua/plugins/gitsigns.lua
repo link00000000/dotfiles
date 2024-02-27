@@ -5,8 +5,8 @@ local M = {}
 
 local function setup_current_line_blame ()
     autocmd.create_group("gitsigns", {
-        { event = "InsertEnter", action = "Gitsigns toggle_current_line_blame" },
-        { event = "InsertLeave", action = "Gitsigns toggle_current_line_blame" },
+        { event = "InsertEnter", action = "silent Gitsigns toggle_current_line_blame" },
+        { event = "InsertLeave", action = "silent Gitsigns toggle_current_line_blame" },
     })
 end
 
