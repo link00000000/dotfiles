@@ -52,6 +52,7 @@ local function config ()
             ['<CR>'] = cmp.mapping.confirm({ select = false }),
         }),
         sources = cmp.config.sources({
+            { name = "nvim_lsp_signature_help" },
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
             { name = 'nvim_lua' },
@@ -120,6 +121,7 @@ return {
             require("plugins.cmp-path").spec,
             require("plugins.cmp-cmdline").spec,
             require("plugins.cmp-nvim-lua").spec,
+            require("plugins.cmp-nvim-lsp-signature-help").spec,
 
             require("plugins.luasnip").spec,
             require("plugins.lspkind").spec,

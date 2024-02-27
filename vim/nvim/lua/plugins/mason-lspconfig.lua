@@ -1,13 +1,15 @@
 local function config ()
     local mason_lspconfig = require('mason-lspconfig')
-    mason_lspconfig.setup()
-
-    mason_lspconfig.setup_handlers({
-        require('plugins.lsp.generic').setup_handler,
-        ['omnisharp'] = require('plugins.lsp.omnisharp-extended').setup_handler,
-        ['lua_ls'] = require("plugins.lsp.neodev").setup_handler,
-        ['grammarly'] = require("plugins.lsp.grammarly").setup_handler,
+    mason_lspconfig.setup({
+        handlers = {
+            require('plugins.lsp.default').setup_handler,
+            -- ['omnisharp'] = require('plugins.lsp.omnisharp-extended').setup_handler,
+            -- ['lua_ls'] = require("plugins.lsp.neodev").setup_handler,
+            -- ['grammarly'] = require("plugins.lsp.grammarly").setup_handler,
+        }
     })
+
+    -- error(vim.inspect(require("plugins.lsp.default").setup_handler("lua_ls")))
 end
 
 ---@type PluginModule

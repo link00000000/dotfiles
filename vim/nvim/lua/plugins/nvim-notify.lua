@@ -29,8 +29,8 @@ return {
         config = config,
         cmd = { "Notifications" },
         keys = {
-            keymap.normal.lazy("<Leader>nh", "<cmd>Notifications<CR>", { desc = "Show notifications" }),
-            keymap.normal.lazy("<Leader>nd", function () require("notify").dismiss({ pending = true, silent = true }) end, { desc = "Dismiss all notifications" })
+            keymap.normal.lazy("<Leader>nh", "<cmd>Notifications<CR>", { desc = "Show history" }),
+            keymap.normal.lazy("<Leader>nd", function () require("notify").dismiss({ pending = true, silent = true }) end, { desc = "Dismiss all" })
         }
     }
 }

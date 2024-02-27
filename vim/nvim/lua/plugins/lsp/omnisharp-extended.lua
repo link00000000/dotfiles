@@ -1,47 +1,33 @@
-local keymap = require('utils.keymap')
-local generic_lsp_config = require('plugins.lsp.generic')
+local default = require("plugins.lsp.default")
 
-local M = {}
+---@type LSP
+return {
+    setup_handler = default.create_setup_handler({
+        on_attach = {
+            default.on_attach.setup_keymap.code_action,
+            default.on_attach.setup_keymap.rename,
+            default.on_attach.setup_keymap.hover,
+            default.on_attach.setup_keymap.error_hover,
+            default.on_attach.setup_keymap.error_next,
+            default.on_attach.setup_keymap.error_previous,
+            function (client, bufnr)
+                local telescope_theme = require("plugins.telescope").themes.dropdown({ bufnr = bufnr })
+                require("omnisharp_extended").telescope_lsp_definitions(telescope_theme) ---@diagnostic disable-line
+            end,
+            default.on_attach.setup_keymap.goto_references,
+            default.on_attach.setup_keymap.goto_implementation,
+            default.on_attach.setup_keymap.goto_type_definition,
 
-local function goto_definition ()
-    local omnisharp_extended_lsp = require('omnisharp_extended')
-    local telescope = require('plugins.telescope')
-
-    omnisharp_extended_lsp.telescope_lsp_definitions(telescope.themes.dropdown({ bufnr = bufnr }))
-end
-
-M.setup_keymaps = function (bufnr)
-    generic_lsp_config.setup_keymaps(bufnr)
-
-    keymap.normal.delete('<Leader>gd', { buffer = bufnr })
-
-    keymap.normal.apply('<Leader>gd', goto_definition)
-end
-
-M.on_attach = function (client, bufnr)
-    generic_lsp_config.on_attach(client, bufnr)
-
-    M.setup_keymaps(bufnr)
-end
-
-M.get_capabilities = function ()
-    return generic_lsp_config.get_capabilities()
-end
-
-M.setup_handler = function ()
-    local lspconfig = require('lspconfig')
-    local omnisharp_extended_lsp = require('omnisharp_extended')
-
-    lspconfig.omnisharp.setup({
-        on_attach = M.on_attach,
-        capabilities = M.get_capabilities(),
-        flags = {
-            debounce_text_changes = 150,
+            default.on_attach.setup_document_highlight_on_cursor_hold,
+            default.on_attach.setup_navic,
+            default.on_attach.setup_folding,
         },
         handlers = {
-            ['textDocument/definition'] = omnisharp_extended_lsp.handler,
+            default.handlers.display_messages_with_notify,
+            default.handlers.underline_and_virtual_text_for_errors,
         },
+        flags = {
+            debounce_text_changes = 150,
+        }
     })
-end
-
-return M
+}

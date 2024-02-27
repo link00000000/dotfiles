@@ -1,7 +1,8 @@
-local on_attach = function ()
-    local folding = require('folding')
-
-    folding.on_attach()
+---@type lsp.OnAttach
+local on_attach = function (client, bufnr)
+    if client.server_capabilities.foldingRangeProvider then
+        require("folding").on_attach()
+    end
 end
 
 local function config ()

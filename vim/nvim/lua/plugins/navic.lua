@@ -1,20 +1,15 @@
-local M = {}
-
-M.on_attach = function (client, bufnr)
-    local navic = require('nvim-navic')
-
+---@type lsp.OnAttach
+local function on_attach (client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufnr)
+        require("nvim-navic").attach(client, bufnr)
     end
 end
 
-local function config ()
-end
-
-M.spec = {
-    'SmiteshP/nvim-navic',
-    lazy = true,
-    config = config,
+---@type PluginModule
+return {
+    on_attach = on_attach,
+    spec = {
+        'SmiteshP/nvim-navic',
+        lazy = true,
+    }
 }
-
-return M
