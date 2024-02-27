@@ -104,16 +104,11 @@ local handlers = {
 
 ---@class CreateSetupHandlerOpts
 ---@field on_attach lsp.OnAttach[]|nil
----@field handlers { [string]: lsp-handler[] }|nil
----@field get_capabilities (fun(): lsp.Capabilities)|nil
----@field settings table|nil
----@field filetypes string[]|nil
----@field flags table|nil
----@field before_init any|nil
+---@field handlers lsp.HandlerConfig[]|nil
 
 ---@param opts CreateSetupHandlerOpts
 ---@return lsp-handler
-local function create_setup_handler (opts)
+local function setup_lsp (opts)
     -- Convert { { "textDocument/showMessage", function () print("A") end }, { "textDocument/showMessage", function () print("B") end } }
     -- to { "textDocument/showMessage", function () print("A") print("B") end }
     local resolved_handlers = {}
@@ -128,26 +123,17 @@ local function create_setup_handler (opts)
             table.insert(handlers_by_message[value.message], value.handler)
         end
 
-        for message, handlers in pairs(handlers_by_message) do
+        for message, handlers_for_message in pairs(handlers_by_message) do
             resolved_handlers[message] = function (err, result, context, config)
-                for _, handler in pairs(handlers) do
+                for _, handler in pairs(handlers_for_message) do
                     handler(err, result, context, config)
                 end
             end
         end
     end
 
-    local resolved_capabilities
-    if opts.get_capabilities then
-        resolved_capabilities = opts.get_capabilities()
-    else
-        resolved_capabilities = advertise_cmp_capabilities()
-    end
-
     return function (server_name)
-        local lspconfig = require('lspconfig')
-
-        lspconfig[server_name].setup({
+        local setup_config = vim.tbl_deep_extend("force", opts, {
             on_attach = function (client, bufnr)
                 if opts.on_attach then
                     for _, value in pairs(opts.on_attach) do
@@ -155,13 +141,10 @@ local function create_setup_handler (opts)
                     end
                 end
             end,
-            capabilities = resolved_capabilities,
             handlers = resolved_handlers,
-            settings = opts.settings or {},
-            filetypes = opts.filetypes or {},
-            flags = opts.flags or {},
-            before_init = opts.before_init
         })
+
+        require("lspconfig")[server_name].setup(setup_config)
     end
 end
 
@@ -170,9 +153,9 @@ return {
     on_attach = on_attach,
     handlers = handlers,
     advertise_cmp_capabilities = advertise_cmp_capabilities,
-    create_setup_handler = create_setup_handler,
+    setup_lsp = setup_lsp,
 
-    setup_handler = create_setup_handler({
+    setup_handler = setup_lsp({
         on_attach = {
             on_attach.setup_keymap.code_action,
             on_attach.setup_keymap.rename,

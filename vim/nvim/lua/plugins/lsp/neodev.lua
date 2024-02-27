@@ -2,7 +2,7 @@ local default = require("plugins.lsp.default")
 
 ---@type LSP
 return {
-    setup_handler = default.create_setup_handler({
+    setup_handler = default.setup_lsp({
         on_attach = {
             default.on_attach.setup_keymap.code_action,
             default.on_attach.setup_keymap.rename,
@@ -30,8 +30,5 @@ return {
                 }
             }
         },
-        before_init = function ()
-            require("neodev").before_init()
-        end
     })
 }
