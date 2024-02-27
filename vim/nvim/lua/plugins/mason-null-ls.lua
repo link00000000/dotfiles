@@ -1,6 +1,8 @@
 local function config ()
     require("mason-null-ls").setup({
-        handlers = {}
+        handlers = {
+            ["taplo"] = function () --[[Intentionally disable taplo support since taplo has native LSP support handled by lspconfig]] end
+        },
     })
 end
 
