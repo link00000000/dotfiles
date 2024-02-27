@@ -814,7 +814,7 @@ $env.config = {
 }
 
 def "config alacritty" [] {
-    ^$env.EDITOR $"($env.USERPROFILE)/Sync/Configs/alacritty/alacritty.yml"
+    ^$env.EDITOR $"($env.USERPROFILE)/Sync/Configs/alacritty/alacritty.toml"
 }
 
 def "config autohotkey" [] {
