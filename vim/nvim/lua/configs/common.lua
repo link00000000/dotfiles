@@ -69,6 +69,9 @@ local setup_settings = function ()
     vim.opt.foldlevelstart = 99
     vim.opt.foldenable = true
 
+    -- Force gutter to always be visible
+    vim.opt.signcolumn = "yes"
+
     -- Hide ./ and ../ in netrw
     vim.g.netrw_list_hide = '^\\.*/$'
     vim.g.netrw_hide = 1
