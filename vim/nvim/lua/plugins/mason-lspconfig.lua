@@ -1,6 +1,5 @@
 local function config ()
-    local mason_lspconfig = require('mason-lspconfig')
-    mason_lspconfig.setup({
+    require("mason-lspconfig").setup({
         handlers = {
             require('plugins.lsp.default').setup_handler,
             -- ['omnisharp'] = require('plugins.lsp.omnisharp-extended').setup_handler,

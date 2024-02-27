@@ -8,7 +8,7 @@ local on_attach = {
     setup_keymap = {
         ---@type lsp.OnAttach
         code_action = function (client, bufnr)
-            require("utils.keymap").normal.apply("<Leader>a", vim.lsp.code_action, { bufnr = bufnr })
+            require("utils.keymap").normal.apply("<Leader>a", vim.lsp.buf.code_action, { buffer = bufnr })
         end,
         rename = function (client, bufnr)
             require("utils.keymap").normal.apply('<F2>', vim.lsp.buf.rename, { buffer = bufnr })
@@ -147,8 +147,6 @@ local function create_setup_handler (opts)
     return function (server_name)
         local lspconfig = require('lspconfig')
 
-        error("TESTING")
-
         lspconfig[server_name].setup({
             on_attach = function (client, bufnr)
                 if opts.on_attach then
@@ -174,84 +172,26 @@ return {
     advertise_cmp_capabilities = advertise_cmp_capabilities,
     create_setup_handler = create_setup_handler,
 
-    setup_handler = function (server_name)
-        local lspconfig = require('lspconfig')
-        local notify = require("notify")
+    setup_handler = create_setup_handler({
+        on_attach = {
+            on_attach.setup_keymap.code_action,
+            on_attach.setup_keymap.rename,
+            on_attach.setup_keymap.hover,
+            on_attach.setup_keymap.error_hover,
+            on_attach.setup_keymap.error_next,
+            on_attach.setup_keymap.error_previous,
+            on_attach.setup_keymap.goto_definition,
+            on_attach.setup_keymap.goto_references,
+            on_attach.setup_keymap.goto_implementation,
+            on_attach.setup_keymap.goto_type_definition,
 
-        lspconfig[server_name].setup({
-            on_attach = function (client, bufnr)
-                keymap.normal.apply('<Leader>a',    vim.lsp.buf.code_action,        { buffer = bufnr })
-                keymap.normal.apply('<F2>',         vim.lsp.buf.rename,             { buffer = bufnr })
-                keymap.normal.apply('<Leader>k',    vim.lsp.buf.hover,              { buffer = bufnr })
-
-                keymap.normal.apply('<Leader>ek',   vim.diagnostic.open_float,      { buffer = bufnr })
-                keymap.normal.apply('<Leader>en',   vim.diagnostic.goto_next,       { buffer = bufnr })
-                keymap.normal.apply('<Leader>ep',   vim.diagnostic.goto_prev,       { buffer = bufnr })
-
-                keymap.normal.apply('<Leader>gd',   goto_definition,                { buffer = bufnr })
-                keymap.normal.apply('<Leader>gr',   goto_references,                { buffer = bufnr })
-                keymap.normal.apply('<Leader>gi',   goto_implementations,           { buffer = bufnr })
-                keymap.normal.apply('<Leader>gt',   goto_type_definitions,          { buffer = bufnr })
-
-                if client.server_capabilities.documentHighlightProvider then
-                    autocmd.create_group('lsp_document_highlight', {
-                        { event = 'CursorHold',  action = vim.lsp.buf.document_highlight, opts = { buffer = bufnr } },
-                        { event = 'CursorHoldI', action = vim.lsp.buf.document_highlight, opts = { buffer = bufnr } },
-                        { event = 'CursorMoved', action = vim.lsp.buf.clear_references, opts = { buffer = bufnr } },
-                    }, { clear = true })
-                end
-
-                require('plugins.folding').on_attach()
-                require('plugins.navic').on_attach(client, bufnr)
-            end,
-            capabilities = require('cmp_nvim_lsp').default_capabilities(),
-            handlers = {
-                ["window/showMessage"] = function (_, result, context)
-                    local client = vim.lsp.get_client_by_id(context.client_id)
-                    local level = ({ "ERROR", "WARN", "INFO", "DEBUG" })[result.type]
-
-                    notify({ result.message }, level, {
-                        title = "LSP | " .. client.name,
-                        timeout = 10000,
-                        keep = function ()
-                            return level == "ERROR" or level == "WARN"
-                        end
-                    })
-                end,
-                ['textDocument/publishDiagnostics'] = vim.lsp.with(
-                vim.lsp.diagnostic.on_publish_diagnostics,
-                {
-                    underline = true,
-                    virtual_text = {
-                        spacing = 5,
-                        severity_limit = 'Warning',
-                    },
-                    update_in_insert = true,
-                }
-                ),
-            }
-        })
-    end
-    -- setup_handler = create_setup_handler({
-    --     on_attach = {
-    --         on_attach.setup_keymap.code_action,
-    --         on_attach.setup_keymap.rename,
-    --         on_attach.setup_keymap.hover,
-    --         on_attach.setup_keymap.error_hover,
-    --         on_attach.setup_keymap.error_next,
-    --         on_attach.setup_keymap.error_previous,
-    --         on_attach.setup_keymap.goto_definition,
-    --         on_attach.setup_keymap.goto_references,
-    --         on_attach.setup_keymap.goto_implementation,
-    --         on_attach.setup_keymap.goto_type_definition,
-    --
-    --         on_attach.setup_document_highlight_on_cursor_hold,
-    --         on_attach.setup_navic,
-    --         on_attach.setup_folding,
-    --     },
-    --     handlers = {
-    --         handlers.display_messages_with_notify,
-    --         handlers.underline_and_virtual_text_for_errors,
-    --     }
-    -- })
+            on_attach.setup_document_highlight_on_cursor_hold,
+            on_attach.setup_navic,
+            on_attach.setup_folding,
+        },
+        handlers = {
+            handlers.display_messages_with_notify,
+            handlers.underline_and_virtual_text_for_errors,
+        }
+    })
 }

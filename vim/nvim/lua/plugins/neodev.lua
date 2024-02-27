@@ -1,16 +1,8 @@
-local M = {}
-
-local function config ()
-    local neodev = require("neodev")
-    neodev.setup({
-        lspconfig = false,
-    })
-end
-
-M.spec = {
-    "folke/neodev.nvim",
-    config = config,
-    lazy = true
+---@type PluginModule
+return {
+    spec = {
+        "folke/neodev.nvim",
+        lazy = true,
+    }
 }
 
-return M
