@@ -754,6 +754,7 @@ working_directory = "None"
     bindings = [
         # VIM
         { key = "Back",             mods = "Control",                                       chars = "\u0008" }, # ^H
+        { key = "Period",           mods = "Control",                                       chars = "\u000E" }, # ^N
 
         # { key = "Paste",                                                                    action = "Paste"                    },
         # { key = "Copy",                                                                     action = "Copy"                     },
