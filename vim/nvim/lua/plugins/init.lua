@@ -46,7 +46,6 @@ return {
             require('plugins.todo-comments').spec,
             require('plugins.barbecue').spec,
             require('plugins.telescope').spec,
-            require("plugins.nvim-scrollbar").spec,
             require("plugins.dressing").spec,
 
             -- Navigation
