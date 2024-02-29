@@ -813,17 +813,11 @@ $env.config = {
     ]
 }
 
-def "config alacritty" [] {
-    ^$env.EDITOR $"($env.USERPROFILE)/Sync/Configs/alacritty/alacritty.toml"
-}
-
-def "config autohotkey" [] {
-    ^$env.EDITOR $"($env.USERPROFILE)/Sync/Configs/autohotkey"
-}
-
-def "config ahk" [] {
-    config autohotkey
-}
+def "config alacritty" [] { ^$env.EDITOR $"($env.USERPROFILE)/Sync/Configs/alacritty/alacritty.toml" }
+def "config autohotkey" [] { ^$env.EDITOR $"($env.USERPROFILE)/Sync/Configs/autohotkey" }
+def "config ahk" [] { config autohotkey }
+def "config nvim" [] { nvim +ConfigCwd }
+def "config vim" [] { config nvim }
 
 alias ii = explorer.exe
 alias cat = bat.exe
