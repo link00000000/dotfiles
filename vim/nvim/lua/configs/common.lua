@@ -209,6 +209,10 @@ local setup_keymaps = function ()
     -- Scroll without moving cursor
     keymap.set({ 'n', 'v' }).apply('<C-S-k>', '<C-y>')
     keymap.set({ 'n', 'v' }).apply('<C-S-j>', '<C-u>')
+
+    -- Make <C-v> paste the contents of the clipboard
+    -- (Makes the Windows clipboard with history work)
+    keymap.set({ "i" }).apply("<C-v>", "<ESC>:set paste<CR>a<C-r>*<ESC>:set nopaste<CR>a")
 end
 
 
