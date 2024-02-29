@@ -15,7 +15,8 @@ local function config ()
             INFO = " ",
             TRACE = " ✎",
             WARN = " "
-        }
+        },
+        top_down = false,
     })
 
     vim.notify = notify
