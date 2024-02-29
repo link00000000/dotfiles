@@ -28,7 +28,7 @@ working_directory = "None"
     # each instance of Alacritty. If it is not present, alacritty will
     # check the local terminfo database and use `alacritty` if it is
     # available, otherwise `xterm-256color` is used.
-    # TERM = "xterm-256color"
+    TERM = "alacritty"
 
 [window]
     # Window dimensions (changes require restart)
@@ -748,11 +748,12 @@ working_directory = "None"
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
+#
+# Test keybinds in Linux with `showkey -a`
 [keyboard]
     bindings = [
-        { key = "Period",           mods = "Control",                                       chars = "\\x0e"                     },
-        { key = "Space",            mods = "Control",                                       chars = "\\x0e"                     },
-        { key = "Back",             mods = "Control",                                       chars = "\\x08"                     },
+        # VIM
+        { key = "Back",             mods = "Control",                                       chars = "\u0008" }, # ^H
 
         # { key = "Paste",                                                                    action = "Paste"                    },
         # { key = "Copy",                                                                     action = "Copy"                     },
