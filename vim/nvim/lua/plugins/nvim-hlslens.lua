@@ -16,8 +16,8 @@ return {
             vim.api.nvim_set_hl(0, "HlSearchLensNear", { link = "Search" })
         end,
         keys = {
-            keymap.normal.lazy("n", function () vim.cmd([[execute('normal! ' . v:count1 . 'n')]]) require("hlslens").start() end, { noremap = true, silent = true, desc = "Find next" }),
-            keymap.normal.lazy("N", function () vim.cmd([[execute('normal! ' . v:count1 . 'N')]]) require("hlslens").start() end, { noremap = true, silent = true, desc = "Find previous" }),
+            keymap.normal.lazy("n", function () vim.fn.execute("normal! " .. vim.v.count1 .. "n", "silent!") require("hlslens").start() end, { noremap = true, silent = true, desc = "Find next" }),
+            keymap.normal.lazy("N", function () vim.fn.execute("normal! " .. vim.v.count1 .. "n", "silent!") require("hlslens").start() end, { noremap = true, silent = true, desc = "Find previous" }),
         }
     }
 }
