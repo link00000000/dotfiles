@@ -99,7 +99,21 @@ local handlers = {
             },
             update_in_insert = true,
         })
-    }
+    },
+
+    hover = {
+        message = "textDocument/hover",
+        handler = vim.lsp.with(vim.lsp.handlers.hover, {
+            border = "single",
+        })
+    },
+
+    signature_help = {
+        message = "textDocument/signatureHelp",
+        handler = vim.lsp.with(vim.lsp.handlers.signature_help, {
+            border = "single",
+        })
+    },
 }
 
 ---@class CreateSetupHandlerOpts
@@ -175,6 +189,8 @@ return {
         handlers = {
             handlers.display_messages_with_notify,
             handlers.underline_and_virtual_text_for_errors,
+            handlers.hover,
+            handlers.signature_help,
         }
     })
 }

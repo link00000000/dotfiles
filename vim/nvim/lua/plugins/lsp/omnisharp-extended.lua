@@ -25,6 +25,8 @@ return {
         handlers = {
             default.handlers.display_messages_with_notify,
             default.handlers.underline_and_virtual_text_for_errors,
+            default.handlers.hover,
+            default.handlers.signature_help,
         },
         flags = {
             debounce_text_changes = 150,

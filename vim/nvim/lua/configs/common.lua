@@ -1,7 +1,6 @@
 local keymap = require('utils.keymap')
 local command = require("utils.command")
 local path = require("utils.path")
-local autocmd = require("utils.autocmd");
 
 local setup_settings = function ()
     vim.opt.compatible = false
@@ -93,6 +92,8 @@ local setup_settings = function ()
 
     -- Have only one status bar instead of one per window
     vim.opt.laststatus = 3
+
+    --vim.cmd([[colorscheme tokyonight-night]])
 end
 
 local setup_autocmd = function ()

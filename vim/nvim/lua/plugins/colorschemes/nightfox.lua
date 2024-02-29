@@ -1,7 +1,6 @@
 return {
     spec = {
         "EdenEast/nightfox.nvim",
-        lazy = true,
         config = function ()
             local nightfox = require('nightfox')
             local nightfox_palette = require('nightfox.palette')
@@ -18,6 +17,8 @@ return {
             vim.api.nvim_set_hl(0, 'DapBreakpointCondition', { fg = palette.red.base })
             vim.api.nvim_set_hl(0, 'DapLogPoint', { fg = palette.red.base })
             vim.api.nvim_set_hl(0, 'DapBreakpointRejected', { fg = palette.red.base })
+
+            vim.cmd([[colorscheme carbonfox]])
         end
     }
 }

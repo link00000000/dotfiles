@@ -35,7 +35,7 @@ return {
         require('lazy').setup({
 
             -- Appearance
-            require('plugins.colorschemes').spec,
+            require("plugins.colorschemes.tokyonight").spec,
 
             -- Layout / Statusline / Tabline
             require('plugins.luatab').spec,
@@ -86,7 +86,5 @@ return {
             require("plugins.which-key").spec,
             require("plugins.nvim-unception").spec,
         })
-
-        require("plugins.colorschemes").set_colorscheme()
     end
 }

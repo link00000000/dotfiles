@@ -2,6 +2,5 @@
 return {
     spec = {
         "wadackel/vim-dogrun",
-        lazy = true,
     }
 }
