@@ -14,6 +14,7 @@ M.spec = {
     lazy = true,
     config = config,
     dependencies = {
+        require("plugins.nvim-dap").spec,
         require("plugins.mason").spec,
     }
 }

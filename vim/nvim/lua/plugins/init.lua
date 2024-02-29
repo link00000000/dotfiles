@@ -47,13 +47,13 @@ return {
             require('plugins.barbecue').spec,
             require('plugins.telescope').spec,
             require("plugins.nvim-scrollbar").spec,
+            require("plugins.dressing").spec,
 
             -- Navigation
             require("plugins.nvim-hlslens").spec,
 
             -- LSP / Intellisense / Syntax / Highlighting
             require("plugins.mason-lspconfig").spec,
-            require("plugins.mason-null-ls").spec,
             require("plugins.nvim-cmp").spec,
             require("plugins.nvim-autopairs").spec,
             require("plugins.trouble").spec,
@@ -64,7 +64,11 @@ return {
             require("plugins.nvim-ts-autotag").spec,
             require("plugins.indent-blankline").spec,
 
+            -- Style / Formatting
+            require("plugins.mason-null-ls").spec,
+
             -- Debugging
+            require("plugins.mason-nvim-dap").spec,
             require("plugins.nvim-dap").spec,
             require("plugins.nvim-dap-python").spec,
 

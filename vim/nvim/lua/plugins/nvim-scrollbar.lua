@@ -2,6 +2,7 @@
 return {
     spec = {
         "petertriho/nvim-scrollbar",
+        enable = false,
         config = function ()
             require("scrollbar").setup({
                 excluded_filetypes = {

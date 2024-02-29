@@ -25,7 +25,6 @@ local function on_attach(bufnr)
         return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
 
-
     keymap.normal.apply('<CR>', api.node.open.edit, opts('Open'))
     keymap.normal.apply('l', api.node.open.edit, opts('Open'))
     keymap.normal.apply('<2-LeftMouse>', api.node.open.edit, opts('Open'))
@@ -74,9 +73,6 @@ local function config ()
         sync_root_with_cwd = true,
         view = {
             adaptive_size = true,
-            mappings = {
-                custom_only = true,
-            }
         },
         update_focused_file = {
             enable = true,
