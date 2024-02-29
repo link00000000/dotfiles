@@ -47,6 +47,9 @@ return {
             require('plugins.barbecue').spec,
             require('plugins.telescope').spec,
 
+            -- Navigation
+            require("plugins.nvim-hlslens").spec,
+
             -- LSP / Intellisense / Syntax / Highlighting
             require("plugins.mason-lspconfig").spec,
             require("plugins.mason-null-ls").spec,
