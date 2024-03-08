@@ -830,5 +830,7 @@ alias cling = docker run -it --rm sehrig/cling cling
 
 alias ? = ollama run codellama
 
+alias pwsh = powershell.exe
+
 source "~/AppData/Roaming/nushell/share/atuin/init.nu"
 use "~/AppData/Roaming/nushell/share/starship/init.nu"
