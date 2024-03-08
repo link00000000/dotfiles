@@ -13,10 +13,6 @@ local function load_local_config ()
         local module = require('configs.local.' .. hostname)
         module.setup()
     end)
-
-    if err ~= nil then
-        error(err)
-    end
 end
 
 local function load_editor_config ()
