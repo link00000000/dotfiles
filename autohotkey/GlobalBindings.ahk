@@ -18,7 +18,7 @@
 #t::    Run("alacritty.exe --working-directory " . EnvGet("USERPROFILE"))
 #`::    Run("explorer.exe " . EnvGet("USERPROFILE"))
 #p::    Chrome.RunChromeApp("opbageolaboaoegdhedganbipolnjcck")
-#+d::   Run("nvim.exe -c VimwikiDevlog")
+#+d::   Run("alacritty.exe --command nvim.exe -c VimwikiDevlog")
 
 #HotIf WinActive("ahk_exe rider64.exe") or WinActive("ahk_exe clion64.exe")
 ^j::    Send "{DOWN}"
