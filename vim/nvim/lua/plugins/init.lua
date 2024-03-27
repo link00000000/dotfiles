@@ -68,8 +68,7 @@ return {
 
             -- Debugging
             require("plugins.mason-nvim-dap").spec,
-            require("plugins.nvim-dap").spec,
-            require("plugins.nvim-dap-python").spec,
+            require("plugins.nvim-projector").spec,
 
             -- Snippets
             require("plugins.luasnip").spec,

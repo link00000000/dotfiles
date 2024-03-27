@@ -17,7 +17,7 @@ return {
         end,
         keys = {
             keymap.normal.lazy("n", function () vim.fn.execute("normal! " .. vim.v.count1 .. "n", "silent!") require("hlslens").start() end, { noremap = true, silent = true, desc = "Find next" }),
-            keymap.normal.lazy("N", function () vim.fn.execute("normal! " .. vim.v.count1 .. "n", "silent!") require("hlslens").start() end, { noremap = true, silent = true, desc = "Find previous" }),
+            keymap.normal.lazy("<S-n>", function () vim.fn.execute("normal! " .. vim.v.count1 .. "n", "silent!") require("hlslens").start() end, { noremap = true, silent = true, desc = "Find previous" }),
         }
     }
 }
