@@ -1,3 +1,0 @@
-return {
-    setup_handler
-}

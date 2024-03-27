@@ -1,5 +1,0 @@
-return {
-    spec = {
-        "dracula/vim",
-    }
-}
