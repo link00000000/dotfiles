@@ -444,9 +444,8 @@ working_directory = "None"
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
 [shell]
-    program = "nu"
-    args = []
-
+    program = "wsl"
+    args = [ "-d", "Fedora", "--shell-type", "login", "--", "zellij", "options", "--copy-command", '"clip.exe"', "--scrollback-editor", '"/home/logan/.config/zellij/windows-scrollback-editor.sh"', "--default-shell", '"nu.exe"']
 # Offer IPC using `alacritty msg` (unix only)
 # ipc_socket = true
 
