@@ -165,12 +165,12 @@ local function config ()
             },
         },
         extensions = {
-            fzf = {
-                fuzzy = true,
-                override_generic_sorter = true,
-                override_file_sorter = true,
-                case_mode = 'smart_case'
-            },
+            -- fzf = {
+            --     fuzzy = true,
+            --     override_generic_sorter = true,
+            --     override_file_sorter = true,
+            --     case_mode = 'smart_case'
+            -- },
             ['ui-select'] = {
                 M.themes.cursor()
                 -- require('telescope.themes').get_dropdown()
@@ -178,7 +178,7 @@ local function config ()
         },
     })
 
-    telescope.load_extension('fzf')
+    -- telescope.load_extension('fzf')
     -- telescope.load_extension('ui-select')
     telescope.load_extension('repo')
     telescope.load_extension('smart_history')
@@ -200,7 +200,7 @@ M.spec = {
     dependencies = {
         require('plugins.plenary').spec,
         -- require('plugins.telescope-ui-select').spec,
-        require('plugins.telescope-fzf-native').spec,
+        -- require('plugins.telescope-fzf-native').spec,
         require('plugins.telescope-repo').spec,
         require('plugins.telescope-smart-history').spec,
         require('plugins.codicons').spec,
