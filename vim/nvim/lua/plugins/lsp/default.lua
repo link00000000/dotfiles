@@ -79,7 +79,7 @@ local handlers = {
             local client = vim.lsp.get_client_by_id(context.client_id)
             local level = ({ "ERROR", "WARN", "INFO", "DEBUG" })[result.type]
 
-            require("notify")({ result.message }, level, {
+            require("notify")(result.message, level, {
                 title = "LSP | " .. client.name,
                 timeout = 10000,
                 keep = function ()
