@@ -11,7 +11,7 @@ end
 ---@type PluginModule
 return {
     spec = {
-        'pierreglaser/folding-nvim',
+        'link00000000/folding-nvim',
         lazy = true,
         config = config,
     },
