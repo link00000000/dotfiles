@@ -819,6 +819,10 @@ def "config ahk" [] { config autohotkey }
 def "config nvim" [] { nvim +ConfigCwd }
 def "config vim" [] { config nvim }
 
+def "zellij" [...rest] {
+    wsl -d Fedora --shell-type login -- zellij options --copy-command "clip.exe" --scrollback-editor "/home/logan/.config/zellij/windows-scrollback-editor.sh" --default-shell "nu.exe" $rest
+}
+
 alias ii = explorer.exe
 alias cat = bat.exe
 
