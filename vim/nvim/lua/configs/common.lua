@@ -96,21 +96,6 @@ local setup_settings = function ()
     --vim.cmd([[colorscheme tokyonight-night]])
 end
 
-local setup_autocmd = function ()
-    -- autocmd.create_command({ "BufRead", "BufNewFile" }, "set filetype=html", { pattern = { "*.njk", "*.liquid" } })
-
-    vim.cmd([[
-
-    augroup html_templating_languages
-        autocmd!
-
-        autocmd BufRead,BufNewFile *.njk set filetype=html
-        autocmd BufRead,BufNewFile *.liquid set filetype=html
-    augroup END
-
-    ]])
-end
-
 local setup_commands = function ()
     command.create("W", "w")
 
@@ -215,13 +200,21 @@ local setup_keymaps = function ()
     keymap.set({ "i" }).apply("<C-v>", "<ESC>:set paste<CR>a<C-r>*<ESC>:set nopaste<CR>a")
 end
 
+local setup_filetypes = function ()
+    vim.filetype.add({
+        extension = {
+            njk = "html",
+            liquid = "html",
+        },
+    })
+end
 
 ---@type ConfigModule
 return {
     setup = function ()
         setup_settings()
-        setup_autocmd()
         setup_commands()
         setup_keymaps()
+        setup_filetypes()
     end
 }
