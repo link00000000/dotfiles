@@ -87,6 +87,7 @@ return {
             require("plugins.venn").spec,
             require("plugins.which-key").spec,
             require("plugins.nvim-unception").spec,
+            require("plugins.nvim-treesitter-playground").spec,
         })
     end
 }
