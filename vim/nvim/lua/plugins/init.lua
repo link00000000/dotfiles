@@ -88,6 +88,12 @@ return {
             require("plugins.which-key").spec,
             require("plugins.nvim-unception").spec,
             require("plugins.nvim-treesitter-playground").spec,
+
+            {
+                "kingavatar/nvchad-ui.nvim",
+                branch = "v2.0",
+                lazy = false,
+            }
         })
     end
 }
