@@ -4,10 +4,6 @@
     "actions": 
     [
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
             "command": 
             {
                 "action": "splitPane",
@@ -17,8 +13,8 @@
             "keys": "alt+shift+d"
         },
         {
-            "command": "unbound",
-            "keys": "ctrl+v"
+            "command": "find",
+            "keys": "ctrl+shift+f"
         },
         {
             "command": 
@@ -27,6 +23,10 @@
                 "singleLine": false
             },
             "keys": "ctrl+c"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+v"
         },
         {
             "command": "paste"
@@ -84,10 +84,6 @@
                 "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
             },
             {
-                "font": 
-                {
-                    "face": "Iosevka"
-                },
                 "guid": "{aab79973-318f-43b6-a9bc-b4096493753f}",
                 "hidden": false,
                 "name": "Nushell",
@@ -98,6 +94,18 @@
                 "hidden": true,
                 "name": "Visual Studio Debug Console",
                 "source": "VSDebugConsole"
+            },
+            {
+                "guid": "{20621e28-4adb-5e4c-85ae-1e0dc4875850}",
+                "hidden": false,
+                "name": "NixOS-zellij",
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "guid": "{c397f356-5e7b-55bc-956b-8cb4b9762c26}",
+                "hidden": false,
+                "name": "NixOS",
+                "source": "Windows.Terminal.Wsl"
             }
         ]
     },
