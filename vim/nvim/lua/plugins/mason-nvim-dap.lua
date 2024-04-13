@@ -4,9 +4,20 @@ local keymap = require("utils.keymap")
 return {
     spec = {
         "jay-babu/mason-nvim-dap.nvim",
-        lazy = true,
+        lazy = false,
+        keys = {
+            keymap.normal.lazy("<Leader>dx", function () require("dap").continue() end, { desc = "Start debuging (\"Debug eXecute\")" }),
+            keymap.normal.lazy("<F5>", function () require("dap").continue() end, { desc = "Start debuging" }),
+
+            keymap.normal.lazy("<Leader>dn", function () require("dap").step_over() end, { desc = "Step over (\"Debug Next\")" }),
+            keymap.normal.lazy("<Leader>di", function () require("dap").step_into() end, { desc = "Step into (\"Debug Into\")" }),
+            keymap.normal.lazy("<Leader>do", function () require("dap").setup_out() end, { desc = "Step out (\"Debug Out of\")" }),
+            keymap.normal.lazy("<Leader>dh", function () require("dap").run_to_cursor() end, { desc = "Run to cursor (\"Debug to Here\")" }),
+
+            keymap.normal.lazy("<Leader>db", function () require("dap").toggle_breakpoint() end, { desc = "Toggle breakpoint" }),
+        },
         config = function ()
-            ---@diagnostic disable-line
+            ---@diagnostic disable-next-line
             require("mason-nvim-dap").setup({
                 handlers = {
                     require("plugins.dap.default").setup_handler,
@@ -16,16 +27,7 @@ return {
         dependencies = {
             require("plugins.nvim-dap").spec,
             require("plugins.mason").spec,
+            require("plugins.nvim-dap-virtual-text").spec,
         },
-        keys = {
-            keymap.normal.lazy("<LEADER>dd", function () require("dap").contine() end, { desc = "Start debug" }),
-
-            keymap.normal.lazy("<LEADER>dn", function () require("dap").step_over() end, { desc = "Step over (next)" }),
-            keymap.normal.lazy("<LEADER>di", function () require("dap").step_over() end, { desc = "Step into" }),
-            keymap.normal.lazy("<LEADER>do", function () require("dap").step_over() end, { desc = "Step out" }),
-            keymap.normal.lazy("<LEADER>do", function () require("dap").step_over() end, { desc = "Step out" }),
-
-            keymap.normal.lazy("<LEADER>db", function () require("dap").step_over() end, { desc = "Toggle breakpoint" }),
-        }
     }
 }
