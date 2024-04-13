@@ -9,6 +9,7 @@ return {
                     hl.FloatTitle = { link = "NormalFloat" }
 
                     hl.TelescopeBorder = { link = "NormalFloat" }
+                    hl.TelescopePromptBorder = { link = "NormalFloat" }
                     hl.TelescopePromptTitle = { fg = colors.bg, bg = colors.blue }
                     hl.TelescopeResultsTitle = { fg = colors.bg, bg = colors.blue5 }
                     hl.TelescopePreviewTitle = { fg = colors.bg, bg = colors.magenta }
