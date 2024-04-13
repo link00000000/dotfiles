@@ -206,6 +206,8 @@ local setup_keymaps = function ()
     -- Reindent entire file
     keymap.set("n").apply("==", "gg=G''")
 
+    -- Neovim specific keymaps
+    keymap.normal.apply("<Leader><Leader>s", "<cmd>Config<CR>")
 end
 
 local setup_filetypes = function ()
