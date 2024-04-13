@@ -105,7 +105,7 @@ local setup_commands = function ()
         vim.cmd.edit("init.lua")
     end, { desc = "Opens neovim settings in a new tab" })
 
-    command.create("LuaBuffer", function ()
+    command.create("ExecuteBuffer", function ()
         local buffer_contents = table.concat(vim.api.nvim_buf_get_lines(0, 0, vim.api.nvim_buf_line_count(0), false), "\n")
         loadstring(buffer_contents)()
     end)
