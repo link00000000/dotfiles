@@ -208,6 +208,7 @@ local setup_keymaps = function ()
 
     -- Neovim specific keymaps
     keymap.normal.apply("<Leader><Leader>s", "<cmd>Config<CR>")
+    keymap.normal.apply("<Leader><Leader>x", "<cmd>ExecuteBuffer<CR>")
 end
 
 local setup_filetypes = function ()
