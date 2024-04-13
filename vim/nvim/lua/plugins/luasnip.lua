@@ -1,18 +1,16 @@
-local M = {}
+---@type PluginModule
+return {
+    spec = {
+        'L3MON4D3/LuaSnip',
+        lazy = true,
+        event = { "BufEnter" },
+        config = function ()
+            -- TODO: Look into history and if that is something I want
+            require("luasnip").setup({
+                update_events = "TextChanged,TextChangedI",
+            })
 
-local function config ()
-    local luasnip_vscode_loader = require("luasnip.loaders.from_vscode")
-    luasnip_vscode_loader.lazy_load() -- TODO: Add custom path for custom snippets? Make sure this doesn't break friendly-snippets
-end
-
-M.spec = {
-    'L3MON4D3/LuaSnip',
-    lazy = true,
-    config = config,
-    dependencies = {
-        require("plugins.friendly-snippets").spec
+            vim.api.nvim_create_user_command("LuasnipReload", "", { desc = "Reload LuaSnip snippets" })
+        end,
     },
-    event = { "BufEnter" }
 }
-
-return M
