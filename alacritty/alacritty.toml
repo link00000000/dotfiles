@@ -140,7 +140,7 @@ working_directory = "None"
         #   - (macOS) Menlo
         #   - (Linux/BSD) monospace
         #   - (Windows) Consolas
-        family = "IosevkaTermSlab Nerd Font"
+        family = "IosevkaTermSlab Nerd Font Mono"
 
         # The `style` can be specified to pick a specific face.
         style = "Regular"
@@ -445,7 +445,7 @@ working_directory = "None"
 #   - (Windows) powershell
 [shell]
     program = "wsl"
-    args = [ "-d", "Fedora", "--shell-type", "login", "--", "zellij", "options", "--copy-command", '"clip.exe"', "--scrollback-editor", '"/home/logan/.config/zellij/windows-scrollback-editor.sh"', "--default-shell", '"nu.exe"']
+    args = [ "-d", "NixOS-zellij", "--shell-type", "login", "--", "zellij", "options", "--copy-command", '"clip.exe"', "--scrollback-editor", '"/home/logan/.config/zellij/windows-scrollback-editor.sh"', "--default-shell", '"nu.exe"']
 # Offer IPC using `alacritty msg` (unix only)
 # ipc_socket = true
 
