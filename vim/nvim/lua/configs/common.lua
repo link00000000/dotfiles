@@ -202,6 +202,10 @@ local setup_keymaps = function ()
     -- Make <C-v> paste the contents of the clipboard
     -- (Makes the Windows clipboard with history work)
     keymap.set({ "i" }).apply("<C-v>", "<ESC>:set paste<CR>a<C-r>*<ESC>:set nopaste<CR>a")
+
+    -- Reindent entire file
+    keymap.set("n").apply("==", "gg=G''")
+
 end
 
 local setup_filetypes = function ()
