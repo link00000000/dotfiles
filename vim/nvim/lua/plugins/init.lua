@@ -37,19 +37,21 @@ return {
             -- Appearance
             require("plugins.colorschemes.tokyonight").spec,
 
-            -- Layout / Statusline / Tabline
+            -- Layout / Statusline / Tabline / Status Column
             require('plugins.luatab').spec,
             require('plugins.fterm').spec,
             require('plugins.lualine').spec,
-            require('plugins.nvim-tree').spec,
             require('plugins.nvim-treesitter').spec,
             require('plugins.todo-comments').spec,
             require('plugins.barbecue').spec,
-            require('plugins.telescope').spec,
             require("plugins.dressing").spec,
+            require("plugins.statuscol").spec,
 
             -- Navigation
             require("plugins.nvim-hlslens").spec,
+            require('plugins.nvim-tree').spec,
+            require('plugins.telescope').spec,
+            require("plugins.oil").spec,
 
             -- LSP / Intellisense / Syntax / Highlighting
             require("plugins.mason-lspconfig").spec,
@@ -68,7 +70,10 @@ return {
 
             -- Debugging
             require("plugins.mason-nvim-dap").spec,
+            require("plugins.nvim-dap-virtual-text").spec,
+            require("plugins.nvim-dap-ui").spec,
             require("plugins.nvim-projector").spec,
+            require("plugins.dap.go").spec,
 
             -- Snippets
             require("plugins.luasnip").spec,
@@ -94,6 +99,6 @@ return {
                 branch = "v2.0",
                 lazy = false,
             }
-        })
+        }, { change_detection = { enabled = true, notify = true } })
     end
 }
