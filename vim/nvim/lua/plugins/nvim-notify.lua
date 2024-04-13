@@ -6,9 +6,10 @@ local function config ()
     ---@diagnostic disable-next-line
     notify.setup({
         render = "default",
-        fps = 120,
+        -- fps = 120,
         timeout = 0,
-        stages = "fade_in_slide_out",
+        stages = "static",
+        level = "error",
         icons = {
             DEBUG = " ",
             ERROR = " ",
