@@ -1,6 +1,5 @@
 local keymap = require('utils.keymap')
 local command = require("utils.command")
-local path = require("utils.path")
 
 local setup_settings = function ()
     vim.opt.compatible = false
@@ -93,7 +92,8 @@ local setup_settings = function ()
     -- Have only one status bar instead of one per window
     vim.opt.laststatus = 3
 
-    --vim.cmd([[colorscheme tokyonight-night]])
+    -- Set formatting options. See :h fo-table
+    vim.o.formatoptions = "jcrql"
 end
 
 local setup_commands = function ()
