@@ -99,8 +99,11 @@ end
 local setup_commands = function ()
     command.create("W", "w")
 
-    command.create("Config", "lcd " .. path.nvim_config_dir() .. "|NvimTreeFocus")
-    command.create("ConfigCwd", "cd " .. path.nvim_config_dir() .. "|NvimTreeFocus")
+    vim.api.nvim_create_user_command("Config", function ()
+        vim.cmd.tabnew()
+        vim.cmd.tchdir(vim.fn.stdpath("config"))
+        vim.cmd.edit("init.lua")
+    end, { desc = "Opens neovim settings in a new tab" })
 
     command.create("LuaBuffer", function ()
         local buffer_contents = table.concat(vim.api.nvim_buf_get_lines(0, 0, vim.api.nvim_buf_line_count(0), false), "\n")
