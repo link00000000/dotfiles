@@ -22,7 +22,10 @@ return {
         init = init,
         config = config,
         keys = {
-            keymap.normal.lazy("<Leader>ww", "<Plug>VimwikiIndex"),
+            keymap.normal.lazy("<Leader>ww", function () 
+                vim.cmd.tabnew()
+                vim.cmd("VimikwiIndex")
+            end),
         },
         cmd = {
             "VimwikiIndex", "VimwikiTabIndex", "VimwikiUISelect", "VimwikiDiaryIndex",
