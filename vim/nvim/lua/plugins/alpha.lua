@@ -39,7 +39,7 @@ local function config ()
                     dashboard_theme.button("w", codicons.get("notebook", "icon") ..         "  Wiki", "<cmd>VimwikiIndex<CR>"),
                     dashboard_theme.button("r", codicons.get("repo-forked", "icon") ..      "  Open repository", "<cmd>Repos<CR>"),
                     dashboard_theme.button("f", codicons.get("search", "icon") ..           "  Find file", "<cmd>Files<CR>"),
-                    dashboard_theme.button("s", codicons.get("settings-gear", "icon") ..    "  Settings", "<cmd>ConfigCwd<CR>"),
+                    dashboard_theme.button("s", codicons.get("settings-gear", "icon") ..    "  Settings", "<cmd>Config<CR>"),
                     dashboard_theme.button("q", codicons.get("close-all", "icon") ..        "  Close", ":q<CR>"),
                 },
                 opts = {
