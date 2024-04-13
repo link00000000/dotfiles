@@ -1,9 +1,3 @@
----@class TestClass
----@field Test string
-
----@type TestClass
-local x = {}
-
 ---@type PluginModule
 return {
     spec = {
