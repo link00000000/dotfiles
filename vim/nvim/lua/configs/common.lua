@@ -105,10 +105,18 @@ local setup_commands = function ()
         vim.cmd.edit("init.lua")
     end, { desc = "Opens neovim settings in a new tab" })
 
-    command.create("ExecuteBuffer", function ()
-        local buffer_contents = table.concat(vim.api.nvim_buf_get_lines(0, 0, vim.api.nvim_buf_line_count(0), false), "\n")
-        loadstring(buffer_contents)()
-    end)
+    vim.api.nvim_create_user_command("ExecuteBuffer", function (args)
+        ---@type string[]
+        local lines
+
+        if args.range == 2 then
+            lines = vim.api.nvim_buf_get_lines(0, args.line1 - 1, args.line2, false)
+        else
+            lines = vim.api.nvim_buf_get_lines(0, 0, vim.api.nvim_buf_line_count(0), false)
+        end
+
+        loadstring(table.concat(lines, "\n"))()
+    end, { range = true })
 end
 
 local setup_keymaps = function ()
@@ -208,7 +216,7 @@ local setup_keymaps = function ()
 
     -- Neovim specific keymaps
     keymap.normal.apply("<Leader><Leader>s", "<cmd>Config<CR>")
-    keymap.normal.apply("<Leader><Leader>x", "<cmd>ExecuteBuffer<CR>")
+    keymap.set({ "n", "v" }).apply("<Leader><Leader>x", ":ExecuteBuffer<CR>")
 end
 
 local setup_filetypes = function ()
