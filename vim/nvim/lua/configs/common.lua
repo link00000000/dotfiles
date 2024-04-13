@@ -170,7 +170,8 @@ local setup_keymaps = function ()
     keymap.normal.apply('<CR>', ':nohlsearch<CR>')
 
     -- Delete current buffer
-    keymap.normal.apply('<Leader>bd', ':bd')
+    keymap.normal.apply('<Leader>bd', ':bd<CR>')
+    keymap.normal.apply('<Leader>bn', ':enew<CR>')
 
     -- Delete previous word
     keymap.insert.apply('<C-BS>', '<C-W>')
