@@ -10,7 +10,6 @@ return {
             require('plugins.barbecue').spec,
             require('plugins.telescope').spec,
 
-            require('plugins.cmp-nvim-lsp').spec,
             require('plugins.omnisharp-extended-lsp').spec,
             require('plugins.neodev').spec,
         },
