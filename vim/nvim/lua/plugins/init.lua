@@ -38,7 +38,7 @@ return {
             require("plugins.colorschemes.tokyonight").spec,
 
             -- Layout / Statusline / Tabline / Status Column
-            require('plugins.luatab').spec,
+            require('plugins.luatab').spec, -- TODO: Replace with custom implementation in lualine
             require('plugins.fterm').spec,
             require('plugins.lualine').spec,
             require('plugins.nvim-treesitter').spec,
@@ -93,12 +93,6 @@ return {
             require("plugins.which-key").spec,
             require("plugins.nvim-unception").spec,
             require("plugins.nvim-treesitter-playground").spec,
-
-            {
-                "kingavatar/nvchad-ui.nvim",
-                branch = "v2.0",
-                lazy = false,
-            }
         }, { change_detection = { enabled = true, notify = true } })
     end
 }
