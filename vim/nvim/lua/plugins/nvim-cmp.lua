@@ -11,6 +11,7 @@ return {
             -- Code editing
             ---@diagnostic disable-next-line
             cmp.setup({
+                preselect = "None",
                 snippet = {
                     expand = function (args)
                         luasnip.lsp_expand(args.body)
@@ -57,9 +58,9 @@ return {
                     ['<CR>'] = cmp.mapping.confirm({ select = false }),
                 }),
                 sources = cmp.config.sources({
+                    { name = 'luasnip' },
                     { name = "nvim_lsp_signature_help" },
                     { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
                     { name = 'nvim_lua' },
                 }, {
                     { name = 'buffer' },
