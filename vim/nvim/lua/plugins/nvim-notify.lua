@@ -1,38 +1,40 @@
 local keymap = require("utils.keymap")
 
-local function config ()
-    local notify = require("notify")
-
-    ---@diagnostic disable-next-line
-    notify.setup({
-        render = "default",
-        -- fps = 120,
-        timeout = 0,
-        stages = "static",
-        level = "error",
-        icons = {
-            DEBUG = " ",
-            ERROR = " ",
-            INFO = " ",
-            TRACE = " ✎",
-            WARN = " "
-        },
-        top_down = false,
-    })
-
-    vim.notify = notify
-end
-
 ---@type PluginModule
 return {
     spec = {
         "rcarriga/nvim-notify",
         lazy = true,
-        config = config,
+        config = function ()
+            local notify = require("notify")
+
+            ---@diagnostic disable-next-line
+            notify.setup({
+                render = "default",
+                timeout = 5,
+                stages = "fade",
+                level = "error",
+                icons = {
+                    DEBUG = " ",
+                    ERROR = " ",
+                    INFO = " ",
+                    TRACE = " ✎",
+                    WARN = " "
+                },
+                top_down = false,
+            })
+
+            vim.notify = notify
+
+            require("telescope").load_extension("notify")
+        end,
         cmd = { "Notifications" },
         keys = {
-            keymap.normal.lazy("<Leader>nh", "<cmd>Notifications<CR>", { desc = "Show history" }),
+            keymap.normal.lazy("<Leader>nh", function () require("telescope").extensions.notify.notify() end, { desc = "Show history" }),
             keymap.normal.lazy("<Leader>nd", function () require("notify").dismiss({ pending = true, silent = true }) end, { desc = "Dismiss all" })
+        },
+        dependencies = {
+            require("plugins.telescope").spec,
         }
     }
 }
