@@ -112,14 +112,14 @@ local handlers = {
     hover = {
         message = "textDocument/hover",
         handler = vim.lsp.with(vim.lsp.handlers.hover, {
-            border = "single",
+            border = "rounded",
         })
     },
 
     signature_help = {
         message = "textDocument/signatureHelp",
         handler = vim.lsp.with(vim.lsp.handlers.signature_help, {
-            border = "single",
+            border = "rounded",
         })
     },
 }

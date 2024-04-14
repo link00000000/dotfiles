@@ -17,8 +17,8 @@ return {
                     end,
                 },
                 window = {
-                    completion = cmp.config.window.bordered({ border = "single", scrollbar = false, col_offset = -5 }),
-                    documentation = cmp.config.window.bordered({ border = "single", scrollbar = false }),
+                    completion = cmp.config.window.bordered({ border = "rounded", scrollbar = false, col_offset = -5 }),
+                    documentation = cmp.config.window.bordered({ border = "rounded", scrollbar = false }),
                 },
                 ---@diagnostic disable-next-line
                 formatting = {
@@ -80,8 +80,8 @@ return {
                     { name = 'buffer' },
                 }),
                 window = {
-                    completion = cmp.config.window.bordered({ border = "single", scrollbar = false }),
-                    documentation = cmp.config.window.bordered({ border = "single", scrollbar = false }),
+                    completion = cmp.config.window.bordered({ border = "rounded", scrollbar = false }),
+                    documentation = cmp.config.window.bordered({ border = "rounded", scrollbar = false }),
                 },
             })
 
@@ -108,8 +108,8 @@ return {
                     { name = 'cmdline' },
                 }),
                 window = {
-                    completion = cmp.config.window.bordered({ border = "single", scrollbar = false }),
-                    documentation = cmp.config.window.bordered({ border = "single", scrollbar = false }),
+                    completion = cmp.config.window.bordered({ border = "rounded", scrollbar = false }),
+                    documentation = cmp.config.window.bordered({ border = "rounded", scrollbar = false }),
                 },
             })
         end,
