@@ -18,6 +18,8 @@ return {
             default.on_attach.setup_keymap.goto_implementation,
             default.on_attach.setup_keymap.goto_type_definition,
 
+            default.on_attach.disable_lsp_provided_syntax_highlighting,
+
             default.on_attach.setup_document_highlight_on_cursor_hold,
             default.on_attach.setup_navic,
             default.on_attach.setup_folding,

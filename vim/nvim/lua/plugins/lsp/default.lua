@@ -54,7 +54,15 @@ local on_attach = {
     end,
 
     disable_cmp = function (client, bufnr)
-        client.server_capabilities.completionProvider = false
+        if client ~= nil and client.server_capabilities ~= nil then
+            client.server_capabilities.completionProvider = false
+        end
+    end,
+
+    disable_lsp_provided_syntax_highlighting = function (client, bufnr)
+        if client ~= nil and client.server_capabilities ~= nil then
+            client.server_capabilities.semanticTokensProvider = nil
+        end
     end,
 
     setup_folding = require("plugins.folding").on_attach,
@@ -181,6 +189,8 @@ return {
             on_attach.setup_keymap.goto_references,
             on_attach.setup_keymap.goto_implementation,
             on_attach.setup_keymap.goto_type_definition,
+
+            on_attach.disable_lsp_provided_syntax_highlighting,
 
             on_attach.setup_document_highlight_on_cursor_hold,
             on_attach.setup_navic,
