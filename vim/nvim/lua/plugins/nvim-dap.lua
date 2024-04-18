@@ -5,6 +5,7 @@ return
         "mfussenegger/nvim-dap",
         lazy = true,
         config = function ()
+            local dap = require("dap")
             local codicons = require("codicons")
 
             vim.fn.sign_define("DapBreakpoint", {
