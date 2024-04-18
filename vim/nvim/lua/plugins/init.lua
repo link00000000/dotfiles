@@ -81,6 +81,8 @@ return {
             -- Comments / Text editing
             require("plugins.comment").spec,
             require("plugins.nvim-surround").spec,
+            require("plugins.multicursors").spec,
+            -- require("plugins.vim-visual-multi").spec,
 
             -- Git / Version Control
             require("plugins.gitsigns").spec,

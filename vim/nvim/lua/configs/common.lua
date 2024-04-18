@@ -117,6 +117,15 @@ local setup_commands = function ()
 
         loadstring(table.concat(lines, "\n"))()
     end, { range = true })
+
+    vim.api.nvim_create_user_command("LLM", function ()
+        if not vim.fn.executable("ollama") then
+            vim.notify("ollama not installed and accessible on the system path", vim.log.levels.ERROR)
+            return
+        end
+
+        vim.fn.execute("terminal ollama run codellama")
+    end, { desc = "Starts ollama in interactive mode" })
 end
 
 local setup_keymaps = function ()
@@ -213,6 +222,11 @@ local setup_keymaps = function ()
 
     -- Reindent entire file
     keymap.set("n").apply("==", "gg=G''")
+
+    -- ollama
+    keymap.set("n").apply("??", "<cmd>LLM<CR>")
+    keymap.set("n").apply("?s", "<cmd>split +LLM<CR>")
+    keymap.set("n").apply("?v", "<cmd>vsplit +LLM<CR>")
 
     -- Neovim specific keymaps
     keymap.normal.apply("<Leader><Leader>s", "<cmd>Config<CR>")
