@@ -835,4 +835,9 @@ alias ? = ollama run codellama
 alias pwsh = powershell.exe
 
 source "~/AppData/Roaming/nushell/share/atuin/init.nu"
+source "~/AppData/Roaming/nushell/share/zoxide/init.nu"
 use "~/AppData/Roaming/nushell/share/starship/init.nu"
+
+alias c = cd
+alias cd = z
+
