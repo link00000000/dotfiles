@@ -6,8 +6,8 @@ return {
         "jay-babu/mason-nvim-dap.nvim",
         lazy = false,
         keys = {
-            keymap.normal.lazy("<Leader>dx", function () require("dap").continue() end, { desc = "Start debuging (\"Debug eXecute\")" }),
-            keymap.normal.lazy("<F5>", function () require("dap").continue() end, { desc = "Start debuging" }),
+            keymap.normal.lazy("<Leader>dx", function () require("projector").continue() end, { desc = "Start debuging (\"Debug eXecute\")" }),
+            keymap.normal.lazy("<F5>", function () require("projector").continue() end, { desc = "Start debuging" }),
 
             keymap.normal.lazy("<Leader>dn", function () require("dap").step_over() end, { desc = "Step over (\"Debug Next\")" }),
             keymap.normal.lazy("<Leader>di", function () require("dap").step_into() end, { desc = "Step into (\"Debug Into\")" }),
@@ -21,13 +21,15 @@ return {
             require("mason-nvim-dap").setup({
                 handlers = {
                     require("plugins.dap.default").setup_handler,
-                }
+                    delve = require("plugins.dap.go").setup_handler,
+                },
             })
         end,
         dependencies = {
             require("plugins.nvim-dap").spec,
             require("plugins.mason").spec,
             require("plugins.nvim-dap-virtual-text").spec,
+            require("plugins.nvim-projector").spec,
         },
     }
 }

@@ -47,7 +47,7 @@ return {
             setup_snippets()
         end,
         dependencies = {
-            require("keymap-amend").spec,
+            require("plugins.keymap-amend").spec,
         },
     },
 }
