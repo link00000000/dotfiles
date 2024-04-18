@@ -65,6 +65,7 @@
   "trouble.nvim": { "branch": "main", "commit": "b9cf677f20bb2faa2dacfa870b084e568dca9572" },
   "venn.nvim": { "branch": "main", "commit": "e4d68341a73dd56c64955058821a58295fb337b1" },
   "vim-razor": { "branch": "master", "commit": "d1db1053f920b23cb1d6026964e4defe525577e3" },
+  "vim-visual-multi": { "branch": "master", "commit": "e2ff111f123da6cf97f95b96b10eb95854f953c9" },
   "vimwiki": { "branch": "dev", "commit": "69318e74c88ef7677e2496fd0a836446ceac61e8" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }
