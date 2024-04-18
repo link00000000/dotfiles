@@ -20,9 +20,30 @@
 #p::    Chrome.RunChromeApp("opbageolaboaoegdhedganbipolnjcck")
 #+d::   Run("wt.exe nvim.exe -c VimwikiDevlog")
 
+; IntelliJ Editors
 #HotIf WinActive("ahk_exe rider64.exe") or WinActive("ahk_exe clion64.exe")
-^j::    Send "{DOWN}"
-^k::    Send "{UP}"
-^h::    Send "{LEFT}"
-^l::    Send "{RIGHT}"
+^j::    Send("{DOWN}")
+^k::    Send("{UP}")
+^h::    Send("{LEFT}")
+^l::    Send("{RIGHT}")
+#HotIf
+
+; Arc Browser
+#HotIf WinActive("ahk_exe Arc.exe")
+^j::    Send("{DOWN}")
+^k::    Send("{UP}")
+^h::    Send("{LEFT}")
+^l::    Send("{RIGHT}")
+^w:: {
+	input := InputHook("L1 T2.0")
+	input.Start()
+	input.Wait()
+	
+	switch input.Input
+	{
+	case "v":	Send("^+{=}")
+	case "c":	Send("^w")
+	}
+}
+^p::	Send("^l")
 #HotIf
