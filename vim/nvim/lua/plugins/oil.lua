@@ -4,7 +4,7 @@ local open_buffer = function ()
     local buf_parent = vim.fn.expand("%:p:h")
 
     if #buf_parent > 0 then
-        require("oil").open_float(buf_parent)
+        require("oil").open(buf_parent)
         return true
     end
 
@@ -15,7 +15,7 @@ local open_cwd = function ()
     local cwd = vim.fn.getcwd()
 
     if #cwd > 0 then
-        require("oil").open_float(cwd)
+        require("oil").open(cwd)
         return true
     end
 
@@ -26,14 +26,17 @@ end
 return {
     spec = {
         "stevearc/oil.nvim",
-        lazy = true,
+        lazy = false,
         config = function ()
             require("oil").setup({
                 -- Constrain the cursor to the file names
                 constrain_cursor = "name",
 
+                default_file_explorer = true,
+
                 keymaps = {
                     ["-"] = "actions.open_cwd",
+                    ["="] = "action.open_cwd",
                     ["<BS>"] = "actions.parent",
 
                     ["q"] = "actions.close",
