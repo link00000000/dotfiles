@@ -7,7 +7,8 @@ return {
         lazy = false,
         keys = {
             keymap.normal.lazy("<Leader>dx", function () require("projector").continue() end, { desc = "Start debuging (\"Debug eXecute\")" }),
-            keymap.normal.lazy("<F5>", function () require("projector").continue() end, { desc = "Start debuging" }),
+            keymap.normal.lazy("<F5>", function () require("projector").continue() end, { desc = "Start debugging" }),
+            keymap.normal.lazy("<Leader>ds", function () require("dap").stop() end, { desc = "Stop debugging" }),
 
             keymap.normal.lazy("<Leader>dn", function () require("dap").step_over() end, { desc = "Step over (\"Debug Next\")" }),
             keymap.normal.lazy("<Leader>di", function () require("dap").step_into() end, { desc = "Step into (\"Debug Into\")" }),
