@@ -8,19 +8,6 @@ return {
         ft = { "go", "gomod" },
         config = function ()
             require("dap-go").setup({
-                -- delve = vim.tbl_deep_extend("force", require("mason-nvim-dap.mappings.adapters.delve"), {
-                --     detached = false,
-                -- })
-                dap_configurations = {
-                    {
-                        type = "go",
-                        name = "TEST",
-                        request = "launch",
-                        program = "${file}",
-                        -- console = "internalConsole"
-                        console = "integratedTerminal"
-                    },
-                },
                 delve = {
                     path = vim.fn.exepath("dlv")
                 },

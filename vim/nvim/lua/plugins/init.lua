@@ -36,6 +36,7 @@ return {
 
             -- Appearance
             require("plugins.colorschemes.tokyonight").spec,
+            -- require("plugins.goyo").spec,
 
             -- Layout / Statusline / Tabline / Status Column
             require('plugins.luatab').spec, -- TODO: Replace with custom implementation in lualine
@@ -95,6 +96,18 @@ return {
             require("plugins.which-key").spec,
             require("plugins.nvim-unception").spec,
             require("plugins.nvim-treesitter-playground").spec,
-        }, { change_detection = { enabled = true, notify = true } })
+        }, {
+            change_detection = { enabled = true, notify = true },
+            profiling = {
+                -- Enables extra stats on the debug tab related to the loader cache.
+                -- Additionally gathers stats about all package.loaders
+                loader = true,
+                -- Track each new require in the Lazy profiling tab
+                require = true,
+            },
+            performance = {
+                cache = { enabled = false, },
+            },
+        })
     end
 }

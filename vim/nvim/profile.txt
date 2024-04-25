@@ -1,0 +1,138 @@
+  Startuptime: 2353.05ms
+
+  An accurate startuptime based on the actual CPU time of the Neovim process is not available.
+  Startuptime is instead based on a delta with a timestamp when lazy started till UIEnter.
+    LazyStart 4.55ms
+    LazyDone  1791.37ms (+1786.82ms)
+    UIEnter   2353.05ms (+561.68ms)
+
+  Profile
+
+  You can press <C-s> to change sorting between chronological order & time taken.
+  Press <C-f> to filter profiling entries that took more time than a given threshold
+
+    ●  startup 1749.34ms
+      ➜  start 1657.84ms
+        ★  start  mason-lspconfig.nvim 699.91ms
+          ‒  nvim-lspconfig 523.72ms
+            ●  nvim-notify 357.5ms
+              ➜  telescope.nvim 300.16ms
+                ★  nvim-dap 15.11ms
+                  ‒  nvim-dap/plugin/dap.lua 7.13ms
+                ★  codicons.nvim 10.14ms
+                ★  telescope.nvim/plugin/telescope.lua 8.08ms
+                ★  plenary.nvim 4.24ms
+                  ‒  plenary.nvim/plugin/plenary.vim 3.3ms
+                ★  telescope-dap.nvim 1.24ms
+                ★  telescope-fzf-native.nvim 0.97ms
+                ★  telescope-ui-select.nvim 0.59ms
+            ●  neodev.nvim 81.79ms
+            ●  barbecue.nvim 69.82ms
+              ➜  nvim-web-devicons 15.17ms
+                ★  nvim-web-devicons/plugin/nvim-web-devicons.vim 3.23ms
+            ●  nvim-lspconfig/plugin/lspconfig.lua 8.8ms
+            ●  omnisharp-extended-lsp.nvim 3.13ms
+              ➜  omnisharp-extended-lsp.nvim/plugin/omnisharp_extended.vim 2.83ms
+            ●  nvim-navic 1.47ms
+            ●  folding-nvim 0.57ms
+          ‒  mason.nvim 47.97ms
+        ★  start  mason-nvim-dap.nvim 411.08ms
+          ‒  nvim-projector 237.48ms
+            ●  nvim-dap-ui 132.22ms
+              ➜  nvim-nio 1.95ms
+            ●  nvim-projector/plugin/projector.lua 6.46ms
+            ●  nui.nvim 1.81ms
+            ●  projector-vscode 1.71ms
+          ‒  nvim-dap-virtual-text 6.83ms
+        ★  start  LuaSnip 215.16ms
+          ‒  LuaSnip/plugin/luasnip.lua 95.45ms
+          ‒  LuaSnip/plugin/luasnip.vim 3.44ms
+          ‒  keymap-amend.nvim 1.68ms
+        ★  start  nvim-treesitter 107.91ms
+          ‒  nvim-treesitter/plugin/nvim-treesitter.lua 80.56ms
+        ★  start  gitsigns.nvim 42.48ms
+          ‒  which-key.nvim 22.48ms
+            ●  which-key.nvim/plugin/which-key.vim 2.79ms
+        ★  start  tokyonight.nvim 41.34ms
+        ★  start  indent-blankline.nvim 39.91ms
+        ★  start  oil.nvim 24.62ms
+        ★  start  nvim-unception 23.25ms
+          ‒  nvim-unception/plugin/main.lua 22.77ms
+        ★  start  statuscol.nvim 18.09ms
+        ★  start  dressing.nvim 18.07ms
+          ‒  dressing.nvim/plugin/dressing.lua 14.23ms
+        ★  start  nvim-nu 11.31ms
+          ‒  nvim-nu/plugin/nu.lua 5.99ms
+        ★  start  file-line 4.52ms
+          ‒  file-line/plugin/file_line.vim 4.35ms
+      ➜  rtp plugins 74.99ms
+        ★  runtime/plugin/matchit.vim 12.59ms
+        ★  runtime/plugin/nvim.lua 5.87ms
+        ★  runtime/plugin/man.lua 5.84ms
+        ★  runtime/plugin/editorconfig.lua 5.68ms
+        ★  runtime/plugin/rplugin.vim 5.48ms
+        ★  runtime/plugin/tohtml.vim 5.24ms
+        ★  runtime/plugin/netrwPlugin.vim 5.2ms
+        ★  runtime/plugin/matchparen.vim 4.37ms
+        ★  runtime/plugin/gzip.vim 4.17ms
+        ★  runtime/plugin/tarPlugin.vim 3.89ms
+        ★  runtime/plugin/shada.vim 3.86ms
+        ★  runtime/plugin/zipPlugin.vim 3.5ms
+        ★  runtime/plugin/tutor.vim 3.25ms
+        ★  runtime/plugin/spellfile.vim 3.18ms
+        ★  runtime/plugin/health.vim 2.56ms
+      ➜  runtime/filetype.lua 8.73ms
+      ➜  after 7.67ms
+        ★  after/plugin/commands.lua 7.25ms
+      ➜  init 0.06ms
+        ★  init  vimwiki 0.04ms
+    ●  BufEnter 391.82ms
+      ➜  nvim-cmp 240.99ms
+        ★  cmp-buffer 144.74ms
+          ‒  after/plugin/cmp_buffer.lua 141.99ms
+        ★  cmp-nvim-lsp 15.1ms
+          ‒  after/plugin/cmp_nvim_lsp.lua 14.71ms
+        ★  cmp_luasnip 12.65ms
+          ‒  after/plugin/cmp_luasnip.lua 12.12ms
+        ★  cmp-nvim-lsp-signature-help 12.42ms
+          ‒  after/plugin/cmp_nvim_lsp_signature_help.lua 11.93ms
+        ★  cmp-cmdline 12.31ms
+          ‒  after/plugin/cmp_cmdline.lua 11.77ms
+        ★  cmp-nvim-lua 12.28ms
+          ‒  after/plugin/cmp_nvim_lua.lua 11.93ms
+        ★  cmp-path 12.25ms
+          ‒  after/plugin/cmp_path.lua 11.89ms
+        ★  nvim-cmp/plugin/cmp.lua 10.46ms
+        ★  lspkind.nvim 0.24ms
+      ➜  lualine.nvim 127.95ms
+        ★  lualine-lsp-progress 2.37ms
+      ➜  todo-comments.nvim 22.46ms
+        ★  todo-comments.nvim/plugin/todo.vim 2.63ms
+      ➜  lualine 0.19ms
+      ➜  lualine_stl_refresh 0.06ms
+      ➜  lualine_tal_refresh 0.06ms
+    ●  VeryLazy 120.39ms
+      ➜  multicursors.nvim 93.5ms
+        ★  hydra.nvim 10.38ms
+          ‒  hydra.nvim/plugin/hydra.lua 7.04ms
+      ➜  nvim-surround 26.84ms
+    ●  BufReadPre 108.92ms
+      ➜  mason-null-ls.nvim 108.79ms
+        ★  none-ls.nvim 3.31ms
+    ●  VimEnter 83.65ms
+      ➜  trouble.nvim 49.14ms
+        ★  trouble.nvim/plugin/trouble.vim 3.39ms
+      ➜  alpha_start 23.15ms
+      ➜  alpha-nvim 11.2ms
+    ●  lazy.nvim 41.91ms
+      ➜  module 20.58ms
+      ➜  handlers 6.53ms
+        ★  vim-razor/ftdetect/razor.vim 3.13ms
+      ➜  spec 1.06ms
+      ➜  state 0.69ms
+      ➜  config 0.29ms
+      ➜  install 0.03ms
+    ●  InsertEnter 27.43ms
+      ➜  nvim-autopairs 27.38ms
+    ●  TabEnter 12.7ms
+      ➜  luatab.nvim 12.67ms

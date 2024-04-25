@@ -81,6 +81,7 @@ return {
             telescope.load_extension('fzf')
             telescope.load_extension('ui-select')
             telescope.load_extension("dap")
+            telescope.load_extension("notify")
         end,
         keys = {
             keymap.normal.lazy('<C-p>', open_find_files, { desc = 'File search' }),

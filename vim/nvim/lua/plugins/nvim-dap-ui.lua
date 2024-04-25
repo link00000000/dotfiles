@@ -10,7 +10,7 @@ return {
 
             -- Automatically open and close dapui when debugging starts and stops
             dap.listeners.before.attach.dapui = dapui.open
-            dap.listeners.before.launh.dapui = dapui.open
+            dap.listeners.before.launch.dapui = dapui.open
             dap.listeners.before.event_terminated.dapui = dapui.close
             dap.listeners.before.event_exited.dapui = dapui.close
 

@@ -113,11 +113,6 @@ return
                 end
 
                 if hover_floating_win == nil then
-                    local dap_session = dap.session()
-                    if dap_session == nil then
-                        return
-                    end
-
                     dap_session:request("evaluate", {
                         expression = vim.treesitter.get_node_text(hovered_node, 0)
                     }, function (err, result)

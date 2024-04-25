@@ -1,14 +1,24 @@
 local keymap = require("utils.keymap")
 
+local continue_debugging = function ()
+    local dap = require("dap")
+
+    if dap.session() ~= nil then
+        dap.continue()
+    else
+        require("projector").continue()
+    end
+end
+
 ---@type PluginModule
 return {
     spec = {
         "jay-babu/mason-nvim-dap.nvim",
         lazy = false,
         keys = {
-            keymap.normal.lazy("<Leader>dx", function () require("projector").continue() end, { desc = "Start debuging (\"Debug eXecute\")" }),
-            keymap.normal.lazy("<F5>", function () require("projector").continue() end, { desc = "Start debugging" }),
-            keymap.normal.lazy("<Leader>ds", function () require("dap").stop() end, { desc = "Stop debugging" }),
+            keymap.normal.lazy("<Leader>dx", continue_debugging, { desc = "Start debuging (\"Debug eXecute\")" }),
+            keymap.normal.lazy("<F5>", continue_debugging, { desc = "Start debugging" }),
+            keymap.normal.lazy("<Leader>ds", function () require("dap").terminate() end, { desc = "Stop debugging" }),
 
             keymap.normal.lazy("<Leader>dn", function () require("dap").step_over() end, { desc = "Step over (\"Debug Next\")" }),
             keymap.normal.lazy("<Leader>di", function () require("dap").step_into() end, { desc = "Step into (\"Debug Into\")" }),

@@ -25,16 +25,11 @@ return {
             })
 
             vim.notify = notify
-
-            require("telescope").load_extension("notify")
         end,
         cmd = { "Notifications" },
         keys = {
             keymap.normal.lazy("<Leader>nh", function () require("telescope").extensions.notify.notify() end, { desc = "Show history" }),
             keymap.normal.lazy("<Leader>nd", function () require("notify").dismiss({ pending = true, silent = true }) end, { desc = "Dismiss all" })
         },
-        dependencies = {
-            require("plugins.telescope").spec,
-        }
     }
 }
