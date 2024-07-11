@@ -153,6 +153,11 @@ $Configurations = @{
         $Dest = Join-Path -Path $Env:UserProfile -ChildPath ".vsvimrc"
         Create-SymbolicLink -Source $Source -Destination $Dest
     }
+    wezterm = {
+        $Source = Get-ConfigPath -RelativePath "wezterm/.wezterm.lua"
+        $Dest = Join-Path -Path $Env:USERPROFILE -ChildPath ".wezterm.lua"
+        Create-SymbolicLink -Source $Source -Destination $Dest
+    }
     whkd = {
         $Source = Get-ConfigPath -RelativePath "whkd/whkdrc"
         $Dest = Join-Path -Path $Env:USERPROFILE -ChildPath ".config/whkdrc"
