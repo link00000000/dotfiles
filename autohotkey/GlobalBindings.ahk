@@ -15,7 +15,7 @@
 
 #b::    Run("ms-settings:bluetooth")
 #j::    Run("shell:downloads")
-#t::    Run("wt.exe", EnvGet("USERPROFILE"))
+#t::    Run("wezterm.exe start --cwd " . EnvGet("USERPROFILE"), EnvGet("USERPROFILE"), "Hide")
 #`::    Run("explorer.exe " . EnvGet("USERPROFILE"))
 #p::    Chrome.RunChromeApp("opbageolaboaoegdhedganbipolnjcck")
 #+d::   Run("wt.exe nvim.exe -c VimwikiDevlog")
