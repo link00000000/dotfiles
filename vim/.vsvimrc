@@ -79,7 +79,10 @@ nnoremap <Leader>gd :vsc Edit.GoToDefinition<CR>
 nnoremap <Leader>gt :vsc Edit.GoToTypeDefinition<CR>
 nnoremap <Leader>gi :vsc Edit.GoToImplementation<CR>
 nnoremap <Leader>gr :vsc Edit.FindAllReferences<CR>
-" TODO: nmap <leader>gs <Action>(GotoSuperMethod)
+nnoremap <leader>gs :vsc EditorContextMenus.CodeWindow.ToggleHeaderCodeFile<CR>
+
+" Telescopeish
+nnoremap <C-p> :vsc Edit.GoToAll<CR>
 
 nnoremap <Leader>rt :vsc ReSharper.ReSharper_RefactorThis<CR>
 vnoremap <Leader>rt :vsc ReSharper.ReSharper_RefactorThis<CR>
@@ -98,6 +101,20 @@ nnoremap <Leader>k :vsc Edit.QuickInfo<CR>
 " VS Code Duplicate Line
 " TODO: nmap <S-M-j> <Action>(EditorDuplicate)
 " TODO: vmap <S-M-j> <Action>(EditorDuplicate)
+
+" Move pages instead of paragraphs
+nnoremap { <C-u>zz
+nnoremap } <C-d>zz
+
+nnoremap <Leader>bt :vsc Edit.ToggleBookmark<CR>
+nnoremap <Leader>bb :vsc View.BookmarkWindow<CR>
+
+nnoremap <Leader>en :vsc Edit.GoToNextIssueinFile<CR>
+nnoremap <Leader>ep :vsc Edit.GoToPreviousIssueinFile<CR>
+nnoremap <Leader>ee :vsc View.ErrorList<CR>
+
+nnoremap <F2> :vsc Refactor.Rename<CR>
+nnoremap <Leader>rt :vsc Refactor.ReorderParameters<CR>
 
 """"\ VsVim specific settings \""""""""""""""""""""""""""""""""""""
 
