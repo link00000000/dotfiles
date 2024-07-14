@@ -821,6 +821,19 @@ def "config vim" [] { config nvim }
 
 def "rider" [...rest] { powershell -C $"start rider64 ($rest | str join)" }
 
+def "msdevshell" [] {
+    powershell.exe -noe -c $'
+        Import-Module "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
+        Enter-VsDevShell 287afe10
+
+        cd ($env.PWD)
+
+        nu
+
+        exit
+    '
+}
+
 alias zellij = wsl -d NixOS-zellij --shell-type login -- zellij
 
 alias ii = explorer.exe
