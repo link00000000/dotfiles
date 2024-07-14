@@ -819,6 +819,8 @@ def "config ahk" [] { config autohotkey }
 def "config nvim" [] { nvim +ConfigCwd }
 def "config vim" [] { config nvim }
 
+def "rider" [...rest] { powershell -C $"start rider64 ($rest | str join)" }
+
 alias zellij = wsl -d NixOS-zellij --shell-type login -- zellij
 
 alias ii = explorer.exe
