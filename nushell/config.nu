@@ -843,3 +843,5 @@ use "~/AppData/Roaming/nushell/share/starship/init.nu"
 alias c = cd
 alias cd = z
 
+alias everything = es
+
