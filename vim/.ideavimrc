@@ -242,5 +242,9 @@ vmap <leader>zz <Action>(ToggleZenMode)
 " (Makes the Windows clipboard with history work)
 imap <C-v> <ESC>:set paste<CR>a<C-r>*<ESC>:set nopaste<CR>a
 
+" Move by full pages and re-center cursor instead of moving my paragraph
+nmap { <C-u>zz
+nmap } <C-d>zz
+
 " Toggle outliner window
 nmap <leader>fo <Action>(ActivateStructureToolWindow)
