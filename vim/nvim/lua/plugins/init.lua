@@ -68,6 +68,7 @@ return {
 
             -- Style / Formatting
             require("plugins.mason-null-ls").spec,
+            require("plugins.vim-slueth").spec,
 
             -- Debugging
             require("plugins.mason-nvim-dap").spec,
