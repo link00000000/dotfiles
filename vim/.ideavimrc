@@ -237,3 +237,7 @@ vmap <leader>/ <Action>(CommentByLineComment)
 " Zen mode
 nmap <leader>zz <Action>(ToggleZenMode)
 vmap <leader>zz <Action>(ToggleZenMode)
+
+" Make <C-v> paste the contents of the clipboard
+" (Makes the Windows clipboard with history work)
+imap <C-v> <ESC>:set paste<CR>a<C-r>*<ESC>:set nopaste<CR>a
