@@ -241,3 +241,6 @@ vmap <leader>zz <Action>(ToggleZenMode)
 " Make <C-v> paste the contents of the clipboard
 " (Makes the Windows clipboard with history work)
 imap <C-v> <ESC>:set paste<CR>a<C-r>*<ESC>:set nopaste<CR>a
+
+" Toggle outliner window
+nmap <leader>fo <Action>(ActivateStructureToolWindow)
