@@ -1,5 +1,4 @@
 # Nushell Environment Config File
-#
 # version = "0.84.0"
 
 def create_left_prompt [] {
@@ -78,7 +77,7 @@ $env.NU_PLUGIN_DIRS = [
     # ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
-$env.EDITOR = "nvim"
+$env.EDITOR = "hx"
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')

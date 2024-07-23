@@ -819,13 +819,30 @@ def "config ahk" [] { config autohotkey }
 def "config nvim" [] { nvim +ConfigCwd }
 def "config vim" [] { config nvim }
 
+def "rider" [...rest] { powershell -C $"start rider64 ($rest | str join)" }
+
+def "msdevshell" [] {
+    powershell.exe -noe -c $'
+        Import-Module "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
+        Enter-VsDevShell 287afe10
+
+        cd ($env.PWD)
+
+        nu
+
+        exit
+    '
+}
+
+use ($nu.default-config-dir | path join 'hooks' 'nuenv' 'hook.nu') [ "nuenv" "nuenv allow", "nuenv disallow" "nuenv status" ]
+
 alias zellij = wsl -d NixOS-zellij --shell-type login -- zellij
 
 alias ii = explorer.exe
 alias cat = bat.exe
 
-# alias vim = neovide.exe
-alias vim = nvim
+alias vim = hx
+alias nvim = hx
 
 alias dc = docker-compose
 alias cling = docker run -it --rm sehrig/cling cling
@@ -834,10 +851,14 @@ alias ? = ollama run codellama
 
 alias pwsh = powershell.exe
 
-source "~/AppData/Roaming/nushell/share/atuin/init.nu"
-source "~/AppData/Roaming/nushell/share/zoxide/init.nu"
-use "~/AppData/Roaming/nushell/share/starship/init.nu"
+source ($nu.default-config-dir | path join 'share' 'atuin' 'init.nu')
 
+source ($nu.default-config-dir | path join 'share' 'zoxide' 'init.nu')
 alias c = cd
 alias cd = z
 
+use ($nu.default-config-dir | path join 'share' 'starship' 'init.nu')
+
+alias everything = es
+
+source ($nu.default-config-dir | path join 'share' 'carapace' 'init.nu')
