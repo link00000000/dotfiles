@@ -834,7 +834,7 @@ def "msdevshell" [] {
     '
 }
 
-use ($nu.default-config-dir | path join 'hooks' 'nuenv' 'hook.nu') [ "nuenv" "nuenv allow", "nuenv disallow" "nuenv status" ]
+# use ($nu.default-config-dir | path join 'hooks' 'nuenv' 'hook.nu') [ "nuenv" "nuenv allow", "nuenv disallow" "nuenv status" ]
 
 alias zellij = wsl -d NixOS-zellij --shell-type login -- zellij
 
@@ -861,4 +861,4 @@ use ($nu.default-config-dir | path join 'share' 'starship' 'init.nu')
 
 alias everything = es
 
-source ($nu.default-config-dir | path join 'share' 'carapace' 'init.nu')
+# source ($nu.default-config-dir | path join 'share' 'carapace' 'init.nu')
