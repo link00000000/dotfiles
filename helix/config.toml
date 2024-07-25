@@ -10,6 +10,8 @@ C-j = "shrink_selection"
 C-k = "expand_selection"
 C-l = "select_next_sibling"
 
+C-r = "redo"
+
 # Personal preference
 o = ["open_below"]
 O = ["open_above"]
@@ -97,6 +99,7 @@ g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to
 [keys.insert]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
 esc = ["collapse_selection", "normal_mode"]
+"C-backspace" = ["delete_word_backward"]
 
 [keys.select]
 # Muscle memory
