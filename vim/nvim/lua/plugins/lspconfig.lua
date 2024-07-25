@@ -11,7 +11,6 @@ return {
             require('plugins.telescope').spec,
 
             require('plugins.omnisharp-extended-lsp').spec,
-            require('plugins.neodev').spec,
         },
     }
 }
