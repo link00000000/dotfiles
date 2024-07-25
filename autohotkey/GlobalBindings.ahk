@@ -30,20 +30,18 @@
 
 ; Arc Browser
 #HotIf WinActive("ahk_exe Arc.exe")
-^j::    Send("{DOWN}")
-^k::    Send("{UP}")
-^h::    Send("{LEFT}")
-^l::    Send("{RIGHT}")
-^w:: {
-	input := InputHook("L1 T2.0")
-	input.Start()
-	input.Wait()
-	
-	switch input.Input
-	{
-	case "v":	Send("^+{=}")
-	case "c":	Send("^w")
-	}
-}
-^p::	Send("^l")
+;^j::    Send("{DOWN}")
+;^k::    Send("{UP}")
+;^w:: {
+;	input := InputHook("L1 T2.0")
+;	input.Start()
+;	input.Wait()
+;	
+;	switch input.Input
+;	{
+;	case "v":	Send("^+{=}")
+;	case "c":	Send("^w")
+;	}
+;}
+;^p::	Send("^l")
 #HotIf
