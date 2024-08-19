@@ -94,10 +94,15 @@ $Configurations = @{
         Remove-Item -Path $Dest -Force
         Copy-Item -Path $Source -Destination $Dest
 		
-		$Source = Get-ConfigPath -RelativePath "FlowLauncher/Settings/Plugins/Flow.Launcher.Plugin.WebSearch/CustomIcons"
+        $Source = Get-ConfigPath -RelativePath "FlowLauncher/Settings/Plugins/Flow.Launcher.Plugin.WebSearch/CustomIcons"
         $Dest = Join-Path -Path $FlowLauncherSettingsDirectory -ChildPath "Settings/Plugins/Flow.Launcher.Plugin.WebSearch/CustomIcons"
         Remove-Item -Path $Dest -Force
         Copy-Item -Recurse -Path $Source -Destination $Dest
+    }
+    helix = {
+        $Source = Get-ConfigPath -RelativePath "helix/config.toml"
+        $Dest = Join-Path -Path $Env:APPDATA -ChildPath "helix/config.toml"
+        Create-SymbolicLink -Source $Source -Destination $Dest
     }
     komorebi = {
         $Source = Get-ConfigPath -RelativePath "komorebi/komorebi.json"
@@ -124,6 +129,10 @@ $Configurations = @{
 
         $Source = Get-ConfigPath -RelativePath "nushell/share"
         $Dest = Join-Path -Path $Env:APPDATA -ChildPath "nushell/share"
+        Create-SymbolicLink -Source $Source -Destination $Dest
+
+        $Source = Get-ConfigPath -RelativePath "nushell/hooks"
+        $Dest = Join-Path -Path $Env:APPDATA -ChildPath "nushell/hooks"
         Create-SymbolicLink -Source $Source -Destination $Dest
     }
     powershell = {
