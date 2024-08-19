@@ -89,6 +89,11 @@ local setup_settings = function ()
 
     ]])
 
+    vim.api.nvim_create_autocmd("TermClose", {
+        callback = function()
+           vim.cmd("bdelete!")
+        end
+    })
     -- Have only one status bar instead of one per window
     vim.opt.laststatus = 3
 

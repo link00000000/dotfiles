@@ -24,7 +24,7 @@ return {
         keys = {
             keymap.normal.lazy("<Leader>ww", function () 
                 vim.cmd.tabnew()
-                vim.cmd("VimikwiIndex")
+                vim.cmd("VimwikiIndex")
             end),
         },
         cmd = {

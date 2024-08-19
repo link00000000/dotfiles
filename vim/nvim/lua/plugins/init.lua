@@ -35,7 +35,7 @@ return {
         require('lazy').setup({
 
             -- Appearance
-            require("plugins.colorschemes.tokyonight").spec,
+            -- require("plugins.colorschemes.tokyonight").spec,
             -- require("plugins.goyo").spec,
 
             -- Layout / Statusline / Tabline / Status Column
@@ -53,6 +53,7 @@ return {
             require('plugins.nvim-tree').spec,
             require('plugins.telescope').spec,
             require("plugins.oil").spec,
+            require("plugins.harpoon").spec,
 
             -- LSP / Intellisense / Syntax / Highlighting
             require("plugins.mason-lspconfig").spec,
@@ -65,9 +66,11 @@ return {
             require("plugins.nvim-nu").spec,
             require("plugins.nvim-ts-autotag").spec,
             require("plugins.indent-blankline").spec,
+            require("plugins.lazydev").spec,
 
             -- Style / Formatting
             require("plugins.mason-null-ls").spec,
+            require("plugins.vim-slueth").spec,
 
             -- Debugging
             require("plugins.mason-nvim-dap").spec,
@@ -87,6 +90,7 @@ return {
 
             -- Git / Version Control
             require("plugins.gitsigns").spec,
+            require("plugins.fugitive").spec,
 
             -- Misc.
             require("plugins.alpha").spec,
