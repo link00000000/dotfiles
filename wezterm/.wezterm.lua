@@ -115,6 +115,10 @@ config.key_tables = {
       key = "c",
       action = wezterm.action.CloseCurrentTab { confirm = true },
     },
+    {
+      key = "o",
+      action = wezterm.action.TogglePaneZoomState
+    },
   },
   pane_resize = {
     {
