@@ -184,3 +184,8 @@ vim.keymap.set({ "n" }, "<S-Up>", ":resize +5<CR>")
 vim.keymap.set({ "n" }, "<S-Down>", ":resize -5<CR>")
 vim.keymap.set({ "n" }, "<S-Left>", ":vert resize -5<CR>")
 vim.keymap.set({ "n" }, "<S-Right>", ":vert resize +5<CR>")
+
+local hostname = vim.fn.hostname()
+local _, err = pcall(function ()
+  require("config.local." .. hostname)
+end)

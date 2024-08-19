@@ -1,0 +1,6 @@
+vim.opt.shell = "nu.exe"
+vim.opt.shellquote = ""
+vim.opt.shellxquote = ""
+vim.opt.shellcmdflag = "--login --commands "
+vim.opt.shellpipe = "|"
+vim.opt.shellredir = ""
