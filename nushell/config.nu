@@ -850,7 +850,7 @@ alias v = nvim
 alias dc = docker-compose
 alias cling = docker run -it --rm sehrig/cling cling
 
-alias ? = ollama run codellama
+alias ? = ollama run llama3.1
 
 alias pwsh = powershell.exe
 
