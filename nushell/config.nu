@@ -797,11 +797,18 @@ $env.config = {
             event: {send: executehostcommand, cmd: "lazygit"}
         }
         {
-            name: git_push
+            name: git_pull
             modifier: alt
             keycode: char_p
             mode: [emacs vi_normal vi_insert]
             event: {send: executehostcommand, cmd: "git pull"}
+        }
+        {
+            name: git_push
+            modifier: shift_alt,
+            keycode: char_p
+            mode: [emacs vi_normal vi_insert]
+            event: {send: executehostcommand, cmd: "git push"}
         }
         {
             name: new_terminal
