@@ -99,6 +99,11 @@ $Configurations = @{
         Remove-Item -Path $Dest -Force
         Copy-Item -Recurse -Path $Source -Destination $Dest
     }
+    git = {
+      $Source = Get-ConfigPath -RelativePath "git/.gitconfig"
+      $Dest = Join-Path -Path $Env:USERPROFILE -ChildPath ".gitconfig"
+      Create-SymbolicLink -Source $Source -Destination $Dest
+    }
     helix = {
         $Source = Get-ConfigPath -RelativePath "helix/config.toml"
         $Dest = Join-Path -Path $Env:APPDATA -ChildPath "helix/config.toml"
