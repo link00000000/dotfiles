@@ -149,6 +149,13 @@ $Configurations = @{
         $Dest = "$(Split-Path $PROFILE -Parent)/LocalConfigs"
         Create-SymbolicLink -Source $Source -Destination $Dest
     }
+    ripgrep = {
+        $Source = Get-ConfigPath -RelativePath "ripgrep/.ripgreprc"
+        $Dest = Join-Path -Path $Env:USERPROFILE -ChildPath ".ripgreprc"
+        Create-SymbolicLink -Source $Source -Destination $Dest
+
+        Set-EnvironmentVariable -Key RIPGREP_CONFIG_PATH -Value $Dest
+    }
     starship = {
         $Source = Get-ConfigPath -RelativePath "starship/starship.toml"
         $Dest = Join-Path -Path $Env:USERPROFILE -ChildPath ".config/starship.toml"
