@@ -113,7 +113,7 @@ vim.api.nvim_create_user_command("ExecuteBuffer", function (args)
 end, { range = true })
 
 -- Delete previous word
-vim.keymap.set({ "i" }, "<C-BS>", "<C-W>")
+vim.keymap.set({ "i" }, "<C-H>", "<C-W>")
 
 -- Jump to start of line
 vim.keymap.set({ "n", "v" }, "B", "^")
