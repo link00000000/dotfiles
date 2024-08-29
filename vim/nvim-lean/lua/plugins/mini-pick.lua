@@ -4,6 +4,13 @@ return {
   dependencies = {
     "echasnovski/mini.icons",
   },
+  keys = {
+    { "<C-p>", function () require("mini.pick").builtin.files() end, desc = "Search files" },
+    { "<C-b>", function () require("mini.pick").builtin.buffers() end, desc = "Search buffers" },
+    { "<C-S-f>", function () require("mini.pick").builtin.grep_live(nil, { source = { name = "Find in all files" } }) end },
+    { "<C-f>", function () --[[TODO: Search current file]] end, desc = "Find in current file" },
+    { "<F12>", function () require("mini.pick").builtin.help() end, desc = "Search help pages" },
+  },
   config = function ()
     require("mini.pick").setup { 
       -- Delays (in ms; should be at least 1)
