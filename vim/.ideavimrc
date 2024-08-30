@@ -1,4 +1,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set surround
+set quickscope
+set which-key
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Handlers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -49,6 +56,8 @@ set history=10000 " keep x lines of command line history
 map Q gq " Don't use Ex mode, use Q for formatting.
 
 set clipboard=unnamedplus,unnamed,ideaput " Use system clipboard
+
+set notimeout " Disable leader chord timeout
 
 " Disable error bell sound
 set visualbell
