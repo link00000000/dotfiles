@@ -32,7 +32,7 @@ vim.opt.cursorline = true
 vim.opt.mouse = "a"
 
 -- Use system clipboard
-vim.opt.clipboard:prepend({ "unnamed", "unnamedplus" })
+vim.opt.clipboard:prepend { "unnamed", "unnamedplus" }
 
 -- Disabled word wrap
 vim.opt.wrap = false
@@ -65,12 +65,12 @@ vim.g.netrw_list_hide = "^\\.*/$"
 vim.g.netrw_hide = 1
 
 -- Additional filetype associations
-vim.filetype.add({
+vim.filetype.add {
   extension = {
     njk = "html",
     liquid = "html",
   },
-})
+}
 
 vim.cmd([[
   augroup neovim_terminal
@@ -85,21 +85,35 @@ vim.cmd([[
 ]])
 
 -- Typo aliases
-vim.api.nvim_create_user_command("W", function () vim.cmd([[w]]) end, {})
-vim.api.nvim_create_user_command("Wa", function () vim.cmd([[wa]]) end, {})
-vim.api.nvim_create_user_command("WA", function () vim.cmd([[wa]]) end, {})
-vim.api.nvim_create_user_command("Waq", function () vim.cmd([[waq]]) end, {})
-vim.api.nvim_create_user_command("WAq", function () vim.cmd([[waq]]) end, {})
-vim.api.nvim_create_user_command("WaQ", function () vim.cmd([[waq]]) end, {})
-vim.api.nvim_create_user_command("WAQ", function () vim.cmd([[waq]]) end, {})
+vim.api.nvim_create_user_command("W", function()
+  vim.cmd([[w]])
+end, {})
+vim.api.nvim_create_user_command("Wa", function()
+  vim.cmd([[wa]])
+end, {})
+vim.api.nvim_create_user_command("WA", function()
+  vim.cmd([[wa]])
+end, {})
+vim.api.nvim_create_user_command("Waq", function()
+  vim.cmd([[waq]])
+end, {})
+vim.api.nvim_create_user_command("WAq", function()
+  vim.cmd([[waq]])
+end, {})
+vim.api.nvim_create_user_command("WaQ", function()
+  vim.cmd([[waq]])
+end, {})
+vim.api.nvim_create_user_command("WAQ", function()
+  vim.cmd([[waq]])
+end, {})
 
-vim.api.nvim_create_user_command("Config", function ()
+vim.api.nvim_create_user_command("Config", function()
   vim.cmd.tabnew()
   vim.cmd.tchdir(vim.fn.stdpath("config"))
   vim.cmd.edit("init.lua")
 end, { desc = "Opens neovim settings in a new tab" })
 
-vim.api.nvim_create_user_command("ExecuteBuffer", function (args)
+vim.api.nvim_create_user_command("ExecuteBuffer", function(args)
   ---@type string[]
   local lines
 
@@ -112,7 +126,7 @@ vim.api.nvim_create_user_command("ExecuteBuffer", function (args)
   loadstring(table.concat(lines, "\n"))()
 end, { range = true, desc = "Execute the current buffer as lua in Neovim's REPL" })
 
-vim.api.nvim_create_user_command("LspLogClear", function ()
+vim.api.nvim_create_user_command("LspLogClear", function()
   local filename = vim.lsp.log.get_filename()
   if filename == nil or #filename == 0 then
     error("Failed to get LSP log filename")
@@ -196,6 +210,6 @@ vim.keymap.set({ "n" }, "<S-Left>", ":vert resize -5<CR>")
 vim.keymap.set({ "n" }, "<S-Right>", ":vert resize +5<CR>")
 
 local hostname = vim.fn.hostname()
-local _, err = pcall(function ()
+local _, err = pcall(function()
   require("config.local." .. hostname)
 end)

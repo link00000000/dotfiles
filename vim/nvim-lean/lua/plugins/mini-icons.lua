@@ -1,9 +1,9 @@
 return {
   "echasnovski/mini.icons",
   version = "*",
-  config = function ()
+  config = function()
     require("mini.icons").setup {
       style = "ascii",
     }
-  end
+  end,
 }

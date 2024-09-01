@@ -1,3 +1,3 @@
 return {
-  border = "single"
+  border = "single",
 }

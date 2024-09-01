@@ -1,6 +1,6 @@
 return {
   "dnlhc/glance.nvim",
-  config = function ()
+  config = function()
     require("glance").setup {}
-  end
+  end,
 }

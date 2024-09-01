@@ -5,14 +5,42 @@ return {
     "echasnovski/mini.icons",
   },
   keys = {
-    { "<C-p>", function () require("mini.pick").builtin.files() end, desc = "Search files" },
-    { "<C-b>", function () require("mini.pick").builtin.buffers() end, desc = "Search buffers" },
-    { "<C-S-f>", function () require("mini.pick").builtin.grep_live(nil, { source = { name = "Find in all files" } }) end },
-    { "<C-f>", function () --[[TODO: Search current file]] end, desc = "Find in current file" },
-    { "<F12>", function () require("mini.pick").builtin.help() end, desc = "Search help pages" },
+    {
+      "<C-p>",
+      function()
+        require("mini.pick").builtin.files()
+      end,
+      desc = "Search files",
+    },
+    {
+      "<C-b>",
+      function()
+        require("mini.pick").builtin.buffers()
+      end,
+      desc = "Search buffers",
+    },
+    {
+      "<C-S-f>",
+      function()
+        require("mini.pick").builtin.grep_live(nil, { source = { name = "Find in all files" } })
+      end,
+    },
+    {
+      "<C-f>",
+      function() --[[TODO: Search current file]]
+      end,
+      desc = "Find in current file",
+    },
+    {
+      "<F12>",
+      function()
+        require("mini.pick").builtin.help()
+      end,
+      desc = "Search help pages",
+    },
   },
-  config = function ()
-    require("mini.pick").setup { 
+  config = function()
+    require("mini.pick").setup {
       -- Delays (in ms; should be at least 1)
       delay = {
         -- Delay between forcing asynchronous behavior
@@ -24,40 +52,40 @@ return {
 
       -- Keys for performing actions. See `:h MiniPick-actions`.
       mappings = {
-        caret_left  = "<Nop>",
+        caret_left = "<Nop>",
         caret_right = "<Nop>",
 
-        choose            = "<CR>",
-        choose_in_split   = "<C-s>",
+        choose = "<CR>",
+        choose_in_split = "<C-s>",
         choose_in_tabpage = "<C-t>",
-        choose_in_vsplit  = "<C-v>",
-        choose_marked     = "<Nop>",
+        choose_in_vsplit = "<C-v>",
+        choose_marked = "<Nop>",
 
-        delete_char       = "<BS>",
+        delete_char = "<BS>",
         delete_char_right = "<Del>",
-        delete_left       = "<C-u>",
-        delete_word       = "<C-h>",
+        delete_left = "<C-u>",
+        delete_word = "<C-h>",
 
-        mark     = "<Nop>",
+        mark = "<Nop>",
         mark_all = "<Nop>",
 
-        move_down  = "<C-j>",
-        move_up    = "<C-k>",
+        move_down = "<C-j>",
+        move_up = "<C-k>",
         move_start = "<Nop>",
 
         paste = "<C-r>",
 
-        refine        = "<C-Space>",
+        refine = "<C-Space>",
         refine_marked = "<M-Space>",
 
-        scroll_down  = "<C-d>",
-        scroll_left  = "<C-h>",
+        scroll_down = "<C-d>",
+        scroll_left = "<C-h>",
         scroll_right = "<C-l>",
-        scroll_up    = "<C-u>",
+        scroll_up = "<C-u>",
 
         stop = "<Esc>",
 
-        toggle_info    = "<S-Tab>",
+        toggle_info = "<S-Tab>",
         toggle_preview = "<Tab>",
       },
 
