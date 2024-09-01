@@ -110,7 +110,17 @@ vim.api.nvim_create_user_command("ExecuteBuffer", function (args)
   end
 
   loadstring(table.concat(lines, "\n"))()
-end, { range = true })
+end, { range = true, desc = "Execute the current buffer as lua in Neovim's REPL" })
+
+vim.api.nvim_create_user_command("LspLogClear", function ()
+  local filename = vim.lsp.log.get_filename()
+  if filename == nil or #filename == 0 then
+    error("Failed to get LSP log filename")
+  end
+
+  pcall(os.remove, filename) -- Ignore error if the file does not exist
+  print("LSP log cleared")
+end, { desc = "Clear LSP log file" })
 
 -- Delete previous word
 vim.keymap.set({ "i" }, "<C-H>", "<C-W>")
