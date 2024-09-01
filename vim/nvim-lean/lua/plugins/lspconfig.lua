@@ -21,16 +21,16 @@ local on_attach = {
     vim.keymap.set("n", "<Leader>ep", vim.diagnostic.goto_prev, { buffer = bufnr, desc = "Go to previous diagnostic" })
   end,
   setup_keymap_goto_definition = function (client, bufnr)
-    vim.keymap.set("n", "<Leader>gd", function () vim.cmd("Glance definitions") end, { buffer = bufnr, desc = "Go to definition" })
+    vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "Go to definition" })
   end,
   setup_keymap_goto_references = function (client, bufnr)
-    vim.keymap.set("n", "<Leader>gr", function () vim.cmd("Glance references") end, { buffer = bufnr, desc = "Go to references" })
+    vim.keymap.set("n", "<Leader>gr", vim.lsp.buf.references, { buffer = bufnr, desc = "Go to references" })
   end,
   setup_keymap_goto_implementation = function (client, bufnr)
-    vim.keymap.set("n", "<Leader>gi", function () vim.cmd("Glance implementations") end, { buffer = bufnr, desc = "Go to implementation" })
+    vim.keymap.set("n", "<Leader>gi", vim.lsp.buf.implementation, { buffer = bufnr, desc = "Go to implementation" })
   end,
   setup_keymap_goto_type_definition = function (client, bufnr)
-    vim.keymap.set("n", "<Leader>gt", function () vim.cmd("Glance type_definitions") end, { buffer = bufnr, desc = "Go to type definition" })
+    vim.keymap.set("n", "<Leader>gt", vim.lsp.buf.type_definition, { buffer = bufnr, desc = "Go to type definition" })
   end,
 
   setup_symbol_highlight_on_cursor_hold = function (client, bufnr)
@@ -60,31 +60,31 @@ local on_attach = {
 
 ---@type { [string]: lsp.HandlerConfig }
 local handlers = {
-    underline_and_virtual_text_for_errors = {
-        message = "textDocument/publishDiagnostics",
-        handler = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            underline = true,
-            virtual_text = {
-                spacing = 5,
-                severity_limit = 'Warning',
-            },
-            update_in_insert = true,
-        })
-    },
+  underline_and_virtual_text_for_errors = {
+    message = "textDocument/publishDiagnostics",
+    handler = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      underline = true,
+      virtual_text = {
+        spacing = 5,
+        severity_limit = 'Warning',
+      },
+      update_in_insert = true,
+    })
+  },
 
-    hover = {
-        message = "textDocument/hover",
-        handler = vim.lsp.with(vim.lsp.handlers.hover, {
-            border = require("config/style").border,
-        })
-    },
+  hover = {
+    message = "textDocument/hover",
+    handler = vim.lsp.with(vim.lsp.handlers.hover, {
+      border = require("config/style").border,
+    })
+  },
 
-    signature_help = {
-        message = "textDocument/signatureHelp",
-        handler = vim.lsp.with(vim.lsp.handlers.signature_help, {
-            border = require("config/style").border,
-        })
-    },
+  signature_help = {
+    message = "textDocument/signatureHelp",
+    handler = vim.lsp.with(vim.lsp.handlers.signature_help, {
+      border = require("config/style").border,
+    })
+  },
 }
 
 ---@alias lsp.Capabilities any
@@ -97,41 +97,41 @@ end
 ---@param opts CreateSetupHandlerOpts
 ---@return lsp-handler
 local function setup_lsp (server_name, opts)
-    -- Convert { { "textDocument/showMessage", function () print("A") end }, { "textDocument/showMessage", function () print("B") end } }
-    -- to { "textDocument/showMessage", function () print("A") print("B") end }
-    local resolved_handlers = {}
-    if opts.handlers then
-        local handlers_by_message = {}
+  -- Convert { { "textDocument/showMessage", function () print("A") end }, { "textDocument/showMessage", function () print("B") end } }
+  -- to { "textDocument/showMessage", function () print("A") print("B") end }
+  local resolved_handlers = {}
+  if opts.handlers then
+    local handlers_by_message = {}
 
-        for _, value in pairs(opts.handlers) do
-            if handlers_by_message[value.message] == nil then
-                handlers_by_message[value.message] = {}
-            end
+    for _, value in pairs(opts.handlers) do
+      if handlers_by_message[value.message] == nil then
+        handlers_by_message[value.message] = {}
+      end
 
-            table.insert(handlers_by_message[value.message], value.handler)
-        end
-
-        for message, handlers_for_message in pairs(handlers_by_message) do
-            resolved_handlers[message] = function (err, result, context, config)
-                for _, handler in pairs(handlers_for_message) do
-                    handler(err, result, context, config)
-                end
-            end
-        end
+      table.insert(handlers_by_message[value.message], value.handler)
     end
 
-    local setup_config = vim.tbl_deep_extend("force", opts, {
-      on_attach = function (client, bufnr)
-        if opts.on_attach then
-          for _, value in pairs(opts.on_attach) do
-            value(client, bufnr)
-          end
+    for message, handlers_for_message in pairs(handlers_by_message) do
+      resolved_handlers[message] = function (err, result, context, config)
+        for _, handler in pairs(handlers_for_message) do
+          handler(err, result, context, config)
         end
-      end,
-      handlers = resolved_handlers,
-    })
+      end
+    end
+  end
 
-    require("lspconfig")[server_name].setup(setup_config)
+  local setup_config = vim.tbl_deep_extend("force", opts, {
+    on_attach = function (client, bufnr)
+      if opts.on_attach then
+        for _, value in pairs(opts.on_attach) do
+          value(client, bufnr)
+        end
+      end
+    end,
+    handlers = resolved_handlers,
+  })
+
+  require("lspconfig")[server_name].setup(setup_config)
 end
 
 return {
@@ -140,6 +140,7 @@ return {
     local lspconfig = require("lspconfig")
 
     setup_lsp("clangd", {
+      cmd = { "clangd", "--background-index" },
       on_attach = {
         on_attach.setup_keymap_code_action,
         on_attach.setup_keymap_rename,
