@@ -11,6 +11,10 @@ return {
       "saadparwaiz1/cmp_luasnip",
       { "l3mon4d3/luasnip", version = "v2.*", build = "make install_jsregexp" },
     },
+    opts = function (_, opts)
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, { name = "lazydev", group_index = 0 }) -- Uses plugins.lazydev. Lazydev will automatically lazyload itself later
+    end,
     config = function()
       local cmp = require("cmp")
 

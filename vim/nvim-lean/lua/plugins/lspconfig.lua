@@ -1,7 +1,7 @@
----@alias lsp.OnAttach fun(client: any, bufnr: integer)
----@alias OnAttachConfig { [string]: lsp.OnAttach, setup_keymap: { [string]: lsp.OnAttach } }
----@type OnAttachConfig
-local on_attach = {
+  ---@alias lsp.OnAttach fun(client: any, bufnr: integer)
+  ---@alias OnAttachConfig { [string]: lsp.OnAttach, setup_keymap: { [string]: lsp.OnAttach } }
+  ---@type OnAttachConfig
+  local on_attach = {
   setup_keymap_code_action = function(client, bufnr)
     vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
   end,
@@ -31,6 +31,25 @@ local on_attach = {
   end,
   setup_keymap_goto_type_definition = function(client, bufnr)
     vim.keymap.set("n", "<Leader>gt", vim.lsp.buf.type_definition, { buffer = bufnr, desc = "Go to type definition" })
+  end,
+  setup_keymap_formatting = function(client, bufnr)
+    vim.keymap.set("v", "=", function ()
+      for _, value in ipairs(vim.lsp.buf_get_clients(bufnr)) do
+        if value and value.capabilities and value.capabilities.textDocument and value.capabilities.textDocument.formatting then
+          vim.lsp.buf.format()
+          return
+        end
+      end
+    end, { buffer = bufnr, desc = "Format selection" })
+
+    vim.keymap.set("n", "==", function ()
+      for _, value in ipairs(vim.lsp.buf_get_clients(bufnr)) do
+        if value and value.capabilities and value.capabilities.textDocument and value.capabilities.textDocument.formatting then
+          vim.lsp.buf.format()
+          return
+        end
+      end
+    end, { buffer = bufnr, desc = "Format selection" })
   end,
 
   setup_symbol_highlight_on_cursor_hold = function(client, bufnr)
@@ -146,8 +165,6 @@ end
 return {
   "neovim/nvim-lspconfig",
   config = function()
-    local lspconfig = require("lspconfig")
-
     setup_lsp("clangd", {
       cmd = { "clangd", "--background-index" },
       on_attach = {
@@ -192,6 +209,7 @@ return {
         on_attach.setup_keymap_goto_references,
         on_attach.setup_keymap_goto_implementation,
         on_attach.setup_keymap_goto_type_definition,
+        on_attach.setup_keymap_formatting,
 
         on_attach.setup_symbol_highlight_on_cursor_hold,
       },
@@ -214,6 +232,7 @@ return {
         on_attach.setup_keymap_goto_references,
         on_attach.setup_keymap_goto_implementation,
         on_attach.setup_keymap_goto_type_definition,
+        on_attach.setup_keymap_formatting,
 
         on_attach.setup_symbol_highlight_on_cursor_hold,
       },
