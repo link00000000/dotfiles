@@ -199,15 +199,18 @@ vim.keymap.set({ "t" }, "<Esc>", "<C-\\><C-n>")
 vim.keymap.set({ "t" }, "<C-n>", "<C-\\><C-n>")
 
 -- Resize buffers with arrow keys
-vim.keymap.set({ "n" }, "<Up>", ":resize +1<CR>")
-vim.keymap.set({ "n" }, "<Down>", ":resize -1<CR>")
-vim.keymap.set({ "n" }, "<Left>", ":vert resize -1<CR>")
-vim.keymap.set({ "n" }, "<Right>", ":vert resize +1<CR>")
+vim.keymap.set({ "n" }, "<Up>", ":resize +1<CR>", { silent = true })
+vim.keymap.set({ "n" }, "<Down>", ":resize -1<CR>", { silent = true })
+vim.keymap.set({ "n" }, "<Left>", ":vert resize -1<CR>", { silent = true })
+vim.keymap.set({ "n" }, "<Right>", ":vert resize +1<CR>", { silent = true })
 
-vim.keymap.set({ "n" }, "<S-Up>", ":resize +5<CR>")
-vim.keymap.set({ "n" }, "<S-Down>", ":resize -5<CR>")
-vim.keymap.set({ "n" }, "<S-Left>", ":vert resize -5<CR>")
-vim.keymap.set({ "n" }, "<S-Right>", ":vert resize +5<CR>")
+vim.keymap.set({ "n" }, "<S-Up>", ":resize +5<CR>", { silent = true })
+vim.keymap.set({ "n" }, "<S-Down>", ":resize -5<CR>", { silent = true })
+vim.keymap.set({ "n" }, "<S-Left>", ":vert resize -5<CR>", { silent = true })
+vim.keymap.set({ "n" }, "<S-Right>", ":vert resize +5<CR>", { silent = true })
+
+-- Configuration
+vim.keymap.set({ "n" }, "<Leader><Leader>c", ":Config<CR>", { silent = true })
 
 local hostname = vim.fn.hostname()
 local _, err = pcall(function()
