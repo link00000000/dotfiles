@@ -1,8 +1,9 @@
 return {
   "echasnovski/mini.pick",
+  lazy = false, -- So we can patch vim.ui.select()
   version = "*",
   dependencies = {
-    "echasnovski/mini.icons",
+    require("plugins.web-devicons"),
   },
   keys = {
     {
@@ -40,7 +41,9 @@ return {
     },
   },
   config = function()
-    require("mini.pick").setup {
+    local mini_pick = require("mini.pick")
+
+    mini_pick.setup {
       -- Delays (in ms; should be at least 1)
       delay = {
         -- Delay between forcing asynchronous behavior
@@ -101,7 +104,16 @@ return {
       -- Window related options
       window = {
         -- Float window config (table or callable returning it)
-        config = nil,
+        -- Center on screen
+        config = function ()
+          height = math.floor(0.618 * vim.o.lines)
+          width = math.floor(0.618 * vim.o.columns)
+          return {
+            anchor = 'NW', height = height, width = width,
+            row = math.floor(0.5 * (vim.o.lines - height)),
+            col = math.floor(0.5 * (vim.o.columns - width)),
+          }
+        end,
 
         -- String to use as cursor in prompt
         prompt_cursor = "▏",
@@ -110,5 +122,48 @@ return {
         prompt_prefix = "> ",
       },
     }
+
+    vim.ui.select = function (items, opts, on_choice)
+      local format_item = opts.format_item or H.item_to_string
+      local items_ext = {}
+      for i = 1, #items do
+        table.insert(items_ext, { text = format_item(items[i]), item = items[i], index = i })
+      end
+
+      local preview_item = vim.is_callable(opts.preview_item) and opts.preview_item or function(x) return vim.split(vim.inspect(x), "\n") end
+      local preview = function(buf_id, item) H.set_buflines(buf_id, preview_item(item.item)) end
+
+      local was_aborted = true
+      local choose = function(item)
+        was_aborted = false
+        if item == nil then 
+          return 
+        end
+
+        local win_target = mini_pick.get_picker_state().windows.target
+        if not H.is_valid_win(win_target) then win_target = H.get_first_valid_normal_window() end
+        vim.api.nvim_win_call(win_target, function()
+          on_choice(items[item.index], item.index)
+          mini_pick.set_picker_target_window(vim.api.nvim_get_current_win())
+        end)
+      end
+
+      local source = { items = items_ext, name = opts.prompt or opts.kind, preview = preview, choose = choose }
+      local item = mini_pick.start({
+        source = source,
+        window = {
+          config = {
+            relative = 'cursor',
+            anchor = 'SW',
+            row = 0,
+            col = 0,
+            width = 80,
+            height = 10,
+          },
+        }
+      })
+      if item == nil and was_aborted then on_choice(nil) end
+      if item == nil and was_aborted then on_choice(nil) end
+    end
   end,
 }
