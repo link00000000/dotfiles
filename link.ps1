@@ -166,10 +166,6 @@ $Configurations = @{
         $Dest = Join-Path -Path $Env:LOCALAPPDATA -ChildPath "nvim"
         Create-SymbolicLink -Source $Source -Destination $Dest
 
-        $Source = Get-ConfigPath -RelativePath "vim/nvim-lean"
-        $Dest = Join-Path -Path $Env:LOCALAPPDATA -ChildPath "nvim-lean"
-        Create-SymbolicLink -Source $Source -Destination $Dest
-
         $Source = Get-ConfigPath -RelativePath "vim/.ideavimrc"
         $Dest = Join-Path -Path $Env:UserProfile -ChildPath ".ideavimrc"
         Create-SymbolicLink -Source $Source -Destination $Dest
