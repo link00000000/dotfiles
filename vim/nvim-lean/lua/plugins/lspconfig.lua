@@ -66,7 +66,7 @@ local handlers = {
             underline = true,
             virtual_text = {
                 spacing = 5,
-                severity_limit = 'Warning',
+                severity = { min = vim.diagnostic.severity.HINT, },
             },
             update_in_insert = true,
         })
@@ -166,6 +166,116 @@ return {
     })
 
     setup_lsp("gopls", {
+      on_attach = {
+        on_attach.setup_keymap_code_action,
+        on_attach.setup_keymap_rename,
+        on_attach.setup_keymap_hover,
+        on_attach.setup_keymap_error_hover,
+        on_attach.setup_keymap_error_next,
+        on_attach.setup_keymap_error_previous,
+        on_attach.setup_keymap_goto_definition,
+        on_attach.setup_keymap_goto_references,
+        on_attach.setup_keymap_goto_implementation,
+        on_attach.setup_keymap_goto_type_definition,
+
+        on_attach.setup_symbol_highlight_on_cursor_hold,
+      },
+      handlers = {
+        handlers.underline_and_virtual_text_for_errors,
+        handlers.hover,
+        handlers.signature_help,
+      },
+    })
+
+    setup_lsp("nil_ls", {
+      on_attach = {
+        on_attach.setup_keymap_code_action,
+        on_attach.setup_keymap_rename,
+        on_attach.setup_keymap_hover,
+        on_attach.setup_keymap_error_hover,
+        on_attach.setup_keymap_error_next,
+        on_attach.setup_keymap_error_previous,
+        on_attach.setup_keymap_goto_definition,
+        on_attach.setup_keymap_goto_references,
+        on_attach.setup_keymap_goto_implementation,
+        on_attach.setup_keymap_goto_type_definition,
+
+        on_attach.setup_symbol_highlight_on_cursor_hold,
+      },
+      handlers = {
+        handlers.underline_and_virtual_text_for_errors,
+        handlers.hover,
+        handlers.signature_help,
+      },
+    })
+
+    setup_lsp("html", {
+      on_attach = {
+        on_attach.setup_keymap_code_action,
+        on_attach.setup_keymap_rename,
+        on_attach.setup_keymap_hover,
+        on_attach.setup_keymap_error_hover,
+        on_attach.setup_keymap_error_next,
+        on_attach.setup_keymap_error_previous,
+        on_attach.setup_keymap_goto_definition,
+        on_attach.setup_keymap_goto_references,
+        on_attach.setup_keymap_goto_implementation,
+        on_attach.setup_keymap_goto_type_definition,
+
+        on_attach.setup_symbol_highlight_on_cursor_hold,
+      },
+      handlers = {
+        handlers.underline_and_virtual_text_for_errors,
+        handlers.hover,
+        handlers.signature_help,
+      },
+    })
+
+    setup_lsp("cssls", {
+      on_attach = {
+        on_attach.setup_keymap_code_action,
+        on_attach.setup_keymap_rename,
+        on_attach.setup_keymap_hover,
+        on_attach.setup_keymap_error_hover,
+        on_attach.setup_keymap_error_next,
+        on_attach.setup_keymap_error_previous,
+        on_attach.setup_keymap_goto_definition,
+        on_attach.setup_keymap_goto_references,
+        on_attach.setup_keymap_goto_implementation,
+        on_attach.setup_keymap_goto_type_definition,
+
+        on_attach.setup_symbol_highlight_on_cursor_hold,
+      },
+      handlers = {
+        handlers.underline_and_virtual_text_for_errors,
+        handlers.hover,
+        handlers.signature_help,
+      },
+    })
+
+    setup_lsp("eslint", {
+      on_attach = {
+        on_attach.setup_keymap_code_action,
+        on_attach.setup_keymap_rename,
+        on_attach.setup_keymap_hover,
+        on_attach.setup_keymap_error_hover,
+        on_attach.setup_keymap_error_next,
+        on_attach.setup_keymap_error_previous,
+        on_attach.setup_keymap_goto_definition,
+        on_attach.setup_keymap_goto_references,
+        on_attach.setup_keymap_goto_implementation,
+        on_attach.setup_keymap_goto_type_definition,
+
+        on_attach.setup_symbol_highlight_on_cursor_hold,
+      },
+      handlers = {
+        handlers.underline_and_virtual_text_for_errors,
+        handlers.hover,
+        handlers.signature_help,
+      },
+    })
+
+    setup_lsp("ts_ls", {
       on_attach = {
         on_attach.setup_keymap_code_action,
         on_attach.setup_keymap_rename,
