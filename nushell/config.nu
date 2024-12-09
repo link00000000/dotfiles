@@ -848,9 +848,6 @@ alias zellij = wsl -d NixOS-zellij --shell-type login -- zellij
 alias ii = explorer.exe
 alias cat = bat.exe
 
-def --wrapped nvim [...rest] {
-    NVIM_APPNAME=nvim-lean ^nvim ...$rest
-}
 alias vim = nvim
 alias v = nvim
 
