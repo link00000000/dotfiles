@@ -1,6 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   version = "*",
+  dependencies = { "nushell/tree-sitter-nu" },
   config = function ()
     require("nvim-treesitter.configs").setup {}
   
