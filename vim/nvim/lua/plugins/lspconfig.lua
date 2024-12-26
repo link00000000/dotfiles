@@ -129,6 +129,7 @@ local function setup_lsp (server_name, opts)
         end
       end,
       handlers = resolved_handlers,
+      capabilities = (opts.capabilities and opts.capabilities()) or advertise_cmp_capabilities(),
     })
 
     require("lspconfig")[server_name].setup(setup_config)
@@ -138,8 +139,6 @@ return {
   "neovim/nvim-lspconfig",
   version = "*",
   config = function()
-    local lspconfig = require("lspconfig")
-
     setup_lsp("clangd", {
       on_attach = {
         on_attach.setup_keymap_code_action,
