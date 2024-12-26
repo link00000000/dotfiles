@@ -93,7 +93,7 @@ local function advertise_cmp_capabilities ()
   return require("cmp_nvim_lsp").default_capabilities()
 end
 
----@param server_name LSP server name
+---@param server_name string server name
 ---@param opts CreateSetupHandlerOpts
 ---@return lsp-handler
 local function setup_lsp (server_name, opts)
