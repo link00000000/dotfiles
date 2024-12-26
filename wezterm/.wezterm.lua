@@ -32,7 +32,7 @@ config.keys = {
     action = wezterm.action.ActivatePaneDirection "Right",
   },
   {
-    key = "p",
+    key = "w",
     mods = "LEADER",
     action = wezterm.action.ActivateKeyTable { name = "pane", one_shot = true },
   },
@@ -113,7 +113,7 @@ config.key_tables = {
     },
     {
       key = "c",
-      action = wezterm.action.CloseCurrentTab { confirm = true },
+      action = wezterm.action.CloseCurrentPane { confirm = false },
     },
     {
       key = "o",
