@@ -8,6 +8,17 @@ return {
       "hrsh7th/cmp-path", 
       "hrsh7th/cmp-nvim-lsp", 
       "hrsh7th/cmp-nvim-lsp-signature-help",
+      {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+          library = {
+            -- See the configuration section for more details
+            -- Load luvit types when the `vim.uv` word is found
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
+        },
+      },
       --"saadparwaiz1/cmp_luasnip",
       --{ "l3mon4d3/luasnip", version = "v2.*", build = "make install_jsregexp" },
     },
@@ -46,6 +57,7 @@ return {
 
         sources = cmp.config.sources({
           --{ name = "luasnip" },
+          { name = "lazydev", group_index = 0 --[[ Skip loading LuaLS completions ]] },
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
         }, {
