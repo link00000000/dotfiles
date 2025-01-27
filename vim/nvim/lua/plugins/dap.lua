@@ -51,7 +51,26 @@ return {
     vim.fn.sign_define("DapBreakpointRejected",   { text = " ", texthl = "DapBreakpointRejected",  linehl = nil,               numhl = nil })
     vim.fn.sign_define("DapLogPoint",             { text = ".>", texthl = "DiagnosticInfo",         linehl = nil,               numhl = nil })
 
-    require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "c", "cpp", "rust" } })
+    local dap = require("dap")
+    dap.adapters.go = function(callback, config)
+        if config.mode == 'remote' and config.request == 'attach' then
+            callback({
+                type = 'server',
+                host = config.host or '127.0.0.1',
+                port = config.port or '38697'
+            })
+        else
+            callback({
+                type = 'server',
+                port = '${port}',
+                executable = {
+                    command = 'dlv',
+                    args = { 'dap', '-l', '127.0.0.1:${port}', '--log', '--log-output=dap' },
+                    detached = vim.fn.has("win32") == 0,
+                }
+            })
+        end
+    end
   end,
   keys = {
     { "<leader>dc", key_action_start_continue_debugging, desc = "Debugger: Start / continue" },
@@ -63,19 +82,35 @@ return {
     { "<leader>db", key_action_toggle_breakpoint, desc = "Debugger: Toggle breakpoint" },
     { "<leader>dC", key_action_toggle_conditional_breakpoint, desc = "Debugger: Conditional breakpoint" },
     { "<leader>dR", key_action_toggle_repl, desc = "Debugger: Toggle REPL" },
+    -- TODO: Add <leader>dk keybind
   },
   dependencies = {
-    {
-      "leoluz/nvim-dap-go",
-      config = function ()
-        require("dap-go").setup{}
-      end,
-    },
     {
       "theHamsta/nvim-dap-virtual-text",
       config = function ()
         require("nvim-dap-virtual-text").setup{}
       end,
+    },
+    {
+      "rcarriga/nvim-dap-ui",
+      dependencies = {
+        "mfussenegger/nvim-dap",
+        "nvim-neotest/nvim-nio"
+      },
+      config = function ()
+        local dap = require("dap")
+        local dapui = require("dapui")
+
+        dapui.setup {}
+
+        dap.listeners.before.attach.dapui_config = function () dapui.open() end
+        dap.listeners.before.launch.dapui_config = function () dapui.open() end
+        dap.listeners.before.event_terminated.dapui_config = function () dapui.close() end
+        dap.listeners.before.event_exited.dapui_config = function () dapui.close() end
+      end,
+      keys = {
+        { "<leader>du", function () require("dapui").toggle({ reset = true }) end, desc = "Debugger: Toggle UI" },
+      },
     }
   }
 }
