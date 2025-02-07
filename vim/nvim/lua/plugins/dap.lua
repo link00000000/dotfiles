@@ -52,6 +52,7 @@ return {
     vim.fn.sign_define("DapLogPoint",             { text = ".>", texthl = "DiagnosticInfo",         linehl = nil,               numhl = nil })
 
     local dap = require("dap")
+
     dap.adapters.go = function(callback, config)
         if config.mode == 'remote' and config.request == 'attach' then
             callback({
@@ -70,6 +71,18 @@ return {
                 }
             })
         end
+    end
+
+    dap.configurations.lua = {
+      {
+        type = "nlua",
+        request = "attach",
+        name = "Attach to running Neovim instance",
+      },
+    }
+
+    dap.adapters.nlua = function (callback, config, parent)
+      callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
     end
   end,
   keys = {
@@ -111,6 +124,9 @@ return {
       keys = {
         { "<leader>du", function () require("dapui").toggle({ reset = true }) end, desc = "Debugger: Toggle UI" },
       },
-    }
+    },
+    {
+      "jbyuki/one-small-step-for-vimkind",
+    },
   }
 }
