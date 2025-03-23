@@ -64,6 +64,10 @@ vim.opt.signcolumn = "yes"
 vim.g.netrw_list_hide = "^\\.*/$"
 vim.g.netrw_hide = 1
 
+-- Replace vimgrep with ripgrep
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
+
 -- Additional filetype associations
 vim.filetype.add({
   extension = {
