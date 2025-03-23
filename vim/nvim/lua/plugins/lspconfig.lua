@@ -185,6 +185,11 @@ return {
         handlers.hover,
         handlers.signature_help,
       },
+      settings = {
+        gopls = {
+          buildFlags = {"-tags=gui"},
+        },
+      },
     })
 
     setup_lsp("nil_ls", {
